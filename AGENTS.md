@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> 项目级代理入口 · 第三十二版 · 最后更新 2026-10-28
+> 项目级代理入口 · 第三十三版 · 最后更新 2026-10-28
 >
 > **自动加载协议（给后续代理，务必遵守）**
 > 1. **任何任务先读 L0 + L1**（30 秒速览 + 硬规则，约 80 行），不要一次性读完整个文档。
@@ -115,7 +115,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 6. **尺寸与证据同步**：任何改变用户可见尺寸、位置、交互或默认状态的任务，都要更新本文件对应事实与 `analysis/*-audit.json`，并重新截图；README 保持简洁，不写设计细节。
 7. **中文交付**：沟通、代码注释、模块说明和项目文档用简体中文；第三方 API、字段名、代码标识符保持原样。
 8. **全局记忆需确认**：写入用户级全局记忆前，必须先获得用户明确同意。
-9. **Git 与远端**：本项目已托管到公开仓库 `github.com/Osinglehh/digital-workstation`（`main` 分支）；禁止 `git reset --hard`、`git clean`、force push 等破坏性操作；`figure/` 与 `analysis/renders/` 已列入 `.gitignore`，提交时不要强推它们；推送前检查 `git status` 与身份。
+9. **Git 与远端**：本项目已托管到公开仓库 `github.com/Osinglehh/digital-workstation`（`main` 分支）；禁止 `git reset --hard`、`git clean`、force push 等破坏性操作（唯一例外：用户明确要求的历史重写/隐私清理，须先建备份分支与 bundle，再用 `--force-with-lease` 推送并记录）；参考照片及其衍生裁剪、渲染证据、`.img2threejs/`、`*.qoder.site` 已列入 `.gitignore`，提交时不要强推它们；推送前检查 `git status` 与身份。
 10. **清理边界**：只删**本轮自己生成**的临时文件；最终图、审计、参考裁剪、材质证据、测试输出必须保留。无法确认归属的 `_tmp-*` 不要删除，列清单询问用户（见 L4.6）。
 11. **用户更正优先**：用户指出的品牌/型号/尺寸/朝向/有无，永远优先于照片与既有规格推断（例：鼠标是英菲克无线、笔记本是耀世 16 Ultra、书包背面靠左侧板、不需要蓝色笔、头枕正面不能有柱子、架内右前方是剪刀不是订书机）。
 12. **并发安全**：本仓库可能被多个代理同时修改；写入 `AGENTS.md`、`README.md`、`workstationDetails.ts` 等共享文件前**重新读取当前内容**，避免覆盖他人刚完成的改动。
@@ -708,11 +708,15 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 > 附录只记录里程碑，不作为当前事实来源；尺寸、交互与验证以 L0–L5 和当前代码/实测为准。
 
+- **2026-10-28（第三十三版）**：Git 历史重写（隐私清除，用户明确确认）——
+  - **范围**：`git filter-branch` 重写全部 10 个提交——从历史中移除 `analysis/crops/`、`analysis/material-crops/`、`analysis/gates/mask-ref.png`、`analysis/gates/ref224.png`、`.img2threejs/`；作者/提交者邮箱统一为 GitHub noreply；所有提交哈希已变化，`--force-with-lease` 强推 `main`。
+  - **备份**：本地保留 `backup-before-rewrite` 分支与 `D:/digital-workstation-history-backup-20261028.bundle`（含旧历史与敏感文件，仅本地；确认无误后可删除）。
+  - **已知残留**：GitHub 侧旧对象可能仍可按完整 SHA 临时访问（缓存未清理，需联系 GitHub 支持彻底清除）；仓库无 Fork。本地恢复原历史请用上述 bundle。
 - **2026-10-28（第三十二版）**：公开仓库隐私清理——
   - **屏幕文案**：笔记本终端画面中 6 处本机用户目录显示改为通用 `C:\Users\user`（此前上线会暴露本机用户名）。
   - **移出跟踪**：`analysis/crops/`（30 张）、`analysis/material-crops/`（23 张）、`analysis/gates/mask-ref.png`、`analysis/gates/ref224.png`、`.img2threejs/state.json` 已 `git rm --cached`，加入 `.gitignore`，本地文件保留；`object-sculpt-spec.json` 与 `analysis/pre-spec-assessment.json` 的 `sourceImage` 由本机绝对路径改为 `figure/桌面-4.jpg`。
-  - **提交身份**：后续提交邮箱改为 GitHub noreply（`168887922+Osinglehh@users.noreply.github.com`），历史提交仍含旧学号邮箱。
-  - **范围说明**：本轮未重写 Git 历史（裁剪图仍可从旧提交中取得）；如需彻底清除需单独确认后执行历史重写与强推。
+  - **提交身份**：后续提交邮箱改为 GitHub noreply（`168887922+Osinglehh@users.noreply.github.com`）；历史提交的旧邮箱已在第三十三版统一重写。
+  - **范围说明**：此时尚未重写 Git 历史；裁剪图与旧邮箱已在第三十三版重写清除。
 - **2026-10-28（第三十一版）**：移动端画质档（方案 A）——
   - **触发条件**：`window.matchMedia('(pointer: coarse)')` 为真（触屏主指针）才启用，桌面/鼠标设备完全走原路径。
   - **降级项**：像素比上限 2 → **1.5**；阴影 PCFSoft 2048 → **PCF 1024**；跳过 **SSAOPass 与 UnrealBloomPass** 两道全屏重通道（其余 film/vignette 保留）；设计树关闭 `backdrop-filter`、改用 `--tree-bg-fallback`（0.97 不透明玻璃底）。
