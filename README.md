@@ -23,6 +23,16 @@ npm run build
 npm run preview
 ```
 
+## 部署（GitHub Pages）
+
+在线地址：**https://osinglehh.github.io/digital-workstation/**
+
+代码托管在公开仓库 [Osinglehh/digital-workstation](https://github.com/Osinglehh/digital-workstation)。推送 `main` 分支会自动触发 GitHub Actions 构建并部署（`.github/workflows/deploy.yml`：安装依赖 → 类型检查 → 构建 → 部署到 Pages），无需手动操作。
+
+- 首次启用需在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions** 并保存（一次性操作，GitHub 不允许工作流令牌自动创建 Pages 站点）。
+- 部署适配：`vite.config.ts` 使用 `base: './'`，运行时装贴图使用相对路径，因此站点可部署在任意子路径下。
+- `figure/` 参考照片与 `analysis/renders/` 渲染证据体积较大，已列入 `.gitignore`，不进入仓库。
+
 ## 交互
 
 鼠标拖动旋转、滚轮缩放、点击物体在设计树中打开操作节点；点击空白或按 `Esc` 取消选择。左上设计树常驻，可用标题栏箭头整体折叠，内部节点可同时展开：

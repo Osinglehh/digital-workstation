@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> 项目级代理入口 · 第二十二版 · 最后更新 2026-10-27
+> 项目级代理入口 · 第二十三版 · 最后更新 2026-10-28
 >
 > **自动加载协议（给后续代理，务必遵守）**
 > 1. **任何任务先读 L0 + L1**（30 秒速览 + 硬规则，约 80 行），不要一次性读完整个文档。
@@ -71,6 +71,7 @@
 | 已移除 | 蓝色中性笔、鼠标编织线、显示器信号线、旧桌腿与前/后横梁、旧搁板铝托架（`shelfBracketL/R`）、旧书列（`shelfProps`/`bookRowB`/`bookEnd`）、旧茶罐（`jarPurple`/`jarOrange`/`teaCanister`）、3 条地面盘绕线缆、架内订书机（实为剪刀，已替换） |
 | 最终证据 | `analysis/renders/final/`（`final-under.png`、`final-underdesk*.png`、`final-chair-*.png`、`final-shelf-*.png`、`final-ui-*.png`、`final-showcase-*.png`、`final-keyboard-rgb.png`、`manifest.json`、`shelf-manifest.json`、`ui-manifest.json`）、`analysis/renders/interaction-test.json`、`analysis/renders/showcase-test.json`、`lid-closed.png`、`night-mode.png`、`monitor-pan.png`、`analysis/environment-audit.json`、全部 `analysis/*-audit.json` |
 | 构建体积 | 单包约 1,572 kB（2026-10-27 自动展示 45 秒版实测）；Vite 体积提示是已知情况，不是失败 |
+| 部署 | GitHub 公开仓库 `Osinglehh/digital-workstation`；push 到 `main` 触发 GitHub Actions 自动构建并部署到 GitHub Pages（`.github/workflows/deploy.yml`，`base: './'` + 相对贴图路径）；线上 https://osinglehh.github.io/digital-workstation/ ；`figure/` 与 `analysis/renders/` 在 `.gitignore` 中、不进 Git |
 
 ### 0.3 黄金路径
 
@@ -113,7 +114,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 6. **尺寸与证据同步**：任何改变用户可见尺寸、位置、交互或默认状态的任务，都要更新 `README.md` 和对应 `analysis/*-audit.json`，并重新截图。
 7. **中文交付**：沟通、代码注释、模块说明和项目文档用简体中文；第三方 API、字段名、代码标识符保持原样。
 8. **全局记忆需确认**：写入用户级全局记忆前，必须先获得用户明确同意。
-9. **不要假设有 Git**：当前目录不是 Git 仓库；禁止依赖提交历史、`git reset --hard`、`git clean` 等；需要回退时先创建可恢复副本并征得同意。
+9. **Git 与远端**：本项目已托管到公开仓库 `github.com/Osinglehh/digital-workstation`（`main` 分支）；禁止 `git reset --hard`、`git clean`、force push 等破坏性操作；`figure/` 与 `analysis/renders/` 已列入 `.gitignore`，提交时不要强推它们；推送前检查 `git status` 与身份。
 10. **清理边界**：只删**本轮自己生成**的临时文件；最终图、审计、参考裁剪、材质证据、测试输出必须保留。无法确认归属的 `_tmp-*` 不要删除，列清单询问用户（见 L4.6）。
 11. **用户更正优先**：用户指出的品牌/型号/尺寸/朝向/有无，永远优先于照片与既有规格推断（例：鼠标是英菲克无线、笔记本是耀世 16 Ultra、书包背面靠左侧板、不需要蓝色笔、头枕正面不能有柱子、架内右前方是剪刀不是订书机）。
 12. **并发安全**：本仓库可能被多个代理同时修改；写入 `AGENTS.md`、`README.md`、`workstationDetails.ts` 等共享文件前**重新读取当前内容**，避免覆盖他人刚完成的改动。
@@ -133,7 +134,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 | `src/showcase/showcaseTimeline.ts` | 自动展示时间线：45 秒 / 7 幕区间、相机关键帧、场景/RGB/屏幕/开盖事件、RGB 亮度曲线、开场/结尾标题、底部白色实时功能字幕与纯函数求值 | 改镜头、章节时长、事件时间或字幕时从这里改；改后必须跑 `test_showcase` 并同步 L3.16 |
 | `src/showcase/showcaseController.ts` | 自动展示状态机：idle/playing/paused/finished/stopped、事件调度、seek/下一章节/重播/退出、真实进度发布、隐藏偏好、自然完成 2 s 后自动恢复、UI 隐藏 | 只通过 `ShowcaseHost` 调用场景；不要在这里直接操作 Three.js 节点或 DOM 控件；不要新增第二个 rAF 循环；自动恢复定时器必须可清理 |
 | `src/ui/types.ts`、`src/ui/icons.ts` | UI 状态/预设类型与内联 SVG 图标 | 新增视角/场景/灯效时同步类型、图标与 `workbenchController` |
-| `src/createOfficeCubicleWorkstationDioramaModel.ts` | 由 `object-sculpt-spec.json` 生成的工厂，含 84 个组件、材质和节点 id | **生成物**。优先通过规格/生成器修改；直接手改必须同步规格并在交付中注明 |
+| `src/createOfficeCubicleWorkstationDioramaModel.ts` | 由 `object-sculpt-spec.json` 生成的工厂，含 84 个组件、材质和节点 id | **生成物**。优先通过规格/生成器修改；直接手改必须同步规格并在交付中注明；贴图 `url` 字段保持相对路径 `textures/...`（Pages 子路径部署需要），不要改回 `/textures/...` |
 | `src/workstationDetails.ts` | 运行时细节层：双屏 Canvas、98 键渐变键帽键盘、玻璃杯、书籍、线缆、贴花、材质修正、动画枢轴、英菲克鼠标、薄壁水壶/液体、显示器减薄、竖放鼠标垫、人体工学椅（X 背架/腰靠）/头枕、桌下结构、书包、垃圾桶、桌顶格架 | 默认改动入口；修改前先确定节点 id、父级和已有覆盖函数 |
 | `object-sculpt-spec.json` | 场景规格：组件树、尺寸、材质、动画锚点、门禁与评审历史 | 大文件，用 grep 定位 id；结构变化后必须重新严格校验 |
 | `tools/author_spec.py` | 规格的可复现编辑脚本，只读写 `object-sculpt-spec.json` | 需要可复现的布局/材质改动时从这里改；运行 `python tools/author_spec.py`，它**不生成工厂** |
@@ -147,12 +148,15 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 | `tools/audit_underdesk.mjs` | 桌下结构与地面陈设审计（逐顶点 AABB、净距、落地、碰撞、旧节点移除） | 输出 `analysis/underdesk-audit.json`；改桌下/地面/书包/垃圾桶/椅子位置后必须重跑 |
 | `tools/audit_shelf.mjs` | 桌顶格架审计（逐顶点 AABB，InstancedMesh 叠加实例矩阵；纸张两两与纸张对器物判交；阴影遮挡标志） | 输出 `analysis/shelf-audit.json`；改格架尺寸、书籍尺寸/位置、纸张分层或阴影标志后必须重跑 |
 | `tools/audit_environment.mjs` | 环境/相机审计：地板与墙体包络、墙地接缝、踢脚线、工位净距、11 个预设安全边界、逐顶点投影画面留白 | 输出 `analysis/environment-audit.json`；改 `ENVIRONMENT`、`views`、墙体/地面或初始相机后必须重跑 |
-| `public/` | 静态资源目录（当前无外部贴图文件） | 木纹/玻璃/键帽等纹理由 Canvas 程序化生成；不要假设存在 `public/textures/` |
+| `public/textures/` | 参考 PBR 贴图（约 34 MB），运行时由工厂按相对路径 `textures/...` 加载 | 部署必需；木纹/玻璃/键帽等其余纹理由 Canvas 程序化生成；URL 保持相对路径 |
+| `vite.config.ts` | `base: './'` + dev server 配置 | `base` 为 Pages 子路径部署所需，不要改回默认 `/` |
 | `analysis/` | 参考裁剪、材质证据、审计 JSON、门禁、渲染 | 可追加证据，不删除被 README 或工具引用的文件 |
 | `analysis/renders/final/` | 标准五视图、参考构图、白模、转台、椅子/头枕/格架专项终图、界面终图与 manifest | 交付物，禁止用旧迭代截图覆盖 |
 | `analysis/renders/` | 交互测试输出、单张检查图 | 试拍在收尾时清理 |
 | `.img2threejs/` | img2threejs 管线状态 | 只在真正走规格重建流程时读取/更新；不是运行时依赖 |
 | `dist/` | Vite 构建产物 | 自动生成，不要手改；必要时用 `npm run build` 重建 |
+| `.gitignore` | 忽略 `node_modules/`、`dist/`、`figure/`、`analysis/renders/` | `figure/`（231 MB 参考照片）与 `analysis/renders/`（渲染证据）刻意不进 Git |
+| `.github/workflows/deploy.yml` | GitHub Pages 自动部署：检出 → `npm ci` → typecheck → build → configure-pages（`enablement: true`）→ upload-pages-artifact → deploy-pages | push `main` 即部署；首次启用 Pages 需在仓库 Settings → Pages 手动把 Source 选为 GitHub Actions（API 令牌无权自动创建站点） |
 | `README.md` | 用户可读的尺寸、交互、验证和已知限制 | 行为、尺寸或交互变化时同步更新 |
 | `AGENTS.md` | 本文件，项目级代理入口 | 保持 L0–L6 递进结构；版本/日期与附录随任务更新；**不要堆积过程日志** |
 
@@ -548,7 +552,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 4. **自动门禁误报**：`self_intersection` 对程序化倒角盒体大量误报，不能作为唯一阻断；以语义分组 AABB/射线检查和人工多角度目检为准。
 5. **构建体积**：单包 >500 kB 警告是当前已知状态，不要为此引入无关拆包重构。
 6. **依赖**：不要因小型视觉需求增加 npm 依赖或引入外部模型/贴图；现有 Three.js + Canvas + 程序化几何已足够。
-7. **版本控制**：不是 Git 仓库；不要承诺可回滚，也不要执行不可逆清理。删除任何非本轮生成文件前先确认。
+7. **版本控制**：已托管 GitHub 公开仓库（`Osinglehh/digital-workstation`，`main` 分支）；不要 force push、`reset --hard` 或不可逆清理，删除任何非本轮生成文件前先确认。
 8. **全局记忆**：写入用户级 `memory` 前，必须再次向用户确认并获得同意。
 
 ### 键盘、鼠标、屏幕
@@ -683,6 +687,11 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 > 附录只记录里程碑，不作为当前事实来源；尺寸、交互与验证以 L0–L5 和当前代码/实测为准。
 
+- **2026-10-28（第二十三版）**：托管 GitHub 并上线 Pages——
+  - **仓库**：`git init` 并推送到公开仓库 `github.com/Osinglehh/digital-workstation`（`main` 分支）；`.gitignore` 排除 `node_modules/`、`dist/`、`figure/`（231 MB 参考照片）与 `analysis/renders/`（65 MB 渲染证据），其余 190 个文件入库。
+  - **部署适配**：`vite.config.ts` 加 `base: './'`；工厂与 `object-sculpt-spec.json` 中 25 个运行时贴图 `url` 由 `/textures/...` 改为相对路径 `textures/...`，子路径部署不再 404。
+  - **自动部署**：新增 `.github/workflows/deploy.yml`（npm ci → typecheck → build → configure-pages `enablement: true` → upload/deploy-pages），push `main` 即上线；首次启用需在仓库 Settings → Pages 手动选择 GitHub Actions 来源（工作流令牌无权自动创建 Pages 站点，`enablement` 与 API 调用均被拒绝）。
+  - **实测**：本地子路径静态服务 + 无头浏览器探针 25/25 贴图 200、`errors: []`；线上 https://osinglehh.github.io/digital-workstation/ 首页/JS（1,571,573 B）/woodOak albedo 贴图均 200。
 - **2026-10-27（第二十二版）**：45 秒自动展示、实时字幕、隐藏选项与自动恢复——
   - **时长**：时间线从 94 秒压缩到 **45 秒 / 7 幕**；第 1–7 幕为 0–7 / 7–13 / 13–21 / 21–28 / 28–34 / 34–40 / 40–45 秒。相机关键帧、场景/屏幕/开盖/RGB 事件与底部字幕同步重排；右 3/4 到显示器仍保留 13.7 s 抬高过椅背的过渡，中景保持 2.35–2.45 m。
   - **实时字幕**：新增 `SHOWCASE_SUBTITLES` 白色功能字幕轨道，底部 `.showcase-live` 随真实时间更新（整体工位、显示器、笔记本、桌面配件、合盖/开盖、RGB 三态、深夜/专注、终章），暂停保留、隐藏控件栏仍显示。
