@@ -713,7 +713,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 - **2026-10-28（第三十三版）**：Git 历史重写（隐私清除，用户明确确认）——
   - **范围**：`git filter-branch` 重写全部 10 个提交——从历史中移除 `analysis/crops/`、`analysis/material-crops/`、`analysis/gates/mask-ref.png`、`analysis/gates/ref224.png`、`.img2threejs/`；作者/提交者邮箱统一为 GitHub noreply；所有提交哈希已变化，`--force-with-lease` 强推 `main`。
   - **备份**：重写前曾保留 `backup-before-rewrite` 分支与 `D:/digital-workstation-history-backup-20261028.bundle`；经用户确认已于当日删除，并清理 reflog/旧对象（旧提交在本地不可达）。
-  - **已知残留**：GitHub 侧旧对象可能仍可按完整 SHA 临时访问（缓存未清理，需联系 GitHub 支持彻底清除）；仓库无 Fork。本地恢复原历史请用上述 bundle。
+  - **已知残留**：GitHub 侧旧对象可能仍可按完整 SHA 临时访问（缓存未清理，需联系 GitHub 支持彻底清除）；仓库无 Fork。备份已删除，旧历史无法恢复，远端历史为唯一版本。
 - **2026-10-28（第三十二版）**：公开仓库隐私清理——
   - **屏幕文案**：笔记本终端画面中 6 处本机用户目录显示改为通用 `C:\Users\user`（此前上线会暴露本机用户名）。
   - **移出跟踪**：`analysis/crops/`（30 张）、`analysis/material-crops/`（23 张）、`analysis/gates/mask-ref.png`、`analysis/gates/ref224.png`、`.img2threejs/state.json` 已 `git rm --cached`，加入 `.gitignore`，本地文件保留；`object-sculpt-spec.json` 与 `analysis/pre-spec-assessment.json` 的 `sourceImage` 由本机绝对路径改为 `figure/桌面-4.jpg`。
