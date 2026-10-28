@@ -105,7 +105,8 @@ export type IconName =
   | 'clapper'
   | 'skip'
   | 'replay'
-  | 'hide';
+  | 'hide'
+  | 'github';
 
 export type ViewOption = {
   id: ViewId;

@@ -205,6 +205,25 @@
   white-space: nowrap;
 }
 
+.tree-github {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ui-muted);
+  cursor: pointer;
+}
+
+.tree-github:hover,
+.tree-github:focus-visible {
+  background: var(--tree-hover);
+  color: var(--tree-accent);
+}
+
 .tree-collapse {
   width: 24px;
   height: 24px;
@@ -908,6 +927,36 @@
 
 .shortcut-row span {
   color: var(--ui-muted);
+}
+
+.help-repo-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  padding: 7px 9px;
+  border: 1px solid var(--tree-hairline);
+  border-radius: 8px;
+  background: var(--tree-card);
+  color: var(--ui-ink);
+  font-size: var(--tree-font-meta);
+  text-decoration: none;
+}
+
+.help-repo-link:hover,
+.help-repo-link:focus-visible {
+  background: var(--tree-hover);
+  color: var(--tree-accent);
+}
+
+.help-repo-link .ui-icon {
+  flex: none;
+}
+
+.help-repo-arrow {
+  margin-left: auto;
+  color: var(--ui-muted);
+  font-size: var(--tree-font-micro);
 }
 
 kbd {

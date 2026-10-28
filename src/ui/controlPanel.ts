@@ -26,6 +26,10 @@ const SCENE_SECTION = 'scenes';
 const SHOWCASE_SECTION = 'showcase';
 const HELP_SECTION = 'help';
 
+// 开源仓库入口：标题栏图标与帮助节点共用
+const REPO_URL = 'https://github.com/Osinglehh/digital-workstation';
+const REPO_LABEL = 'GitHub 开源仓库 · 欢迎 Star';
+
 type SectionName =
   | typeof VIEW_SECTION
   | typeof OBJECT_SECTION
@@ -192,7 +196,14 @@ export class ControlPanel {
     this.treeToggle.addEventListener('click', () => {
       this.setTreeCollapsed(!this.tree.classList.contains('is-collapsed'));
     });
-    head.append(brand, this.treeToggle);
+    const repoLink = make('a', 'tree-github');
+    repoLink.href = REPO_URL;
+    repoLink.target = '_blank';
+    repoLink.rel = 'noopener noreferrer';
+    repoLink.title = REPO_LABEL;
+    repoLink.setAttribute('aria-label', `${REPO_LABEL}（新窗口）`);
+    repoLink.innerHTML = icon('github', 15);
+    head.append(brand, repoLink, this.treeToggle);
 
     const doc = make('div', 'tree-doc');
     const docName = make('span', 'tree-doc-name');
@@ -692,6 +703,12 @@ export class ControlPanel {
       list,
       make('p', 'panel-note', '点击场景中的物体在设计树里展开操作节点，点击空白处或按 Esc 取消选择。'),
     );
+    const repoRow = make('a', 'help-repo-link');
+    repoRow.href = REPO_URL;
+    repoRow.target = '_blank';
+    repoRow.rel = 'noopener noreferrer';
+    repoRow.innerHTML = `${icon('github', 13)}<span>${REPO_LABEL}</span><span class="help-repo-arrow">↗</span>`;
+    body.append(repoRow);
     this.helpButton = makeButton('tree-row dock-group', `<span class="tree-chevron">${icon('chevron', 12)}</span><span class="tree-node-icon">${icon('help', 14)}</span><span class="tree-label">帮助</span>`, '快捷键与帮助');
     this.helpButton.setAttribute('aria-label', '帮助');
     this.helpButton.setAttribute('aria-expanded', 'false');

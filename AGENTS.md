@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> 项目级代理入口 · 第二十三版 · 最后更新 2026-10-28
+> 项目级代理入口 · 第二十四版 · 最后更新 2026-10-28
 >
 > **自动加载协议（给后续代理，务必遵守）**
 > 1. **任何任务先读 L0 + L1**（30 秒速览 + 硬规则，约 80 行），不要一次性读完整个文档。
@@ -384,11 +384,11 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 - **分层**：`main.ts` 保留场景/灯光/相机/后处理/基础自动化；`workbenchController.ts` 负责相机缓动、Raycaster 拾取、场景预设、灯光状态、整理显隐、持久化与快捷键；`src/ui/*` 只负责 DOM/CSS。不要在 `main.ts` 恢复旧 HUD，也不要把 Three.js 物件逻辑塞进 `ui/`；**不要恢复底部 dock 或右侧浮窗**。
 - **设计树结构**：`ControlPanel` 创建 `.design-tree`，固定在舞台左上（`top:14px; left:16px; width:304px`，1200×900 全折叠高 **289**），包含：
-  - `.tree-head`：品牌图标、`数字工位`、`FeatureManager · 设计树`、整体折叠按钮 `.tree-collapse`；
+  - `.tree-head`：品牌图标、`数字工位`、`FeatureManager · 设计树`、GitHub 图标链接 `.tree-github`、整体折叠按钮 `.tree-collapse`；
   - `.tree-doc`：`工作位装配体` + `84 组件`/`33 材质` 徽标；
   - `.tree-body`：根行 `数字工位装配体` + `.tree-children` 中的视角/物品/灯光/场景/自动展示/帮助六个 `.tree-node`；
   - `.tree-foot`：状态点、`tree-status-text`（场景 · 视角 · 已选 · 环绕中）、操作提示。
-  `.tree-row` 保留 `.dock-group` 类和精确 `aria-label`（视角/物品/灯光/场景/自动展示/帮助），测试与快捷定位依赖它；节点正文 id 为 `ws-section-<name>`，与 `aria-controls` 对应。自动展示节点的正文在 L3.16。
+  `.tree-row` 保留 `.dock-group` 类和精确 `aria-label`（视角/物品/灯光/场景/自动展示/帮助），测试与快捷定位依赖它；节点正文 id 为 `ws-section-<name>`，与 `aria-controls` 对应。自动展示节点的正文在 L3.16。帮助节点正文末尾固定一行 `.help-repo-link`（`GitHub 开源仓库 · 欢迎 Star`，新窗口打开）；`.tree-github` 与 `.help-repo-link` 均由 `controlPanel.ts` 的 `REPO_URL` 常量指向公开仓库，不要改成硬编码分支或相对路径。
 - **玻璃拟态与字号**：`--tree-bg`（日 `rgba(245,247,250,0.68)` / 夜 `rgba(23,26,31,0.66)`）、`--tree-blur: 12px`、`--tree-saturate: 135%`、`--tree-radius: 14px`；字体变量 `--tree-font-title/node/leaf/meta/micro` = **13/12.5/12/9.5/9px**，行高 `--tree-row-height/--tree-leaf-height` = **27/26px**。头部、装配体信息、底栏只用透明底 + 发丝线，**不要把实色渐变/白底加回去**，否则 `backdrop-filter` 看不到场景。`@supports not ((backdrop-filter) or (-webkit-backdrop-filter))` 时回退 `--tree-bg-fallback`。`design-tree` 不做入场动画：无头 SwiftShader 会把 transform 冻结在偏移位置，污染截图与 `designTree` 实测。
 - **按钮字号优先级**：全局按钮重置用 `:where(.stage-ui) button { font: inherit }`（`:where` 降低优先级）。若改回 `.stage-ui button { font: inherit }`，它会压过 `.tree-row`/`.tree-leaf` 的 `font-size`，所有节点又变回 16px——这是旧版“字体偏大”的根因。
 - **展开语义**：点击节点行切换 `aria-expanded` 与 `.tree-node-body.hidden`；可同时展开多个节点，树体内滚动。标题栏 `.tree-collapse` 切换 `is-collapsed`，只折叠整棵树外壳。初始状态所有节点折叠；`setSectionOpen(name, true)` 会同时展开整棵树。`closePanels()` 只折叠所有节点，不隐藏设计树；`hasOpenPanel()` 以是否有展开节点为准。实测（1200×900）：全折叠高 **289**；六节点全展开高 648（72vh 上限）、`.tree-body` 内容 **2146** / 可视 **555**，`pageScrollHeight` 仍为 900。
@@ -687,6 +687,10 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 > 附录只记录里程碑，不作为当前事实来源；尺寸、交互与验证以 L0–L5 和当前代码/实测为准。
 
+- **2026-10-28（第二十四版）**：设计树新增 GitHub 仓库入口——
+  - **入口**：标题栏 `.tree-head` 增加 GitHub 图标链接 `.tree-github`（24×24，悬停显示「GitHub 开源仓库 · 欢迎 Star」），帮助节点正文末尾增加 `.help-repo-link` 文字链接；两者都新窗口打开（`target=_blank` + `noopener noreferrer`），指向 `github.com/Osinglehh/digital-workstation`。
+  - **样式**：`.tree-github` 与折叠按钮同一套悬停样式；`.help-repo-link` 使用 `--tree-card`/`--tree-hover` 玻璃底色，日夜主题自适应；树宽 **304**、全折叠高 **289** 不变。
+  - **实测**：`typecheck`/`build` 通过；`test_interactions` `errors: []`；`final_ui_capture` 记录 `designTree (16,14,304×289)`、移动端 `bodyScrollWidth=390`；运行时探针测得标题栏无挤压（head scrollWidth=clientWidth=302、副标题未截断）、帮助链接 250×29 且完全落在树内、`errors: []`。
 - **2026-10-28（第二十三版）**：托管 GitHub 并上线 Pages——
   - **仓库**：`git init` 并推送到公开仓库 `github.com/Osinglehh/digital-workstation`（`main` 分支）；`.gitignore` 排除 `node_modules/`、`dist/`、`figure/`（231 MB 参考照片）与 `analysis/renders/`（65 MB 渲染证据），其余 190 个文件入库。
   - **部署适配**：`vite.config.ts` 加 `base: './'`；工厂与 `object-sculpt-spec.json` 中 25 个运行时贴图 `url` 由 `/textures/...` 改为相对路径 `textures/...`，子路径部署不再 404。
