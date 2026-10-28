@@ -1,0 +1,392 @@
+{
+  "generated": "2026-10-27T02:49:44.621Z",
+  "reference": [
+    "figure/桌底-1.jpg",
+    "figure/桌底-2.jpg",
+    "figure/书包-1.jpg",
+    "figure/书包-2.jpg"
+  ],
+  "units": "meters, Y-up, floor top y=0",
+  "structure": {
+    "construction": "落地 20 mm 木侧板 + 30 mm 木背板 + 40×40 mm 后角铝立柱；无桌腿、无前/后横梁。",
+    "underDeskTopY": 0.7325,
+    "panelThickness": {
+      "side": 0.02,
+      "back": 0.03
+    },
+    "postSection": 0.04,
+    "topRail": "1.05 × 0.028 × 0.014 at y=0.717",
+    "trunking": "0.978 × 0.105 × 0.045 at z=-0.2775；16 道横向肋",
+    "sockets": "86×86 mm 五孔面板 ×2，中心 x=0.105 / 0.205，y=0.054；右侧预留敲落孔 x=0.342",
+    "oldLegsRailsRemoved": {
+      "deskPostFL": true,
+      "deskPostFR": true,
+      "deskPostRL": true,
+      "deskPostRR": true,
+      "deskRailFront": true,
+      "deskRailBack": true
+    }
+  },
+  "decorative": {
+    "backpack": "背面靠在左侧板内表面（约 5° 倚放，包顶贴板、包底留楔缝），正面朝桌内（+x）；酒红印花软包，黑前袋/灰色 BAP 贴片/肩带/提手，落地与肩带均贴地。",
+    "bin": "白色冲孔篮 + 绿色垃圾袋，置于桌下左前外侧。",
+    "floor": "600×600 mm 亚光陶瓷砖，4×4 平铺图集，灰缝约 4 mm。"
+  },
+  "measured": {
+    "backPanel": {
+      "min": {
+        "x": -0.525,
+        "y": 0,
+        "z": -0.33
+      },
+      "max": {
+        "x": 0.525,
+        "y": 0.7325,
+        "z": -0.3
+      },
+      "size": {
+        "x": 1.05,
+        "y": 0.7325,
+        "z": 0.03
+      }
+    },
+    "leftPanel": {
+      "min": {
+        "x": -0.525,
+        "y": 0,
+        "z": -0.3
+      },
+      "max": {
+        "x": -0.505,
+        "y": 0.7325,
+        "z": 0.17
+      },
+      "size": {
+        "x": 0.02,
+        "y": 0.7325,
+        "z": 0.47
+      }
+    },
+    "rightPanel": {
+      "min": {
+        "x": 0.505,
+        "y": 0,
+        "z": -0.3
+      },
+      "max": {
+        "x": 0.525,
+        "y": 0.7325,
+        "z": 0.17
+      },
+      "size": {
+        "x": 0.02,
+        "y": 0.7325,
+        "z": 0.47
+      }
+    },
+    "leftPost": {
+      "min": {
+        "x": -0.53,
+        "y": 0,
+        "z": -0.305
+      },
+      "max": {
+        "x": -0.49,
+        "y": 0.7325,
+        "z": -0.265
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.7325,
+        "z": 0.04
+      }
+    },
+    "rightPost": {
+      "min": {
+        "x": 0.49,
+        "y": 0,
+        "z": -0.305
+      },
+      "max": {
+        "x": 0.53,
+        "y": 0.7325,
+        "z": -0.265
+      },
+      "size": {
+        "x": 0.04,
+        "y": 0.7325,
+        "z": 0.04
+      }
+    },
+    "topRail": {
+      "min": {
+        "x": -0.525,
+        "y": 0.703,
+        "z": -0.301
+      },
+      "max": {
+        "x": 0.525,
+        "y": 0.731,
+        "z": -0.287
+      },
+      "size": {
+        "x": 1.05,
+        "y": 0.028,
+        "z": 0.014
+      }
+    },
+    "trunking": {
+      "min": {
+        "x": -0.489,
+        "y": 0,
+        "z": -0.3
+      },
+      "max": {
+        "x": 0.489,
+        "y": 0.105,
+        "z": -0.255
+      },
+      "size": {
+        "x": 0.978,
+        "y": 0.105,
+        "z": 0.045
+      }
+    },
+    "socketBlack": {
+      "min": {
+        "x": 0.062,
+        "y": 0.011,
+        "z": -0.254
+      },
+      "max": {
+        "x": 0.148,
+        "y": 0.097,
+        "z": -0.2225
+      },
+      "size": {
+        "x": 0.086,
+        "y": 0.086,
+        "z": 0.0315
+      }
+    },
+    "socketWhite": {
+      "min": {
+        "x": 0.162,
+        "y": 0.011,
+        "z": -0.254
+      },
+      "max": {
+        "x": 0.248,
+        "y": 0.097,
+        "z": -0.2225
+      },
+      "size": {
+        "x": 0.086,
+        "y": 0.086,
+        "z": 0.0315
+      }
+    },
+    "knockout": {
+      "min": {
+        "x": 0.2937,
+        "y": 0.028,
+        "z": -0.2525
+      },
+      "max": {
+        "x": 0.3903,
+        "y": 0.088,
+        "z": -0.2475
+      },
+      "size": {
+        "x": 0.0966,
+        "y": 0.06,
+        "z": 0.005
+      }
+    },
+    "bag": {
+      "min": {
+        "x": -0.5001,
+        "y": 0,
+        "z": -0.2355
+      },
+      "max": {
+        "x": -0.2165,
+        "y": 0.5745,
+        "z": 0.1576
+      },
+      "size": {
+        "x": 0.2836,
+        "y": 0.5745,
+        "z": 0.3931
+      }
+    },
+    "bagBody": {
+      "min": {
+        "x": -0.4723,
+        "y": 0.0005,
+        "z": -0.1847
+      },
+      "max": {
+        "x": -0.268,
+        "y": 0.5025,
+        "z": 0.1393
+      },
+      "size": {
+        "x": 0.2043,
+        "y": 0.502,
+        "z": 0.3239
+      }
+    },
+    "bin": {
+      "min": {
+        "x": -0.825,
+        "y": 0,
+        "z": -0.02
+      },
+      "max": {
+        "x": -0.525,
+        "y": 0.359,
+        "z": 0.28
+      },
+      "size": {
+        "x": 0.3,
+        "y": 0.359,
+        "z": 0.3
+      }
+    },
+    "chair": {
+      "min": {
+        "x": -0.3336,
+        "y": 0,
+        "z": 0.102
+      },
+      "max": {
+        "x": 0.3336,
+        "y": 1.241,
+        "z": 0.9326
+      },
+      "size": {
+        "x": 0.6672,
+        "y": 1.241,
+        "z": 0.8306
+      }
+    },
+    "floor": {
+      "min": {
+        "x": -1.28,
+        "y": 0,
+        "z": -0.64
+      },
+      "max": {
+        "x": 1.12,
+        "y": 0,
+        "z": 1.61
+      },
+      "size": {
+        "x": 2.4,
+        "y": 0,
+        "z": 2.25
+      }
+    },
+    "desktop": {
+      "min": {
+        "x": -0.525,
+        "y": 0.7325,
+        "z": -0.3
+      },
+      "max": {
+        "x": 0.525,
+        "y": 0.7575,
+        "z": 0.2
+      },
+      "size": {
+        "x": 1.05,
+        "y": 0.025,
+        "z": 0.5
+      }
+    }
+  },
+  "clearances": {
+    "bagToLeftPanel": 0.0327,
+    "bagToBackPanel": 0.1153,
+    "bagGroupToLeftPanel": 0.0049,
+    "bagGroupToBackPanel": 0.0645,
+    "binToLeftPanel": 0,
+    "topRailToDesktopUnderside": 0.0015,
+    "leftPanelTopToDesktopUnderside": 0,
+    "bagTopToDesktopUnderside": 0.158,
+    "binTopToDesktopUnderside": 0.3735
+  },
+  "contacts": {
+    "leftPanelMinY": 0,
+    "rightPanelMinY": 0,
+    "backPanelMinY": 0,
+    "bagMinY": 0,
+    "binMinY": 0,
+    "chairMinY": 0,
+    "floorMaxY": 0,
+    "cableMinY": 0.0709
+  },
+  "collisions": {
+    "bagChairParts": {
+      "overlapping": [],
+      "minGap": 0.0424,
+      "nearestPart": "(mesh)"
+    },
+    "binChairParts": {
+      "overlapping": [],
+      "minGap": 0.199,
+      "nearestPart": "(mesh)"
+    },
+    "leftPanelChair": false,
+    "rightPanelChair": false,
+    "bagLeftPanel": false,
+    "bagBackPanel": false,
+    "bagGroupLeftPanel": false,
+    "bagGroupBackPanel": false,
+    "binLeftPanel": true
+  },
+  "cableEndpoints": [
+    {
+      "name": "under-desk-black-drop",
+      "box": {
+        "min": {
+          "x": 0.1037,
+          "y": 0.0709,
+          "z": -0.2891
+        },
+        "max": {
+          "x": 0.3413,
+          "y": 0.7309,
+          "z": -0.2416
+        },
+        "size": {
+          "x": 0.2376,
+          "y": 0.66,
+          "z": 0.0474
+        }
+      }
+    },
+    {
+      "name": "under-desk-white-drop",
+      "box": {
+        "min": {
+          "x": 0.2036,
+          "y": 0.0734,
+          "z": -0.2887
+        },
+        "max": {
+          "x": 0.4759,
+          "y": 0.7307,
+          "z": -0.242
+        },
+        "size": {
+          "x": 0.2722,
+          "y": 0.6573,
+          "z": 0.0467
+        }
+      }
+    }
+  ],
+  "errors": []
+}

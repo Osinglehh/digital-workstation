@@ -1,0 +1,583 @@
+{
+  "generatedAt": "2026-10-27T02:48:42.693Z",
+  "viewport": [
+    1200,
+    900
+  ],
+  "environment": {
+    "floorWidth": 2.4,
+    "floorDepth": 2.25,
+    "floorCenterX": -0.08,
+    "floorCenterZ": 0.485,
+    "tileSize": 0.6,
+    "wallWidth": 2.6,
+    "wallHeight": 2.35,
+    "wallZ": -0.64,
+    "sideReturnDepth": 0.42,
+    "baseboardHeight": 0.085,
+    "wallColorDay": "#8F8B84",
+    "wallColorNight": "#232220",
+    "baseboardColorDay": "#6C6861",
+    "baseboardColorNight": "#1B1A18"
+  },
+  "floor": {
+    "bounds": {
+      "min": {
+        "x": -1.28,
+        "y": 0,
+        "z": -0.64
+      },
+      "max": {
+        "x": 1.12,
+        "y": 0,
+        "z": 1.61
+      },
+      "size": {
+        "x": 2.4,
+        "y": 0,
+        "z": 2.25
+      }
+    },
+    "plane": {
+      "width": 2.4,
+      "height": 2.25,
+      "widthSegments": 1,
+      "heightSegments": 1
+    },
+    "rotationX": -1.5707963267948966,
+    "topY": 0,
+    "textureRepeats": {
+      "map": [
+        1,
+        0.9375
+      ],
+      "bump": [
+        4,
+        3.75
+      ]
+    }
+  },
+  "walls": {
+    "bounds": {
+      "min": {
+        "x": -1.38,
+        "y": 0,
+        "z": -0.64
+      },
+      "max": {
+        "x": 1.22,
+        "y": 2.35,
+        "z": -0.22
+      }
+    },
+    "rear": {
+      "min": {
+        "x": -1.38,
+        "y": 0,
+        "z": -0.64
+      },
+      "max": {
+        "x": 1.22,
+        "y": 2.35,
+        "z": -0.64
+      },
+      "size": {
+        "x": 2.6,
+        "y": 2.35,
+        "z": 0
+      }
+    },
+    "left": {
+      "min": {
+        "x": -1.28,
+        "y": 0,
+        "z": -0.64
+      },
+      "max": {
+        "x": -1.28,
+        "y": 2.35,
+        "z": -0.22
+      },
+      "size": {
+        "x": 0,
+        "y": 2.35,
+        "z": 0.42
+      }
+    },
+    "right": {
+      "min": {
+        "x": 1.12,
+        "y": 0,
+        "z": -0.64
+      },
+      "max": {
+        "x": 1.12,
+        "y": 2.35,
+        "z": -0.22
+      },
+      "size": {
+        "x": 0,
+        "y": 2.35,
+        "z": 0.42
+      }
+    },
+    "baseboards": [
+      {
+        "min": {
+          "x": -1.38,
+          "y": 0,
+          "z": -0.639
+        },
+        "max": {
+          "x": 1.22,
+          "y": 0.085,
+          "z": -0.621
+        },
+        "size": {
+          "x": 2.6,
+          "y": 0.085,
+          "z": 0.018
+        }
+      },
+      {
+        "min": {
+          "x": -1.28,
+          "y": 0,
+          "z": -0.64
+        },
+        "max": {
+          "x": -1.262,
+          "y": 0.085,
+          "z": -0.22
+        },
+        "size": {
+          "x": 0.018,
+          "y": 0.085,
+          "z": 0.42
+        }
+      },
+      {
+        "min": {
+          "x": 1.102,
+          "y": 0,
+          "z": -0.64
+        },
+        "max": {
+          "x": 1.12,
+          "y": 0.085,
+          "z": -0.22
+        },
+        "size": {
+          "x": 0.018,
+          "y": 0.085,
+          "z": 0.42
+        }
+      }
+    ],
+    "wallBaseGap": 0,
+    "baseboardBaseGap": 0,
+    "overlapsWorkstation": false
+  },
+  "workstation": {
+    "bounds": {
+      "min": {
+        "x": -0.855,
+        "y": 0,
+        "z": -0.34
+      },
+      "max": {
+        "x": 0.533,
+        "y": 1.7915,
+        "z": 0.9326
+      },
+      "size": {
+        "x": 1.388,
+        "y": 1.7915,
+        "z": 1.2726
+      }
+    },
+    "clearances": {
+      "toRearWall": 0.3,
+      "toLeftWall": 0.425,
+      "toRightWall": 0.587,
+      "toFloorLeftEdge": 0.425,
+      "toFloorRightEdge": 0.587,
+      "toFloorBackEdge": 0.3,
+      "toFloorFrontEdge": 0.6774,
+      "belowWallTop": 0.5585
+    },
+    "insideFloorFootprint": true
+  },
+  "camera": {
+    "limits": {
+      "minDistance": 0.45,
+      "maxDistance": 3.15,
+      "minAzimuthDeg": -75,
+      "maxAzimuthDeg": 75,
+      "minPolarDeg": 16,
+      "maxPolarDeg": 88,
+      "maxTargetRadius": 0.75,
+      "panEnabled": true
+    },
+    "presets": [
+      {
+        "name": "default",
+        "target": [
+          -0.03,
+          0.78,
+          0.04
+        ],
+        "azimuthDeg": -26,
+        "elevationDeg": 20,
+        "distance": 2.8,
+        "fov": 52,
+        "position": {
+          "x": -1.1834,
+          "y": 1.7377,
+          "z": 2.4049
+        },
+        "safe": {
+          "aboveFloor": true,
+          "inFrontOfRearWall": true,
+          "withinDistance": true,
+          "withinAzimuth": true,
+          "withinPolar": true
+        }
+      },
+      {
+        "name": "front",
+        "target": [
+          0,
+          0.86,
+          0.03
+        ],
+        "azimuthDeg": 0,
+        "elevationDeg": 16,
+        "distance": 2.9,
+        "fov": 48,
+        "position": {
+          "x": 0,
+          "y": 1.6593,
+          "z": 2.8177
+        },
+        "safe": {
+          "aboveFloor": true,
+          "inFrontOfRearWall": true,
+          "withinDistance": true,
+          "withinAzimuth": true,
+          "withinPolar": true
+        }
+      },
+      {
+        "name": "under",
+        "target": [
+          -0.18,
+          0.34,
+          -0.08
+        ],
+        "azimuthDeg": -28,
+        "elevationDeg": 11,
+        "distance": 1.5,
+        "fov": 52,
+        "position": {
+          "x": -0.8713,
+          "y": 0.6262,
+          "z": 1.2201
+        },
+        "safe": {
+          "aboveFloor": true,
+          "inFrontOfRearWall": true,
+          "withinDistance": true,
+          "withinAzimuth": true,
+          "withinPolar": true
+        }
+      },
+      {
+        "name": "left",
+        "target": [
+          0,
+          0.8,
+          -0.02
+        ],
+        "azimuthDeg": -36,
+        "elevationDeg": 15,
+        "distance": 2.52,
+        "fov": 54,
+        "position": {
+          "x": -1.4307,
+          "y": 1.4522,
+          "z": 1.9493
+        },
+        "safe": {
+          "aboveFloor": true,
+          "inFrontOfRearWall": true,
+          "withinDistance": true,
+          "withinAzimuth": true,
+          "withinPolar": true
+        }
+      },
+      {
+        "name": "right",
+        "target": [
+          0.02,
+          0.8,
+          -0.02
+        ],
+        "azimuthDeg": 30,
+        "elevationDeg": 15,
+        "distance": 2.52,
+        "fov": 54,
+        "position": {
+          "x": 1.2371,
+          "y": 1.4522,
+          "z": 2.088
+        },
+        "safe": {
+          "aboveFloor": true,
+          "inFrontOfRearWall": true,
+          "withinDistance": true,
+          "withinAzimuth": true,
+          "withinPolar": true
+        }
+      },
+      {
+        "name": "overhead",
+        "target": [
+          0,
+          0.88,
+          0
+        ],
+        "azimuthDeg": 2,
+        "elevationDeg": 52,
+        "distance": 2.55,
+        "fov": 50,
+        "position": {
+          "x": 0.0548,
+          "y": 2.8894,
+          "z": 1.569
+        },
+        "safe": {
+          "aboveFloor": true,
+          "inFrontOfRearWall": true,
+          "withinDistance": true,
+          "withinAzimuth": true,
+          "withinPolar": true
+        }
+      },
+      {
+        "name": "keyboard",
+        "target": [
+          -0.07,
+          0.79,
+          0.06
+        ],
+        "azimuthDeg": 4,
+        "elevationDeg": 20,
+        "distance": 0.73,
+        "fov": 36,
+        "position": {
+          "x": -0.0221,
+          "y": 1.0397,
+          "z": 0.7443
+        },
+        "safe": {
+          "aboveFloor": true,
+          "inFrontOfRearWall": true,
+          "withinDistance": true,
+          "withinAzimuth": true,
+          "withinPolar": true
+        }
+      },
+      {
+        "name": "laptop",
+        "target": [
+          -0.24,
+          0.89,
+          -0.09
+        ],
+        "azimuthDeg": -16,
+        "elevationDeg": 16,
+        "distance": 0.78,
+        "fov": 36,
+        "position": {
+          "x": -0.4467,
+          "y": 1.105,
+          "z": 0.6307
+        },
+        "safe": {
+          "aboveFloor": true,
+          "inFrontOfRearWall": true,
+          "withinDistance": true,
+          "withinAzimuth": true,
+          "withinPolar": true
+        }
+      },
+      {
+        "name": "firstPerson",
+        "target": [
+          0,
+          0.99,
+          -0.3
+        ],
+        "azimuthDeg": 0,
+        "elevationDeg": 9,
+        "distance": 0.9,
+        "fov": 62,
+        "position": {
+          "x": 0,
+          "y": 1.1308,
+          "z": 0.5889
+        },
+        "safe": {
+          "aboveFloor": true,
+          "inFrontOfRearWall": true,
+          "withinDistance": true,
+          "withinAzimuth": true,
+          "withinPolar": true
+        }
+      },
+      {
+        "name": "panorama",
+        "target": [
+          -0.02,
+          0.82,
+          0.05
+        ],
+        "azimuthDeg": -16,
+        "elevationDeg": 21,
+        "distance": 3,
+        "fov": 48,
+        "position": {
+          "x": -0.792,
+          "y": 1.8951,
+          "z": 2.7422
+        },
+        "safe": {
+          "aboveFloor": true,
+          "inFrontOfRearWall": true,
+          "withinDistance": true,
+          "withinAzimuth": true,
+          "withinPolar": true
+        }
+      },
+      {
+        "name": "monitor",
+        "target": [
+          0,
+          1.02,
+          -0.22
+        ],
+        "azimuthDeg": 1,
+        "elevationDeg": 8,
+        "distance": 0.66,
+        "fov": 38,
+        "position": {
+          "x": 0.0114,
+          "y": 1.1119,
+          "z": 0.4335
+        },
+        "safe": {
+          "aboveFloor": true,
+          "inFrontOfRearWall": true,
+          "withinDistance": true,
+          "withinAzimuth": true,
+          "withinPolar": true
+        }
+      }
+    ],
+    "allPresetsSafe": true,
+    "framing": {
+      "default": {
+        "heightPct": 80.585,
+        "widthPct": 42.718,
+        "topMarginPct": 10.291,
+        "bottomMarginPct": 9.123,
+        "leftMarginPct": 28.742,
+        "rightMarginPct": 28.539,
+        "fullyVisible": true
+      },
+      "front": {
+        "heightPct": 83.945,
+        "widthPct": 41.859,
+        "topMarginPct": 12.25,
+        "bottomMarginPct": 3.805,
+        "leftMarginPct": 25.136,
+        "rightMarginPct": 33.005,
+        "fullyVisible": true
+      },
+      "left": {
+        "heightPct": 89.624,
+        "widthPct": 50.394,
+        "topMarginPct": 7.52,
+        "bottomMarginPct": 2.857,
+        "leftMarginPct": 27.285,
+        "rightMarginPct": 22.321,
+        "fullyVisible": true
+      },
+      "right": {
+        "heightPct": 86.839,
+        "widthPct": 45.376,
+        "topMarginPct": 9.747,
+        "bottomMarginPct": 3.414,
+        "leftMarginPct": 23.55,
+        "rightMarginPct": 31.073,
+        "fullyVisible": true
+      },
+      "overhead": {
+        "heightPct": 84.34,
+        "widthPct": 45.53,
+        "topMarginPct": 8.795,
+        "bottomMarginPct": 6.865,
+        "leftMarginPct": 27.005,
+        "rightMarginPct": 27.465,
+        "fullyVisible": true
+      },
+      "under": {
+        "applicable": false,
+        "fullyVisible": false,
+        "note": "近景/桌下视角有意裁切工位主体，不参与整机留白判定"
+      },
+      "firstPerson": {
+        "applicable": false,
+        "fullyVisible": false,
+        "note": "近景/桌下视角有意裁切工位主体，不参与整机留白判定"
+      },
+      "keyboard": {
+        "applicable": false,
+        "fullyVisible": false,
+        "note": "近景/桌下视角有意裁切工位主体，不参与整机留白判定"
+      },
+      "monitor": {
+        "applicable": false,
+        "fullyVisible": false,
+        "note": "近景/桌下视角有意裁切工位主体，不参与整机留白判定"
+      },
+      "laptop": {
+        "applicable": false,
+        "fullyVisible": false,
+        "note": "近景/桌下视角有意裁切工位主体，不参与整机留白判定"
+      },
+      "panorama": {
+        "heightPct": 81.756,
+        "widthPct": 39.006,
+        "topMarginPct": 11.27,
+        "bottomMarginPct": 6.974,
+        "leftMarginPct": 27.961,
+        "rightMarginPct": 33.033,
+        "fullyVisible": true
+      }
+    }
+  },
+  "gates": {
+    "floorIsGroundPlane": true,
+    "wallBaseMeetsFloor": true,
+    "baseboardBaseMeetsFloor": true,
+    "wallsClearOfWorkstation": true,
+    "workstationInsideFloor": true,
+    "wallBehindWorkstation": true,
+    "allPresetsSafe": true,
+    "defaultFramingInRange": true,
+    "widePresetsFullyVisible": true
+  },
+  "pageErrors": []
+}

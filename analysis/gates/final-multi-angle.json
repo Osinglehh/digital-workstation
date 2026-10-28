@@ -1,0 +1,20 @@
+{
+  "referenceAreaFraction": 0.5733203703703704,
+  "angles": [
+    {
+      "path": "D:\\play\\analysis\\renders\\final\\final-turntable-90.png",
+      "areaFraction": 0.29065066666666667,
+      "ratio": 0.5069602994899755,
+      "degenerate": false
+    },
+    {
+      "path": "D:\\play\\analysis\\renders\\final\\final-turntable-270.png",
+      "areaFraction": 0.2832226666666667,
+      "ratio": 0.4940041926012539,
+      "degenerate": false
+    }
+  ],
+  "degenerate": false,
+  "collapseRatio": 0.15,
+  "note": "deterministic; zero token; a flat-plane-faking-a-volume collapses in silhouette area when orbited"
+}

@@ -1,0 +1,11 @@
+[
+  {"id":"workstation-architecture","score":0.82,"visible":true,"notes":"桌面/隔断/书架的包围关系、铝框与磨砂玻璃可读；书架高度已下调到与参考更接近。"},
+  {"id":"laptop-stand-system","score":0.80,"visible":true,"notes":"笔记本抬高约 145 mm，右移靠近显示器；白色机身、屏轴、支架和前缘 RGB 可见；键帽字符为近似。"},
+  {"id":"aoc-monitor-system","score":0.81,"visible":true,"notes":"27 英寸 16:9 比例、窄边、AOC 下巴、圆盘立柱底座与双屏 UI 均存在；表面为程序化近似。"},
+  {"id":"keyboard-mouse-controls","score":0.76,"visible":true,"notes":"98 键 InstancedMesh、渐变灰、RGB 缝、旋钮和鼠标垫印刷可见；键帽布局是近似 98 键而非逐键 1:1。"},
+  {"id":"desk-still-life-materials","score":0.73,"visible":true,"notes":"茶杯/水壶/笔袋/纸张/线缆都有对应几何；杯壁透明度与茶汤表现仍是风格化近似，未达到照片级玻璃。"},
+  {"id":"layout-proportion","score":0.84,"visible":true,"notes":"笔记本与显示器间距约 65 mm、键盘与笔记本前缘间隙约 80 mm；布局与参考一致。"},
+  {"id":"material-separation","score":0.64,"visible":true,"notes":"木材、磨砂玻璃、金属、PBT、布垫分离；但多数表面仍是程序化材质，照片级纹理缺失。"},
+  {"id":"action-rig","score":0.82,"visible":true,"notes":"84 个节点/84 个 mesh、13 sockets、84 colliders、84 destruction groups；15 个运行时动画 API 可用。"},
+  {"id":"lighting-contact","score":0.66,"visible":true,"notes":"有柔性主光、补光、轮廓光与接触阴影，但照片的室内反射/阴影复杂度未完全复刻。"}
+]

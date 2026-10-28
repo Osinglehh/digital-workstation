@@ -1,0 +1,850 @@
+{
+  "generated": "2026-10-27T02:50:43.417Z",
+  "reference": [
+    "figure/桌顶架子-1.jpg",
+    "figure/桌顶架子-2.jpg",
+    "figure/桌顶架子-3.jpg"
+  ],
+  "units": "meters, Y-up, floor top y=0",
+  "structure": {
+    "construction": "搁板上方补 330 mm 净高格架：顶板 25 mm、侧板 18 mm、背板 30 mm，背板带 8 个安装孔；旧铝托架/旧书列/旧茶罐已从层级移除。",
+    "shelfFloorTopY": 1.3725,
+    "hutchInnerClearHeight": 0.33,
+    "topBoardTopY": 1.7275,
+    "topBoardThickness": 0.025,
+    "sidePanelThickness": 0.018,
+    "backPanelThickness": 0.03,
+    "itemBasis": "书与文件盒直接落在搁板；礼盒/玻璃罐/茶叶罐/黑色剪刀落在纸面上，纸面抬升 0.7–0.9 mm。"
+  },
+  "result": {
+    "boxes": {
+      "hutch": {
+        "min": {
+          "x": -0.525,
+          "y": 1.3725,
+          "z": -0.33
+        },
+        "max": {
+          "x": 0.525,
+          "y": 1.7915,
+          "z": 0
+        },
+        "size": {
+          "x": 1.05,
+          "y": 0.419,
+          "z": 0.33
+        }
+      },
+      "structure": {
+        "min": {
+          "x": -0.525,
+          "y": 1.3725,
+          "z": -0.33
+        },
+        "max": {
+          "x": 0.525,
+          "y": 1.7275,
+          "z": 0
+        },
+        "size": {
+          "x": 1.05,
+          "y": 0.355,
+          "z": 0.33
+        }
+      },
+      "back": {
+        "min": {
+          "x": -0.525,
+          "y": 1.3725,
+          "z": -0.33
+        },
+        "max": {
+          "x": 0.525,
+          "y": 1.7025,
+          "z": -0.3
+        },
+        "size": {
+          "x": 1.05,
+          "y": 0.33,
+          "z": 0.03
+        }
+      },
+      "sideLeft": {
+        "min": {
+          "x": -0.525,
+          "y": 1.3725,
+          "z": -0.3
+        },
+        "max": {
+          "x": -0.507,
+          "y": 1.7025,
+          "z": -0.01
+        },
+        "size": {
+          "x": 0.018,
+          "y": 0.33,
+          "z": 0.29
+        }
+      },
+      "sideRight": {
+        "min": {
+          "x": 0.507,
+          "y": 1.3725,
+          "z": -0.3
+        },
+        "max": {
+          "x": 0.525,
+          "y": 1.7025,
+          "z": -0.01
+        },
+        "size": {
+          "x": 0.018,
+          "y": 0.33,
+          "z": 0.29
+        }
+      },
+      "topBoard": {
+        "min": {
+          "x": -0.525,
+          "y": 1.7025,
+          "z": -0.31
+        },
+        "max": {
+          "x": 0.525,
+          "y": 1.7275,
+          "z": 0
+        },
+        "size": {
+          "x": 1.05,
+          "y": 0.025,
+          "z": 0.31
+        }
+      },
+      "floor": {
+        "min": {
+          "x": -0.525,
+          "y": 1.3475,
+          "z": -0.31
+        },
+        "max": {
+          "x": 0.525,
+          "y": 1.3725,
+          "z": -0.01
+        },
+        "size": {
+          "x": 1.05,
+          "y": 0.025,
+          "z": 0.3
+        }
+      },
+      "books": {
+        "min": {
+          "x": -0.5012,
+          "y": 1.3728,
+          "z": -0.2982
+        },
+        "max": {
+          "x": -0.0606,
+          "y": 1.6878,
+          "z": -0.0051
+        },
+        "size": {
+          "x": 0.4407,
+          "y": 0.315,
+          "z": 0.2931
+        }
+      },
+      "booksFileBox": {
+        "min": {
+          "x": -0.2382,
+          "y": 1.3728,
+          "z": -0.298
+        },
+        "max": {
+          "x": -0.1962,
+          "y": 1.6878,
+          "z": -0.0051
+        },
+        "size": {
+          "x": 0.042,
+          "y": 0.315,
+          "z": 0.2929
+        }
+      },
+      "giftBox": {
+        "min": {
+          "x": -0.0517,
+          "y": 1.3734,
+          "z": -0.2012
+        },
+        "max": {
+          "x": 0.1997,
+          "y": 1.5234,
+          "z": -0.1383
+        },
+        "size": {
+          "x": 0.2514,
+          "y": 0.15,
+          "z": 0.0629
+        }
+      },
+      "gojiJar": {
+        "min": {
+          "x": 0.205,
+          "y": 1.3736,
+          "z": -0.2172
+        },
+        "max": {
+          "x": 0.2994,
+          "y": 1.4956,
+          "z": -0.1228
+        },
+        "size": {
+          "x": 0.0944,
+          "y": 0.122,
+          "z": 0.0944
+        }
+      },
+      "teaTin": {
+        "min": {
+          "x": 0.3064,
+          "y": 1.3736,
+          "z": -0.2383
+        },
+        "max": {
+          "x": 0.443,
+          "y": 1.5852,
+          "z": -0.1017
+        },
+        "size": {
+          "x": 0.1366,
+          "y": 0.2116,
+          "z": 0.1366
+        }
+      },
+      "scissors": {
+        "min": {
+          "x": 0.345,
+          "y": 1.37353,
+          "z": -0.0976
+        },
+        "max": {
+          "x": 0.4957,
+          "y": 1.38457,
+          "z": -0.0095
+        },
+        "size": {
+          "x": 0.1507,
+          "y": 0.011,
+          "z": 0.088
+        }
+      },
+      "foldedPaper": {
+        "min": {
+          "x": 0.4807,
+          "y": 1.3736,
+          "z": -0.2281
+        },
+        "max": {
+          "x": 0.5033,
+          "y": 1.4536,
+          "z": -0.1819
+        },
+        "size": {
+          "x": 0.0225,
+          "y": 0.08,
+          "z": 0.0461
+        }
+      },
+      "topGreenBook": {
+        "min": {
+          "x": -0.4536,
+          "y": 1.7281,
+          "z": -0.2155
+        },
+        "max": {
+          "x": -0.2564,
+          "y": 1.7401,
+          "z": -0.0745
+        },
+        "size": {
+          "x": 0.1972,
+          "y": 0.012,
+          "z": 0.1409
+        }
+      },
+      "topGreenBox": {
+        "min": {
+          "x": -0.3961,
+          "y": 1.7395,
+          "z": -0.2487
+        },
+        "max": {
+          "x": -0.2239,
+          "y": 1.7915,
+          "z": -0.1113
+        },
+        "size": {
+          "x": 0.1723,
+          "y": 0.052,
+          "z": 0.1373
+        }
+      },
+      "partition": {
+        "min": {
+          "x": -0.525,
+          "y": 0.7575,
+          "z": -0.33
+        },
+        "max": {
+          "x": 0.525,
+          "y": 1.3475,
+          "z": -0.3
+        },
+        "size": {
+          "x": 1.05,
+          "y": 0.59,
+          "z": 0.03
+        }
+      },
+      "desk": {
+        "min": {
+          "x": -0.525,
+          "y": 0.7325,
+          "z": -0.3
+        },
+        "max": {
+          "x": 0.525,
+          "y": 0.7575,
+          "z": 0.2
+        },
+        "size": {
+          "x": 1.05,
+          "y": 0.025,
+          "z": 0.5
+        }
+      }
+    },
+    "books": [
+      {
+        "name": "shelf-book-red-case",
+        "box": {
+          "min": {
+            "x": -0.5012,
+            "y": 1.3728,
+            "z": -0.2924
+          },
+          "max": {
+            "x": -0.4668,
+            "y": 1.6608,
+            "z": -0.1414
+          },
+          "size": {
+            "x": 0.0344,
+            "y": 0.288,
+            "z": 0.151
+          }
+        }
+      },
+      {
+        "name": "shelf-book-opencv",
+        "box": {
+          "min": {
+            "x": -0.4628,
+            "y": 1.3728,
+            "z": -0.2901
+          },
+          "max": {
+            "x": -0.4352,
+            "y": 1.6528,
+            "z": -0.0937
+          },
+          "size": {
+            "x": 0.0276,
+            "y": 0.28,
+            "z": 0.1964
+          }
+        }
+      },
+      {
+        "name": "shelf-book-mech-design",
+        "box": {
+          "min": {
+            "x": -0.4349,
+            "y": 1.3728,
+            "z": -0.2981
+          },
+          "max": {
+            "x": -0.4127,
+            "y": 1.6348,
+            "z": -0.1137
+          },
+          "size": {
+            "x": 0.0222,
+            "y": 0.262,
+            "z": 0.1844
+          }
+        }
+      },
+      {
+        "name": "shelf-book-robot-measure",
+        "box": {
+          "min": {
+            "x": -0.4122,
+            "y": 1.3728,
+            "z": -0.2981
+          },
+          "max": {
+            "x": -0.381,
+            "y": 1.6448,
+            "z": -0.0937
+          },
+          "size": {
+            "x": 0.0312,
+            "y": 0.272,
+            "z": 0.2044
+          }
+        }
+      },
+      {
+        "name": "shelf-book-robotics-thin",
+        "box": {
+          "min": {
+            "x": -0.3803,
+            "y": 1.3728,
+            "z": -0.298
+          },
+          "max": {
+            "x": -0.3685,
+            "y": 1.6288,
+            "z": -0.1098
+          },
+          "size": {
+            "x": 0.0119,
+            "y": 0.256,
+            "z": 0.1883
+          }
+        }
+      },
+      {
+        "name": "shelf-book-grad-handbook",
+        "box": {
+          "min": {
+            "x": -0.3676,
+            "y": 1.3728,
+            "z": -0.298
+          },
+          "max": {
+            "x": -0.3538,
+            "y": 1.6248,
+            "z": -0.1498
+          },
+          "size": {
+            "x": 0.0139,
+            "y": 0.252,
+            "z": 0.1483
+          }
+        }
+      },
+      {
+        "name": "shelf-book-robot-vision",
+        "box": {
+          "min": {
+            "x": -0.3524,
+            "y": 1.3728,
+            "z": -0.2981
+          },
+          "max": {
+            "x": -0.3246,
+            "y": 1.6308,
+            "z": -0.0997
+          },
+          "size": {
+            "x": 0.0278,
+            "y": 0.258,
+            "z": 0.1983
+          }
+        }
+      },
+      {
+        "name": "shelf-book-slam",
+        "box": {
+          "min": {
+            "x": -0.3235,
+            "y": 1.3728,
+            "z": -0.2981
+          },
+          "max": {
+            "x": -0.2981,
+            "y": 1.6288,
+            "z": -0.1197
+          },
+          "size": {
+            "x": 0.0254,
+            "y": 0.256,
+            "z": 0.1784
+          }
+        }
+      },
+      {
+        "name": "shelf-book-ml",
+        "box": {
+          "min": {
+            "x": -0.2975,
+            "y": 1.3728,
+            "z": -0.2981
+          },
+          "max": {
+            "x": -0.2717,
+            "y": 1.6468,
+            "z": -0.1117
+          },
+          "size": {
+            "x": 0.0258,
+            "y": 0.274,
+            "z": 0.1864
+          }
+        }
+      },
+      {
+        "name": "shelf-book-dip",
+        "box": {
+          "min": {
+            "x": -0.271,
+            "y": 1.3728,
+            "z": -0.2981
+          },
+          "max": {
+            "x": -0.2398,
+            "y": 1.6708,
+            "z": -0.0897
+          },
+          "size": {
+            "x": 0.0312,
+            "y": 0.298,
+            "z": 0.2084
+          }
+        }
+      },
+      {
+        "name": "shelf-book-robotics",
+        "box": {
+          "min": {
+            "x": -0.1952,
+            "y": 1.3728,
+            "z": -0.2982
+          },
+          "max": {
+            "x": -0.1608,
+            "y": 1.6528,
+            "z": -0.0916
+          },
+          "size": {
+            "x": 0.0345,
+            "y": 0.28,
+            "z": 0.2066
+          }
+        }
+      },
+      {
+        "name": "shelf-book-nutrition",
+        "box": {
+          "min": {
+            "x": -0.1605,
+            "y": 1.3728,
+            "z": -0.2981
+          },
+          "max": {
+            "x": -0.1431,
+            "y": 1.5888,
+            "z": -0.1477
+          },
+          "size": {
+            "x": 0.0175,
+            "y": 0.216,
+            "z": 0.1503
+          }
+        }
+      },
+      {
+        "name": "shelf-book-mockingbird",
+        "box": {
+          "min": {
+            "x": -0.142,
+            "y": 1.3728,
+            "z": -0.2981
+          },
+          "max": {
+            "x": -0.1222,
+            "y": 1.5828,
+            "z": -0.1497
+          },
+          "size": {
+            "x": 0.0199,
+            "y": 0.21,
+            "z": 0.1483
+          }
+        }
+      },
+      {
+        "name": "shelf-book-running",
+        "box": {
+          "min": {
+            "x": -0.121,
+            "y": 1.3728,
+            "z": -0.2981
+          },
+          "max": {
+            "x": -0.1038,
+            "y": 1.5808,
+            "z": -0.1517
+          },
+          "size": {
+            "x": 0.0172,
+            "y": 0.208,
+            "z": 0.1463
+          }
+        }
+      },
+      {
+        "name": "shelf-book-animal-farm",
+        "box": {
+          "min": {
+            "x": -0.1028,
+            "y": 1.3728,
+            "z": -0.2981
+          },
+          "max": {
+            "x": -0.0866,
+            "y": 1.5728,
+            "z": -0.1537
+          },
+          "size": {
+            "x": 0.0161,
+            "y": 0.2,
+            "z": 0.1443
+          }
+        }
+      },
+      {
+        "name": "shelf-book-red-crag",
+        "box": {
+          "min": {
+            "x": -0.0854,
+            "y": 1.3728,
+            "z": -0.2981
+          },
+          "max": {
+            "x": -0.0606,
+            "y": 1.5948,
+            "z": -0.1477
+          },
+          "size": {
+            "x": 0.0249,
+            "y": 0.222,
+            "z": 0.1503
+          }
+        }
+      }
+    ],
+    "papers": [
+      {
+        "name": "paper-0",
+        "box": {
+          "min": {
+            "x": -0.0271,
+            "y": 1.3725,
+            "z": -0.2673
+          },
+          "max": {
+            "x": 0.2071,
+            "y": 1.3732,
+            "z": -0.0527
+          },
+          "size": {
+            "x": 0.2341,
+            "y": 0.0007,
+            "z": 0.2145
+          }
+        }
+      },
+      {
+        "name": "paper-1",
+        "box": {
+          "min": {
+            "x": 0.2169,
+            "y": 1.3727,
+            "z": -0.2691
+          },
+          "max": {
+            "x": 0.5031,
+            "y": 1.3734,
+            "z": -0.0509
+          },
+          "size": {
+            "x": 0.2862,
+            "y": 0.0007,
+            "z": 0.2183
+          }
+        }
+      },
+      {
+        "name": "paper-2",
+        "box": {
+          "min": {
+            "x": -0.0267,
+            "y": 1.3734,
+            "z": -0.1082
+          },
+          "max": {
+            "x": 0.2367,
+            "y": 1.3741,
+            "z": -0.0078
+          },
+          "size": {
+            "x": 0.2634,
+            "y": 0.0007,
+            "z": 0.1003
+          }
+        }
+      }
+    ],
+    "shadowOcclusion": {
+      "shelfCasts": true,
+      "partitionReceivesShadow": false,
+      "topItemCasters": []
+    },
+    "clearances": {
+      "innerClearHeight": 0.33,
+      "innerWidth": 1.014,
+      "innerDepth": 0.29,
+      "booksLeftClearance": 0.0058,
+      "booksRightClearance": 0.5676,
+      "fileBoxToTeaTin": 0.5026,
+      "giftToJar": 0.0053,
+      "jarToTin": 0.007,
+      "minBottomClearance": 0,
+      "minTopClearance": 0.0147,
+      "minBackClearance": 0.0018,
+      "minLeftClearance": 0.0058,
+      "minRightClearance": 0.0037,
+      "topBoardToDesk": 0.97,
+      "hutchOuterWidth": 1.05,
+      "sidePanelOuterSpan": 1.05
+    },
+    "contacts": {
+      "floorTopY": 1.3725,
+      "topBoardTopY": 1.7275,
+      "topBoardUndersideY": 1.7025,
+      "bookMinY": 1.3728,
+      "giftMinY": 1.3734,
+      "jarMinY": 1.3736,
+      "tinMinY": 1.3736,
+      "topGreenBookMinY": 1.7281,
+      "topGreenBoxMinY": 1.7395
+    },
+    "collisions": {
+      "giftBox-gojiJar": false,
+      "giftBox-teaTin": false,
+      "giftBox-scissors": false,
+      "giftBox-foldedPaper": false,
+      "gojiJar-teaTin": false,
+      "gojiJar-scissors": false,
+      "gojiJar-foldedPaper": false,
+      "teaTin-scissors": false,
+      "teaTin-foldedPaper": false,
+      "scissors-foldedPaper": false,
+      "giftBox-floor": false,
+      "giftBox-topBoard": false,
+      "giftBox-back": false,
+      "giftBox-sideLeft": false,
+      "giftBox-sideRight": false,
+      "gojiJar-floor": false,
+      "gojiJar-topBoard": false,
+      "gojiJar-back": false,
+      "gojiJar-sideLeft": false,
+      "gojiJar-sideRight": false,
+      "teaTin-floor": false,
+      "teaTin-topBoard": false,
+      "teaTin-back": false,
+      "teaTin-sideLeft": false,
+      "teaTin-sideRight": false,
+      "scissors-floor": false,
+      "scissors-topBoard": false,
+      "scissors-back": false,
+      "scissors-sideLeft": false,
+      "scissors-sideRight": false,
+      "foldedPaper-floor": false,
+      "foldedPaper-topBoard": false,
+      "foldedPaper-back": false,
+      "foldedPaper-sideLeft": false,
+      "foldedPaper-sideRight": false,
+      "paper-0-floor": false,
+      "paper-0-topBoard": false,
+      "paper-0-back": false,
+      "paper-0-sideLeft": false,
+      "paper-0-sideRight": false,
+      "paper-1-floor": false,
+      "paper-1-topBoard": false,
+      "paper-1-back": false,
+      "paper-1-sideLeft": false,
+      "paper-1-sideRight": false,
+      "paper-2-floor": false,
+      "paper-2-topBoard": false,
+      "paper-2-back": false,
+      "paper-2-sideLeft": false,
+      "paper-2-sideRight": false,
+      "paper-0-books": false,
+      "paper-0-fileBox": false,
+      "paper-0-giftBox": false,
+      "paper-0-gojiJar": false,
+      "paper-0-teaTin": false,
+      "paper-0-scissors": false,
+      "paper-0-foldedPaper": false,
+      "paper-1-books": false,
+      "paper-1-fileBox": false,
+      "paper-1-giftBox": false,
+      "paper-1-gojiJar": false,
+      "paper-1-teaTin": false,
+      "paper-1-scissors": false,
+      "paper-1-foldedPaper": false,
+      "paper-2-books": false,
+      "paper-2-fileBox": false,
+      "paper-2-giftBox": false,
+      "paper-2-gojiJar": false,
+      "paper-2-teaTin": false,
+      "paper-2-scissors": false,
+      "paper-2-foldedPaper": false,
+      "paper-0-paper-1": false,
+      "paper-0-paper-2": false,
+      "paper-1-paper-2": false
+    },
+    "bookPairs": [],
+    "removedLegacy": {
+      "shelfBracketL": true,
+      "shelfBracketR": true,
+      "shelfProps": true,
+      "bookRowB": true,
+      "jarPurple": true,
+      "jarOrange": true,
+      "teaCanister": true,
+      "bookEnd": true
+    },
+    "legacyVisibleMeshes": 0,
+    "counts": {
+      "books": 16,
+      "papers": 3,
+      "roomItems": 5
+    },
+    "errors": []
+  },
+  "verdict": {
+    "allInside": true,
+    "roomItemCollisionCount": 0,
+    "bookAabbTouchCount": 0,
+    "legacyRemoved": true,
+    "shadowOcclusion": true,
+    "pageErrors": 0
+  },
+  "note": "书籍按逐本 AABB 记录；相邻书籍允许 0–4 mm 的 AABB 边缘接触，书间接触数量单独列出，不作为穿模。"
+}

@@ -1,0 +1,14 @@
+{
+  "admitted": true,
+  "reasons": [],
+  "provenance": {
+    "viewpoint": "right-three-quarter",
+    "sourcePath": "D:\\play\\3.jpg",
+    "width": 8000,
+    "height": 6000,
+    "foregroundCoverage": 0.6563,
+    "largestComponentFraction": 0.9945,
+    "pHash": 17741565355277835528,
+    "duplicateOfHash": null
+  }
+}

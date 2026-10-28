@@ -1,0 +1,11 @@
+{
+  "state": "closed",
+  "lidClosed": 1,
+  "lidAngleDeg": 0,
+  "method": "屏幕边框内表面到键帽顶面/触控板/掌托，沿边框法向测量",
+  "bezelLowerNormal": [0, -0.9902, -0.1395],
+  "minKeycapGapM": 0.0014,
+  "maxKeycapGapM": 0.0014,
+  "trackpadGapM": 0.0013,
+  "palmRestGapM": 0.0018
+}

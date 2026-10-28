@@ -1,0 +1,5938 @@
+{
+  "selfIntersecting": true,
+  "meshCount": 75,
+  "insideVertexCount": 8742,
+  "undecidedVertexCount": 245,
+  "sampledVertexCount": 73880,
+  "totalVertexCount": 73880,
+  "meshes": [
+    {
+      "name": "桌面与下层框架",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 120,
+      "undecidedVertexCount": 10,
+      "outsideVertexCount": 884,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.4375,
+            0.7575,
+            -0.25
+          ]
+        },
+        {
+          "vertexIndex": 381,
+          "position": [
+            -0.175,
+            0.7575,
+            -0.15
+          ]
+        },
+        {
+          "vertexIndex": 417,
+          "position": [
+            -0.4375,
+            0.7575,
+            0.0
+          ]
+        },
+        {
+          "vertexIndex": 456,
+          "position": [
+            -0.4375,
+            0.7575,
+            0.15
+          ]
+        },
+        {
+          "vertexIndex": 526,
+          "position": [
+            0.0,
+            0.7325,
+            0.25
+          ]
+        },
+        {
+          "vertexIndex": 555,
+          "position": [
+            0.2625,
+            0.7325,
+            0.15
+          ]
+        },
+        {
+          "vertexIndex": 592,
+          "position": [
+            0.0875,
+            0.7325,
+            0.0
+          ]
+        },
+        {
+          "vertexIndex": 631,
+          "position": [
+            0.0875,
+            0.7325,
+            -0.15
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0012095970403402944,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "桌腿 FL",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 214,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 800,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            -0.4475,
+            0.373,
+            0.22458
+          ]
+        },
+        {
+          "vertexIndex": 120,
+          "position": [
+            -0.4475,
+            0.1875,
+            0.21875
+          ]
+        },
+        {
+          "vertexIndex": 150,
+          "position": [
+            -0.4475,
+            0.06383,
+            0.20708
+          ]
+        },
+        {
+          "vertexIndex": 206,
+          "position": [
+            -0.4825,
+            0.62033,
+            0.22458
+          ]
+        },
+        {
+          "vertexIndex": 238,
+          "position": [
+            -0.4825,
+            0.43483,
+            0.20417
+          ]
+        },
+        {
+          "vertexIndex": 791,
+          "position": [
+            -0.45042,
+            0.24933,
+            0.2275
+          ]
+        },
+        {
+          "vertexIndex": 823,
+          "position": [
+            -0.47083,
+            0.06383,
+            0.2275
+          ]
+        },
+        {
+          "vertexIndex": 879,
+          "position": [
+            -0.47083,
+            0.62033,
+            0.1925
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0007436491108042824,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "桌腿 FR",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 214,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 800,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            0.4825,
+            0.373,
+            0.22458
+          ]
+        },
+        {
+          "vertexIndex": 120,
+          "position": [
+            0.4825,
+            0.1875,
+            0.21875
+          ]
+        },
+        {
+          "vertexIndex": 150,
+          "position": [
+            0.4825,
+            0.06383,
+            0.20708
+          ]
+        },
+        {
+          "vertexIndex": 206,
+          "position": [
+            0.4475,
+            0.62033,
+            0.22458
+          ]
+        },
+        {
+          "vertexIndex": 238,
+          "position": [
+            0.4475,
+            0.43483,
+            0.20417
+          ]
+        },
+        {
+          "vertexIndex": 791,
+          "position": [
+            0.47958,
+            0.24933,
+            0.2275
+          ]
+        },
+        {
+          "vertexIndex": 823,
+          "position": [
+            0.45917,
+            0.06383,
+            0.2275
+          ]
+        },
+        {
+          "vertexIndex": 879,
+          "position": [
+            0.45917,
+            0.62033,
+            0.1925
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0007436491108042824,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "桌腿 RL",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 214,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 800,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            -0.4475,
+            0.373,
+            -0.22542
+          ]
+        },
+        {
+          "vertexIndex": 120,
+          "position": [
+            -0.4475,
+            0.1875,
+            -0.23125
+          ]
+        },
+        {
+          "vertexIndex": 150,
+          "position": [
+            -0.4475,
+            0.06383,
+            -0.24292
+          ]
+        },
+        {
+          "vertexIndex": 206,
+          "position": [
+            -0.4825,
+            0.62033,
+            -0.22542
+          ]
+        },
+        {
+          "vertexIndex": 238,
+          "position": [
+            -0.4825,
+            0.43483,
+            -0.24583
+          ]
+        },
+        {
+          "vertexIndex": 791,
+          "position": [
+            -0.45042,
+            0.24933,
+            -0.2225
+          ]
+        },
+        {
+          "vertexIndex": 823,
+          "position": [
+            -0.47083,
+            0.06383,
+            -0.2225
+          ]
+        },
+        {
+          "vertexIndex": 879,
+          "position": [
+            -0.47083,
+            0.62033,
+            -0.2575
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0007436491108042824,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "桌腿 RR",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 214,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 800,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            0.4825,
+            0.373,
+            -0.22542
+          ]
+        },
+        {
+          "vertexIndex": 120,
+          "position": [
+            0.4825,
+            0.1875,
+            -0.23125
+          ]
+        },
+        {
+          "vertexIndex": 150,
+          "position": [
+            0.4825,
+            0.06383,
+            -0.24292
+          ]
+        },
+        {
+          "vertexIndex": 206,
+          "position": [
+            0.4475,
+            0.62033,
+            -0.22542
+          ]
+        },
+        {
+          "vertexIndex": 238,
+          "position": [
+            0.4475,
+            0.43483,
+            -0.24583
+          ]
+        },
+        {
+          "vertexIndex": 791,
+          "position": [
+            0.47958,
+            0.24933,
+            -0.2225
+          ]
+        },
+        {
+          "vertexIndex": 823,
+          "position": [
+            0.45917,
+            0.06383,
+            -0.2225
+          ]
+        },
+        {
+          "vertexIndex": 879,
+          "position": [
+            0.45917,
+            0.62033,
+            -0.2575
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0007436491108042824,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "桌下前横梁",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 200,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 812,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.39167,
+            0.42,
+            0.1775
+          ]
+        },
+        {
+          "vertexIndex": 431,
+          "position": [
+            -0.31333,
+            0.42,
+            0.1925
+          ]
+        },
+        {
+          "vertexIndex": 531,
+          "position": [
+            0.39167,
+            0.38,
+            0.2025
+          ]
+        },
+        {
+          "vertexIndex": 619,
+          "position": [
+            0.15667,
+            0.38,
+            0.185
+          ]
+        },
+        {
+          "vertexIndex": 710,
+          "position": [
+            0.15667,
+            0.41333,
+            0.205
+          ]
+        },
+        {
+          "vertexIndex": 775,
+          "position": [
+            0.15667,
+            0.39667,
+            0.205
+          ]
+        },
+        {
+          "vertexIndex": 869,
+          "position": [
+            -0.39167,
+            0.41667,
+            0.175
+          ]
+        },
+        {
+          "vertexIndex": 943,
+          "position": [
+            -0.07833,
+            0.39667,
+            0.175
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0009413288479590966,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "桌下后横梁",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 200,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 812,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.39167,
+            0.42,
+            -0.2525
+          ]
+        },
+        {
+          "vertexIndex": 431,
+          "position": [
+            -0.31333,
+            0.42,
+            -0.2375
+          ]
+        },
+        {
+          "vertexIndex": 531,
+          "position": [
+            0.39167,
+            0.38,
+            -0.2275
+          ]
+        },
+        {
+          "vertexIndex": 619,
+          "position": [
+            0.15667,
+            0.38,
+            -0.245
+          ]
+        },
+        {
+          "vertexIndex": 710,
+          "position": [
+            0.15667,
+            0.41333,
+            -0.225
+          ]
+        },
+        {
+          "vertexIndex": 775,
+          "position": [
+            0.15667,
+            0.39667,
+            -0.225
+          ]
+        },
+        {
+          "vertexIndex": 869,
+          "position": [
+            -0.39167,
+            0.41667,
+            -0.255
+          ]
+        },
+        {
+          "vertexIndex": 943,
+          "position": [
+            -0.07833,
+            0.39667,
+            -0.255
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0009413288479590966,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "三面隔断与磨砂玻璃",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 110,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 904,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 690,
+          "position": [
+            -0.4375,
+            1.65583,
+            -0.3
+          ]
+        },
+        {
+          "vertexIndex": 716,
+          "position": [
+            -0.4375,
+            1.4925,
+            -0.3
+          ]
+        },
+        {
+          "vertexIndex": 737,
+          "position": [
+            0.2625,
+            1.41083,
+            -0.3
+          ]
+        },
+        {
+          "vertexIndex": 763,
+          "position": [
+            0.2625,
+            1.2475,
+            -0.3
+          ]
+        },
+        {
+          "vertexIndex": 824,
+          "position": [
+            -0.0875,
+            0.83917,
+            -0.3
+          ]
+        },
+        {
+          "vertexIndex": 903,
+          "position": [
+            0.0,
+            1.41083,
+            -0.33
+          ]
+        },
+        {
+          "vertexIndex": 945,
+          "position": [
+            -0.2625,
+            1.16583,
+            -0.33
+          ]
+        },
+        {
+          "vertexIndex": 964,
+          "position": [
+            0.35,
+            1.0025,
+            -0.33
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0014365931922433713,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "左侧木饰面板",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 118,
+      "undecidedVertexCount": 6,
+      "outsideVertexCount": 890,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 66,
+          "position": [
+            -0.505,
+            1.1675,
+            0.2225
+          ]
+        },
+        {
+          "vertexIndex": 99,
+          "position": [
+            -0.505,
+            1.0475,
+            -0.11
+          ]
+        },
+        {
+          "vertexIndex": 120,
+          "position": [
+            -0.505,
+            0.9275,
+            0.1275
+          ]
+        },
+        {
+          "vertexIndex": 136,
+          "position": [
+            -0.505,
+            0.8675,
+            -0.015
+          ]
+        },
+        {
+          "vertexIndex": 152,
+          "position": [
+            -0.505,
+            0.8075,
+            -0.1575
+          ]
+        },
+        {
+          "vertexIndex": 196,
+          "position": [
+            -0.525,
+            1.3475,
+            -0.2525
+          ]
+        },
+        {
+          "vertexIndex": 212,
+          "position": [
+            -0.525,
+            1.2875,
+            -0.11
+          ]
+        },
+        {
+          "vertexIndex": 228,
+          "position": [
+            -0.525,
+            1.2275,
+            0.0325
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0009185314365877741,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "右侧木饰面板",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 118,
+      "undecidedVertexCount": 6,
+      "outsideVertexCount": 890,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 66,
+          "position": [
+            0.525,
+            1.1675,
+            0.2225
+          ]
+        },
+        {
+          "vertexIndex": 99,
+          "position": [
+            0.525,
+            1.0475,
+            -0.11
+          ]
+        },
+        {
+          "vertexIndex": 120,
+          "position": [
+            0.525,
+            0.9275,
+            0.1275
+          ]
+        },
+        {
+          "vertexIndex": 136,
+          "position": [
+            0.525,
+            0.8675,
+            -0.015
+          ]
+        },
+        {
+          "vertexIndex": 152,
+          "position": [
+            0.525,
+            0.8075,
+            -0.1575
+          ]
+        },
+        {
+          "vertexIndex": 196,
+          "position": [
+            0.505,
+            1.3475,
+            -0.2525
+          ]
+        },
+        {
+          "vertexIndex": 212,
+          "position": [
+            0.505,
+            1.2875,
+            -0.11
+          ]
+        },
+        {
+          "vertexIndex": 228,
+          "position": [
+            0.505,
+            1.2275,
+            0.0325
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0009185314365877741,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "左磨砂玻璃",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 120,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 890,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 40,
+          "position": [
+            -0.506,
+            1.66,
+            0.2225
+          ]
+        },
+        {
+          "vertexIndex": 93,
+          "position": [
+            -0.506,
+            1.56,
+            0.175
+          ]
+        },
+        {
+          "vertexIndex": 119,
+          "position": [
+            -0.506,
+            1.51,
+            0.175
+          ]
+        },
+        {
+          "vertexIndex": 138,
+          "position": [
+            -0.506,
+            1.485,
+            -0.11
+          ]
+        },
+        {
+          "vertexIndex": 183,
+          "position": [
+            -0.514,
+            1.71,
+            -0.2525
+          ]
+        },
+        {
+          "vertexIndex": 200,
+          "position": [
+            -0.514,
+            1.685,
+            -0.0625
+          ]
+        },
+        {
+          "vertexIndex": 217,
+          "position": [
+            -0.514,
+            1.66,
+            0.1275
+          ]
+        },
+        {
+          "vertexIndex": 241,
+          "position": [
+            -0.514,
+            1.61,
+            0.0325
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0006441769943113461,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "右磨砂玻璃",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 120,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 890,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 40,
+          "position": [
+            0.514,
+            1.66,
+            0.2225
+          ]
+        },
+        {
+          "vertexIndex": 93,
+          "position": [
+            0.514,
+            1.56,
+            0.175
+          ]
+        },
+        {
+          "vertexIndex": 119,
+          "position": [
+            0.514,
+            1.51,
+            0.175
+          ]
+        },
+        {
+          "vertexIndex": 138,
+          "position": [
+            0.514,
+            1.485,
+            -0.11
+          ]
+        },
+        {
+          "vertexIndex": 183,
+          "position": [
+            0.506,
+            1.71,
+            -0.2525
+          ]
+        },
+        {
+          "vertexIndex": 200,
+          "position": [
+            0.506,
+            1.685,
+            -0.0625
+          ]
+        },
+        {
+          "vertexIndex": 217,
+          "position": [
+            0.506,
+            1.66,
+            0.1275
+          ]
+        },
+        {
+          "vertexIndex": 241,
+          "position": [
+            0.506,
+            1.61,
+            0.0325
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0006441769943113461,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "左后铝立柱",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 218,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 796,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            -0.49,
+            1.24,
+            -0.26833
+          ]
+        },
+        {
+          "vertexIndex": 121,
+          "position": [
+            -0.49,
+            0.995,
+            -0.27833
+          ]
+        },
+        {
+          "vertexIndex": 152,
+          "position": [
+            -0.49,
+            0.83167,
+            -0.295
+          ]
+        },
+        {
+          "vertexIndex": 211,
+          "position": [
+            -0.53,
+            1.485,
+            -0.295
+          ]
+        },
+        {
+          "vertexIndex": 242,
+          "position": [
+            -0.53,
+            1.32167,
+            -0.27833
+          ]
+        },
+        {
+          "vertexIndex": 796,
+          "position": [
+            -0.52,
+            0.995,
+            -0.265
+          ]
+        },
+        {
+          "vertexIndex": 827,
+          "position": [
+            -0.50333,
+            0.83167,
+            -0.265
+          ]
+        },
+        {
+          "vertexIndex": 886,
+          "position": [
+            -0.49667,
+            1.485,
+            -0.305
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0009816312953446421,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "右后铝立柱",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 218,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 796,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            0.53,
+            1.24,
+            -0.26833
+          ]
+        },
+        {
+          "vertexIndex": 121,
+          "position": [
+            0.53,
+            0.995,
+            -0.27833
+          ]
+        },
+        {
+          "vertexIndex": 152,
+          "position": [
+            0.53,
+            0.83167,
+            -0.295
+          ]
+        },
+        {
+          "vertexIndex": 211,
+          "position": [
+            0.49,
+            1.485,
+            -0.295
+          ]
+        },
+        {
+          "vertexIndex": 242,
+          "position": [
+            0.49,
+            1.32167,
+            -0.27833
+          ]
+        },
+        {
+          "vertexIndex": 796,
+          "position": [
+            0.5,
+            0.995,
+            -0.265
+          ]
+        },
+        {
+          "vertexIndex": 827,
+          "position": [
+            0.51667,
+            0.83167,
+            -0.265
+          ]
+        },
+        {
+          "vertexIndex": 886,
+          "position": [
+            0.52333,
+            1.485,
+            -0.305
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0009816312953446421,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "左前铝立柱",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 222,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 792,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            -0.4925,
+            1.24,
+            0.26958
+          ]
+        },
+        {
+          "vertexIndex": 121,
+          "position": [
+            -0.4925,
+            0.995,
+            0.26083
+          ]
+        },
+        {
+          "vertexIndex": 152,
+          "position": [
+            -0.4925,
+            0.83167,
+            0.24625
+          ]
+        },
+        {
+          "vertexIndex": 211,
+          "position": [
+            -0.5275,
+            1.485,
+            0.24625
+          ]
+        },
+        {
+          "vertexIndex": 242,
+          "position": [
+            -0.5275,
+            1.32167,
+            0.26083
+          ]
+        },
+        {
+          "vertexIndex": 794,
+          "position": [
+            -0.52458,
+            0.995,
+            0.2725
+          ]
+        },
+        {
+          "vertexIndex": 825,
+          "position": [
+            -0.51,
+            0.83167,
+            0.2725
+          ]
+        },
+        {
+          "vertexIndex": 882,
+          "position": [
+            -0.52458,
+            1.56667,
+            0.2375
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.000981249203821333,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "右前铝立柱",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 222,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 792,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            0.5275,
+            1.24,
+            0.26958
+          ]
+        },
+        {
+          "vertexIndex": 121,
+          "position": [
+            0.5275,
+            0.995,
+            0.26083
+          ]
+        },
+        {
+          "vertexIndex": 152,
+          "position": [
+            0.5275,
+            0.83167,
+            0.24625
+          ]
+        },
+        {
+          "vertexIndex": 211,
+          "position": [
+            0.4925,
+            1.485,
+            0.24625
+          ]
+        },
+        {
+          "vertexIndex": 242,
+          "position": [
+            0.4925,
+            1.32167,
+            0.26083
+          ]
+        },
+        {
+          "vertexIndex": 794,
+          "position": [
+            0.49542,
+            0.995,
+            0.2725
+          ]
+        },
+        {
+          "vertexIndex": 825,
+          "position": [
+            0.51,
+            0.83167,
+            0.2725
+          ]
+        },
+        {
+          "vertexIndex": 882,
+          "position": [
+            0.49542,
+            1.56667,
+            0.2375
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.000981249203821333,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "背板上横梁",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 208,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 806,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.4375,
+            1.74,
+            -0.33583
+          ]
+        },
+        {
+          "vertexIndex": 430,
+          "position": [
+            -0.4375,
+            1.74,
+            -0.31083
+          ]
+        },
+        {
+          "vertexIndex": 529,
+          "position": [
+            0.2625,
+            1.705,
+            -0.29417
+          ]
+        },
+        {
+          "vertexIndex": 606,
+          "position": [
+            0.175,
+            1.705,
+            -0.31917
+          ]
+        },
+        {
+          "vertexIndex": 698,
+          "position": [
+            0.2625,
+            1.73708,
+            -0.29
+          ]
+        },
+        {
+          "vertexIndex": 764,
+          "position": [
+            0.35,
+            1.7225,
+            -0.29
+          ]
+        },
+        {
+          "vertexIndex": 867,
+          "position": [
+            -0.2625,
+            1.73708,
+            -0.34
+          ]
+        },
+        {
+          "vertexIndex": 934,
+          "position": [
+            -0.4375,
+            1.7225,
+            -0.34
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0010517723137637726,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "左侧上横梁",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 208,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 806,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 14,
+          "position": [
+            -0.49,
+            1.73708,
+            0.2225
+          ]
+        },
+        {
+          "vertexIndex": 80,
+          "position": [
+            -0.49,
+            1.7225,
+            0.175
+          ]
+        },
+        {
+          "vertexIndex": 146,
+          "position": [
+            -0.49,
+            1.70792,
+            0.1275
+          ]
+        },
+        {
+          "vertexIndex": 238,
+          "position": [
+            -0.53,
+            1.72542,
+            -0.11
+          ]
+        },
+        {
+          "vertexIndex": 304,
+          "position": [
+            -0.53,
+            1.71083,
+            -0.0625
+          ]
+        },
+        {
+          "vertexIndex": 374,
+          "position": [
+            -0.49667,
+            1.74,
+            -0.205
+          ]
+        },
+        {
+          "vertexIndex": 408,
+          "position": [
+            -0.51333,
+            1.74,
+            -0.0625
+          ]
+        },
+        {
+          "vertexIndex": 548,
+          "position": [
+            -0.52333,
+            1.705,
+            0.1275
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0005724727067729956,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "右侧上横梁",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 208,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 806,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 14,
+          "position": [
+            0.53,
+            1.73708,
+            0.2225
+          ]
+        },
+        {
+          "vertexIndex": 80,
+          "position": [
+            0.53,
+            1.7225,
+            0.175
+          ]
+        },
+        {
+          "vertexIndex": 146,
+          "position": [
+            0.53,
+            1.70792,
+            0.1275
+          ]
+        },
+        {
+          "vertexIndex": 238,
+          "position": [
+            0.49,
+            1.72542,
+            -0.11
+          ]
+        },
+        {
+          "vertexIndex": 304,
+          "position": [
+            0.49,
+            1.71083,
+            -0.0625
+          ]
+        },
+        {
+          "vertexIndex": 374,
+          "position": [
+            0.52333,
+            1.74,
+            -0.205
+          ]
+        },
+        {
+          "vertexIndex": 408,
+          "position": [
+            0.50667,
+            1.74,
+            -0.0625
+          ]
+        },
+        {
+          "vertexIndex": 548,
+          "position": [
+            0.49667,
+            1.705,
+            0.1275
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0005724727067729956,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "左侧玻璃贴纸",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 120,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 892,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 40,
+          "position": [
+            -0.504,
+            1.6,
+            0.15833
+          ]
+        },
+        {
+          "vertexIndex": 95,
+          "position": [
+            -0.504,
+            1.57,
+            0.12333
+          ]
+        },
+        {
+          "vertexIndex": 120,
+          "position": [
+            -0.504,
+            1.555,
+            0.135
+          ]
+        },
+        {
+          "vertexIndex": 138,
+          "position": [
+            -0.504,
+            1.5475,
+            0.07667
+          ]
+        },
+        {
+          "vertexIndex": 183,
+          "position": [
+            -0.506,
+            1.615,
+            0.04167
+          ]
+        },
+        {
+          "vertexIndex": 200,
+          "position": [
+            -0.506,
+            1.6075,
+            0.08833
+          ]
+        },
+        {
+          "vertexIndex": 217,
+          "position": [
+            -0.506,
+            1.6,
+            0.135
+          ]
+        },
+        {
+          "vertexIndex": 239,
+          "position": [
+            -0.506,
+            1.585,
+            0.08833
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0001664451861725055,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "水壶挂钩",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 22,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 990,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            0.514,
+            1.52,
+            0.03833
+          ]
+        },
+        {
+          "vertexIndex": 92,
+          "position": [
+            0.514,
+            1.51583,
+            0.03833
+          ]
+        },
+        {
+          "vertexIndex": 105,
+          "position": [
+            0.514,
+            1.51167,
+            0.03833
+          ]
+        },
+        {
+          "vertexIndex": 118,
+          "position": [
+            0.514,
+            1.5075,
+            0.03833
+          ]
+        },
+        {
+          "vertexIndex": 193,
+          "position": [
+            0.496,
+            1.54083,
+            0.03833
+          ]
+        },
+        {
+          "vertexIndex": 222,
+          "position": [
+            0.496,
+            1.52833,
+            0.02167
+          ]
+        },
+        {
+          "vertexIndex": 235,
+          "position": [
+            0.496,
+            1.52417,
+            0.02167
+          ]
+        },
+        {
+          "vertexIndex": 248,
+          "position": [
+            0.496,
+            1.52,
+            0.02167
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 5.6780278266313415e-05,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "顶部搁板",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 158,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 856,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.4375,
+            1.7625,
+            -0.285
+          ]
+        },
+        {
+          "vertexIndex": 394,
+          "position": [
+            -0.175,
+            1.7625,
+            -0.21
+          ]
+        },
+        {
+          "vertexIndex": 444,
+          "position": [
+            -0.35,
+            1.7625,
+            -0.11
+          ]
+        },
+        {
+          "vertexIndex": 526,
+          "position": [
+            0.0,
+            1.7375,
+            -0.035
+          ]
+        },
+        {
+          "vertexIndex": 568,
+          "position": [
+            0.2625,
+            1.7375,
+            -0.11
+          ]
+        },
+        {
+          "vertexIndex": 619,
+          "position": [
+            0.175,
+            1.7375,
+            -0.21
+          ]
+        },
+        {
+          "vertexIndex": 699,
+          "position": [
+            0.35,
+            1.76042,
+            -0.01
+          ]
+        },
+        {
+          "vertexIndex": 817,
+          "position": [
+            0.4375,
+            1.74167,
+            -0.01
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0010923026137476739,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "搁板托架 L",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 106,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 904,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 53,
+          "position": [
+            -0.4375,
+            1.69133,
+            -0.135
+          ]
+        },
+        {
+          "vertexIndex": 96,
+          "position": [
+            -0.4375,
+            1.65633,
+            -0.195
+          ]
+        },
+        {
+          "vertexIndex": 124,
+          "position": [
+            -0.4375,
+            1.633,
+            -0.225
+          ]
+        },
+        {
+          "vertexIndex": 139,
+          "position": [
+            -0.4375,
+            1.62133,
+            -0.255
+          ]
+        },
+        {
+          "vertexIndex": 154,
+          "position": [
+            -0.4375,
+            1.60967,
+            -0.285
+          ]
+        },
+        {
+          "vertexIndex": 197,
+          "position": [
+            -0.4625,
+            1.71467,
+            -0.27
+          ]
+        },
+        {
+          "vertexIndex": 212,
+          "position": [
+            -0.4625,
+            1.703,
+            -0.24
+          ]
+        },
+        {
+          "vertexIndex": 230,
+          "position": [
+            -0.4625,
+            1.69133,
+            -0.165
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00022940139493908917,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "搁板托架 R",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 106,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 904,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 53,
+          "position": [
+            0.4625,
+            1.69133,
+            -0.135
+          ]
+        },
+        {
+          "vertexIndex": 96,
+          "position": [
+            0.4625,
+            1.65633,
+            -0.195
+          ]
+        },
+        {
+          "vertexIndex": 124,
+          "position": [
+            0.4625,
+            1.633,
+            -0.225
+          ]
+        },
+        {
+          "vertexIndex": 139,
+          "position": [
+            0.4625,
+            1.62133,
+            -0.255
+          ]
+        },
+        {
+          "vertexIndex": 154,
+          "position": [
+            0.4625,
+            1.60967,
+            -0.285
+          ]
+        },
+        {
+          "vertexIndex": 197,
+          "position": [
+            0.4375,
+            1.71467,
+            -0.27
+          ]
+        },
+        {
+          "vertexIndex": 212,
+          "position": [
+            0.4375,
+            1.703,
+            -0.24
+          ]
+        },
+        {
+          "vertexIndex": 230,
+          "position": [
+            0.4375,
+            1.69133,
+            -0.165
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00022940139493908917,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "右侧书列",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 28,
+      "undecidedVertexCount": 6,
+      "outsideVertexCount": 980,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            0.205,
+            1.885,
+            -0.15
+          ]
+        },
+        {
+          "vertexIndex": 222,
+          "position": [
+            0.045,
+            1.91667,
+            -0.25
+          ]
+        },
+        {
+          "vertexIndex": 354,
+          "position": [
+            0.085,
+            1.98,
+            -0.25
+          ]
+        },
+        {
+          "vertexIndex": 529,
+          "position": [
+            0.165,
+            1.79,
+            -0.15
+          ]
+        },
+        {
+          "vertexIndex": 703,
+          "position": [
+            0.05833,
+            1.94833,
+            -0.14
+          ]
+        },
+        {
+          "vertexIndex": 716,
+          "position": [
+            0.05833,
+            1.9325,
+            -0.14
+          ]
+        },
+        {
+          "vertexIndex": 732,
+          "position": [
+            0.09833,
+            1.91667,
+            -0.14
+          ]
+        },
+        {
+          "vertexIndex": 964,
+          "position": [
+            0.17833,
+            1.8375,
+            -0.26
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0002758622844826744,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "紫色茶罐",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 18,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 539,
+      "sampledVertexCount": 559,
+      "totalVertexCount": 559,
+      "samplingStride": 1,
+      "triangleCount": 832,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 61,
+          "position": [
+            0.15318,
+            1.9525,
+            -0.14818
+          ]
+        },
+        {
+          "vertexIndex": 63,
+          "position": [
+            0.16778,
+            1.9525,
+            -0.13843
+          ]
+        },
+        {
+          "vertexIndex": 96,
+          "position": [
+            0.16778,
+            1.935,
+            -0.13843
+          ]
+        },
+        {
+          "vertexIndex": 129,
+          "position": [
+            0.16778,
+            1.9175,
+            -0.13843
+          ]
+        },
+        {
+          "vertexIndex": 278,
+          "position": [
+            0.20222,
+            1.83,
+            -0.22157
+          ]
+        },
+        {
+          "vertexIndex": 311,
+          "position": [
+            0.20222,
+            1.8125,
+            -0.22157
+          ]
+        },
+        {
+          "vertexIndex": 343,
+          "position": [
+            0.21,
+            1.795,
+            -0.21742
+          ]
+        },
+        {
+          "vertexIndex": 366,
+          "position": [
+            0.21,
+            1.7775,
+            -0.14258
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00024556058315617344,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "橙色标签茶罐",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 18,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 539,
+      "sampledVertexCount": 559,
+      "totalVertexCount": 559,
+      "samplingStride": 1,
+      "triangleCount": 832,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 61,
+          "position": [
+            0.26318,
+            1.9525,
+            -0.14818
+          ]
+        },
+        {
+          "vertexIndex": 63,
+          "position": [
+            0.27778,
+            1.9525,
+            -0.13843
+          ]
+        },
+        {
+          "vertexIndex": 96,
+          "position": [
+            0.27778,
+            1.935,
+            -0.13843
+          ]
+        },
+        {
+          "vertexIndex": 129,
+          "position": [
+            0.27778,
+            1.9175,
+            -0.13843
+          ]
+        },
+        {
+          "vertexIndex": 278,
+          "position": [
+            0.31222,
+            1.83,
+            -0.22157
+          ]
+        },
+        {
+          "vertexIndex": 311,
+          "position": [
+            0.31222,
+            1.8125,
+            -0.22157
+          ]
+        },
+        {
+          "vertexIndex": 343,
+          "position": [
+            0.32,
+            1.795,
+            -0.21742
+          ]
+        },
+        {
+          "vertexIndex": 366,
+          "position": [
+            0.32,
+            1.7775,
+            -0.14258
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0002455605831561735,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "黑色茶叶罐",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 22,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 535,
+      "sampledVertexCount": 559,
+      "totalVertexCount": 559,
+      "samplingStride": 1,
+      "triangleCount": 832,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 52,
+          "position": [
+            0.41,
+            1.98,
+            -0.21742
+          ]
+        },
+        {
+          "vertexIndex": 61,
+          "position": [
+            0.40318,
+            1.98,
+            -0.14818
+          ]
+        },
+        {
+          "vertexIndex": 63,
+          "position": [
+            0.41778,
+            1.98,
+            -0.13843
+          ]
+        },
+        {
+          "vertexIndex": 95,
+          "position": [
+            0.41,
+            1.96,
+            -0.14258
+          ]
+        },
+        {
+          "vertexIndex": 128,
+          "position": [
+            0.41,
+            1.94,
+            -0.14258
+          ]
+        },
+        {
+          "vertexIndex": 162,
+          "position": [
+            0.41778,
+            1.92,
+            -0.13843
+          ]
+        },
+        {
+          "vertexIndex": 310,
+          "position": [
+            0.46,
+            1.82,
+            -0.21742
+          ]
+        },
+        {
+          "vertexIndex": 342,
+          "position": [
+            0.46682,
+            1.8,
+            -0.21182
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0002716615541441225,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "书列挡板",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 106,
+      "undecidedVertexCount": 8,
+      "outsideVertexCount": 900,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 66,
+          "position": [
+            0.054,
+            1.89,
+            -0.15833
+          ]
+        },
+        {
+          "vertexIndex": 106,
+          "position": [
+            0.054,
+            1.86,
+            -0.16667
+          ]
+        },
+        {
+          "vertexIndex": 124,
+          "position": [
+            0.054,
+            1.85,
+            -0.20833
+          ]
+        },
+        {
+          "vertexIndex": 139,
+          "position": [
+            0.054,
+            1.84,
+            -0.225
+          ]
+        },
+        {
+          "vertexIndex": 154,
+          "position": [
+            0.054,
+            1.83,
+            -0.24167
+          ]
+        },
+        {
+          "vertexIndex": 197,
+          "position": [
+            0.036,
+            1.92,
+            -0.23333
+          ]
+        },
+        {
+          "vertexIndex": 212,
+          "position": [
+            0.036,
+            1.91,
+            -0.21667
+          ]
+        },
+        {
+          "vertexIndex": 230,
+          "position": [
+            0.036,
+            1.9,
+            -0.175
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0001572386720880076,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "白色笔记本机身",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 106,
+      "undecidedVertexCount": 6,
+      "outsideVertexCount": 902,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.37542,
+            0.91217,
+            -0.14997
+          ]
+        },
+        {
+          "vertexIndex": 381,
+          "position": [
+            -0.28667,
+            0.90647,
+            -0.10953
+          ]
+        },
+        {
+          "vertexIndex": 419,
+          "position": [
+            -0.31625,
+            0.89792,
+            -0.04888
+          ]
+        },
+        {
+          "vertexIndex": 457,
+          "position": [
+            -0.34583,
+            0.88937,
+            0.01177
+          ]
+        },
+        {
+          "vertexIndex": 486,
+          "position": [
+            -0.25708,
+            0.88368,
+            0.0522
+          ]
+        },
+        {
+          "vertexIndex": 552,
+          "position": [
+            -0.2275,
+            0.87353,
+            0.00953
+          ]
+        },
+        {
+          "vertexIndex": 594,
+          "position": [
+            -0.13875,
+            0.88208,
+            -0.05112
+          ]
+        },
+        {
+          "vertexIndex": 631,
+          "position": [
+            -0.19792,
+            0.89063,
+            -0.11177
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00043413779747909537,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "笔记本上盖",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 114,
+      "undecidedVertexCount": 6,
+      "outsideVertexCount": 894,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 690,
+          "position": [
+            -0.37333,
+            1.14688,
+            -0.16015
+          ]
+        },
+        {
+          "vertexIndex": 716,
+          "position": [
+            -0.37333,
+            1.10525,
+            -0.16181
+          ]
+        },
+        {
+          "vertexIndex": 736,
+          "position": [
+            -0.16917,
+            1.08443,
+            -0.16265
+          ]
+        },
+        {
+          "vertexIndex": 764,
+          "position": [
+            -0.11083,
+            1.0428,
+            -0.16431
+          ]
+        },
+        {
+          "vertexIndex": 826,
+          "position": [
+            -0.19833,
+            0.93871,
+            -0.16848
+          ]
+        },
+        {
+          "vertexIndex": 930,
+          "position": [
+            -0.25667,
+            1.04308,
+            -0.17131
+          ]
+        },
+        {
+          "vertexIndex": 952,
+          "position": [
+            -0.14,
+            1.00144,
+            -0.17297
+          ]
+        },
+        {
+          "vertexIndex": 972,
+          "position": [
+            -0.34417,
+            0.98063,
+            -0.17381
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00043049816085553725,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "笔记本屏幕",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": false,
+      "insideVertexCount": 0,
+      "undecidedVertexCount": 1,
+      "outsideVertexCount": 624,
+      "sampledVertexCount": 625,
+      "totalVertexCount": 625,
+      "samplingStride": 1,
+      "triangleCount": 1152,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0004043846767621147,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "笔记本键盘面",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 108,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 902,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 354,
+          "position": [
+            -0.31,
+            0.9103,
+            -0.06239
+          ]
+        },
+        {
+          "vertexIndex": 392,
+          "position": [
+            -0.3375,
+            0.9027,
+            -0.03596
+          ]
+        },
+        {
+          "vertexIndex": 430,
+          "position": [
+            -0.365,
+            0.8951,
+            -0.00954
+          ]
+        },
+        {
+          "vertexIndex": 459,
+          "position": [
+            -0.2825,
+            0.89004,
+            0.00808
+          ]
+        },
+        {
+          "vertexIndex": 486,
+          "position": [
+            -0.255,
+            0.88497,
+            0.0257
+          ]
+        },
+        {
+          "vertexIndex": 557,
+          "position": [
+            -0.09,
+            0.88619,
+            0.00698
+          ]
+        },
+        {
+          "vertexIndex": 595,
+          "position": [
+            -0.1175,
+            0.89379,
+            -0.01945
+          ]
+        },
+        {
+          "vertexIndex": 631,
+          "position": [
+            -0.2,
+            0.90139,
+            -0.04588
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0003485449395702081,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "触控板",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 116,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 894,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.27333,
+            0.89686,
+            0.00778
+          ]
+        },
+        {
+          "vertexIndex": 383,
+          "position": [
+            -0.2275,
+            0.89364,
+            0.01899
+          ]
+        },
+        {
+          "vertexIndex": 421,
+          "position": [
+            -0.23667,
+            0.8888,
+            0.03581
+          ]
+        },
+        {
+          "vertexIndex": 458,
+          "position": [
+            -0.255,
+            0.88397,
+            0.05263
+          ]
+        },
+        {
+          "vertexIndex": 485,
+          "position": [
+            -0.24583,
+            0.88074,
+            0.06384
+          ]
+        },
+        {
+          "vertexIndex": 553,
+          "position": [
+            -0.21833,
+            0.88205,
+            0.05208
+          ]
+        },
+        {
+          "vertexIndex": 594,
+          "position": [
+            -0.2,
+            0.88688,
+            0.03526
+          ]
+        },
+        {
+          "vertexIndex": 625,
+          "position": [
+            -0.27333,
+            0.89172,
+            0.01844
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00013097069061435078,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "笔记本屏轴",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 146,
+      "undecidedVertexCount": 1,
+      "outsideVertexCount": 412,
+      "sampledVertexCount": 559,
+      "totalVertexCount": 559,
+      "samplingStride": 1,
+      "triangleCount": 832,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 33,
+          "position": [
+            -0.09417,
+            0.92192,
+            -0.1475
+          ]
+        },
+        {
+          "vertexIndex": 68,
+          "position": [
+            -0.12083,
+            0.91934,
+            -0.1484
+          ]
+        },
+        {
+          "vertexIndex": 103,
+          "position": [
+            -0.1475,
+            0.9173,
+            -0.15022
+          ]
+        },
+        {
+          "vertexIndex": 138,
+          "position": [
+            -0.17417,
+            0.91612,
+            -0.15268
+          ]
+        },
+        {
+          "vertexIndex": 176,
+          "position": [
+            -0.20083,
+            0.91767,
+            -0.15909
+          ]
+        },
+        {
+          "vertexIndex": 282,
+          "position": [
+            -0.28083,
+            0.92645,
+            -0.16046
+          ]
+        },
+        {
+          "vertexIndex": 318,
+          "position": [
+            -0.3075,
+            0.9292,
+            -0.15747
+          ]
+        },
+        {
+          "vertexIndex": 354,
+          "position": [
+            -0.33417,
+            0.92983,
+            -0.15345
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0003206097336326519,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "RTX 贴纸",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 96,
+      "undecidedVertexCount": 1,
+      "outsideVertexCount": 917,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 354,
+          "position": [
+            -0.1195,
+            0.89201,
+            0.01808
+          ]
+        },
+        {
+          "vertexIndex": 395,
+          "position": [
+            -0.11483,
+            0.89118,
+            0.02096
+          ]
+        },
+        {
+          "vertexIndex": 433,
+          "position": [
+            -0.11717,
+            0.89035,
+            0.02385
+          ]
+        },
+        {
+          "vertexIndex": 469,
+          "position": [
+            -0.12417,
+            0.88952,
+            0.02673
+          ]
+        },
+        {
+          "vertexIndex": 526,
+          "position": [
+            -0.1125,
+            0.88809,
+            0.02736
+          ]
+        },
+        {
+          "vertexIndex": 570,
+          "position": [
+            -0.10083,
+            0.88892,
+            0.02448
+          ]
+        },
+        {
+          "vertexIndex": 608,
+          "position": [
+            -0.10317,
+            0.88975,
+            0.02159
+          ]
+        },
+        {
+          "vertexIndex": 639,
+          "position": [
+            -0.12183,
+            0.89058,
+            0.01871
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 3.073500447372669e-05,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "灰色笔记本支架底座",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 108,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 906,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.35667,
+            0.78192,
+            -0.17169
+          ]
+        },
+        {
+          "vertexIndex": 381,
+          "position": [
+            -0.27917,
+            0.77716,
+            -0.13786
+          ]
+        },
+        {
+          "vertexIndex": 419,
+          "position": [
+            -0.305,
+            0.77,
+            -0.08711
+          ]
+        },
+        {
+          "vertexIndex": 456,
+          "position": [
+            -0.35667,
+            0.76285,
+            -0.03636
+          ]
+        },
+        {
+          "vertexIndex": 485,
+          "position": [
+            -0.27917,
+            0.75808,
+            -0.00253
+          ]
+        },
+        {
+          "vertexIndex": 544,
+          "position": [
+            -0.09833,
+            0.74859,
+            -0.02112
+          ]
+        },
+        {
+          "vertexIndex": 592,
+          "position": [
+            -0.20167,
+            0.75812,
+            -0.08878
+          ]
+        },
+        {
+          "vertexIndex": 621,
+          "position": [
+            -0.12417,
+            0.76289,
+            -0.12261
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0003736699733722259,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "支架立柱 L",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 136,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 874,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            -0.3635,
+            0.8294,
+            -0.12881
+          ]
+        },
+        {
+          "vertexIndex": 132,
+          "position": [
+            -0.3635,
+            0.79075,
+            -0.13636
+          ]
+        },
+        {
+          "vertexIndex": 151,
+          "position": [
+            -0.3635,
+            0.78275,
+            -0.15011
+          ]
+        },
+        {
+          "vertexIndex": 198,
+          "position": [
+            -0.3815,
+            0.87068,
+            -0.13982
+          ]
+        },
+        {
+          "vertexIndex": 217,
+          "position": [
+            -0.3815,
+            0.8592,
+            -0.12882
+          ]
+        },
+        {
+          "vertexIndex": 808,
+          "position": [
+            -0.3785,
+            0.79017,
+            -0.13224
+          ]
+        },
+        {
+          "vertexIndex": 827,
+          "position": [
+            -0.3695,
+            0.78043,
+            -0.13361
+          ]
+        },
+        {
+          "vertexIndex": 874,
+          "position": [
+            -0.368,
+            0.87155,
+            -0.14601
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00012847423282510778,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "支架立柱 R",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 136,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 874,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            -0.0735,
+            0.8294,
+            -0.12881
+          ]
+        },
+        {
+          "vertexIndex": 132,
+          "position": [
+            -0.0735,
+            0.79075,
+            -0.13636
+          ]
+        },
+        {
+          "vertexIndex": 151,
+          "position": [
+            -0.0735,
+            0.78275,
+            -0.15011
+          ]
+        },
+        {
+          "vertexIndex": 198,
+          "position": [
+            -0.0915,
+            0.87068,
+            -0.13982
+          ]
+        },
+        {
+          "vertexIndex": 217,
+          "position": [
+            -0.0915,
+            0.8592,
+            -0.12882
+          ]
+        },
+        {
+          "vertexIndex": 808,
+          "position": [
+            -0.0885,
+            0.79017,
+            -0.13224
+          ]
+        },
+        {
+          "vertexIndex": 827,
+          "position": [
+            -0.0795,
+            0.78043,
+            -0.13361
+          ]
+        },
+        {
+          "vertexIndex": 874,
+          "position": [
+            -0.078,
+            0.87155,
+            -0.14601
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00012847423282510778,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "支架前托钩",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 178,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 836,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.3525,
+            0.87599,
+            0.04228
+          ]
+        },
+        {
+          "vertexIndex": 432,
+          "position": [
+            -0.3025,
+            0.87487,
+            0.0502
+          ]
+        },
+        {
+          "vertexIndex": 543,
+          "position": [
+            -0.1275,
+            0.85253,
+            0.05109
+          ]
+        },
+        {
+          "vertexIndex": 621,
+          "position": [
+            -0.1275,
+            0.85364,
+            0.04317
+          ]
+        },
+        {
+          "vertexIndex": 712,
+          "position": [
+            -0.1275,
+            0.87031,
+            0.05629
+          ]
+        },
+        {
+          "vertexIndex": 775,
+          "position": [
+            -0.1775,
+            0.86123,
+            0.05501
+          ]
+        },
+        {
+          "vertexIndex": 879,
+          "position": [
+            -0.2775,
+            0.87254,
+            0.04045
+          ]
+        },
+        {
+          "vertexIndex": 944,
+          "position": [
+            -0.2775,
+            0.86346,
+            0.03917
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00030155355826121506,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "支架横梁",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 172,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 840,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.3525,
+            0.82213,
+            -0.14885
+          ]
+        },
+        {
+          "vertexIndex": 430,
+          "position": [
+            -0.3525,
+            0.82039,
+            -0.13648
+          ]
+        },
+        {
+          "vertexIndex": 485,
+          "position": [
+            -0.2775,
+            0.81922,
+            -0.12823
+          ]
+        },
+        {
+          "vertexIndex": 595,
+          "position": [
+            -0.1275,
+            0.80285,
+            -0.14105
+          ]
+        },
+        {
+          "vertexIndex": 658,
+          "position": [
+            -0.1775,
+            0.80431,
+            -0.15137
+          ]
+        },
+        {
+          "vertexIndex": 750,
+          "position": [
+            -0.1525,
+            0.81151,
+            -0.12721
+          ]
+        },
+        {
+          "vertexIndex": 817,
+          "position": [
+            -0.1025,
+            0.80408,
+            -0.12826
+          ]
+        },
+        {
+          "vertexIndex": 921,
+          "position": [
+            -0.3525,
+            0.81499,
+            -0.15196
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00030198968359862894,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "AOC 23.8 英寸显示器",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 102,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 912,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 690,
+          "position": [
+            0.01,
+            1.26417,
+            -0.136
+          ]
+        },
+        {
+          "vertexIndex": 711,
+          "position": [
+            0.37,
+            1.23733,
+            -0.136
+          ]
+        },
+        {
+          "vertexIndex": 730,
+          "position": [
+            0.055,
+            1.18367,
+            -0.136
+          ]
+        },
+        {
+          "vertexIndex": 751,
+          "position": [
+            0.415,
+            1.15683,
+            -0.136
+          ]
+        },
+        {
+          "vertexIndex": 824,
+          "position": [
+            0.19,
+            0.99583,
+            -0.136
+          ]
+        },
+        {
+          "vertexIndex": 931,
+          "position": [
+            0.145,
+            1.13,
+            -0.164
+          ]
+        },
+        {
+          "vertexIndex": 953,
+          "position": [
+            0.325,
+            1.07633,
+            -0.164
+          ]
+        },
+        {
+          "vertexIndex": 971,
+          "position": [
+            0.1,
+            1.0495,
+            -0.164
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0006293393361295638,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "AOC 屏幕",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": false,
+      "insideVertexCount": 0,
+      "undecidedVertexCount": 1,
+      "outsideVertexCount": 624,
+      "sampledVertexCount": 625,
+      "totalVertexCount": 625,
+      "samplingStride": 1,
+      "triangleCount": 1152,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0006044377552734443,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "显示器背壳",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 80,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 934,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 690,
+          "position": [
+            0.05167,
+            1.23833,
+            -0.165
+          ]
+        },
+        {
+          "vertexIndex": 711,
+          "position": [
+            0.345,
+            1.21667,
+            -0.165
+          ]
+        },
+        {
+          "vertexIndex": 726,
+          "position": [
+            0.41833,
+            1.195,
+            -0.165
+          ]
+        },
+        {
+          "vertexIndex": 751,
+          "position": [
+            0.38167,
+            1.15167,
+            -0.165
+          ]
+        },
+        {
+          "vertexIndex": 864,
+          "position": [
+            0.235,
+            1.23833,
+            -0.215
+          ]
+        },
+        {
+          "vertexIndex": 945,
+          "position": [
+            0.125,
+            1.10833,
+            -0.215
+          ]
+        },
+        {
+          "vertexIndex": 964,
+          "position": [
+            0.38167,
+            1.065,
+            -0.215
+          ]
+        },
+        {
+          "vertexIndex": 979,
+          "position": [
+            0.30833,
+            1.04333,
+            -0.215
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0005135172830587107,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "显示器立柱",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 54,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 503,
+      "sampledVertexCount": 559,
+      "totalVertexCount": 559,
+      "samplingStride": 1,
+      "triangleCount": 832,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 50,
+          "position": [
+            0.22985,
+            0.95233,
+            -0.19591
+          ]
+        },
+        {
+          "vertexIndex": 57,
+          "position": [
+            0.20858,
+            0.95233,
+            -0.17
+          ]
+        },
+        {
+          "vertexIndex": 63,
+          "position": [
+            0.22489,
+            0.95233,
+            -0.14559
+          ]
+        },
+        {
+          "vertexIndex": 93,
+          "position": [
+            0.21269,
+            0.93467,
+            -0.15509
+          ]
+        },
+        {
+          "vertexIndex": 129,
+          "position": [
+            0.22457,
+            0.917,
+            -0.14482
+          ]
+        },
+        {
+          "vertexIndex": 278,
+          "position": [
+            0.24623,
+            0.82867,
+            -0.1971
+          ]
+        },
+        {
+          "vertexIndex": 340,
+          "position": [
+            0.26287,
+            0.79333,
+            -0.18154
+          ]
+        },
+        {
+          "vertexIndex": 366,
+          "position": [
+            0.25199,
+            0.77567,
+            -0.14457
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0002294166515316619,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "显示器圆盘底座",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": false,
+      "insideVertexCount": 0,
+      "undecidedVertexCount": 1,
+      "outsideVertexCount": 558,
+      "sampledVertexCount": 559,
+      "totalVertexCount": 559,
+      "samplingStride": 1,
+      "triangleCount": 832,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0002831413074773796,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "显示器线夹",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 46,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 964,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 79,
+          "position": [
+            0.246,
+            0.94,
+            -0.2075
+          ]
+        },
+        {
+          "vertexIndex": 151,
+          "position": [
+            0.246,
+            0.90875,
+            -0.218
+          ]
+        },
+        {
+          "vertexIndex": 188,
+          "position": [
+            0.224,
+            0.97125,
+            -0.215
+          ]
+        },
+        {
+          "vertexIndex": 193,
+          "position": [
+            0.224,
+            0.97125,
+            -0.2075
+          ]
+        },
+        {
+          "vertexIndex": 730,
+          "position": [
+            0.22767,
+            0.9525,
+            -0.206
+          ]
+        },
+        {
+          "vertexIndex": 816,
+          "position": [
+            0.24233,
+            0.915,
+            -0.206
+          ]
+        },
+        {
+          "vertexIndex": 829,
+          "position": [
+            0.24233,
+            0.90875,
+            -0.206
+          ]
+        },
+        {
+          "vertexIndex": 867,
+          "position": [
+            0.2295,
+            0.97125,
+            -0.224
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 8.02059848141023e-05,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "显示器电源灯",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 30,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 980,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 690,
+          "position": [
+            0.43333,
+            0.98167,
+            -0.13345
+          ]
+        },
+        {
+          "vertexIndex": 703,
+          "position": [
+            0.43333,
+            0.98133,
+            -0.13345
+          ]
+        },
+        {
+          "vertexIndex": 706,
+          "position": [
+            0.43433,
+            0.98133,
+            -0.13345
+          ]
+        },
+        {
+          "vertexIndex": 718,
+          "position": [
+            0.434,
+            0.981,
+            -0.13345
+          ]
+        },
+        {
+          "vertexIndex": 731,
+          "position": [
+            0.434,
+            0.98067,
+            -0.13345
+          ]
+        },
+        {
+          "vertexIndex": 934,
+          "position": [
+            0.43333,
+            0.98,
+            -0.13495
+          ]
+        },
+        {
+          "vertexIndex": 953,
+          "position": [
+            0.43567,
+            0.97933,
+            -0.13495
+          ]
+        },
+        {
+          "vertexIndex": 965,
+          "position": [
+            0.436,
+            0.979,
+            -0.13495
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 5.852349955359811e-06,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "98 键机械键盘",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 98,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 912,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 354,
+          "position": [
+            -0.1975,
+            0.7925,
+            0.12958
+          ]
+        },
+        {
+          "vertexIndex": 392,
+          "position": [
+            -0.23,
+            0.7925,
+            0.16583
+          ]
+        },
+        {
+          "vertexIndex": 444,
+          "position": [
+            -0.23,
+            0.7925,
+            0.21417
+          ]
+        },
+        {
+          "vertexIndex": 473,
+          "position": [
+            -0.1325,
+            0.7925,
+            0.23833
+          ]
+        },
+        {
+          "vertexIndex": 541,
+          "position": [
+            -0.035,
+            0.7575,
+            0.23833
+          ]
+        },
+        {
+          "vertexIndex": 596,
+          "position": [
+            0.0625,
+            0.7575,
+            0.19
+          ]
+        },
+        {
+          "vertexIndex": 634,
+          "position": [
+            0.03,
+            0.7575,
+            0.15375
+          ]
+        },
+        {
+          "vertexIndex": 713,
+          "position": [
+            0.0625,
+            0.78667,
+            0.2625
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0004175523919222593,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "键盘定位板",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 140,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 874,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.25833,
+            0.798,
+            0.13233
+          ]
+        },
+        {
+          "vertexIndex": 383,
+          "position": [
+            -0.1,
+            0.798,
+            0.155
+          ]
+        },
+        {
+          "vertexIndex": 430,
+          "position": [
+            -0.25833,
+            0.798,
+            0.20033
+          ]
+        },
+        {
+          "vertexIndex": 471,
+          "position": [
+            -0.195,
+            0.798,
+            0.23433
+          ]
+        },
+        {
+          "vertexIndex": 542,
+          "position": [
+            -0.005,
+            0.792,
+            0.23433
+          ]
+        },
+        {
+          "vertexIndex": 581,
+          "position": [
+            -0.005,
+            0.792,
+            0.20033
+          ]
+        },
+        {
+          "vertexIndex": 622,
+          "position": [
+            0.05833,
+            0.792,
+            0.16633
+          ]
+        },
+        {
+          "vertexIndex": 713,
+          "position": [
+            0.05833,
+            0.797,
+            0.257
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00040364836182003763,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "右上旋钮",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 4,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 553,
+      "sampledVertexCount": 559,
+      "totalVertexCount": 559,
+      "samplingStride": 1,
+      "triangleCount": 832,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 63,
+          "position": [
+            0.06179,
+            0.81317,
+            0.16516
+          ]
+        },
+        {
+          "vertexIndex": 96,
+          "position": [
+            0.06179,
+            0.81133,
+            0.16516
+          ]
+        },
+        {
+          "vertexIndex": 344,
+          "position": [
+            0.07021,
+            0.79667,
+            0.14484
+          ]
+        },
+        {
+          "vertexIndex": 377,
+          "position": [
+            0.07021,
+            0.79483,
+            0.14484
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 3.810511776651526e-05,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "键盘状态灯条",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 152,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 862,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.05458,
+            0.7955,
+            0.12467
+          ]
+        },
+        {
+          "vertexIndex": 406,
+          "position": [
+            -0.04875,
+            0.7955,
+            0.12733
+          ]
+        },
+        {
+          "vertexIndex": 460,
+          "position": [
+            -0.04292,
+            0.7955,
+            0.13
+          ]
+        },
+        {
+          "vertexIndex": 544,
+          "position": [
+            -0.02542,
+            0.7935,
+            0.13067
+          ]
+        },
+        {
+          "vertexIndex": 608,
+          "position": [
+            -0.02833,
+            0.7935,
+            0.12733
+          ]
+        },
+        {
+          "vertexIndex": 659,
+          "position": [
+            -0.03125,
+            0.7935,
+            0.12467
+          ]
+        },
+        {
+          "vertexIndex": 777,
+          "position": [
+            -0.02833,
+            0.79433,
+            0.132
+          ]
+        },
+        {
+          "vertexIndex": 908,
+          "position": [
+            -0.05458,
+            0.79483,
+            0.124
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 3.595830919273041e-05,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "键盘脚 L",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 90,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 920,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 53,
+          "position": [
+            -0.24,
+            0.754,
+            0.1625
+          ]
+        },
+        {
+          "vertexIndex": 107,
+          "position": [
+            -0.24,
+            0.75,
+            0.1575
+          ]
+        },
+        {
+          "vertexIndex": 184,
+          "position": [
+            -0.26,
+            0.757,
+            0.14
+          ]
+        },
+        {
+          "vertexIndex": 235,
+          "position": [
+            -0.26,
+            0.753,
+            0.1375
+          ]
+        },
+        {
+          "vertexIndex": 354,
+          "position": [
+            -0.255,
+            0.758,
+            0.1375
+          ]
+        },
+        {
+          "vertexIndex": 380,
+          "position": [
+            -0.255,
+            0.758,
+            0.1425
+          ]
+        },
+        {
+          "vertexIndex": 526,
+          "position": [
+            -0.25,
+            0.746,
+            0.1625
+          ]
+        },
+        {
+          "vertexIndex": 553,
+          "position": [
+            -0.24833,
+            0.746,
+            0.1575
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 3.8000000000000016e-05,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "键盘脚 R",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 90,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 920,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 53,
+          "position": [
+            0.06,
+            0.754,
+            0.1625
+          ]
+        },
+        {
+          "vertexIndex": 107,
+          "position": [
+            0.06,
+            0.75,
+            0.1575
+          ]
+        },
+        {
+          "vertexIndex": 184,
+          "position": [
+            0.04,
+            0.757,
+            0.14
+          ]
+        },
+        {
+          "vertexIndex": 235,
+          "position": [
+            0.04,
+            0.753,
+            0.1375
+          ]
+        },
+        {
+          "vertexIndex": 354,
+          "position": [
+            0.045,
+            0.758,
+            0.1375
+          ]
+        },
+        {
+          "vertexIndex": 380,
+          "position": [
+            0.045,
+            0.758,
+            0.1425
+          ]
+        },
+        {
+          "vertexIndex": 526,
+          "position": [
+            0.05,
+            0.746,
+            0.1625
+          ]
+        },
+        {
+          "vertexIndex": 553,
+          "position": [
+            0.05167,
+            0.746,
+            0.1575
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 3.8e-05,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "灰色几何印刷鼠标垫",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 120,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 890,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            0.16833,
+            0.761,
+            0.02333
+          ]
+        },
+        {
+          "vertexIndex": 381,
+          "position": [
+            0.25333,
+            0.761,
+            0.07
+          ]
+        },
+        {
+          "vertexIndex": 417,
+          "position": [
+            0.16833,
+            0.761,
+            0.14
+          ]
+        },
+        {
+          "vertexIndex": 456,
+          "position": [
+            0.16833,
+            0.761,
+            0.21
+          ]
+        },
+        {
+          "vertexIndex": 526,
+          "position": [
+            0.31,
+            0.757,
+            0.25667
+          ]
+        },
+        {
+          "vertexIndex": 555,
+          "position": [
+            0.395,
+            0.757,
+            0.21
+          ]
+        },
+        {
+          "vertexIndex": 592,
+          "position": [
+            0.33833,
+            0.757,
+            0.14
+          ]
+        },
+        {
+          "vertexIndex": 631,
+          "position": [
+            0.33833,
+            0.757,
+            0.07
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0004404724736007916,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "无线鼠标壳体",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 61,
+      "undecidedVertexCount": 18,
+      "outsideVertexCount": 2586,
+      "sampledVertexCount": 2665,
+      "totalVertexCount": 2665,
+      "samplingStride": 1,
+      "triangleCount": 4992,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 318,
+          "position": [
+            0.36446,
+            0.80297,
+            0.15813
+          ]
+        },
+        {
+          "vertexIndex": 445,
+          "position": [
+            0.3663,
+            0.80171,
+            0.14794
+          ]
+        },
+        {
+          "vertexIndex": 599,
+          "position": [
+            0.3558,
+            0.79897,
+            0.20403
+          ]
+        },
+        {
+          "vertexIndex": 795,
+          "position": [
+            0.35465,
+            0.79534,
+            0.21376
+          ]
+        },
+        {
+          "vertexIndex": 1544,
+          "position": [
+            0.38231,
+            0.7781,
+            0.11564
+          ]
+        },
+        {
+          "vertexIndex": 1866,
+          "position": [
+            0.38769,
+            0.77066,
+            0.12761
+          ]
+        },
+        {
+          "vertexIndex": 1995,
+          "position": [
+            0.38736,
+            0.76815,
+            0.13451
+          ]
+        },
+        {
+          "vertexIndex": 2101,
+          "position": [
+            0.37068,
+            0.76601,
+            0.20121
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00013949013441817316,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "鼠标底盘",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 106,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 906,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            0.35949,
+            0.769,
+            0.12362
+          ]
+        },
+        {
+          "vertexIndex": 382,
+          "position": [
+            0.3725,
+            0.769,
+            0.14471
+          ]
+        },
+        {
+          "vertexIndex": 432,
+          "position": [
+            0.35448,
+            0.769,
+            0.17421
+          ]
+        },
+        {
+          "vertexIndex": 460,
+          "position": [
+            0.35869,
+            0.769,
+            0.19276
+          ]
+        },
+        {
+          "vertexIndex": 487,
+          "position": [
+            0.35849,
+            0.769,
+            0.21004
+          ]
+        },
+        {
+          "vertexIndex": 556,
+          "position": [
+            0.38071,
+            0.761,
+            0.19909
+          ]
+        },
+        {
+          "vertexIndex": 606,
+          "position": [
+            0.38111,
+            0.761,
+            0.16452
+          ]
+        },
+        {
+          "vertexIndex": 633,
+          "position": [
+            0.39012,
+            0.761,
+            0.14977
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00013759338646897242,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "鼠标滚轮",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 7,
+      "undecidedVertexCount": 1,
+      "outsideVertexCount": 551,
+      "sampledVertexCount": 559,
+      "totalVertexCount": 559,
+      "samplingStride": 1,
+      "triangleCount": 832,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 34,
+          "position": [
+            0.37137,
+            0.79213,
+            0.14267
+          ]
+        },
+        {
+          "vertexIndex": 41,
+          "position": [
+            0.377,
+            0.799,
+            0.14267
+          ]
+        },
+        {
+          "vertexIndex": 74,
+          "position": [
+            0.377,
+            0.799,
+            0.14133
+          ]
+        },
+        {
+          "vertexIndex": 321,
+          "position": [
+            0.363,
+            0.799,
+            0.132
+          ]
+        },
+        {
+          "vertexIndex": 354,
+          "position": [
+            0.363,
+            0.799,
+            0.13067
+          ]
+        },
+        {
+          "vertexIndex": 380,
+          "position": [
+            0.36863,
+            0.80587,
+            0.12933
+          ]
+        },
+        {
+          "vertexIndex": 387,
+          "position": [
+            0.363,
+            0.799,
+            0.12933
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 2.5455844122715716e-05,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "鼠标左防滑侧裙",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 88,
+      "undecidedVertexCount": 8,
+      "outsideVertexCount": 918,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 14,
+          "position": [
+            0.33399,
+            0.78917,
+            0.19327
+          ]
+        },
+        {
+          "vertexIndex": 67,
+          "position": [
+            0.33526,
+            0.78183,
+            0.18886
+          ]
+        },
+        {
+          "vertexIndex": 95,
+          "position": [
+            0.33779,
+            0.77817,
+            0.18005
+          ]
+        },
+        {
+          "vertexIndex": 122,
+          "position": [
+            0.33906,
+            0.7745,
+            0.17565
+          ]
+        },
+        {
+          "vertexIndex": 183,
+          "position": [
+            0.33801,
+            0.78917,
+            0.14673
+          ]
+        },
+        {
+          "vertexIndex": 210,
+          "position": [
+            0.33674,
+            0.7855,
+            0.15114
+          ]
+        },
+        {
+          "vertexIndex": 237,
+          "position": [
+            0.33548,
+            0.78183,
+            0.15554
+          ]
+        },
+        {
+          "vertexIndex": 264,
+          "position": [
+            0.33421,
+            0.77817,
+            0.15995
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 6.414718388206923e-05,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "鼠标右防滑侧裙",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 88,
+      "undecidedVertexCount": 8,
+      "outsideVertexCount": 918,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 14,
+          "position": [
+            0.40199,
+            0.78917,
+            0.19327
+          ]
+        },
+        {
+          "vertexIndex": 67,
+          "position": [
+            0.40326,
+            0.78183,
+            0.18886
+          ]
+        },
+        {
+          "vertexIndex": 95,
+          "position": [
+            0.40579,
+            0.77817,
+            0.18005
+          ]
+        },
+        {
+          "vertexIndex": 122,
+          "position": [
+            0.40706,
+            0.7745,
+            0.17565
+          ]
+        },
+        {
+          "vertexIndex": 183,
+          "position": [
+            0.40601,
+            0.78917,
+            0.14673
+          ]
+        },
+        {
+          "vertexIndex": 210,
+          "position": [
+            0.40474,
+            0.7855,
+            0.15114
+          ]
+        },
+        {
+          "vertexIndex": 237,
+          "position": [
+            0.40348,
+            0.78183,
+            0.15554
+          ]
+        },
+        {
+          "vertexIndex": 264,
+          "position": [
+            0.40221,
+            0.77817,
+            0.15995
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 6.414718388206923e-05,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "木盖",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": false,
+      "insideVertexCount": 0,
+      "undecidedVertexCount": 3,
+      "outsideVertexCount": 556,
+      "sampledVertexCount": 559,
+      "totalVertexCount": 559,
+      "samplingStride": 1,
+      "triangleCount": 832,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00013357020625873124,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "木盖提钮",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 11,
+      "undecidedVertexCount": 7,
+      "outsideVertexCount": 2647,
+      "sampledVertexCount": 2665,
+      "totalVertexCount": 2665,
+      "samplingStride": 1,
+      "triangleCount": 4992,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 380,
+          "position": [
+            0.06733,
+            0.91647,
+            -0.02325
+          ]
+        },
+        {
+          "vertexIndex": 445,
+          "position": [
+            0.06683,
+            0.91624,
+            -0.02386
+          ]
+        },
+        {
+          "vertexIndex": 446,
+          "position": [
+            0.06647,
+            0.91624,
+            -0.02353
+          ]
+        },
+        {
+          "vertexIndex": 792,
+          "position": [
+            0.06659,
+            0.91411,
+            -0.01178
+          ]
+        },
+        {
+          "vertexIndex": 1670,
+          "position": [
+            0.07295,
+            0.90732,
+            -0.02973
+          ]
+        },
+        {
+          "vertexIndex": 1799,
+          "position": [
+            0.07359,
+            0.90634,
+            -0.02867
+          ]
+        },
+        {
+          "vertexIndex": 1864,
+          "position": [
+            0.07341,
+            0.90589,
+            -0.02822
+          ]
+        },
+        {
+          "vertexIndex": 2232,
+          "position": [
+            0.07277,
+            0.90376,
+            -0.01585
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 3.411744421846397e-05,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "杯把手",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 947,
+      "undecidedVertexCount": 31,
+      "outsideVertexCount": 1447,
+      "sampledVertexCount": 2425,
+      "totalVertexCount": 2425,
+      "samplingStride": 1,
+      "triangleCount": 4608,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 271,
+          "position": [
+            0.13719,
+            0.78908,
+            -0.01755
+          ]
+        },
+        {
+          "vertexIndex": 684,
+          "position": [
+            0.15079,
+            0.83376,
+            -0.01527
+          ]
+        },
+        {
+          "vertexIndex": 943,
+          "position": [
+            0.122,
+            0.80222,
+            -0.01654
+          ]
+        },
+        {
+          "vertexIndex": 1081,
+          "position": [
+            0.13749,
+            0.84128,
+            -0.01873
+          ]
+        },
+        {
+          "vertexIndex": 1204,
+          "position": [
+            0.10751,
+            0.8351,
+            -0.02
+          ]
+        },
+        {
+          "vertexIndex": 1326,
+          "position": [
+            0.11592,
+            0.8066,
+            -0.02127
+          ]
+        },
+        {
+          "vertexIndex": 1480,
+          "position": [
+            0.1235,
+            0.84793,
+            -0.02346
+          ]
+        },
+        {
+          "vertexIndex": 1731,
+          "position": [
+            0.14158,
+            0.80339,
+            -0.02473
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0001113066035776853,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "白色纸垫",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 120,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 894,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            0.0075,
+            0.76275,
+            -0.0825
+          ]
+        },
+        {
+          "vertexIndex": 381,
+          "position": [
+            0.045,
+            0.76275,
+            -0.0575
+          ]
+        },
+        {
+          "vertexIndex": 417,
+          "position": [
+            0.0075,
+            0.76275,
+            -0.02
+          ]
+        },
+        {
+          "vertexIndex": 456,
+          "position": [
+            0.0075,
+            0.76275,
+            0.0175
+          ]
+        },
+        {
+          "vertexIndex": 526,
+          "position": [
+            0.07,
+            0.76125,
+            0.0425
+          ]
+        },
+        {
+          "vertexIndex": 555,
+          "position": [
+            0.1075,
+            0.76125,
+            0.0175
+          ]
+        },
+        {
+          "vertexIndex": 592,
+          "position": [
+            0.0825,
+            0.76125,
+            -0.02
+          ]
+        },
+        {
+          "vertexIndex": 631,
+          "position": [
+            0.0825,
+            0.76125,
+            -0.0575
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00021213733759053356,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "UZSPACE 水壶",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 22,
+      "undecidedVertexCount": 1,
+      "outsideVertexCount": 346,
+      "sampledVertexCount": 369,
+      "totalVertexCount": 369,
+      "samplingStride": 1,
+      "triangleCount": 640,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 20,
+          "position": [
+            0.46564,
+            1.13202,
+            0.0703
+          ]
+        },
+        {
+          "vertexIndex": 38,
+          "position": [
+            0.47749,
+            1.13208,
+            0.06426
+          ]
+        },
+        {
+          "vertexIndex": 56,
+          "position": [
+            0.48689,
+            1.13214,
+            0.05486
+          ]
+        },
+        {
+          "vertexIndex": 110,
+          "position": [
+            0.49293,
+            1.13221,
+            0.01674
+          ]
+        },
+        {
+          "vertexIndex": 128,
+          "position": [
+            0.48689,
+            1.13219,
+            0.0049
+          ]
+        },
+        {
+          "vertexIndex": 146,
+          "position": [
+            0.47749,
+            1.13216,
+            -0.00451
+          ]
+        },
+        {
+          "vertexIndex": 164,
+          "position": [
+            0.46564,
+            1.13211,
+            -0.01054
+          ]
+        },
+        {
+          "vertexIndex": 203,
+          "position": [
+            0.44403,
+            1.36959,
+            0.00751
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00029582442427899695,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "水壶黑盖",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": false,
+      "insideVertexCount": 0,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 559,
+      "sampledVertexCount": 559,
+      "totalVertexCount": 559,
+      "samplingStride": 1,
+      "triangleCount": 832,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00011453840229372854,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "水壶挂带",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 196,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 816,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 105,
+          "position": [
+            0.48504,
+            1.44346,
+            0.0619
+          ]
+        },
+        {
+          "vertexIndex": 133,
+          "position": [
+            0.48516,
+            1.41679,
+            0.0612
+          ]
+        },
+        {
+          "vertexIndex": 187,
+          "position": [
+            0.4666,
+            1.5367,
+            0.06001
+          ]
+        },
+        {
+          "vertexIndex": 215,
+          "position": [
+            0.46672,
+            1.51004,
+            0.06064
+          ]
+        },
+        {
+          "vertexIndex": 774,
+          "position": [
+            0.47747,
+            1.45675,
+            0.06225
+          ]
+        },
+        {
+          "vertexIndex": 807,
+          "position": [
+            0.46866,
+            1.41671,
+            0.0622
+          ]
+        },
+        {
+          "vertexIndex": 861,
+          "position": [
+            0.4801,
+            1.53677,
+            0.05834
+          ]
+        },
+        {
+          "vertexIndex": 889,
+          "position": [
+            0.47722,
+            1.51009,
+            0.05831
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0001612396294339578,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "手写纸与黄边笔记本",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 118,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 892,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.48333,
+            0.765,
+            0.10667
+          ]
+        },
+        {
+          "vertexIndex": 380,
+          "position": [
+            -0.45,
+            0.765,
+            0.14
+          ]
+        },
+        {
+          "vertexIndex": 408,
+          "position": [
+            -0.41667,
+            0.765,
+            0.17333
+          ]
+        },
+        {
+          "vertexIndex": 445,
+          "position": [
+            -0.45,
+            0.765,
+            0.22333
+          ]
+        },
+        {
+          "vertexIndex": 483,
+          "position": [
+            -0.46667,
+            0.765,
+            0.27333
+          ]
+        },
+        {
+          "vertexIndex": 544,
+          "position": [
+            -0.31667,
+            0.759,
+            0.25667
+          ]
+        },
+        {
+          "vertexIndex": 579,
+          "position": [
+            -0.38333,
+            0.759,
+            0.20667
+          ]
+        },
+        {
+          "vertexIndex": 609,
+          "position": [
+            -0.31667,
+            0.759,
+            0.17333
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00028290634492708004,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "黑色笔袋",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 58,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 954,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.45064,
+            0.8215,
+            0.12168
+          ]
+        },
+        {
+          "vertexIndex": 367,
+          "position": [
+            -0.41962,
+            0.8215,
+            0.14249
+          ]
+        },
+        {
+          "vertexIndex": 382,
+          "position": [
+            -0.38861,
+            0.8215,
+            0.16329
+          ]
+        },
+        {
+          "vertexIndex": 528,
+          "position": [
+            -0.36002,
+            0.7665,
+            0.2369
+          ]
+        },
+        {
+          "vertexIndex": 543,
+          "position": [
+            -0.32349,
+            0.7665,
+            0.24465
+          ]
+        },
+        {
+          "vertexIndex": 566,
+          "position": [
+            -0.36863,
+            0.7665,
+            0.21019
+          ]
+        },
+        {
+          "vertexIndex": 698,
+          "position": [
+            -0.34589,
+            0.81692,
+            0.25056
+          ]
+        },
+        {
+          "vertexIndex": 983,
+          "position": [
+            -0.39722,
+            0.77567,
+            0.13658
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00029237173119164584,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "黄边笔记本",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 108,
+      "undecidedVertexCount": 4,
+      "outsideVertexCount": 902,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            -0.51179,
+            0.777,
+            0.12028
+          ]
+        },
+        {
+          "vertexIndex": 379,
+          "position": [
+            -0.49567,
+            0.777,
+            0.15305
+          ]
+        },
+        {
+          "vertexIndex": 418,
+          "position": [
+            -0.5024,
+            0.777,
+            0.19755
+          ]
+        },
+        {
+          "vertexIndex": 456,
+          "position": [
+            -0.52972,
+            0.777,
+            0.23893
+          ]
+        },
+        {
+          "vertexIndex": 485,
+          "position": [
+            -0.47241,
+            0.777,
+            0.27793
+          ]
+        },
+        {
+          "vertexIndex": 544,
+          "position": [
+            -0.32597,
+            0.765,
+            0.28489
+          ]
+        },
+        {
+          "vertexIndex": 583,
+          "position": [
+            -0.31924,
+            0.765,
+            0.2404
+          ]
+        },
+        {
+          "vertexIndex": 621,
+          "position": [
+            -0.33312,
+            0.765,
+            0.19279
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0003487780463274603,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "白色电源适配器",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 36,
+      "undecidedVertexCount": 6,
+      "outsideVertexCount": 972,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 354,
+          "position": [
+            -0.52,
+            0.7835,
+            -0.26917
+          ]
+        },
+        {
+          "vertexIndex": 369,
+          "position": [
+            -0.49333,
+            0.7835,
+            -0.26333
+          ]
+        },
+        {
+          "vertexIndex": 443,
+          "position": [
+            -0.54667,
+            0.7835,
+            -0.22833
+          ]
+        },
+        {
+          "vertexIndex": 470,
+          "position": [
+            -0.53333,
+            0.7835,
+            -0.21667
+          ]
+        },
+        {
+          "vertexIndex": 484,
+          "position": [
+            -0.52,
+            0.7835,
+            -0.21083
+          ]
+        },
+        {
+          "vertexIndex": 529,
+          "position": [
+            -0.44,
+            0.7485,
+            -0.21083
+          ]
+        },
+        {
+          "vertexIndex": 566,
+          "position": [
+            -0.46667,
+            0.7485,
+            -0.22833
+          ]
+        },
+        {
+          "vertexIndex": 635,
+          "position": [
+            -0.41333,
+            0.7485,
+            -0.2575
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00017811513130556878,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "白色插排",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 122,
+      "undecidedVertexCount": 0,
+      "outsideVertexCount": 892,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 352,
+          "position": [
+            0.205,
+            0.7715,
+            -0.26333
+          ]
+        },
+        {
+          "vertexIndex": 417,
+          "position": [
+            0.205,
+            0.7715,
+            -0.23
+          ]
+        },
+        {
+          "vertexIndex": 460,
+          "position": [
+            0.305,
+            0.7715,
+            -0.21
+          ]
+        },
+        {
+          "vertexIndex": 539,
+          "position": [
+            0.33,
+            0.7465,
+            -0.20333
+          ]
+        },
+        {
+          "vertexIndex": 607,
+          "position": [
+            0.405,
+            0.7465,
+            -0.23667
+          ]
+        },
+        {
+          "vertexIndex": 647,
+          "position": [
+            0.43,
+            0.7465,
+            -0.25667
+          ]
+        },
+        {
+          "vertexIndex": 751,
+          "position": [
+            0.43,
+            0.76108,
+            -0.19
+          ]
+        },
+        {
+          "vertexIndex": 895,
+          "position": [
+            0.205,
+            0.76525,
+            -0.27
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.0003114883625434504,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "白色 USB-C 扩展坞",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 16,
+      "undecidedVertexCount": 8,
+      "outsideVertexCount": 990,
+      "sampledVertexCount": 1014,
+      "totalVertexCount": 1014,
+      "samplingStride": 1,
+      "triangleCount": 1728,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 690,
+          "position": [
+            0.28684,
+            0.78892,
+            0.04267
+          ]
+        },
+        {
+          "vertexIndex": 704,
+          "position": [
+            0.28973,
+            0.78433,
+            0.04232
+          ]
+        },
+        {
+          "vertexIndex": 717,
+          "position": [
+            0.28973,
+            0.77975,
+            0.04232
+          ]
+        },
+        {
+          "vertexIndex": 730,
+          "position": [
+            0.28973,
+            0.77517,
+            0.04232
+          ]
+        },
+        {
+          "vertexIndex": 950,
+          "position": [
+            0.31316,
+            0.75683,
+            0.01733
+          ]
+        },
+        {
+          "vertexIndex": 952,
+          "position": [
+            0.30737,
+            0.75683,
+            0.01803
+          ]
+        },
+        {
+          "vertexIndex": 964,
+          "position": [
+            0.31027,
+            0.75225,
+            0.01768
+          ]
+        },
+        {
+          "vertexIndex": 977,
+          "position": [
+            0.31027,
+            0.74767,
+            0.01768
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 7.141670672888796e-05,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "蓝色中性笔",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 39,
+      "undecidedVertexCount": 9,
+      "outsideVertexCount": 511,
+      "sampledVertexCount": 559,
+      "totalVertexCount": 559,
+      "samplingStride": 1,
+      "triangleCount": 832,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 34,
+          "position": [
+            -0.36446,
+            0.77802,
+            0.28449
+          ]
+        },
+        {
+          "vertexIndex": 41,
+          "position": [
+            -0.36283,
+            0.77663,
+            0.28042
+          ]
+        },
+        {
+          "vertexIndex": 63,
+          "position": [
+            -0.36468,
+            0.78004,
+            0.28503
+          ]
+        },
+        {
+          "vertexIndex": 70,
+          "position": [
+            -0.37222,
+            0.77655,
+            0.2797
+          ]
+        },
+        {
+          "vertexIndex": 96,
+          "position": [
+            -0.37306,
+            0.78005,
+            0.28181
+          ]
+        },
+        {
+          "vertexIndex": 128,
+          "position": [
+            -0.38141,
+            0.7808,
+            0.27852
+          ]
+        },
+        {
+          "vertexIndex": 291,
+          "position": [
+            -0.42304,
+            0.78255,
+            0.26178
+          ]
+        },
+        {
+          "vertexIndex": 343,
+          "position": [
+            -0.43661,
+            0.77902,
+            0.24735
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 0.00011417284134153795,
+      "rayDirectionCount": 3
+    },
+    {
+      "name": "笔帽",
+      "analyzed": true,
+      "error": null,
+      "selfIntersecting": true,
+      "insideVertexCount": 7,
+      "undecidedVertexCount": 2,
+      "outsideVertexCount": 550,
+      "sampledVertexCount": 559,
+      "totalVertexCount": 559,
+      "samplingStride": 1,
+      "triangleCount": 832,
+      "degenerateTriangleCount": 0,
+      "worstRegions": [
+        {
+          "vertexIndex": 37,
+          "position": [
+            -0.42808,
+            0.77635,
+            0.2559
+          ]
+        },
+        {
+          "vertexIndex": 44,
+          "position": [
+            -0.42648,
+            0.7775,
+            0.25111
+          ]
+        },
+        {
+          "vertexIndex": 70,
+          "position": [
+            -0.43059,
+            0.77627,
+            0.2551
+          ]
+        },
+        {
+          "vertexIndex": 103,
+          "position": [
+            -0.4331,
+            0.7762,
+            0.2543
+          ]
+        },
+        {
+          "vertexIndex": 350,
+          "position": [
+            -0.44932,
+            0.78432,
+            0.24462
+          ]
+        },
+        {
+          "vertexIndex": 376,
+          "position": [
+            -0.451,
+            0.7787,
+            0.24133
+          ]
+        },
+        {
+          "vertexIndex": 383,
+          "position": [
+            -0.4518,
+            0.7844,
+            0.24375
+          ]
+        }
+      ],
+      "normalSource": "centroid",
+      "normalFallbackCount": 0,
+      "epsilon": 3.900072307022011e-05,
+      "rayDirectionCount": 3
+    }
+  ],
+  "errors": []
+}

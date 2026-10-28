@@ -1,0 +1,959 @@
+{
+  "targetName": "Office Cubicle Workstation Diorama",
+  "sourceImage": "D:/play/4.jpg",
+  "preSpecAssessment": {
+    "objectClass": {
+      "primaryType": "办公位组合体（桌、隔断、书架、笔记本、显示器、键鼠与桌面陈设组成的有界场景资产）",
+      "primaryDomain": "object",
+      "formLanguage": [
+        "hard-surface",
+        "architectural",
+        "geometric",
+        "organic-accents",
+        "transparent-like"
+      ],
+      "structureKind": [
+        "compound-object",
+        "layered-shell",
+        "repeated-modules",
+        "articulated-assembly"
+      ],
+      "motionPotential": [
+        "whole-object-transform",
+        "articulated",
+        "detachable",
+        "effect-emitter"
+      ],
+      "materialFamilies": [
+        "wood",
+        "metal",
+        "plastic",
+        "rubber",
+        "cloth",
+        "glass-like",
+        "liquid-like",
+        "paper",
+        "mixed"
+      ],
+      "notes": "有界工作位场景：浅木纹桌体与三面隔断为建筑层；笔记本、AOC 显示器、98 键键盘为可动电子层；茶杯、水壶、笔袋/纸张、线缆为陈设层。隐藏面按常见结构补全，接受程序化风格化；不要求品牌文字逐像素一致。"
+    },
+    "complexity": {
+      "tier": "ultra-complex",
+      "scores": {
+        "silhouetteComplexity": 3,
+        "componentCount": 3,
+        "hierarchyDepth": 3,
+        "repetitionDensity": 3,
+        "materialLayerCount": 3,
+        "localDetailDensity": 3,
+        "occlusionRisk": 3,
+        "actionReadinessNeed": 3
+      },
+      "estimatedCounts": {
+        "macroComponents": 12,
+        "mesoComponents": 46,
+        "microFeatureGroups": 32,
+        "materialLayers": 16,
+        "repetitionSystems": 6
+      },
+      "reasoning": [
+        "四视图显示一个由桌体/隔断/书架与多件电子设备组成的复合场景，非单一物体。",
+        "可见部件数量多且层级深：隔断框架→玻璃→贴纸；笔记本→上盖→屏幕→UI；键盘→外壳→98 键帽→RGB 灯。",
+        "重复系统明确：98 键、桌面图标网格、成排书籍、线缆、隔断压条、鼠标垫缝线。",
+        "材质层多且差异大：木材、铝型材、磨砂/透明玻璃、白色镁铝合金、黑色塑料、PBT 键帽、布面、茶汤、纸张。",
+        "局部细节（木纹、灰尘、指纹、屏幕小字、线缆遮挡）与多自由度动画需求把复杂度推到 ultra-complex。"
+      ]
+    },
+    "specDepthDecision": {
+      "requiredDepth": "ultra-complex",
+      "minimumComponentLevels": [
+        "macro",
+        "meso",
+        "micro"
+      ],
+      "needsRepetitionSystems": true,
+      "needsMaterialLocalOverrides": true,
+      "needsMultipleReviewViews": true,
+      "needsActionReadyHierarchy": true,
+      "rationale": "工作位场景的身份来自空间布局 + 三类重复系统（键帽/图标/书籍）+ 多材质界面；必须 macro→meso→micro 三层建模并保留可动层级。"
+    },
+    "unknownsToResolveBeforeImplementation": [
+      "显示器背面、笔记本左右接口、桌下桌腿与线缆走向被遮挡，按常见结构推断。",
+      "书架顶部与书籍上缘被裁切，按可见高度补全，不虚构书名。",
+      "键盘右上徽标与鼠标垫品牌字样不可完整辨认，以低对比度标记近似。",
+      "屏幕 UI 小字内容不可逐字辨认，使用程序化中文/英文界面近似。",
+      "茶杯内部与茶汤下方细节不可见，使用半透明液体材质推断。",
+      "1.jpg 与 2–4.jpg 的键盘/鼠标款式不同，采用 2–4.jpg 状态作为唯一主状态。",
+      "左侧邻桌与办公椅仅部分入镜，作为低优先级环境补全，不纳入主评分。"
+    ],
+    "detailInventory": {
+      "scanMethod": "grid-3x3",
+      "targetMinDetails": 16,
+      "note": "按 4.jpg 的 3×3 分区逐格扫描，再以高清局部裁剪复核。每条细节映射到最终 spec 的 component.localFeatures 或 material.localOverrides。",
+      "details": [
+        {
+          "id": "wood-desk-grain",
+          "kind": "linework",
+          "description": "桌面浅木纹：暖米黄底、细直纹沿 X 方向贯穿，局部有轻微色带与木节；不是均匀噪点。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "large",
+          "affects": "albedo/roughness/height",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "woodOak/desk-grain"
+          },
+          "evidenceRef": "4.jpg 桌面 0.02-0.95,0.86-0.99",
+          "confidence": 0.9
+        },
+        {
+          "id": "wood-partition-grain",
+          "kind": "linework",
+          "description": "隔断木饰面的直纹为竖向，纹理比桌面更细，靠近铝框处略深。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "large",
+          "affects": "albedo/normal direction",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "woodOak/partition-grain"
+          },
+          "evidenceRef": "4.jpg 背板 0.18-0.82,0.30-0.48",
+          "confidence": 0.88
+        },
+        {
+          "id": "desk-edge-wear",
+          "kind": "chip",
+          "description": "桌面前缘右侧有约 2-3 mm 的浅色崩边，边缘清漆局部磨失。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "small",
+          "affects": "silhouette/roughness",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "desk/desk-edge-wear"
+          },
+          "evidenceRef": "4.jpg 前缘 0.55-0.85,0.93-0.96",
+          "confidence": 0.6
+        },
+        {
+          "id": "mullion-chamfer",
+          "kind": "bevel",
+          "description": "铝立柱正面有 1.5-2 mm 倒角，窄高光连续；立柱截面带两道纵向浅槽。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "medium",
+          "affects": "geometry highlight",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "partition/mullion-micro-bevel"
+          },
+          "evidenceRef": "4.jpg 立柱 0.165-0.19 与 0.80-0.83",
+          "confidence": 0.82
+        },
+        {
+          "id": "frosted-sheen",
+          "kind": "gloss",
+          "description": "磨砂玻璃呈漫反射灰绿，表面有弱宽高光带，能透出背后轮廓但不清晰。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "large",
+          "affects": "roughness/transmission",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "frostedGlass/frost-band"
+          },
+          "evidenceRef": "4.jpg 左右玻璃 0.00-0.15,0.12-0.45",
+          "confidence": 0.84
+        },
+        {
+          "id": "glass-retainer-groove",
+          "kind": "groove",
+          "description": "玻璃四周被铝压条夹持，压条与玻璃之间形成约 8 mm 深的暗缝。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "medium",
+          "affects": "AO geometry",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "partition/glass-retainer-groove"
+          },
+          "evidenceRef": "4.jpg 右玻璃边 0.83-0.87,0.22-0.48",
+          "confidence": 0.8
+        },
+        {
+          "id": "laptop-lid-chamfer",
+          "kind": "bevel",
+          "description": "白色上盖四周为 CNC 小倒角，边缘在办公室顶灯下形成细亮线。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "medium",
+          "affects": "geometry highlight",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "laptopLid/lid-edge-chamfer"
+          },
+          "evidenceRef": "4.jpg 上盖 0.20-0.46,0.40-0.47",
+          "confidence": 0.86
+        },
+        {
+          "id": "laptop-rtx-sticker",
+          "kind": "decal",
+          "description": "掌托右下的蓝绿色 RTX/Intel 贴纸组，约 28x12 mm，边缘略有翘起。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "small",
+          "affects": "albedo",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "laptopBase/rtx-sticker"
+          },
+          "evidenceRef": "4.jpg 0.43-0.47,0.59-0.62",
+          "confidence": 0.78
+        },
+        {
+          "id": "laptop-screen-ui",
+          "kind": "emissive",
+          "description": "屏幕为深蓝 Windows 壁纸，左上两列彩色图标，中央深色终端窗，底部任务栏。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "large",
+          "affects": "emissive/albedo",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "screenLaptop/taskbar-glow"
+          },
+          "evidenceRef": "4.jpg 0.22-0.44,0.38-0.55",
+          "confidence": 0.9
+        },
+        {
+          "id": "laptop-shell-sheen",
+          "kind": "gloss",
+          "description": "白色镁铝机身有柔和各向同性高光，掌托边缘亮、平面部略哑。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "medium",
+          "affects": "roughness/clearcoat",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "laptopWhite/soft-clearcoat"
+          },
+          "evidenceRef": "4.jpg 掌托 0.25-0.44,0.57-0.64",
+          "confidence": 0.82
+        },
+        {
+          "id": "monitor-bezel-sheen",
+          "kind": "gloss",
+          "description": "显示器黑边为细咬花塑料，窄边处因角度呈现一条锐利高光。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "small",
+          "affects": "roughness",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "monitorPlastic/bezel-sheen"
+          },
+          "evidenceRef": "4.jpg 边框 0.49-0.88,0.30-0.36",
+          "confidence": 0.8
+        },
+        {
+          "id": "aoc-logo",
+          "kind": "decal",
+          "description": "下巴中央银色 AOC 字标，宽约 35 mm，字距紧。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "small",
+          "affects": "albedo",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "monitor/aoc-logo"
+          },
+          "evidenceRef": "4.jpg 0.645-0.68,0.48-0.50",
+          "confidence": 0.9
+        },
+        {
+          "id": "monitor-app-window",
+          "kind": "emissive",
+          "description": "外接屏中央为深灰软件窗口，含中文列表与右侧说明栏；底部蓝条任务栏、右下时钟。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "large",
+          "affects": "emissive/albedo",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "screenMonitor/app-window"
+          },
+          "evidenceRef": "4.jpg 0.53-0.79,0.32-0.47",
+          "confidence": 0.88
+        },
+        {
+          "id": "keycap-gradient",
+          "kind": "decal",
+          "description": "键帽颜色由 F 区浅灰渐到底排深灰，modifier 明显更深，整体偏冷灰。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "large",
+          "affects": "albedo",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "keycapPBT/gradient-bands"
+          },
+          "evidenceRef": "4.jpg 0.27-0.64,0.73-0.84",
+          "confidence": 0.9
+        },
+        {
+          "id": "keycap-bevel",
+          "kind": "bevel",
+          "description": "每个键帽为倒角方台，顶面微凹；倒角在 RGB 透光下形成一圈亮边。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "medium",
+          "affects": "geometry highlight",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "keycapMatrix/keycap-bevel"
+          },
+          "evidenceRef": "4.jpg 键盘近景 0.28-0.62,0.74-0.83",
+          "confidence": 0.86
+        },
+        {
+          "id": "keyboard-rgb",
+          "kind": "emissive",
+          "description": "RGB 从键缝与轴体透出：左侧粉紫、中央蓝、右侧青绿到黄绿，亮度沿行变化。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "medium",
+          "affects": "emissive",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "keycapPBT/rgb-underlight"
+          },
+          "evidenceRef": "4.jpg 键盘 0.28-0.64,0.74-0.84",
+          "confidence": 0.9
+        },
+        {
+          "id": "keyboard-knob-knurl",
+          "kind": "ridge",
+          "description": "右上旋钮侧壁有细密竖向滚花，顶面为同心圆拉丝。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "small",
+          "affects": "geometry highlight",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "keyboardKnob/knurled-grip"
+          },
+          "evidenceRef": "4.jpg 0.60-0.63,0.73-0.76",
+          "confidence": 0.72
+        },
+        {
+          "id": "mousepad-print",
+          "kind": "decal",
+          "description": "鼠标垫灰底上印深灰/近黑几何斜带与细线，右上角有小字标识。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "large",
+          "affects": "albedo",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "mousepadFabric/geometric-print"
+          },
+          "evidenceRef": "4.jpg 0.66-0.97,0.67-0.90",
+          "confidence": 0.86
+        },
+        {
+          "id": "mousepad-stitch",
+          "kind": "stitch",
+          "description": "鼠标垫四周有约 4 mm 高的密缝边，线色比布面浅。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "medium",
+          "affects": "geometry/roughness",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "mousepad/stitched-edge"
+          },
+          "evidenceRef": "4.jpg 垫边 0.65-0.97,0.66-0.91",
+          "confidence": 0.75
+        },
+        {
+          "id": "mouse-grip-ridge",
+          "kind": "ridge",
+          "description": "鼠标左侧裙有两道浅凹槽/防滑棱，表面为细类肤涂层。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "small",
+          "affects": "normal/AO",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "mouseShell/side-grip-ridges"
+          },
+          "evidenceRef": "4.jpg 鼠标 0.79-0.88,0.73-0.82",
+          "confidence": 0.7
+        },
+        {
+          "id": "tea-meniscus",
+          "kind": "gloss",
+          "description": "深红茶汤液面靠近杯壁处有一圈细亮弧，液面略低于杯口约 12 mm。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "small",
+          "affects": "specular/transmission",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "teaLiquid/tea-surface-sheen"
+          },
+          "evidenceRef": "4.jpg 茶杯 0.62-0.67,0.64-0.75",
+          "confidence": 0.8
+        },
+        {
+          "id": "mug-lid-grain",
+          "kind": "linework",
+          "description": "棕色木盖有细年轮/直纹，边缘倒圆，顶面有一个同色小提钮。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "small",
+          "affects": "albedo/normal",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "mugLid/lid-wood-grain"
+          },
+          "evidenceRef": "4.jpg 0.615-0.675,0.615-0.66",
+          "confidence": 0.8
+        },
+        {
+          "id": "bottle-uzspace-label",
+          "kind": "decal",
+          "description": "灰绿水壶右侧有白色竖排 UZSPACE 字样，字高约 8 mm，下方有容量刻度。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "medium",
+          "affects": "albedo",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "bottleBody/uzspace-label"
+          },
+          "evidenceRef": "4.jpg 0.905-0.96,0.35-0.55",
+          "confidence": 0.92
+        },
+        {
+          "id": "bottle-strap-weave",
+          "kind": "stitch",
+          "description": "黑色挂带为尼龙织带，表面有横向织纹，从瓶盖环穿过并挂在玻璃钩上。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "small",
+          "affects": "normal",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "bottleStrap/strap-weave"
+          },
+          "evidenceRef": "4.jpg 0.91-0.97,0.20-0.32",
+          "confidence": 0.78
+        },
+        {
+          "id": "paper-handwriting",
+          "kind": "linework",
+          "description": "左侧白纸上有深蓝/黑手写字，行距不均，纸张局部卷曲并压住黄边笔记本。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "large",
+          "affects": "albedo/height",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "paperStack/handwriting"
+          },
+          "evidenceRef": "4.jpg 0.00-0.24,0.78-0.96",
+          "confidence": 0.88
+        },
+        {
+          "id": "pencilcase-zip",
+          "kind": "fastener",
+          "description": "黑色笔袋正面有连续金属拉链齿与拉头，旁边缝有浅色布标。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "small",
+          "affects": "geometry highlight",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "pencilCase/zip-teeth"
+          },
+          "evidenceRef": "4.jpg 0.02-0.17,0.72-0.85",
+          "confidence": 0.72
+        },
+        {
+          "id": "powerstrip-led",
+          "kind": "emissive",
+          "description": "白色插排靠近显示器底座处有一枚很小的红色/橙色电源指示灯。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "small",
+          "affects": "emissive",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "powerStrip/indicator-led"
+          },
+          "evidenceRef": "4.jpg 0.50-0.60,0.62-0.67",
+          "confidence": 0.65
+        },
+        {
+          "id": "white-cable-sheen",
+          "kind": "gloss",
+          "description": "白色 USB-C 线从笔记本左侧绕到桌后，表面为哑光 PVC，局部有弱高光。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "large",
+          "affects": "specular/roughness",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "rubberCable/cable-sheen"
+          },
+          "evidenceRef": "4.jpg 0.06-0.26,0.51-0.72",
+          "confidence": 0.7
+        },
+        {
+          "id": "shelf-book-bands",
+          "kind": "decal",
+          "description": "书架左侧书列有紫、粉、米、深蓝、黑、白、绿、橙等书脊，宽窄与高度不一。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "large",
+          "affects": "albedo",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "shelfProps/book-spine-color-bands"
+          },
+          "evidenceRef": "4.jpg 0.10-0.40,0.00-0.08",
+          "confidence": 0.8
+        },
+        {
+          "id": "teajar-lid-gloss",
+          "kind": "gloss",
+          "description": "书架两只玻璃茶罐的金属/塑料盖上各有一圈窄高光，罐内茶叶为深褐/紫色。",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "small",
+          "affects": "specular",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "shelfProps/tea-jar-lid-gloss"
+          },
+          "evidenceRef": "4.jpg 0.50-0.59 与 0.56-0.62,0.00-0.08",
+          "confidence": 0.7
+        }
+      ]
+    },
+    "anatomy": {
+      "applies": false,
+      "styleHeads": 0.0,
+      "proportions": {
+        "headUnit": 0.0,
+        "torso": 0.0,
+        "legs": 0.0,
+        "shoulderWidth": 0.0,
+        "hipWidth": 0.0
+      },
+      "pose": {
+        "type": "unassessed",
+        "jointAngles": {}
+      },
+      "faceLandmarks": {
+        "eyeLine": 0.0,
+        "eyeSpacing": 0.0,
+        "noseBase": 0.0,
+        "mouthLine": 0.0,
+        "hairline": 0.0
+      },
+      "features": [],
+      "confidence": 0.0,
+      "note": "Only meaningful when objectClass.primaryDomain is character or hybrid. Set applies=true and fill from forge/stage1_intake/extract_landmarks.py. See grimoire/character/reconstruction.md and grimoire/character/likeness_maximization.md."
+    },
+    "sourceImage": "D:/play/4.jpg"
+  },
+  "qualityContract": {
+    "qualityBar": "ultra-complex",
+    "definitionOfDone": [
+      "主视角（4.jpg 机位）下，桌面/隔断/书架的包围体、洞口、磨砂玻璃与铝框比例正确，笔记本-显示器-键鼠-杯-瓶的相对位置与遮挡关系与参考一致。",
+      "白色 16 英寸笔记本置于倾斜铝支架，屏幕约 105° 打开，屏内蓝色壁纸、左侧图标网格、中央终端与任务栏可在主视角辨认。",
+      "AOC 27 英寸 16:9 显示器有窄黑边、下巴 AOC 标记、圆盘+立柱底座，屏幕显示蓝青流线壁纸与深色软件窗口。",
+      "98 键键盘具备渐变灰键帽、右上旋钮、RGB 透光与可按下动画；鼠标在灰色几何印刷鼠标垫上，接触阴影正确。",
+      "玻璃茶杯有深红茶汤、棕色木盖与把手；UZSPACE 灰绿水壶悬挂在右磨砂玻璃上并带挂带；左侧笔袋/手写纸/电源/线缆组可辨认。",
+      "木材横/竖纹方向正确，铝型材窄高光、磨砂玻璃透光、键帽磨砂、布面鼠标垫、茶汤折射、屏幕自发光均通过材质层评审。",
+      "装配门禁：每个部件有父级/插槽/接触类型，桌面接触无悬空，线缆端点落在真实接口；自相交检查通过。",
+      "多角度评审：正面、左 3/4、右 3/4、俯视、近景（键盘/杯）五个视角均无身份性缺陷；至少 2 个非平面部件在离轴视角保持体积。",
+      "可动性：笔记本开合、显示器俯仰/旋转、键帽下压、RGB 扫描、鼠标移动/滚轮、蒸汽和灯光切换可被脚本调用。"
+    ],
+    "minimumSpecDepth": {
+      "macroComponents": 12,
+      "mesoComponents": 40,
+      "microFeatureGroups": 24,
+      "materialLayers": 16,
+      "repetitionSystems": 6,
+      "reviewViewpoints": 5
+    },
+    "featureGroups": [
+      {
+        "id": "workstation-architecture",
+        "name": "隔断/桌面/书架的包围结构",
+        "required": true,
+        "qualityCriteria": [
+          "背板+左右侧板形成三面围合；下段木饰面、上段磨砂玻璃、银灰铝立柱与四周压条比例正确。",
+          "桌面 1600×700×25 mm 级别，后缘贴背板，前缘直边；桌面与侧板接触无悬空。",
+          "顶部搁板与背板同宽，包含彩脊书列、两只玻璃茶罐与黑色茶叶罐；书列有高度/颜色变化。"
+        ],
+        "evidenceRefs": [
+          "4.jpg:full",
+          "4.jpg:shelf",
+          "2.jpg:left",
+          "3.jpg:right"
+        ],
+        "failureModes": [
+          "磨砂玻璃变成完全透明或镜面",
+          "隔断比例过矮/过厚，像普通柜子",
+          "书架缺失或书籍等宽等高排列"
+        ]
+      },
+      {
+        "id": "laptop-stand-system",
+        "name": "白色笔记本与铝支架",
+        "required": true,
+        "qualityCriteria": [
+          "16 英寸 16:10 屏幕，白色薄楔形下壳，深色键盘面与白色键帽；上盖开合约 105°。",
+          "屏内蓝色流线壁纸、左侧两列图标、居中深色终端窗、底部任务栏与右下贴纸在主视角可辨。",
+          "铝支架为双托臂+底梁结构，倾角 12–15°，前端硅胶托钩固定笔记本前缘。"
+        ],
+        "evidenceRefs": [
+          "4.jpg:laptop",
+          "3.jpg:laptop",
+          "2.jpg:laptop"
+        ],
+        "failureModes": [
+          "屏幕全黑或空白",
+          "上盖厚度与机身不符",
+          "笔记本悬空或支架穿模"
+        ]
+      },
+      {
+        "id": "aoc-monitor-system",
+        "name": "AOC 显示器与底座",
+        "required": true,
+        "qualityCriteria": [
+          "27 英寸 16:9 面板，三边窄边、下巴较厚，AOC 标记居中；背壳有弧面过渡。",
+          "圆盘底座约 Ø200–220 mm，立柱略偏后；屏幕相对桌面右倾 2–3°，可水平/俯仰旋转。",
+          "屏幕内容为同款蓝青壁纸 + 深灰软件窗口 + 底部任务栏 + 右下时钟日期。"
+        ],
+        "evidenceRefs": [
+          "4.jpg:monitor",
+          "2.jpg:monitor",
+          "3.jpg:monitor"
+        ],
+        "failureModes": [
+          "屏幕比例接近 4:3",
+          "底座过小导致视觉不稳",
+          "屏幕内容与笔记本重复为同构 UI"
+        ]
+      },
+      {
+        "id": "keyboard-mouse-controls",
+        "name": "渐变灰 98 键键盘、鼠标与鼠标垫",
+        "required": true,
+        "qualityCriteria": [
+          "98 键布局（含数字区/方向区），98 个独立键帽，顶排浅灰→底排深灰的渐变，modifier 更深。",
+          "键帽为倒角方台，RGB 从缝隙透出并有色相扫描；右上金属旋钮与小型状态灯条存在。",
+          "鼠标垫为约 900×400 mm 布面，灰色几何印刷、细缝边；黑色无线鼠标位于其上，滚轮可转动。"
+        ],
+        "evidenceRefs": [
+          "4.jpg:keyboard",
+          "4.jpg:mouse_mug",
+          "2.jpg:keyboard"
+        ],
+        "failureModes": [
+          "键帽数量明显少于 98 或矩阵错位",
+          "所有键帽同色/同高，失去渐变识别度",
+          "鼠标垫穿透桌面或鼠标悬空"
+        ]
+      },
+      {
+        "id": "desk-still-life-materials",
+        "name": "茶杯/水壶/纸笔/电源与线缆",
+        "required": true,
+        "qualityCriteria": [
+          "玻璃茶杯有厚杯壁、深红茶汤、棕色木盖与方形把手，置于白色纸垫上，靠近显示器底座左前方。",
+          "UZSPACE 灰绿半透明水壶挂在右侧磨砂玻璃上，黑盖/挂带/白色纵向字可辨，瓶身轻微受摆。",
+          "左侧黑色笔袋有白色布标，压在带手写字的纸张与黄边笔记上；支架后有白色电源砖，插排与黑白线缆走向合理。",
+          "木纹、玻璃折射、金属窄高光、布面/纸面粗糙度与屏幕自发光分离，不得所有材质共用同一张图。"
+        ],
+        "evidenceRefs": [
+          "4.jpg:mouse_mug",
+          "4.jpg:left_props",
+          "4.jpg:bottle",
+          "2.jpg:overview"
+        ],
+        "failureModes": [
+          "茶杯/水壶变成不透明塑料或金属",
+          "线缆悬空无端点",
+          "木纹方向错误或所有表面同一纹理"
+        ]
+      }
+    ],
+    "visualDeltaChecks": [
+      "正面轮廓与负空间：桌沿、隔断开口、显示器顶端、笔记本支架之间形成的负形与参考一致。",
+      "布局与接触：显示器/笔记本/键盘/杯的相对位置、间距和遮挡顺序与主参考一致。",
+      "重复系统：98 键矩阵、图标网格、书列、线缆与压条的数量/间距/分布与参考一致。",
+      "材质：木纹方向、磨砂玻璃透光、金属高光、键帽渐变、茶汤折射、屏幕自发光分层正确。",
+      "身份细节：AOC 标记、ROG 风格贴纸、UZSPACE 字样、键盘旋钮、鼠标垫几何印刷在主视角可辨。",
+      "多角度：离轴视图无穿模、悬空、单薄纸片感或背面空洞。"
+    ],
+    "antiShallowSpecRules": [
+      "Do not proceed to code if qualityContract.qualityBar is unassessed.",
+      "Do not proceed to code if the spec only contains a root component for a moderate or complex object.",
+      "Do not proceed to code if required featureGroups are not represented by componentTree, materials, or repetitionSystems.",
+      "Do not proceed to code if visible local features are described only in prose and not attached to components/materials/evidenceRefs.",
+      "Do not proceed past structural-pass if attached child parts lack attachment.parentSocket, localStart, localEnd, embedDepth/overlap, and gapTolerance.",
+      "Do not pass material look-dev when albedo is reused as roughness, height, normal, or AO.",
+      "Do not pass material look-dev without macro, meso, and micro surface frequency bands for close-up materials.",
+      "Do not pass reference-fidelity material look-dev from a source image without usable referencePbr maps or an explicit documented limitation.",
+      "Do not patch a spec with extracted PBR maps when extraction confidence is below the target threshold unless the user explicitly accepts lower fidelity.",
+      "Do not place adjacent separate-geometry parts below 0.02 world-unit seam overlap (source: grimoire/build/geometry_patterns.md).",
+      "Do not satisfy raised or recessed relief, fasteners, or grip structure with a map alone when the feature affects form; use geometry or displacement (source: grimoire/build/geometry_patterns.md).",
+      "不得用一个根组件概括整张工作台；桌面、隔断、屏幕、键鼠、杯、瓶必须有独立组件与动画锚点。",
+      "不得用单张纹理同时充当木材 albedo/roughness/height；不得用纯黑材质代替屏幕内容。",
+      "不得把 98 键合并成一块格子贴图而不提供独立键帽几何或可动锚点。",
+      "不得省略线缆端点和支架接触点；装配门禁失败即阻止 continue。"
+    ]
+  },
+  "authoringInstruction": "对象分类、复杂度与质量契约已按 4 张参考图填写。细节清单从 4.jpg 的 3×3 分区生成，每条必须映射到组件 localFeatures 或材质 localOverrides。动画锚点见 analysis/image-analysis.md。",
+  "localSpecSearch": {
+    "collection": "core_3d",
+    "query": "Office Cubicle Workstation Diorama wood laminate desk grain frosted glass partition aluminum extrusion gaming laptop stand hinge monitor round base tilt swivel 98-key mechanical keyboard gradient keycaps RGB glass mug wooden lid tea translucent water bottle hanging strap fabric mousepad stitched edge power strip cable management emissive screen Windows wallpaper canvas texture hard surface PBR metalness roughness",
+    "index": {
+      "status": "rebuilt",
+      "reason": "missing",
+      "fingerprint": "06f0b2ece2935e441653f5c3533f91b3a4d6163f2aec4267559d7d8419bdd040"
+    },
+    "matches": [
+      {
+        "record_id": "core.pbr-normal-map",
+        "file_path": "docs/raw/img2threejs-skill-dataset.json",
+        "heading": null,
+        "key_path": "categories.material_pbr[2]",
+        "score": 14.590125285959,
+        "snippets": [
+          "Tangent-space RGB texture that perturbs surface normals to simulate fine geometric detail (engravings, scratches, weave) without added polycount. Kết cấu RGB không gian tiếp tuyến làm lệch pháp tuyến bề mặt để mô phỏng chi tiết hình học nhỏ ..."
+        ],
+        "source_refs": [
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.material_pbr[2]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation"
+          }
+        ]
+      },
+      {
+        "record_id": "core.pbr-color-space-srgb-vs-linearnocolorspace",
+        "file_path": "docs/raw/img2threejs-skill-dataset.json",
+        "heading": null,
+        "key_path": "categories.material_pbr[11]",
+        "score": 13.853873935442,
+        "snippets": [
+          "... để người xem (cần gamma/sRGB) và các bản đồ dữ liệu toán học (phải giữ tuyến tính/không hiệu chỉnh). Recognition cues: Base color/albedo and emissive textures are the only ones that should look like natural photographic color; Normal, ..."
+        ],
+        "source_refs": [
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.material_pbr[11]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation"
+          }
+        ]
+      },
+      {
+        "record_id": "core.pbr-opacity-alpha",
+        "file_path": "docs/raw/img2threejs-skill-dataset.json",
+        "heading": null,
+        "key_path": "categories.material_pbr[8]",
+        "score": 10.033304027798,
+        "snippets": [
+          "Controls material transparency and blend mode; in CS2 workflows the alpha channel of Base Color is repurposed as a non-transparency data channel. Kiểm soát độ trong suốt và chế độ blend của vật liệu; trong quy trình CS2, kênh alpha của Base ..."
+        ],
+        "source_refs": [
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.material_pbr[8]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation"
+          }
+        ]
+      }
+    ]
+  }
+}

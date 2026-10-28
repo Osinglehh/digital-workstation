@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "summary": {
+    "targetName": "Office Cubicle Workstation Diorama",
+    "suitability": "conditional",
+    "components": 84,
+    "materials": 33
+  }
+}

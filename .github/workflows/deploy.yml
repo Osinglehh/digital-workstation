@@ -1,0 +1,58 @@
+name: 部署到 GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      - name: 安装 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: 安装依赖
+        run: npm ci
+      - name: 类型检查
+        run: npm run typecheck
+      - name: 构建
+        run: npm run build
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+      - name: 上传构建产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: 启用 Pages（已启用时幂等跳过）
+        run: |
+          curl -s -o /dev/null -w "pages-api: %{http_code}\n" -L -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/${{ github.repository }}/pages \
+            -d '{"build_type":"workflow"}' || true
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 部署
+        id: deployment
+        uses: actions/deploy-pages@v4

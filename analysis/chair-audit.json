@@ -1,0 +1,103 @@
+{
+  "generated": "2026-10-26T05:54:58.000Z",
+  "updated": "2026-10-26T16:10:00.000Z（第四版：逐顶点 AABB 复测；旧桌腿/横梁已移除，参考图更名）",
+  "reference": [
+    "figure/椅子-1.jpg",
+    "figure/椅子-2.jpg",
+    "figure/椅子-3.jpg",
+    "figure/椅子-4.jpg"
+  ],
+  "brand": "unbranded mesh ergonomic chair",
+  "dimensions": {
+    "seatTop": 0.45,
+    "backHeight": 0.56,
+    "backReclineDeg": -8,
+    "headrestSize": [
+      0.39,
+      0.18
+    ],
+    "lumbarSize": [
+      0.24,
+      0.15
+    ],
+    "armrestPadLength": 0.34,
+    "armrestPostHeight": 0.25,
+    "gasLiftHub": 0.1,
+    "mechY": 0.415,
+    "baseRadius": 0.32,
+    "wheelRadius": 0.026,
+    "headrestOuterApprox": [
+      0.424,
+      0.226
+    ]
+  },
+  "placement": {
+    "center": [
+      0,
+      0,
+      0.45
+    ],
+    "facing": "toward desk (-z)",
+    "seatFrontZ": 0.2,
+    "deskFrontEdgeZ": 0.2
+  },
+  "interactions": [
+    "swivelChair(deg)",
+    "reclineChair(deg)"
+  ],
+  "measuredAABB": {
+    "minX": -0.3336,
+    "maxX": 0.3336,
+    "minY": 0,
+    "maxY": 1.241,
+    "minZ": 0.102,
+    "maxZ": 0.9326,
+    "method": "逐顶点乘 matrixWorld 的精确包络（2026-10-26 桌下审计复测）",
+    "legacyBox3": {
+      "maxY": 1.249,
+      "maxZ": 0.9356,
+      "note": "旧值来自 Box3.setFromObject，对带旋转的子物件（头枕框/滚轮）会取包围盒角点而膨胀约 8 mm；逐顶点结果为准。"
+    }
+  },
+  "deskClearance": {
+    "deskTop": {
+      "frontEdgeZ": 0.2,
+      "undersideY": 0.7325,
+      "depth": 0.5
+    },
+    "underDeskStructure": "旧桌腿（deskPostFL/FR/RL/RR）与前/后横梁（deskRailFront/Back）已从层级移除；桌下改为落地木侧板/背板 + 后角铝立柱 + 顶部横档 + 背板底部桥架（z -0.3..-0.255）。",
+    "seatFrontToDeskEdge": 0.0,
+    "seatBottomY": 0.3655,
+    "armrestPadTopToDeskUnderside": 0.0595,
+    "frontCasterFrontZ": 0.102,
+    "casterToSidePanelInnerX": 0.1714,
+    "seatFrontToBackpack": 0.1354,
+    "chairToWasteBinX": 0.197,
+    "note": "椅座前缘与桌沿齐平（用户要求的最前位置）；桌下已无前横梁，前移的限制来自保持椅座前缘贴桌沿的构图与桌下书包/垃圾桶的净距（见 underdesk-audit.json）。"
+  },
+  "armrest": {
+    "mount": "seat (not backPivot)",
+    "frame": "closed triangle: pad + rear post + front diagonal brace",
+    "postPosition": "x=±0.262, y=0.515, z=-0.16",
+    "postHeight": 0.25,
+    "postSpanY": "0.39–0.64 (top overlaps cap, no floating gap)",
+    "frontBrace": "x=±0.262, 0.045 × 0.28 × 0.032, rotation.x≈0.551 rad; top y≈0.650 / z≈0.161, bottom y≈0.410 / z≈0.014",
+    "brackets": "rear x=±0.252 / y=0.42 / z=-0.16; front x=±0.252 / y=0.42 / z=+0.02; both 0.05 × 0.06 × 0.10",
+    "frontJoint": "x=±0.2935, y=0.645, z=0.155, r=0.0155, outer protrusion ≈6 mm",
+    "frontBolt": "x=±0.2815, y=0.428, z=0.02, r=0.0115",
+    "padPosition": "x=±0.262, y=0.66, z=0.0",
+    "padSize": "0.075 × 0.026 × 0.34",
+    "padWorldZ": "0.28–0.62 (front 0.08 m behind seat front)",
+    "note": "both pad ends attach to the seat side; front brace descends rearward into the front bracket (figure/椅子-4.jpg)"
+  },
+  "headrest": {
+    "panel": "leaf-shaped mesh panel 0.39 × 0.18 m; frame tube r=0.024; outer approx 0.424 × 0.226 m",
+    "position": "backPivot local (0, 0.61, -0.058), tilt -6°",
+    "clamp": "0.095 × 0.10 × 0.03 at local (0, 0.12, -0.043), tilted -10°; entirely behind the mesh face",
+    "pivotBolts": "r=0.015 at x=±0.057, both clamp sides",
+    "arm": "0.07 × 0.20 × 0.036 at local (0, 0.06, -0.064), rises from the top rail behind the panel",
+    "collar": "0.11 × 0.06 × 0.075 at local (0, -0.04, -0.040), wraps the backrest top rail",
+    "frontFace": "no support or clamp on the +z side; the visible front is mesh + rim only",
+    "note": "figure/椅子-1..4.jpg: support arm and clamp belong on the back of the headrest; the earlier neck/slider on the +z face was the protruding column reported by the user"
+  }
+}

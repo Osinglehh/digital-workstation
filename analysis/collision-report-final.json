@@ -1,0 +1,105 @@
+[
+  {
+    "pair": "desk × stand",
+    "hits": [
+      {
+        "a": "桌面与下层框架",
+        "ageo": "BoxGeometry",
+        "b": "灰色笔记本支架底座",
+        "bgeo": "BoxGeometry",
+        "count": 1,
+        "sample": [
+          -0.175,
+          0.7575,
+          -0.2167
+        ]
+      }
+    ],
+    "totalMeshPairs": 1
+  },
+  {
+    "pair": "desk × mousepad",
+    "hits": [
+      {
+        "a": "灰色几何印刷鼠标垫",
+        "ageo": "BoxGeometry",
+        "b": "桌面与下层框架",
+        "bgeo": "BoxGeometry",
+        "count": 18,
+        "sample": [
+          0.48,
+          0.7573,
+          0.1742
+        ]
+      },
+      {
+        "a": "桌面与下层框架",
+        "ageo": "BoxGeometry",
+        "b": "灰色几何印刷鼠标垫",
+        "bgeo": "BoxGeometry",
+        "count": 1,
+        "sample": [
+          0.2625,
+          0.7575,
+          0.075
+        ]
+      }
+    ],
+    "totalMeshPairs": 2
+  },
+  {
+    "pair": "desk × mug",
+    "hits": [
+      {
+        "a": "桌面与下层框架",
+        "ageo": "BoxGeometry",
+        "b": "白色纸垫",
+        "bgeo": "BoxGeometry",
+        "count": 1,
+        "sample": [
+          0,
+          0.7575,
+          0.0333
+        ]
+      }
+    ],
+    "totalMeshPairs": 1
+  },
+  {
+    "pair": "panels × cable",
+    "hits": [
+      {
+        "a": "bottle-strap-hook-bridge",
+        "ageo": "TubeGeometry",
+        "b": "水壶挂钩",
+        "bgeo": "BoxGeometry",
+        "count": 21,
+        "sample": [
+          0.4961,
+          1.3004,
+          0.0392
+        ]
+      },
+      {
+        "a": "bottle-strap-hook-bridge",
+        "ageo": "TubeGeometry",
+        "b": "右磨砂玻璃",
+        "bgeo": "BoxGeometry",
+        "count": 1,
+        "sample": [
+          0.5061,
+          1.2976,
+          0.0341
+        ]
+      }
+    ],
+    "totalMeshPairs": 2
+  },
+  {
+    "pair": "underdesk × scene",
+    "hits": [],
+    "totalMeshPairs": 0,
+    "method": "对桌下新增物件（木侧板/背板、铝立柱、顶部横档、桥架、插座面板、敲落孔、书包、垃圾桶、5 条线缆）与椅子、桌面、地面及其余陈设做逐顶点世界 AABB 相交与净距检查",
+    "note": "全部无相交；净距与落地证据见 underdesk-audit.json。旧桌腿（deskPostFL/FR/RL/RR）与前/后横梁（deskRailFront/Back）已从层级移除，不再参与碰撞。"
+  }
+]

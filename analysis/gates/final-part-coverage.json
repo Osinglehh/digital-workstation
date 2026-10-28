@@ -1,0 +1,196 @@
+{
+  "model": "office-cubicle-workstation-diorama",
+  "specifiedComponents": 83,
+  "builtParts": 84,
+  "errors": 0,
+  "warnings": 30,
+  "result": "pass",
+  "findings": [
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "wood-desk-grain",
+      "detail": "mapsTo 'woodOak/desk-grain' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "wood-partition-grain",
+      "detail": "mapsTo 'woodOak/partition-grain' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "desk-edge-wear",
+      "detail": "mapsTo 'desk/desk-edge-wear' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "mullion-chamfer",
+      "detail": "mapsTo 'partition/mullion-micro-bevel' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "frosted-sheen",
+      "detail": "mapsTo 'frostedGlass/frost-band' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "glass-retainer-groove",
+      "detail": "mapsTo 'partition/glass-retainer-groove' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "laptop-lid-chamfer",
+      "detail": "mapsTo 'laptopLid/lid-edge-chamfer' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "laptop-rtx-sticker",
+      "detail": "mapsTo 'laptopBase/rtx-sticker' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "laptop-screen-ui",
+      "detail": "mapsTo 'screenLaptop/taskbar-glow' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "laptop-shell-sheen",
+      "detail": "mapsTo 'laptopWhite/soft-clearcoat' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "monitor-bezel-sheen",
+      "detail": "mapsTo 'monitorPlastic/bezel-sheen' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "aoc-logo",
+      "detail": "mapsTo 'monitor/aoc-logo' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "monitor-app-window",
+      "detail": "mapsTo 'screenMonitor/app-window' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "keycap-gradient",
+      "detail": "mapsTo 'keycapPBT/gradient-bands' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "keycap-bevel",
+      "detail": "mapsTo 'keycapMatrix/keycap-bevel' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "keyboard-rgb",
+      "detail": "mapsTo 'keycapPBT/rgb-underlight' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "keyboard-knob-knurl",
+      "detail": "mapsTo 'keyboardKnob/knurled-grip' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "mousepad-print",
+      "detail": "mapsTo 'mousepadFabric/geometric-print' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "mousepad-stitch",
+      "detail": "mapsTo 'mousepad/stitched-edge' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "mouse-grip-ridge",
+      "detail": "mapsTo 'mouseShell/side-grip-ridges' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "tea-meniscus",
+      "detail": "mapsTo 'teaLiquid/tea-surface-sheen' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "mug-lid-grain",
+      "detail": "mapsTo 'mugLid/lid-wood-grain' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "bottle-uzspace-label",
+      "detail": "mapsTo 'bottleBody/uzspace-label' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "bottle-strap-weave",
+      "detail": "mapsTo 'bottleStrap/strap-weave' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "paper-handwriting",
+      "detail": "mapsTo 'paperStack/handwriting' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "pencilcase-zip",
+      "detail": "mapsTo 'pencilCase/zip-teeth' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "powerstrip-led",
+      "detail": "mapsTo 'powerStrip/indicator-led' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "white-cable-sheen",
+      "detail": "mapsTo 'rubberCable/cable-sheen' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "shelf-book-bands",
+      "detail": "mapsTo 'shelfProps/book-spine-color-bands' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "detail-dangling",
+      "severity": "warning",
+      "subject": "teajar-lid-gloss",
+      "detail": "mapsTo 'shelfProps/tea-jar-lid-gloss' matches no component, localFeature or localOverride"
+    },
+    {
+      "check": "part-not-specified",
+      "severity": "info",
+      "subject": "root",
+      "detail": "built part has no matching component in the spec (fine for detail groups; a sign of spec drift for anything larger)"
+    }
+  ]
+}

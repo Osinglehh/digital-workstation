@@ -1,0 +1,26 @@
+{
+  "monitorShiftX": -0.0215,
+  "monitorShiftZ": -0.03,
+  "monitorBaseScaleXZ": 0.84,
+  "monitorBox": {
+    "min": [
+      -0.05682,
+      0.758,
+      -0.274
+    ],
+    "max": [
+      0.48382,
+      1.1565,
+      -0.106
+    ]
+  },
+  "laptopMonitorGap": 0.0655,
+  "monitorRightWood": 0.0212,
+  "monitorRightGlass": 0.0222,
+  "monitorBackboardGap": 0.026,
+  "monitorCollisions": [],
+  "cableCollisions": {
+    "monitor-power-cable": [],
+    "monitor-signal-cable": []
+  }
+}

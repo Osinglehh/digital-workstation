@@ -1,0 +1,40 @@
+{
+  "cableVertices": 520,
+  "result": [
+    {
+      "name": "白色笔记本机身",
+      "insideCableVertices": 0,
+      "samples": []
+    },
+    {
+      "name": "desk-power-brick",
+      "insideCableVertices": 0,
+      "samples": []
+    },
+    {
+      "name": "灰色笔记本支架底座",
+      "insideCableVertices": 0,
+      "samples": []
+    },
+    {
+      "name": "左侧木饰面板",
+      "insideCableVertices": 0,
+      "samples": []
+    },
+    {
+      "name": "右侧木饰面板",
+      "insideCableVertices": 0,
+      "samples": []
+    },
+    {
+      "name": "左前铝立柱",
+      "insideCableVertices": 0,
+      "samples": []
+    },
+    {
+      "name": "右前铝立柱",
+      "insideCableVertices": 0,
+      "samples": []
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+STATUS pass=blockout completed=0 blocked=none next=forge/stage3_build/orchestrate_passes.py sync D:\play\object-sculpt-spec.json
+D:\play\object-sculpt-spec.json

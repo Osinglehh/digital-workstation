@@ -1,0 +1,215 @@
+{
+  "method": "single-crop route: analyze_texture.py + extract_pbr_evidence.py per verified crop",
+  "crops": [
+    {
+      "materialId": "woodOak",
+      "crop": "analysis/material-crops/wood-desk.jpg",
+      "finishClassifier": "candy-coat",
+      "finishRecipe": {
+        "metalness": 0.35,
+        "roughness": 0.18,
+        "clearcoat": 0.6,
+        "clearcoatRoughness": 0.15,
+        "transmission": 0.0,
+        "ior": 1.5,
+        "envMapIntensity": 0.7,
+        "anisotropy": 0.0,
+        "procedural": "gradient-smoke"
+      },
+      "pbrVerdict": "pass",
+      "pbrConfidence": 0.86,
+      "mapSize": 1024,
+      "maps": {
+        "albedo": "D:\\play\\analysis\\pbr\\woodOak\\woodoak_albedo.png",
+        "roughness": "D:\\play\\analysis\\pbr\\woodOak\\woodoak_roughness.png",
+        "height": "D:\\play\\analysis\\pbr\\woodOak\\woodoak_height.png",
+        "normal": "D:\\play\\analysis\\pbr\\woodOak\\woodoak_normal.png",
+        "ao": "D:\\play\\analysis\\pbr\\woodOak\\woodoak_ao.png"
+      }
+    },
+    {
+      "materialId": "aluminum",
+      "crop": "analysis/material-crops/aluminum-frame.jpg",
+      "finishClassifier": "worn-composite",
+      "finishRecipe": {
+        "metalness": 0.0,
+        "roughness": 0.9,
+        "clearcoat": 0.0,
+        "clearcoatRoughness": 0.0,
+        "transmission": 0.0,
+        "ior": 1.5,
+        "envMapIntensity": 0.5,
+        "anisotropy": 0.0,
+        "procedural": "mottle"
+      },
+      "pbrVerdict": "pass",
+      "pbrConfidence": 0.818,
+      "mapSize": 1024,
+      "maps": {
+        "albedo": "D:\\play\\analysis\\pbr\\aluminum\\aluminum_albedo.png",
+        "roughness": "D:\\play\\analysis\\pbr\\aluminum\\aluminum_roughness.png",
+        "height": "D:\\play\\analysis\\pbr\\aluminum\\aluminum_height.png",
+        "normal": "D:\\play\\analysis\\pbr\\aluminum\\aluminum_normal.png",
+        "ao": "D:\\play\\analysis\\pbr\\aluminum\\aluminum_ao.png"
+      }
+    },
+    {
+      "materialId": "frostedGlass",
+      "crop": "analysis/material-crops/frosted-glass.jpg",
+      "finishClassifier": "brushed-steel",
+      "finishRecipe": {
+        "metalness": 1.0,
+        "roughness": 0.35,
+        "clearcoat": 0.0,
+        "clearcoatRoughness": 0.0,
+        "transmission": 0.0,
+        "ior": 1.5,
+        "envMapIntensity": 1.0,
+        "anisotropy": 1.0,
+        "procedural": "brushed"
+      },
+      "pbrVerdict": "pass",
+      "pbrConfidence": 0.86,
+      "mapSize": 1024,
+      "maps": {
+        "albedo": "D:\\play\\analysis\\pbr\\frostedGlass\\frostedglass_albedo.png",
+        "roughness": "D:\\play\\analysis\\pbr\\frostedGlass\\frostedglass_roughness.png",
+        "height": "D:\\play\\analysis\\pbr\\frostedGlass\\frostedglass_height.png",
+        "normal": "D:\\play\\analysis\\pbr\\frostedGlass\\frostedglass_normal.png",
+        "ao": "D:\\play\\analysis\\pbr\\frostedGlass\\frostedglass_ao.png"
+      }
+    },
+    {
+      "materialId": "laptopWhite",
+      "crop": "analysis/material-crops/laptop-shell.jpg",
+      "finishClassifier": "candy-coat",
+      "finishRecipe": {
+        "metalness": 0.35,
+        "roughness": 0.18,
+        "clearcoat": 0.6,
+        "clearcoatRoughness": 0.15,
+        "transmission": 0.0,
+        "ior": 1.5,
+        "envMapIntensity": 0.7,
+        "anisotropy": 0.0,
+        "procedural": "gradient-smoke"
+      },
+      "pbrVerdict": "pass",
+      "pbrConfidence": 0.86,
+      "mapSize": 1024,
+      "maps": {
+        "albedo": "D:\\play\\analysis\\pbr\\laptopWhite\\laptopwhite_albedo.png",
+        "roughness": "D:\\play\\analysis\\pbr\\laptopWhite\\laptopwhite_roughness.png",
+        "height": "D:\\play\\analysis\\pbr\\laptopWhite\\laptopwhite_height.png",
+        "normal": "D:\\play\\analysis\\pbr\\laptopWhite\\laptopwhite_normal.png",
+        "ao": "D:\\play\\analysis\\pbr\\laptopWhite\\laptopwhite_ao.png"
+      }
+    },
+    {
+      "materialId": "keycapPBT",
+      "crop": "analysis/material-crops/keycap.jpg",
+      "finishClassifier": "candy-coat",
+      "finishRecipe": {
+        "metalness": 0.35,
+        "roughness": 0.18,
+        "clearcoat": 0.6,
+        "clearcoatRoughness": 0.15,
+        "transmission": 0.0,
+        "ior": 1.5,
+        "envMapIntensity": 0.7,
+        "anisotropy": 0.0,
+        "procedural": "gradient-smoke"
+      },
+      "pbrVerdict": "pass",
+      "pbrConfidence": 0.86,
+      "mapSize": 1024,
+      "maps": {
+        "albedo": "D:\\play\\analysis\\pbr\\keycap\\keycappbt_albedo.png",
+        "roughness": "D:\\play\\analysis\\pbr\\keycap\\keycappbt_roughness.png",
+        "height": "D:\\play\\analysis\\pbr\\keycap\\keycappbt_height.png",
+        "normal": "D:\\play\\analysis\\pbr\\keycap\\keycappbt_normal.png",
+        "ao": "D:\\play\\analysis\\pbr\\keycap\\keycappbt_ao.png"
+      }
+    },
+    {
+      "materialId": "mousepadFabric",
+      "crop": "analysis/material-crops/mousepad.jpg",
+      "finishClassifier": "candy-coat",
+      "finishRecipe": {
+        "metalness": 0.35,
+        "roughness": 0.18,
+        "clearcoat": 0.6,
+        "clearcoatRoughness": 0.15,
+        "transmission": 0.0,
+        "ior": 1.5,
+        "envMapIntensity": 0.7,
+        "anisotropy": 0.0,
+        "procedural": "gradient-smoke"
+      },
+      "pbrVerdict": "pass",
+      "pbrConfidence": 0.86,
+      "mapSize": 1024,
+      "maps": {
+        "albedo": "D:\\play\\analysis\\pbr\\mousepadFabric\\mousepadfabric_albedo.png",
+        "roughness": "D:\\play\\analysis\\pbr\\mousepadFabric\\mousepadfabric_roughness.png",
+        "height": "D:\\play\\analysis\\pbr\\mousepadFabric\\mousepadfabric_height.png",
+        "normal": "D:\\play\\analysis\\pbr\\mousepadFabric\\mousepadfabric_normal.png",
+        "ao": "D:\\play\\analysis\\pbr\\mousepadFabric\\mousepadfabric_ao.png"
+      }
+    },
+    {
+      "materialId": "teaGlass",
+      "crop": "analysis/material-crops/mug.jpg",
+      "finishClassifier": "candy-coat",
+      "finishRecipe": {
+        "metalness": 0.35,
+        "roughness": 0.18,
+        "clearcoat": 0.6,
+        "clearcoatRoughness": 0.15,
+        "transmission": 0.0,
+        "ior": 1.5,
+        "envMapIntensity": 0.7,
+        "anisotropy": 0.0,
+        "procedural": "gradient-smoke"
+      },
+      "pbrVerdict": "pass",
+      "pbrConfidence": 0.86,
+      "mapSize": 1024,
+      "maps": {
+        "albedo": "D:\\play\\analysis\\pbr\\teaGlass\\teaglass_albedo.png",
+        "roughness": "D:\\play\\analysis\\pbr\\teaGlass\\teaglass_roughness.png",
+        "height": "D:\\play\\analysis\\pbr\\teaGlass\\teaglass_height.png",
+        "normal": "D:\\play\\analysis\\pbr\\teaGlass\\teaglass_normal.png",
+        "ao": "D:\\play\\analysis\\pbr\\teaGlass\\teaglass_ao.png"
+      }
+    },
+    {
+      "materialId": "bottleBody",
+      "crop": "analysis/material-crops/bottle.jpg",
+      "finishClassifier": "candy-coat",
+      "finishRecipe": {
+        "metalness": 0.35,
+        "roughness": 0.18,
+        "clearcoat": 0.6,
+        "clearcoatRoughness": 0.15,
+        "transmission": 0.0,
+        "ior": 1.5,
+        "envMapIntensity": 0.7,
+        "anisotropy": 0.0,
+        "procedural": "gradient-smoke"
+      },
+      "pbrVerdict": "pass",
+      "pbrConfidence": 0.86,
+      "mapSize": 1024,
+      "maps": {
+        "albedo": "D:\\play\\analysis\\pbr\\bottleBody\\bottlebody_albedo.png",
+        "roughness": "D:\\play\\analysis\\pbr\\bottleBody\\bottlebody_roughness.png",
+        "height": "D:\\play\\analysis\\pbr\\bottleBody\\bottlebody_height.png",
+        "normal": "D:\\play\\analysis\\pbr\\bottleBody\\bottlebody_normal.png",
+        "ao": "D:\\play\\analysis\\pbr\\bottleBody\\bottlebody_ao.png"
+      }
+    }
+  ],
+  "warning": "analyze_texture finish classifier is context-sensitive on in-scene crops (candy-coat/brushed-steel on broad crops); recorded as weak signal only. Final values come from visual PBR judgement plus confidence-gated reference extraction.",
+  "decision": "All eight extracted sets pass 0.7 (0.818-0.86) and are wired into object-sculpt-spec.json referencePbr maps. finishClassifier output is retained as weak evidence only."
+}

@@ -1,0 +1,540 @@
+{
+  "model": "office-cubicle-workstation-diorama",
+  "parts": [
+    {
+      "name": "root",
+      "kind": "part",
+      "module": "root",
+      "triangles": 193976
+    },
+    {
+      "name": "desk",
+      "kind": "part",
+      "module": "desk",
+      "triangles": 12096
+    },
+    {
+      "name": "deskPostFL",
+      "kind": "part",
+      "module": "deskPostFL",
+      "triangles": 1728
+    },
+    {
+      "name": "deskPostFR",
+      "kind": "part",
+      "module": "deskPostFR",
+      "triangles": 1728
+    },
+    {
+      "name": "deskPostRL",
+      "kind": "part",
+      "module": "deskPostRL",
+      "triangles": 1728
+    },
+    {
+      "name": "deskPostRR",
+      "kind": "part",
+      "module": "deskPostRR",
+      "triangles": 1728
+    },
+    {
+      "name": "deskRailFront",
+      "kind": "part",
+      "module": "deskRailFront",
+      "triangles": 1728
+    },
+    {
+      "name": "deskRailBack",
+      "kind": "part",
+      "module": "deskRailBack",
+      "triangles": 1728
+    },
+    {
+      "name": "partition",
+      "kind": "part",
+      "module": "partition",
+      "triangles": 24192
+    },
+    {
+      "name": "leftSidePanel",
+      "kind": "part",
+      "module": "leftSidePanel",
+      "triangles": 1728
+    },
+    {
+      "name": "rightSidePanel",
+      "kind": "part",
+      "module": "rightSidePanel",
+      "triangles": 1728
+    },
+    {
+      "name": "leftGlass",
+      "kind": "part",
+      "module": "leftGlass",
+      "triangles": 1728
+    },
+    {
+      "name": "rightGlass",
+      "kind": "part",
+      "module": "rightGlass",
+      "triangles": 1728
+    },
+    {
+      "name": "leftMullion",
+      "kind": "part",
+      "module": "leftMullion",
+      "triangles": 1728
+    },
+    {
+      "name": "rightMullion",
+      "kind": "part",
+      "module": "rightMullion",
+      "triangles": 1728
+    },
+    {
+      "name": "leftFrontPost",
+      "kind": "part",
+      "module": "leftFrontPost",
+      "triangles": 1728
+    },
+    {
+      "name": "rightFrontPost",
+      "kind": "part",
+      "module": "rightFrontPost",
+      "triangles": 1728
+    },
+    {
+      "name": "topRailBack",
+      "kind": "part",
+      "module": "topRailBack",
+      "triangles": 1728
+    },
+    {
+      "name": "topRailLeft",
+      "kind": "part",
+      "module": "topRailLeft",
+      "triangles": 1728
+    },
+    {
+      "name": "topRailRight",
+      "kind": "part",
+      "module": "topRailRight",
+      "triangles": 1728
+    },
+    {
+      "name": "leftGlassSticker",
+      "kind": "part",
+      "module": "leftGlassSticker",
+      "triangles": 1728
+    },
+    {
+      "name": "bottleHook",
+      "kind": "part",
+      "module": "bottleHook",
+      "triangles": 1728
+    },
+    {
+      "name": "shelf",
+      "kind": "part",
+      "module": "shelf",
+      "triangles": 5184
+    },
+    {
+      "name": "shelfBracketL",
+      "kind": "part",
+      "module": "shelfBracketL",
+      "triangles": 1728
+    },
+    {
+      "name": "shelfBracketR",
+      "kind": "part",
+      "module": "shelfBracketR",
+      "triangles": 1728
+    },
+    {
+      "name": "shelfProps",
+      "kind": "part",
+      "module": "shelfProps",
+      "triangles": 8016
+    },
+    {
+      "name": "bookRowB",
+      "kind": "part",
+      "module": "bookRowB",
+      "triangles": 1728
+    },
+    {
+      "name": "jarPurple",
+      "kind": "part",
+      "module": "jarPurple",
+      "triangles": 832
+    },
+    {
+      "name": "jarOrange",
+      "kind": "part",
+      "module": "jarOrange",
+      "triangles": 832
+    },
+    {
+      "name": "teaCanister",
+      "kind": "part",
+      "module": "teaCanister",
+      "triangles": 832
+    },
+    {
+      "name": "bookEnd",
+      "kind": "part",
+      "module": "bookEnd",
+      "triangles": 1728
+    },
+    {
+      "name": "laptopBase",
+      "kind": "part",
+      "module": "laptopBase",
+      "triangles": 40420
+    },
+    {
+      "name": "laptopLid",
+      "kind": "part",
+      "module": "laptopLid",
+      "triangles": 1730
+    },
+    {
+      "name": "laptopScreen",
+      "kind": "part",
+      "module": "laptopScreen",
+      "triangles": 1152
+    },
+    {
+      "name": "laptopKeyboardDeck",
+      "kind": "part",
+      "module": "laptopKeyboardDeck",
+      "triangles": 22730
+    },
+    {
+      "name": "laptopTrackpad",
+      "kind": "part",
+      "module": "laptopTrackpad",
+      "triangles": 1728
+    },
+    {
+      "name": "laptopHinge",
+      "kind": "part",
+      "module": "laptopHinge",
+      "triangles": 832
+    },
+    {
+      "name": "laptopSticker",
+      "kind": "part",
+      "module": "laptopSticker",
+      "triangles": 1728
+    },
+    {
+      "name": "laptopStandBase",
+      "kind": "part",
+      "module": "laptopStandBase",
+      "triangles": 1728
+    },
+    {
+      "name": "laptopStandRailL",
+      "kind": "part",
+      "module": "laptopStandRailL",
+      "triangles": 1728
+    },
+    {
+      "name": "laptopStandRailR",
+      "kind": "part",
+      "module": "laptopStandRailR",
+      "triangles": 1728
+    },
+    {
+      "name": "laptopStandLip",
+      "kind": "part",
+      "module": "laptopStandLip",
+      "triangles": 1728
+    },
+    {
+      "name": "laptopStandCrossbar",
+      "kind": "part",
+      "module": "laptopStandCrossbar",
+      "triangles": 1840
+    },
+    {
+      "name": "monitor",
+      "kind": "part",
+      "module": "monitor",
+      "triangles": 9732
+    },
+    {
+      "name": "monitorScreen",
+      "kind": "part",
+      "module": "monitorScreen",
+      "triangles": 1152
+    },
+    {
+      "name": "monitorRearHousing",
+      "kind": "part",
+      "module": "monitorRearHousing",
+      "triangles": 1728
+    },
+    {
+      "name": "monitorStandNeck",
+      "kind": "part",
+      "module": "monitorStandNeck",
+      "triangles": 832
+    },
+    {
+      "name": "monitorBase",
+      "kind": "part",
+      "module": "monitorBase",
+      "triangles": 832
+    },
+    {
+      "name": "monitorClip",
+      "kind": "part",
+      "module": "monitorClip",
+      "triangles": 1728
+    },
+    {
+      "name": "monitorLed",
+      "kind": "part",
+      "module": "monitorLed",
+      "triangles": 1728
+    },
+    {
+      "name": "keyboard",
+      "kind": "part",
+      "module": "keyboard",
+      "triangles": 40606
+    },
+    {
+      "name": "keyboardPlate",
+      "kind": "part",
+      "module": "keyboardPlate",
+      "triangles": 1728
+    },
+    {
+      "name": "keycapMatrix",
+      "kind": "part",
+      "module": "keycapMatrix",
+      "triangles": 31132
+    },
+    {
+      "name": "keyboardKnob",
+      "kind": "part",
+      "module": "keyboardKnob",
+      "triangles": 832
+    },
+    {
+      "name": "keyboardIndicator",
+      "kind": "part",
+      "module": "keyboardIndicator",
+      "triangles": 1728
+    },
+    {
+      "name": "keyboardFootL",
+      "kind": "part",
+      "module": "keyboardFootL",
+      "triangles": 1728
+    },
+    {
+      "name": "keyboardFootR",
+      "kind": "part",
+      "module": "keyboardFootR",
+      "triangles": 1728
+    },
+    {
+      "name": "mousepad",
+      "kind": "part",
+      "module": "mousepad",
+      "triangles": 15380
+    },
+    {
+      "name": "mouseShell",
+      "kind": "part",
+      "module": "mouseShell",
+      "triangles": 4994
+    },
+    {
+      "name": "mouseBase",
+      "kind": "part",
+      "module": "mouseBase",
+      "triangles": 1728
+    },
+    {
+      "name": "mouseWheel",
+      "kind": "part",
+      "module": "mouseWheel",
+      "triangles": 832
+    },
+    {
+      "name": "mouseGripL",
+      "kind": "part",
+      "module": "mouseGripL",
+      "triangles": 1728
+    },
+    {
+      "name": "mouseGripR",
+      "kind": "part",
+      "module": "mouseGripR",
+      "triangles": 1728
+    },
+    {
+      "name": "mug",
+      "kind": "part",
+      "module": "mug",
+      "triangles": 14466
+    },
+    {
+      "name": "teaLiquid",
+      "kind": "part",
+      "module": "teaLiquid",
+      "triangles": 832
+    },
+    {
+      "name": "mugLid",
+      "kind": "part",
+      "module": "mugLid",
+      "triangles": 832
+    },
+    {
+      "name": "mugLidKnob",
+      "kind": "part",
+      "module": "mugLidKnob",
+      "triangles": 4992
+    },
+    {
+      "name": "mugGrip",
+      "kind": "part",
+      "module": "mugGrip",
+      "triangles": 4608
+    },
+    {
+      "name": "mugNapkin",
+      "kind": "part",
+      "module": "mugNapkin",
+      "triangles": 1728
+    },
+    {
+      "name": "bottle",
+      "kind": "part",
+      "module": "bottle",
+      "triangles": 3202
+    },
+    {
+      "name": "bottleCap",
+      "kind": "part",
+      "module": "bottleCap",
+      "triangles": 832
+    },
+    {
+      "name": "bottleStrap",
+      "kind": "part",
+      "module": "bottleStrap",
+      "triangles": 1728
+    },
+    {
+      "name": "paperStack",
+      "kind": "part",
+      "module": "paperStack",
+      "triangles": 12042
+    },
+    {
+      "name": "pencilCase",
+      "kind": "part",
+      "module": "pencilCase",
+      "triangles": 1730
+    },
+    {
+      "name": "notebook",
+      "kind": "part",
+      "module": "notebook",
+      "triangles": 1728
+    },
+    {
+      "name": "powerBrick",
+      "kind": "part",
+      "module": "powerBrick",
+      "triangles": 1728
+    },
+    {
+      "name": "powerStrip",
+      "kind": "part",
+      "module": "powerStrip",
+      "triangles": 1728
+    },
+    {
+      "name": "usbHub",
+      "kind": "part",
+      "module": "usbHub",
+      "triangles": 1734
+    },
+    {
+      "name": "pen",
+      "kind": "part",
+      "module": "pen",
+      "triangles": 832
+    },
+    {
+      "name": "penCap",
+      "kind": "part",
+      "module": "penCap",
+      "triangles": 832
+    },
+    {
+      "name": "wireHarness",
+      "kind": "part",
+      "module": "wireHarness",
+      "triangles": 6912
+    },
+    {
+      "name": "whiteLead",
+      "kind": "part",
+      "module": "whiteLead",
+      "triangles": 1728
+    },
+    {
+      "name": "blackLead",
+      "kind": "part",
+      "module": "blackLead",
+      "triangles": 1728
+    },
+    {
+      "name": "earphoneLead",
+      "kind": "part",
+      "module": "earphoneLead",
+      "triangles": 1728
+    }
+  ],
+  "unnamedMeshes": 0,
+  "integralMeshes": 84,
+  "runtime": {
+    "nodes": 84,
+    "meshes": 84,
+    "sockets": 13,
+    "colliders": 84,
+    "destructionGroups": 84,
+    "animationApi": [
+      "openLaptop",
+      "closeLaptop",
+      "panMonitor",
+      "tiltMonitor",
+      "pressKey",
+      "releaseKey",
+      "setKeyboardRgb",
+      "moveMouse",
+      "spinWheel",
+      "openMugLid",
+      "toggleSteam",
+      "swayBottle",
+      "setScreenPower",
+      "setLightingMode",
+      "getState"
+    ],
+    "details": {
+      "version": "1.0",
+      "screens": 2,
+      "keycaps": 98
+    }
+  }
+}

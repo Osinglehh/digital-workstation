@@ -1,0 +1,12 @@
+# 依赖与构建产物
+node_modules/
+dist/
+
+# 参考照片与渲染证据（体积大，不参与网页运行）
+figure/
+analysis/renders/
+
+# 日志与系统文件
+*.log
+.DS_Store
+Thumbs.db

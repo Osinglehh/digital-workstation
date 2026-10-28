@@ -1,0 +1,32 @@
+{
+  "keyboard": "98-key external keyboard",
+  "footprintM": [0.389, 0.144],
+  "profile": {
+    "shape": "front-low rear-high wedge",
+    "shellFrontHeightM": 0.011,
+    "shellRearHeightM": 0.018,
+    "feetHeightM": 0.002,
+    "frontEdgeAboveDeskM": 0.0131,
+    "rearEdgeAboveDeskM": 0.0199,
+    "deckSlopeDeg": 2.78
+  },
+  "keyTopAboveDeskM": {
+    "frontRow": 0.0243,
+    "rearRow": 0.0292
+  },
+  "maxKnobTopAboveDeskM": 0.0319,
+  "bottomContactY": 0.7575,
+  "deskTopY": 0.7575,
+  "measuredAabb": {
+    "min": [-0.2815, 0.7575, 0.0525],
+    "max": [0.1075, 0.7894, 0.1965],
+    "sizeM": [0.389, 0.0319, 0.144]
+  },
+  "changes": [
+    "底壳由工厂 35 mm 加 12 mm 高脚改为前低后高楔形薄壳：壳前 11 mm、壳后 18 mm，底面保持水平",
+    "旧 12 mm 高脚替换为 2 mm 橡胶脚垫，脚垫底面准确落在 757.5 mm 桌面",
+    "定位板、键床、状态灯和旋钮随约 2.8° 坡面同步抬升；键帽顶前 24.3 mm、后 29.2 mm",
+    "WK 标识移到后缘坡面可见位置；RGB 垫片继续收在键帽投影内，避免前缘整条色带"
+  ],
+  "verifiedAt": "2026-10-26"
+}
