@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> 项目级代理入口 · 第三十三版 · 最后更新 2026-10-28
+> 项目级代理入口 · 第三十四版 · 最后更新 2026-10-28
 >
 > **自动加载协议（给后续代理，务必遵守）**
 > 1. **任何任务先读 L0 + L1**（30 秒速览 + 硬规则，约 80 行），不要一次性读完整个文档。
@@ -708,9 +708,11 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 > 附录只记录里程碑，不作为当前事实来源；尺寸、交互与验证以 L0–L5 和当前代码/实测为准。
 
+- **2026-10-28（第三十四版）**：删除历史重写备份——
+  - 经用户确认，删除 `backup-before-rewrite` 分支与 `D:/digital-workstation-history-backup-20261028.bundle`，并执行 `reflog expire` + `gc --prune=now`；旧提交在本地不可达，远端历史保持干净。删除备份后无法再恢复旧历史。
 - **2026-10-28（第三十三版）**：Git 历史重写（隐私清除，用户明确确认）——
   - **范围**：`git filter-branch` 重写全部 10 个提交——从历史中移除 `analysis/crops/`、`analysis/material-crops/`、`analysis/gates/mask-ref.png`、`analysis/gates/ref224.png`、`.img2threejs/`；作者/提交者邮箱统一为 GitHub noreply；所有提交哈希已变化，`--force-with-lease` 强推 `main`。
-  - **备份**：本地保留 `backup-before-rewrite` 分支与 `D:/digital-workstation-history-backup-20261028.bundle`（含旧历史与敏感文件，仅本地；确认无误后可删除）。
+  - **备份**：重写前曾保留 `backup-before-rewrite` 分支与 `D:/digital-workstation-history-backup-20261028.bundle`；经用户确认已于当日删除，并清理 reflog/旧对象（旧提交在本地不可达）。
   - **已知残留**：GitHub 侧旧对象可能仍可按完整 SHA 临时访问（缓存未清理，需联系 GitHub 支持彻底清除）；仓库无 Fork。本地恢复原历史请用上述 bundle。
 - **2026-10-28（第三十二版）**：公开仓库隐私清理——
   - **屏幕文案**：笔记本终端画面中 6 处本机用户目录显示改为通用 `C:\Users\user`（此前上线会暴露本机用户名）。
