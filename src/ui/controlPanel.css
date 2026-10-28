@@ -152,6 +152,17 @@
   }
 }
 
+/* 触屏设备关闭实时背景模糊，避免每帧重算整块背景模糊 */
+@media (pointer: coarse) {
+  .design-tree {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background:
+      linear-gradient(155deg, var(--tree-sheen) 0%, rgba(255, 255, 255, 0) 46%),
+      var(--tree-bg-fallback);
+  }
+}
+
 .tree-head {
   display: flex;
   align-items: center;

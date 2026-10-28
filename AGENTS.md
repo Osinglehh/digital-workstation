@@ -1,20 +1,20 @@
 # AGENTS.md
 
-> 项目级代理入口 · 第二十六版 · 最后更新 2026-10-28
+> 项目级代理入口 · 第三十一版 · 最后更新 2026-10-28
 >
 > **自动加载协议（给后续代理，务必遵守）**
 > 1. **任何任务先读 L0 + L1**（30 秒速览 + 硬规则，约 80 行），不要一次性读完整个文档。
 > 2. 用 **L2 路由表**按任务类型只加载相关 **L3.x**（例如改键盘就读 L3.6），需要时再补对应审计 JSON。
 > 3. **动手前**先读相关函数、节点 id、父级变换与审计数据，并确认 `npm run dev` 已在 `http://127.0.0.1:5173/` 运行。
 > 4. **收尾前必读 L4 + L5 对应主题 + L6**；未执行的检查必须如实标注，不能把“临时放宽副本”写成“标准测试通过”。
-> 5. **事实优先级**：用户口头更正 > 当前代码与本轮实测 > README > 本文件 > 参考照片/旧截图/旧规格；发现冲突时以高优先级为准，并把结论回写本文件。
+> 5. **事实优先级**：用户口头更正 > 当前代码与本轮实测 > 本文件 + `analysis/*-audit.json` > README > 参考照片/旧截图/旧规格；发现冲突时以高优先级为准，并把结论回写本文件。
 > 6. 本仓库可能被多个代理并行修改；写共享文件前重读，清理只删本轮文件（L4.6）。
 > 7. **附录 A 只用于追溯，不参与默认加载**；当前事实以 L0–L5 与代码/实测为准。
 >
 > 用户可见文字、代码注释与项目文档用简体中文；代码标识符保持英文。
 >
-> **加载示例 A（改设计树）**：L0/L1 → L3.14 + L4.1 + L5「界面与体验层」→ 改 `controlPanel.css/ts` → 跑 `test_interactions` + `final_ui_capture` → 更新 README/L3.14/L4.1。
-> **加载示例 B（改自动展示）**：L0/L1 → L3.16 + L4.1 + L5「自动展示」→ 改 `src/showcase/*` / `workbenchController` / `controlPanel` → 跑 `test_showcase` + `test_interactions` + `final_ui_capture` → 更新 README/L3.16/L4.1/附录。
+> **加载示例 A（改设计树）**：L0/L1 → L3.14 + L4.1 + L5「界面与体验层」→ 改 `controlPanel.css/ts` → 跑 `test_interactions` + `final_ui_capture` → 更新本文件 L3.14/L4.1（README 不写设计细节）。
+> **加载示例 B（改自动展示）**：L0/L1 → L3.16 + L4.1 + L5「自动展示」→ 改 `src/showcase/*` / `workbenchController` / `controlPanel` → 跑 `test_showcase` + `test_interactions` + `final_ui_capture` → 更新本文件 L3.16/L4.1/附录。
 >
 > **层级**：L0 速览 → L1 硬规则 → L2 边界/路由 → L3 修改配方 → L4 验证 → L5 已知坑 → L6 交付。
 
@@ -33,8 +33,9 @@
 | 显示器/笔记本 | + L3.9 | `enhanceWorkstation` 的 monitor/laptop 段 |
 | 椅子/头枕 | + L3.11 | `buildErgonomicChair`、`analysis/chair-audit.json` |
 | 动画/交互/API | + L3.4 | `enhanceWorkstation`、`window.__workstation` |
-| 设计树视觉/玻璃/字号/Tooltip/检查器/持久化 | + L3.14、L4.1、L5「界面与体验层」 | `src/ui/controlPanel.css`（`--tree-*`）、`controlPanel.ts`、`workbenchController.ts` |
+| 设计树视觉/玻璃/字号/顶栏拖动/Tooltip/检查器/持久化 | + L3.14、L4.1、L5「界面与体验层」 | `src/ui/controlPanel.css`（`--tree-*`）、`controlPanel.ts`（`bindTreeDrag`）、`workbenchController.ts` |
 | 自动展示/时间线/暂停跳段/隐藏控件栏/退出恢复 | + L3.16、L4.1、L5「自动展示」 | `src/showcase/showcaseTimeline.ts`、`showcaseController.ts`、`workbenchController.ts`、`controlPanel.ts`、`tools/test_showcase.mjs` |
+| 部署/仓库维护/Pages/Qoder Sites | + L3.17、L5「部署与网络」 | `.github/workflows/deploy.yml`、`.gitignore`、`vite.config.ts` |
 | 玻璃杯/鼠标垫/桌面小件 | + L3.5/L3.7 | `buildGlassMug`、`createMousepadSurface` |
 | 地板/墙体/相机预设/构图/初始机位 | + L3.15 | `analysis/environment-audit.json`、`tools/audit_environment.mjs`、`main.ts` 的 `ENVIRONMENT`/`views` |
 | 规格/工厂重建 | + L3.3，全量 L4 | `object-sculpt-spec.json`、`tools/author_spec.py` |
@@ -46,7 +47,7 @@
 
 ### 0.1 项目一句话
 
-这是一个 **Three.js + TypeScript + Vite** 的程序化办公位数字孪生场景：桌面、隔断、桌顶格架、桌下承重与配电结构、瓷砖地面、双屏、键鼠、水壶、线缆、书包、垃圾桶和人体工学椅均由代码生成，并带有键盘 RGB、屏幕开关、笔记本开合、显示器旋转、椅子旋转/后仰、水壶摆动等运行时交互。外部体验层是左上角的 **SolidWorks FeatureManager 风格设计树**：装配体信息、视角/物品/灯光/场景/自动展示/帮助节点、树内物体检查器、11 个机位、4 个场景预设和 localStorage 偏好持久化；自动展示节点内含 7 幕、约 45 秒的一键演出与真实进度/暂停/跳段/重播/隐藏控件栏、底部实时功能字幕，播放完成后自动恢复初始状态。
+这是一个 **Three.js + TypeScript + Vite** 的程序化办公位数字孪生场景：桌面、隔断、桌顶格架、桌下承重与配电结构、瓷砖地面、双屏、键鼠、水壶、线缆、书包、垃圾桶和人体工学椅均由代码生成，并带有键盘 RGB、屏幕开关、笔记本开合、显示器旋转、椅子旋转/后仰、水壶摆动等运行时交互。外部体验层是左上角、可按住顶栏拖动的 **SolidWorks FeatureManager 风格设计树**：装配体信息、视角/物品/灯光/场景/自动展示/帮助节点、树内物体检查器、11 个机位、4 个场景预设和 localStorage 偏好持久化；自动展示节点内含 7 幕、约 45 秒的一键演出与真实进度/暂停/跳段/重播/隐藏控件栏、底部实时功能字幕，播放完成后自动恢复初始状态。
 
 ### 0.2 不可漂移的事实
 
@@ -56,7 +57,7 @@
 | 桌面面高 | **0.7575 m**，米制、Y 轴向上 |
 | 严格规格 | **84 个组件、33 个材质、7 个重复系统**，严格校验 PASS（`analysis/validation-strict-9.json`） |
 | 代码入口 | 工厂 `src/createOfficeCubicleWorkstationDioramaModel.ts`（生成物）；细节层 `src/workstationDetails.ts`（默认修改入口）；体验层 `src/workbenchController.ts` + `src/ui/controlPanel.ts` |
-| 界面 | 左上 **SolidWorks FeatureManager 风格 + 玻璃拟态**设计树（品牌/装配体信息/GitHub 仓库横条/视角/物品/灯光/场景/自动展示/帮助/状态栏）、树内物体检查器、Tooltip、Toast；1200×900 全折叠时树位于 `(16, 14)`、宽 **304**、高 **333**（`rgba(245,247,250,0.68)` + `backdrop-filter: blur(12px) saturate(135%)`，夜间深色玻璃）；字号 **13 / 12.5 / 12 / 9.5 / 9 px**，节点行高 **27 / 26 px**；展开多节点时树体内部滚动、页面不撑高；11 机位（主视角/正面/左/右/俯视/桌下/坐姿/键盘/显示器/笔记本/全景）；4 场景（白天/深夜/专注/RGB）；自动展示（约 45 秒 / 7 幕，真实进度、暂停/继续、下一章节、重播、退出、底部实时功能字幕、可选的展示时隐藏设计树与完成后自动恢复初始状态）；本机 `workstation-ui-v1` 持久化，展示隐藏偏好单独存 `workstation-showcase-v1`。底部 dock 与右侧检查器已移除，不要恢复 |
+| 界面 | 左上 **SolidWorks FeatureManager 风格 + 玻璃拟态**设计树（品牌/装配体信息/GitHub 仓库横条/视角/物品/灯光/场景/自动展示/帮助/状态栏）、树内物体检查器、Tooltip、Toast；1200×900 全折叠时树位于 `(16, 14)`、宽 **304**、高 **333**（`rgba(245,247,250,0.68)` + `backdrop-filter: blur(12px) saturate(135%)`，夜间深色玻璃）；字号 **13 / 12.5 / 12 / 9.5 / 9 px**，节点行高 **27 / 26 px**；展开多节点时树体内部滚动、页面不撑高；11 机位（主视角/正面/左/右/俯视/桌下/坐姿/键盘/显示器/笔记本/全景）；4 场景（白天/深夜/专注/RGB）；自动展示（约 45 秒 / 7 幕，真实进度、暂停/继续、下一章节、重播、退出、底部实时功能字幕、可选的展示时隐藏设计树与完成后自动恢复初始状态）；本机 `workstation-ui-v1` 持久化，展示隐藏偏好单独存 `workstation-showcase-v1`；**按住顶栏可拖动整棵树**（`transform` 平移、限制在舞台内、初始仍为 `(16,14)`、位置不持久化）。底部 dock 与右侧检查器已移除，不要恢复 |
 | 键盘 RGB | 键帽为参考的**由后向前逐行渐变**（F 排近白 `#D9DDDF` → 底排近炭黑 `#4C5458`，字色后三排深、前三排浅）；键缝底光（0.358 × 0.104，`pivot` y=-0.003）+ `keyboard-rgb-light` 点光（0.04–0.10 / 0.55 m / decay 1.9，局部 `(0, 0.095, 0)`）+ 0.55 × 0.15 m 桌面溢光面（`z=-0.055`）；彩虹模式底光不再乘单色；关闭时三层同时熄灭 |
 | 紧凑房间 | 浮动 4:3 舞台；地板 **2.4 × 2.25 m**（`y=0`，600 mm 瓷砖）、单面背墙 **2.6 × 2.35 m**（`z=-0.64`）+ 两侧 **0.42 m** 返墙、踢脚 **85 × 18 mm**；工位逐顶点包络 `x -0.855..0.533 / y 0..1.7915 / z -0.34..0.9326`，距背墙 **0.300 m**、距左墙 0.425 m、距右墙 0.587 m；相机正面弧 ±75°、极角 16–88°、距离 0.45–3.15 m、目标半径 0.75 m |
 | 默认构图 | `default` 为 3/4 全景（target `[-0.03, 0.78, 0.04]`、az **-26°**、el **20°**、**2.80 m**、fov **52°**）；1200×900 逐顶点投影实测工位高 **80.6%**、上/下留白 **10.3% / 9.1%**；11 个预设参数见 L3.15 |
@@ -71,7 +72,7 @@
 | 已移除 | 蓝色中性笔、鼠标编织线、显示器信号线、旧桌腿与前/后横梁、旧搁板铝托架（`shelfBracketL/R`）、旧书列（`shelfProps`/`bookRowB`/`bookEnd`）、旧茶罐（`jarPurple`/`jarOrange`/`teaCanister`）、3 条地面盘绕线缆、架内订书机（实为剪刀，已替换） |
 | 最终证据 | `analysis/renders/final/`（`final-under.png`、`final-underdesk*.png`、`final-chair-*.png`、`final-shelf-*.png`、`final-ui-*.png`、`final-showcase-*.png`、`final-keyboard-rgb.png`、`manifest.json`、`shelf-manifest.json`、`ui-manifest.json`）、`analysis/renders/interaction-test.json`、`analysis/renders/showcase-test.json`、`lid-closed.png`、`night-mode.png`、`monitor-pan.png`、`analysis/environment-audit.json`、全部 `analysis/*-audit.json` |
 | 构建体积 | 单包约 1,572 kB（2026-10-27 自动展示 45 秒版实测）；Vite 体积提示是已知情况，不是失败 |
-| 部署 | GitHub 公开仓库 `Osinglehh/digital-workstation`；push 到 `main` 触发 GitHub Actions 自动构建并部署到 GitHub Pages（`.github/workflows/deploy.yml`，`base: './'` + 相对贴图路径）；线上 https://osinglehh.github.io/digital-workstation/ ；`figure/` 与 `analysis/renders/` 在 `.gitignore` 中、不进 Git |
+| 部署 | GitHub 公开仓库 `Osinglehh/digital-workstation`；push 到 `main` 触发 GitHub Actions 自动构建并部署到 GitHub Pages（`.github/workflows/deploy.yml`，`base: './'` + 相对贴图路径）；线上 https://osinglehh.github.io/digital-workstation/ ；Qoder Sites 公开站点 https://digital-workstation-vcyscgr9sb8.qoder.zone/ （`npm run build` 后 `prepare_site` → `publish_site`，需重新发布时用新 `actionId` + 复用 `projectId`；站点描述文件 `.数字工位 · 可交互 3D 工作区.qoder.site` 由插件生成、含云端 ID，已列入 `.gitignore` 不得提交）；`figure/` 与 `analysis/renders/` 在 `.gitignore` 中、不进 Git |
 
 ### 0.3 黄金路径
 
@@ -128,9 +129,9 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 | 路径 | 作用 | 修改规则 |
 |---|---|---|
-| `src/main.ts` | 渲染器、后处理、紧凑房间/墙体、灯光与地面、11 个机位（`views`）、初始相机（必须与 `views.default` 一致）、`window.__workstation` 基础 API、体验层接线 | 改光照/机位/地面材质/`ENVIRONMENT` 时进入；UI 逻辑不要写回这里；旧 HUD 已移除，不要恢复 |
+| `src/main.ts` | 渲染器、后处理、紧凑房间/墙体、灯光与地面、11 个机位（`views`）、初始相机（必须与 `views.default` 一致）、`window.__workstation` 基础 API、体验层接线；**移动端画质档**（`pointer: coarse` 才启用） | 改光照/机位/地面材质/`ENVIRONMENT` 时进入；UI 逻辑不要写回这里；旧 HUD 已移除，不要恢复；移动端档位参数（像素比上限 1.5、PCF 1024 阴影、跳过 SSAO/辉光）不得影响桌面路径 |
 | `src/workbenchController.ts` | 体验层：相机缓动与自动环绕、Raycaster 拾取/包络、灯光与四场景预设、整理/装饰显隐、偏好持久化、快捷键；自动展示桥接（快照恢复、灯光混合、手动互斥、UI 发布） | 改物体检查器行为、场景预设、持久化、设计树节点状态、自动展示状态时进入；保持 `views` 名称与 main 一致；**选中物体不得关闭设计树** |
-| `src/ui/controlPanel.ts`、`controlPanel.css` | 左上 SolidWorks 风格玻璃设计树（`--tree-*` 变量、backdrop-filter、字号层级、视角/物品/灯光/场景/自动展示/帮助）、树内物体检查器、Tooltip、Toast、响应式与暗色主题；自动展示节点（7 幕进度、播放控制、隐藏/恢复控件栏） | 视觉/布局/可访问性改动入口；注意 `:where(.stage-ui) button` 字号重置（L5 UI-13）；不要在这里写 Three.js 场景逻辑；不要恢复底部 dock/右侧浮窗或实色白底 |
+| `src/ui/controlPanel.ts`、`controlPanel.css` | 左上 SolidWorks 风格玻璃设计树（`--tree-*` 变量、backdrop-filter、字号层级、顶栏拖动/舞台 8px 夹取、视角/物品/灯光/场景/自动展示/帮助）、树内物体检查器、Tooltip、Toast、响应式与暗色主题；自动展示节点（7 幕进度、播放控制、隐藏/恢复控件栏）；**触屏设备（`pointer: coarse`）关闭玻璃模糊、改用 `--tree-bg-fallback`** | 视觉/布局/可访问性/拖动改动入口；拖动只改 `transform`，不要改行内 `left/top`（L5 UI-17）；注意 `:where(.stage-ui) button` 字号重置（L5 UI-13）；不要在这里写 Three.js 场景逻辑；不要恢复底部 dock/右侧浮窗或实色白底；桌面端玻璃效果不得改动 |
 | `src/showcase/showcaseTimeline.ts` | 自动展示时间线：45 秒 / 7 幕区间、相机关键帧、场景/RGB/屏幕/开盖事件、RGB 亮度曲线、开场/结尾标题、底部白色实时功能字幕与纯函数求值 | 改镜头、章节时长、事件时间或字幕时从这里改；改后必须跑 `test_showcase` 并同步 L3.16 |
 | `src/showcase/showcaseController.ts` | 自动展示状态机：idle/playing/paused/finished/stopped、事件调度、seek/下一章节/重播/退出、真实进度发布、隐藏偏好、自然完成 2 s 后自动恢复、UI 隐藏 | 只通过 `ShowcaseHost` 调用场景；不要在这里直接操作 Three.js 节点或 DOM 控件；不要新增第二个 rAF 循环；自动恢复定时器必须可清理 |
 | `src/ui/types.ts`、`src/ui/icons.ts` | UI 状态/预设类型与内联 SVG 图标 | 新增视角/场景/灯效时同步类型、图标与 `workbenchController` |
@@ -142,7 +143,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 | `tools/final_capture.mjs` | 标准交付：五视图（含 `under`）、参考构图、白模、四向转台、`manifest.json` | 含“就绪等待 + 重载重试 + 状态复位”；`shoot()` 必须把机位参数传给 `page.evaluate(fn, arg)`（见 L5-41）；桌下专项隐藏椅子并写 `chairVisible:false` |
 | `tools/final_chair_capture.mjs` | 椅子/头枕专项终图 | 依赖 5173 端口 |
 | `tools/final_shelf_capture.mjs` | 桌顶格架专项终图（正面、左右 3/4、书列/陈设近景、架顶俯视） | 依赖 5173 端口；写 `analysis/renders/final/shelf-manifest.json` |
-| `tools/test_interactions.mjs` | 运行时交互回归（设计树折叠/展开、树内检查器、笔记本、RGB、屏幕、场景、视角、自动环绕、持久化 + 显示器/椅子） | 依赖 5173 端口；会覆盖 `interaction-test.json`、`lid-closed.png`、`night-mode.png`、`monitor-pan.png`；无头阻尼阈值见 L4.1 |
+| `tools/test_interactions.mjs` | 运行时交互回归（设计树折叠/展开、顶栏拖动、树内检查器、笔记本、RGB、屏幕、场景、视角、自动环绕、持久化 + 显示器/椅子） | 依赖 5173 端口；会覆盖 `interaction-test.json`、`lid-closed.png`、`night-mode.png`、`monitor-pan.png`；无头阻尼阈值见 L4.1 |
 | `tools/test_showcase.mjs` | 自动展示回归：节点/播放/暂停/继续/下一章节/重播/退出、手动互斥、树折叠、隐藏与恢复、展示时隐藏选项、实时字幕、设备与场景关键帧、自动恢复、63 项断言 | 依赖 5173 端口；用 `showcase.seek()` 在无头低帧率下定位；写 `analysis/renders/showcase-test.json` 与 `final-showcase-*.png`；截图前把鼠标移开避免 Tooltip 入画 |
 | `tools/final_ui_capture.mjs` | 界面终图：桌面设计树、视角/灯光/场景节点、树内检查器、夜景、移动端与键盘 RGB 近景 | 依赖 5173 端口；写 `analysis/renders/final/final-ui-*.png`、`final-keyboard-rgb.png` 与 `ui-manifest.json`；截图前用 `openSection` 展开目标节点 |
 | `tools/audit_underdesk.mjs` | 桌下结构与地面陈设审计（逐顶点 AABB、净距、落地、碰撞、旧节点移除） | 输出 `analysis/underdesk-audit.json`；改桌下/地面/书包/垃圾桶/椅子位置后必须重跑 |
@@ -155,9 +156,9 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 | `analysis/renders/` | 交互测试输出、单张检查图 | 试拍在收尾时清理 |
 | `.img2threejs/` | img2threejs 管线状态 | 只在真正走规格重建流程时读取/更新；不是运行时依赖 |
 | `dist/` | Vite 构建产物 | 自动生成，不要手改；必要时用 `npm run build` 重建 |
-| `.gitignore` | 忽略 `node_modules/`、`dist/`、`figure/`、`analysis/renders/` | `figure/`（231 MB 参考照片）与 `analysis/renders/`（渲染证据）刻意不进 Git |
+| `.gitignore` | 忽略 `node_modules/`、`dist/`、`figure/`、`analysis/renders/`、`*.qoder.site` | `figure/`（231 MB 参考照片）、`analysis/renders/`（渲染证据）与含云端 ID 的站点描述文件刻意不进 Git |
 | `.github/workflows/deploy.yml` | GitHub Pages 自动部署：检出 → `npm ci` → typecheck → build → configure-pages（`enablement: true`）→ upload-pages-artifact → deploy-pages | push `main` 即部署；首次启用 Pages 需在仓库 Settings → Pages 手动把 Source 选为 GitHub Actions（API 令牌无权自动创建站点） |
-| `README.md` | 项目简介、在线演示、运行与部署说明 | 保持简洁，不写设计/尺寸/验证细节；开发约定见本文件 |
+| `README.md` | 项目简介、在线演示、运行/使用与部署说明 | 保持简洁，不写设计/尺寸/验证细节；开发约定见本文件 |
 | `AGENTS.md` | 本文件，项目级代理入口 | 保持 L0–L6 递进结构；版本/日期与附录随任务更新；**不要堆积过程日志** |
 
 ### 2.2 症状/主题 → 入口
@@ -166,7 +167,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 |---|---|
 | 设计树不显示/节点被裁切/主题颜色异常 | `src/ui/controlPanel.css`、`controlPanel.ts`、`workbenchController.ts`；见 L3.14、L4.1、L5-UI |
 | 设计树发白/看不到背景/字号回到 16px | `controlPanel.css` 的 `--tree-*`、`backdrop-filter`、`:where(.stage-ui) button`；见 L3.14、L5 UI-13/15 |
-| 设计树截图位置偏移/`designTree` 不是 `(16,14)` | 检查是否恢复了入场 transform 动画；见 L5 UI-14 |
+| 设计树拖不动/拖出舞台/位置不是 `(16,14)` | 检查 `bindTreeDrag` 的 `transform`、舞台 8px 夹取与 `ResizeObserver`；拖动位置不持久化，刷新应回到 `(16,14)`；见 L3.14、L5 UI-14/UI-17 |
 | 玻璃杯茶汤发灰/像陶瓷 | `buildGlassMug`；茶汤保持 `MeshBasicMaterial` 平涂；见 L3.5、L5「桌面小件」 |
 | 点击物体无检查器/悬停无高亮/选中框错位 | `workbenchController.ts` 的 `addPickTarget`、`pickAt`、`objectBox`、`refreshHighlight`；检查节点名与可见性 |
 | 场景预设/主灯/亮度/RGB 与界面不同步 | `workbenchController.ts` 的 `SCENE_BASES`、`applyLighting`、`applyScene`；`workstationDetails.ts` 的 RGB 状态 |
@@ -190,13 +191,13 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 | 地板/墙体尺寸、墙地接缝、踢脚线、工位离墙净距 | `main.ts` 的 `ENVIRONMENT`、`roomWalls`/`studio-wall-*`/`studio-floor`；审计 `analysis/environment-audit.json`；见 L3.15 |
 | 相机预设裁切、留白、初始机位、拖动/缩放边界 | `main.ts` 的 `views`/初始 `camera.position`/`controls`；`tools/audit_environment.mjs`；见 L3.15、L5 的 E-1..E-7 |
 | 物体看似悬空/穿面 | L3.2 的 AABB 实测与悬空排查法；不要只凭肉眼调 Y |
-| 全局布局、间距、桌面高度 | `README.md` 的“关键尺寸与布局”、`analysis/layout-audit.json`、`analysis/collision-report-final.json` |
+| 全局布局、间距、桌面高度 | 本文件 L0.2/L3.x、`analysis/layout-audit.json`、`analysis/collision-report-final.json` |
 | 光照、曝光、后处理、机位 | `main.ts` 的渲染器/灯光/composer/`views`（含 `under` 桌下机位）；终图由对应 capture 工具生成 |
 | 运行时动画/截图 API | `main.ts` 的 `window.__workstation`，以及 `workstationDetails.ts` 的 `enhanceWorkstation`/`getState` |
 
 ### 2.3 当前已实现专项（勿回退）
 
-- 左上 SolidWorks FeatureManager 风格 + 半透明玻璃拟态设计树（304 px / 289 px、13/12.5/12 px 字号、透明头部/装配体/底栏 + 发丝线；夜间深色玻璃）、树内物体检查器、Tooltip/Toast、暗色主题与移动端；11 机位、4 场景预设、时间制自动环绕、整理/装饰显隐和 localStorage 持久化。底部 dock 与右侧检查器已移除。
+- 左上 SolidWorks FeatureManager 风格 + 半透明玻璃拟态设计树（304 px / 333 px、13/12.5/12 px 字号、透明头部/装配体/底栏 + 发丝线；夜间深色玻璃）、树内物体检查器、Tooltip/Toast、**顶栏拖动（`transform` 平移、舞台 8px 夹取、位置不持久化）**、暗色主题与移动端；11 机位、4 场景预设、时间制自动环绕、整理/装饰显隐和 localStorage 持久化。底部 dock 与右侧检查器已移除。
 - 自动展示（`自动展示` 一级节点）：约 45 秒 / 7 幕（整体亮相、空间环绕、桌面细节、设备互动、RGB 灯效、氛围切换、终章全景）；真实进度条与章节/时间/百分比、底部白色实时功能字幕；开始/暂停/继续/下一章节/重新播放/退出；空格暂停、H 隐藏/恢复控件栏；可选“展示时隐藏设计树”；演示期间手动场景控件互斥，自然完成后停留约 2 秒自动恢复演示前的相机、场景、RGB、屏幕、开盖、装饰与选择状态。
 - 键盘：键帽由后向前逐排渐变 + 三层 RGB 氛围光（键缝底光、键帽染色点光与桌面溢光面），关闭模式完全熄灭；彩虹模式保留渐变贴图并让点光/光池色相随时间变化。
 - 紧凑舞台：2.4×2.25 m 瓷砖地板（y=0）、2.6×2.35 m 单面背墙 + 0.42 m 返墙、85 mm 踢脚线；工位逐顶点包络与离墙净距已审计；初始/复位 `default` 只显示工位与环境边界，不回到旧的大房间机位。
@@ -231,7 +232,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 ### L3.2 布局、间距与落地
 
-1. 先读 README 的现有中心点、占地和间距；用户最新实测或明确更正的数值优先于照片比例。
+1. 先读本文件 L0.2 与 `analysis/layout-audit.json` 的现有中心点、占地和间距；用户最新实测或明确更正的数值优先于照片比例。
 2. 以桌面上表面 `y = 0.7575` 为基准，用世界 AABB 量测落地/悬空，不要只看局部坐标。
 3. **悬空排查法**：物体看似悬空时，先实测它的世界 AABB 最低点，再在同一 (x,z) 采样所有可见 mesh 的最高顶面——可能它落在笔袋/支架/副桌面上而不是主桌面。
 4. 需要“有意贴合”时（杯垫、触点、纸面），在审计中说明 0–0.5 mm 的接触原因，不要把穿面当成零间距。
@@ -254,7 +255,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
    ```
    `forge/...` 为 img2threejs 技能目录下的路径；不要把生成器脚本复制进本项目。Windows 下 `python3` 可能是空别名，用 `python`。
 4. 重生成后重新应用/检查 `workstationDetails.ts` 的细节补丁，运行类型检查、交互测试和最终截图；生成工厂的手改必须消失或同步回规格。
-5. 当前严格校验记录为 PASS（84 组件、33 材质）。若数量变化，同步 README 与 L0。
+5. 当前严格校验记录为 PASS（84 组件、33 材质）。若数量变化，同步本文件 L0 与严格校验记录（README 不写设计细节）。
 
 ### L3.4 动画、交互与运行时 API
 
@@ -262,7 +263,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 2. 动画推进使用真实时间（笔记本开合即如此），避免无头/低帧率下停在半途；测试等待阈值用 **0.999**（闭合）/ **0.001**（重新打开），不要用 0.95。
 3. `getState()` 返回可自动断言的状态；新增交互同步更新 `tools/test_interactions.mjs`。
 4. 交互测试依赖 dev server；运行后检查 `errors: []`，并实际查看 `lid-closed.png`、`night-mode.png`、`monitor-pan.png`。
-5. 新 API 示例写入 README 的运行时 API 代码块。
+5. 需要公开的运行时 API 示例写入 README 的“使用”小节（保持简洁）；设计细节与实测值写本文件。
 
 ### L3.5 材质、颜色与光照
 
@@ -383,14 +384,15 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 ### L3.14 左上设计树与体验层专项（当前已实现，勿回退）
 
 - **分层**：`main.ts` 保留场景/灯光/相机/后处理/基础自动化；`workbenchController.ts` 负责相机缓动、Raycaster 拾取、场景预设、灯光状态、整理显隐、持久化与快捷键；`src/ui/*` 只负责 DOM/CSS。不要在 `main.ts` 恢复旧 HUD，也不要把 Three.js 物件逻辑塞进 `ui/`；**不要恢复底部 dock 或右侧浮窗**。
-- **设计树结构**：`ControlPanel` 创建 `.design-tree`，固定在舞台左上（`top:14px; left:16px; width:304px`，1200×900 全折叠高 **333**），包含：
+- **设计树结构**：`ControlPanel` 创建 `.design-tree`，默认位于舞台左上、可按住顶栏拖动（`top:14px; left:16px; width:304px`，1200×900 全折叠高 **333**），包含：
   - `.tree-head`：品牌图标、`数字工位`、`FeatureManager · 设计树`、GitHub 图标链接 `.tree-github`、整体折叠按钮 `.tree-collapse`；
   - `.tree-doc`：`工作位装配体` + `84 组件`/`33 材质` 徽标；
   - `.tree-repo-bar`：常驻 GitHub 文字横条（图标 +「GitHub 开源仓库 · 欢迎 Star」+ ↗，整行新窗口打开），在装配体信息与节点区之间；整树折叠时与 doc/body/foot 一起隐藏；
   - `.tree-body`：根行 `数字工位装配体` + `.tree-children` 中的视角/物品/灯光/场景/自动展示/帮助六个 `.tree-node`；
   - `.tree-foot`：状态点、`tree-status-text`（场景 · 视角 · 已选 · 环绕中）、操作提示。
   `.tree-row` 保留 `.dock-group` 类和精确 `aria-label`（视角/物品/灯光/场景/自动展示/帮助），测试与快捷定位依赖它；节点正文 id 为 `ws-section-<name>`，与 `aria-controls` 对应。自动展示节点的正文在 L3.16。帮助节点正文末尾固定一行 `.help-repo-link`（`GitHub 开源仓库 · 欢迎 Star`，新窗口打开）；`.tree-github`、`.tree-repo-bar` 与 `.help-repo-link` 均由 `controlPanel.ts` 的 `REPO_URL` 常量指向公开仓库，不要改成硬编码分支或相对路径。
-- **玻璃拟态与字号**：`--tree-bg`（日 `rgba(245,247,250,0.68)` / 夜 `rgba(23,26,31,0.66)`）、`--tree-blur: 12px`、`--tree-saturate: 135%`、`--tree-radius: 14px`；字体变量 `--tree-font-title/node/leaf/meta/micro` = **13/12.5/12/9.5/9px**，行高 `--tree-row-height/--tree-leaf-height` = **27/26px**。头部、装配体信息、底栏只用透明底 + 发丝线，**不要把实色渐变/白底加回去**，否则 `backdrop-filter` 看不到场景。`@supports not ((backdrop-filter) or (-webkit-backdrop-filter))` 时回退 `--tree-bg-fallback`。`design-tree` 不做入场动画：无头 SwiftShader 会把 transform 冻结在偏移位置，污染截图与 `designTree` 实测。
+- **玻璃拟态与字号**：`--tree-bg`（日 `rgba(245,247,250,0.68)` / 夜 `rgba(23,26,31,0.66)`）、`--tree-blur: 12px`、`--tree-saturate: 135%`、`--tree-radius: 14px`；字体变量 `--tree-font-title/node/leaf/meta/micro` = **13/12.5/12/9.5/9px**，行高 `--tree-row-height/--tree-leaf-height` = **27/26px**。头部、装配体信息、底栏只用透明底 + 发丝线，**不要把实色渐变/白底加回去**，否则 `backdrop-filter` 看不到场景。`@supports not ((backdrop-filter) or (-webkit-backdrop-filter))` 时回退 `--tree-bg-fallback`。`design-tree` 不做入场动画：无头 SwiftShader 会把 transform 冻结在偏移位置，污染截图与 `designTree` 实测；`transform` 只用于顶栏拖动，初始必须为 `none`。
+- **顶栏拖动**：`.tree-head` 上 `pointerdown`（左键/触摸，排除 `a/button/input/select/textarea`）后 `setPointerCapture`，按指针位移给 `.design-tree` 设 `transform: translate(x, y)`；**不要改行内 `left/top`**，否则 ≤680px 时 `right:10px; width:auto` 的整宽布局会被破坏。平移限制在舞台内（四周 8px 边距），`ResizeObserver` 在展开/折叠、整树折叠、主题或窗口尺寸变化后重新收回舞台；`pointerup/pointercancel/lostpointercapture` 结束拖动并清除 `.is-dragging`。拖动时顶栏 `cursor: grab/grabbing`、`touch-action: none`、禁用文本选择并隐藏 Tooltip。位置只属于当前会话，不写入 `workstation-ui-v1`（刷新回到左上角）。
 - **按钮字号优先级**：全局按钮重置用 `:where(.stage-ui) button { font: inherit }`（`:where` 降低优先级）。若改回 `.stage-ui button { font: inherit }`，它会压过 `.tree-row`/`.tree-leaf` 的 `font-size`，所有节点又变回 16px——这是旧版“字体偏大”的根因。
 - **展开语义**：点击节点行切换 `aria-expanded` 与 `.tree-node-body.hidden`；可同时展开多个节点，树体内滚动。标题栏 `.tree-collapse` 切换 `is-collapsed`，只折叠整棵树外壳。初始状态所有节点折叠；`setSectionOpen(name, true)` 会同时展开整棵树。`closePanels()` 只折叠所有节点，不隐藏设计树；`hasOpenPanel()` 以是否有展开节点为准。实测（1200×900）：全折叠高 **333**；六节点全展开高 648（72vh 上限）、`.tree-body` 内容 **2146** / 可视 **555**，`pageScrollHeight` 仍为 900。
 - **物体检查器**：`.object-inspector.tree-selection` 是物品节点下的子节点，不是右侧浮窗。`setInspector(meta)` 生成头部/状态/动作/选项后，把检查器移动到选中对象按钮之后（`objectButton.after(...)`），自动展开 `物品` 节点并 `scrollIntoView({block:'nearest'})`；取消选中时 `hidden=true`。`selectObject()` **不得调用 `ui.closePanels()`**；点击面板外也不得关闭设计树。
@@ -408,7 +410,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 - **主题变量**：树使用独立的 `--tree-bg/bg-fallback/sheen/highlight/head/doc/border/hairline/line/hover/active/selection/selection-strong/accent/accent-strong/card/badge/shadow` 以及模糊、圆角、字号、行高变量；暗色主题在 `:root[data-theme='dark']` 同步重定义。节点颜色**不要放进 CSS transition**：无头 SwiftShader 会把颜色过渡冻结在旧主题值，夜间出现深底深字。选中/展开态用 `--tree-selection/active` + 2px 内嵌蓝线，不改变字号字重，避免行内跳动。
 - **响应式**：`≤860px` 时树宽 292；`≤680px` 时树左右各 10px、宽 370、`max-height: min(62vh, calc(100% - 20px))`，底部仍留场景，树内滚动；`≤480px` 场景卡单列、隐藏第二个文档徽标；`≤420px` 滑杆与检查器动作单列。Toast 固定在舞台底部居中；Tooltip 仍按舞台边界夹取。
 - **动画兼容**：设计树本身不做入场动画（避免无头下 transform 冻结）；Tooltip/Toast 只做位移，不做 `opacity:0` 起始。展开箭头 `transform` 160ms、悬停/选中背景 140ms；主题颜色切换必须即时生效，不要用覆盖在旧主题上的长过渡。
-- **证据**：`node tools/final_ui_capture.mjs` → `final-ui-overview/view/lighting/night/inspector/mobile*.png`、`final-keyboard-rgb.png` + `ui-manifest.json`（含 `designTree` 与 `mobileOverflow`）；`node tools/test_interactions.mjs` → `interaction-test.json`（含 `treeCollapsed/treeExpanded` 与 `designTree`）；自动展示证据见 L3.16。
+- **证据**：`node tools/final_ui_capture.mjs` → `final-ui-overview/view/lighting/night/inspector/mobile*.png`、`final-keyboard-rgb.png` + `ui-manifest.json`（含 `designTree` 与 `mobileOverflow`）；`node tools/test_interactions.mjs` → `interaction-test.json`（含 `treeCollapsed/treeExpanded`、`treeDrag` 与 `designTree`）；自动展示证据见 L3.16。
 
 ### L3.15 小空间、墙体与相机预设（当前已实现，勿回退）
 
@@ -435,7 +437,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 - **默认构图**：1200×900 逐顶点投影实测工位高 **80.585%**、上/下留白 **10.291% / 9.123%**；`left/right/overhead/panorama` 均完整可见，`front` 完整可见但椅子会遮住键盘。不得用 `Box3` 角点估算留白，必须用 `tools/audit_environment.mjs` 的逐顶点投影。
 - **初始机位**：`camera.position=(-1.1834, 1.7377, 2.4049)`、`controls.target=(-0.03, 0.78, 0.04)`、fov 52 必须与 `views.default` 一致；体验层启动会再次应用 default，但截图/首帧可能在接线前读相机，勿留旧值。
 - **交互边界**：距离 0.45–3.15 m、方位 ±75°、极角 16–88°、目标半径 0.75 m；`setOrbit()` 仅截图期间临时放宽并恢复。自动环绕用真实时间在 ±68° 往返，不用 `OrbitControls.autoRotate`。
-- **改机位流程**：先确定主体与留白 → 用候选机位做逐顶点投影或试拍 → 检查滚轮、椅背/头枕、格架顶不裁切 → 同时改 `views`、初始相机、UI 的 `ViewId`/顺序 → 跑 `audit_environment`、`test_interactions` → 重拍 `final-left/right/overhead` 与 `final-front` → 同步 README/本文件。
+- **改机位流程**：先确定主体与留白 → 用候选机位做逐顶点投影或试拍 → 检查滚轮、椅背/头枕、格架顶不裁切 → 同时改 `views`、初始相机、UI 的 `ViewId`/顺序 → 跑 `audit_environment`、`test_interactions` → 重拍 `final-left/right/overhead` 与 `final-front` → 同步本文件与对应审计（README 只保留简介/运行/部署）。
 - **审计**：`node tools/audit_environment.mjs` → `analysis/environment-audit.json`；要求 `floorIsGroundPlane / wallBaseMeetsFloor / baseboardBaseMeetsFloor / wallsClearOfWorkstation / workstationInsideFloor / wallBehindWorkstation / allPresetsSafe / defaultFramingInRange / widePresetsFullyVisible` 全为 true，`pageErrors=[]`。近景/桌下视角不参与整机留白判定。
 
 ### L3.16 自动展示与时间线专项（当前已实现，勿回退）
@@ -463,6 +465,15 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 - **快照与恢复**：开始展示时保存 `UiState`（`hiddenDecor` 只存显式项）、`baseScene` 与相机 pose；展示期间 `scheduleSave/persistNow` 被抑制，不把演出状态写入 `workstation-ui-v1`。手动退出或自然完成自动恢复时恢复场景、RGB、屏幕、开盖、灯光、整理/显隐、选择与相机（900 ms 回位），关闭隐藏态；自动环绕不恢复（保持关闭）。开始/退出/重播/自动恢复可重复执行，不得叠加监听器、定时器或残留动画。
 - **证据**：`node tools/test_showcase.mjs` → `analysis/renders/showcase-test.json` 的 **63 项断言**与 `final-showcase-idle/opening/controls/device/rgb/night/finale.png`；覆盖入口、45 秒真实进度、底部实时字幕、暂停冻结/继续、下一章节、树折叠、隐藏后继续播放与恢复、展示时隐藏设计树选项、RGB 三态、夜间/专注场景、完成状态、三次重播、自然完成自动恢复非默认基线、手动视角恢复与二次启停、`errors: []`。截图前把鼠标移到场景右下角，避免 Tooltip 进画面。
 
+### L3.17 部署与仓库维护（GitHub Pages + Qoder Sites）
+
+- **常规发布**：改代码 → `npm run typecheck`、`npm run build` → 按 L4.0 跑对应测试 → 中文提交说明 → push 到 `main` → GitHub Actions 自动构建并部署到 Pages（约 2–3 分钟）；最后打开 https://osinglehh.github.io/digital-workstation/ 确认。
+- **GitHub Pages 工作流**：`.github/workflows/deploy.yml`（checkout → setup-node 24 → `npm ci` → typecheck → build → `configure-pages@v5`（`enablement: true`）→ `upload-pages-artifact`（`dist`）→ `deploy-pages`）。**首次启用必须在仓库 Settings → Pages 把 Source 手动选为 GitHub Actions**：工作流令牌无权创建 Pages 站点，只靠 `enablement` 会报 `Resource not accessible by integration`。
+- **Qoder Sites 线上版**：https://digital-workstation-vcyscgr9sb8.qoder.zone/ （`npm run build` 后经 Sites 插件发布，`webDirectory: dist`、`spa: false`）。重新发布沿用原 `projectId`、使用新 `actionId`；描述文件 `*.qoder.site` 含云端 ID 与快照，已在 `.gitignore`，不得提交。两个站点独立发布，推送 GitHub 不会自动更新 Qoder Sites。
+- **子路径部署前提**：`vite.config.ts` 的 `base: './'` 与运行时贴图相对路径 `textures/...` 缺一不可（Pages 项目站在 `/<仓库名>/` 子路径下）。验证方法：把 `dist/` 挂到 `/digital-workstation/` 的临时静态服务，用无头浏览器确认 25 张贴图全 200、失败请求与页面错误均为 0；临时探针用完按 L4.6 删除。
+- **回滚**：`git revert <提交>` 后 push，Actions 自动把线上退回上一版；禁止 `reset --hard`、`force push`。
+- **仓库卫生**：`figure/`、`analysis/renders/`、`*.qoder.site`、`dist/`、`node_modules/` 不进 Git；README 保持简洁（简介/运行/部署），设计事实写本文件与审计 JSON；升级依赖后重跑构建与交互测试。
+
 ## L4. 验证与证据
 
 ### 4.0 验证矩阵（先查这张表）
@@ -470,7 +481,8 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 | 改动类型 | 必跑 | 必看 / 必更新 |
 |---|---|---|
 | 任意代码 | `npm run typecheck`、`npm run build` | 构建单包约 1,572 kB，Vite 体积提示可接受 |
-| UI/设计树 | `test_interactions`、`final_ui_capture` | `final-ui-*.png`、`ui-manifest.json`、`interaction-test.json`（`errors: []`） |
+| 部署/工作流/站点配置 | `npm run typecheck`、`npm run build`、`git status` 核对忽略项 | `.github/workflows/deploy.yml`；线上 URL 与贴图 200（见 L3.17） |
+| UI/设计树 | `test_interactions`、`final_ui_capture` | `final-ui-*.png`、`ui-manifest.json`、`interaction-test.json`（`errors: []` 与 `treeDrag` 三段位置） |
 | 自动展示/时间线/隐藏控件栏 | `test_showcase`、`test_interactions`、`final_ui_capture` | `showcase-test.json`（63 项断言、`errors: []`）、`final-showcase-*.png`、`ui-manifest.json` |
 | 键盘/鼠标/水壶/杯子/椅子 | `test_interactions` + 最新近景或专项终图 | `final-keyboard-rgb.png`、`final-chair-*`；水壶/小件更新 `layout-audit.json` |
 | 桌下/地面/书包/垃圾桶 | `audit_underdesk`、`final_capture`（under） | `underdesk-audit.json`、`final-under*.png` |
@@ -482,11 +494,11 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 - `npm run typecheck`：零错误。
 - `npm run build`：通过；单包体积提示是已知情况，不是失败。
-- `node tools/test_interactions.mjs`：需要 dev server；当前版本先断言设计树整体折叠/展开与检查器挂入树内，再通过树节点执行笔记本开合、RGB（关闭/单色/彩虹）、双屏亮灭、夜间场景与暗色主题、自动环绕、坐姿视角、偏好持久化，并保留显示器旋转/椅子数值断言；检查页面 `errors: []`。
+- `node tools/test_interactions.mjs`：需要 dev server；当前版本先断言设计树整体折叠/展开、顶栏拖动与拖回原位（`treeDrag`）与检查器挂入树内，再通过树节点执行笔记本开合、RGB（关闭/单色/彩虹）、双屏亮灭、夜间场景与暗色主题、自动环绕、坐姿视角、偏好持久化，并保留显示器旋转/椅子数值断言；检查页面 `errors: []`。
   - **已知问题**：无头 SwiftShader 约 1–2 fps。显示器阻尼断言（`monitorPanDeg > 7`、`monitorTiltDeg < -2.5`）现在等待 45 s；椅子断言等待 20 s；这不是放宽阈值，而是给低帧率足够时间。若仍超时，如实记录实测值，不要伪造通过。
 - `node tools/final_ui_capture.mjs`：生成桌面/移动设计树终图、`final-keyboard-rgb.png` 与 `ui-manifest.json`；必须实际查看节点折叠、树内检查器、暗色主题对比度、移动端高度与横向溢出，以及键盘光池是否过曝。
 - `node tools/test_showcase.mjs`：需要 dev server；当前 **63 项断言**覆盖自动展示入口、45 秒真实进度与章节、底部实时字幕、暂停时间冻结与设备冻结、继续接续、下一章节、整树折叠不中断、隐藏控件栏后继续播放与恢复不重置、展示时隐藏设计树开关、RGB 单色/彩虹/呼吸、夜间/专注场景、完成状态、三次重播、自然完成自动恢复非默认基线（夜间/静态暖光/代码屏/合盖/左视角）、手动视角恢复与二次启停；必须 `errors: []`。无头环境用 `showcase.seek()` 定位，不要根据墙钟等待推断时间线。
-- UI 改动的人工检查：设计树标题箭头可整体折叠/展开；视角/物品/灯光/场景/自动展示/帮助节点可独立展开与关闭；自动展示节点内的“展示时隐藏设计树”开关可开启/关闭，播放中切换能立即隐藏或恢复树；点击场景物体时检查器出现在对应对象下方；点击空白/Esc 取消选中不关闭树；快捷键 1–9/R/空格/Esc；刷新后恢复场景、RGB、屏幕内容与视角（节点展开状态不恢复）。
+- UI 改动的人工检查：设计树标题箭头可整体折叠/展开；按住顶栏可拖动整树、拖出后仍完整落在舞台内，展开节点或改变窗口尺寸后自动收回舞台，刷新后回到左上角；视角/物品/灯光/场景/自动展示/帮助节点可独立展开与关闭；自动展示节点内的“展示时隐藏设计树”开关可开启/关闭，播放中切换能立即隐藏或恢复树；点击场景物体时检查器出现在对应对象下方；点击空白/Esc 取消选中不关闭树；快捷键 1–9/R/空格/Esc；刷新后恢复场景、RGB、屏幕内容与视角（节点展开状态不恢复）。
 - 设计树布局证据：`ui-manifest.json` 的 `designTree` 应为 `x=16,y=14,width=304,height=333`（1200×900 全折叠，六类节点）；`mobileOverflow` 要求 `bodyScrollWidth === viewportWidth === 390`、`inspectorInsideTree=true`（移动端检查器宽 315）。运行时探针还应确认：右上（`right > 62% viewport` 且 `top < 300`）与底部（`top > 62% viewport`）没有交互浮窗；选中物体后 `.object-inspector` 的 `position=static`、`insideTree=true` 且矩形完全落在树边界内（显示器实测 `[67,224,248,155]`）；六节点全展开高度 648、`.tree-body` 内容 2146 / 可视 555、页面仍为 900。
 - 玻璃/字号人工检查：面板为半透明玻璃（背后的场景可见且被 12 px 模糊），日间浅色、夜间深色玻璃都保持文字对比；标题 13 px、分类行 12.5 px、叶子 12 px、辅助 9–9.5 px；悬停有轻微底色、选中为浅蓝底 + 2 px 内嵌指示；展开箭头平滑旋转约 160 ms。不得恢复纯白实底、厚重黑色投影、显眼灰色计数胶囊或 16 px 默认按钮字号。
 - 键盘 RGB 改动：五种模式（彩虹/单色/呼吸/柔光/关闭）各截一张近景并用图像阅读查看；关闭时键缝/点光/光池全部消失；交付图更新 `final-keyboard-rgb.png`，试拍按 L4.6 删除。
@@ -613,7 +625,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 ### 界面与体验层
 
 - **UI-1 面板透明但存在**：无头 SwiftShader 下 CSS opacity 动画可能冻结在 0，导致设计树/检查器 `display:block`、`opacity:0`。进入动画只做 `transform`，不要从 `opacity:0` 开始；toast 同理。
-- **UI-2 设计树节点状态**：节点行的 `aria-expanded`、`.tree-node-body.hidden`、`aria-controls="ws-section-<name>"` 必须同步；整树折叠用 `.design-tree.is-collapsed`，不要用 `hidden` 把整棵树从布局中移除。改 DOM 后检查 `.dock-group` 的精确 `aria-label` 仍是视角/物品/灯光/场景/帮助（测试依赖）。
+- **UI-2 设计树节点状态**：节点行的 `aria-expanded`、`.tree-node-body.hidden`、`aria-controls="ws-section-<name>"` 必须同步；整树折叠用 `.design-tree.is-collapsed`，不要用 `hidden` 把整棵树从布局中移除。改 DOM 后检查 `.dock-group` 的精确 `aria-label` 仍是视角/物品/灯光/场景/自动展示/帮助（测试依赖）。
 - **UI-3 快捷键焦点**：`Space` 在聚焦按钮时让给按钮，画布需 `tabIndex=0` 且点击后 `focus()`；否则用户点完树节点后空格无法启动自动环绕。Esc 语义是“先取消选中、再折叠所有节点”，不要反过来。
 - **UI-4 持久化白名单**：读写 `workstation-ui-v1` 时必须校验视角/场景/RGB/内容/装饰 id；非法视角回退 `default`。不要把 autoOrbit、选中物体或节点展开状态写进持久化。
 - **UI-5 自动环绕必须按时间推进**：不要使用 `OrbitControls.autoRotate`（按帧步进，低帧率下停滞）；用 controller 帧监听器 + 真实 dt，在 ±68° 弧内往返，避免穿背墙。
@@ -628,6 +640,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 - **UI-14 设计树不要加入场动画**：`transform` 入场动画在无头 SwiftShader 下会冻结在偏移位置，导致截图中的面板下移、`designTree` 测成 `x=17,y=22` 一类错误值。只保留悬停/选中底色与箭头旋转过渡。
 - **UI-15 玻璃不能被实色底挡住**：`.tree-head`/`.tree-doc`/`.tree-foot` 必须保持透明或半透明 + 发丝线；加回白色渐变、实色底或大黑阴影会让面板重新变成后台白卡。面板背景保持 `--tree-bg` 的 0.68/0.66 透明度，夜间由 `data-theme='dark'` 切换深色玻璃。
 - **UI-16 状态切换不要改字号字重**：选中/展开/悬停只改背景、颜色和 2 px 内嵌蓝线；改字重会让计数与文字横向跳动，违反设计树的稳定对齐要求。
+- **UI-17 拖动只改 transform**：顶栏拖动用 `setPointerCapture` + `transform: translate()`，不要用行内 `left/top`（≤680px 的 `right:10px; width:auto` 会被破坏），也不要给 transform 加入场或过渡动画（无头 SwiftShader 会冻结在偏移位置）。初始 `transform` 必须是 `none`，否则 `designTree` 的 `(16,14)` 证据失真；拖动位置属于会话状态，刷新回左上角；`pointercancel/lostpointercapture` 必须结束拖动，避免停在抓取态。
 
 ### 自动展示
 
@@ -666,6 +679,13 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 43. **并发任务**：本仓库可能同时有多个代理；写共享文件前重新读取，清理只删本轮文件。
 44. **根目录临时脚本**：探针/导出类脚本不要留在仓库根目录（`_tmp_*.mjs` 等）；会在清理时按 L4.6 删除。
 
+### 部署与网络
+
+45. **Pages 首次启用必须手动**：`configure-pages` 的 `enablement: true` 也受令牌权限限制；工作流令牌创建站点会报 `Resource not accessible by integration`，需在 Settings → Pages 手动把 Source 选为 GitHub Actions（一次性操作）。
+46. **github.com 可能间歇不可达**：直连 `github.com:443` 会被重置或超时，而 `api.github.com` 通常正常；推送先重试，仍失败用一次性代理 `git -c http.proxy=http://127.0.0.1:7897 push`（Clash 混合端口可能变动，先 `netstat` 确认；不要写进全局配置）。
+47. **子路径 404 回归**：只改 `base` 或只改贴图路径都会让 Pages 白屏/材质变黑；验收标准是子路径静态服务下 25/25 贴图 200，本地 `npm run dev` 正常不代表部署正常。
+48. **两个线上站点独立**：GitHub Pages 与 Qoder Sites 各自发布、各自更新；不要假设 push 后两边同步。`*.qoder.site` 含云端 ID，禁止提交。
+
 ## L6. 交付规范
 
 最终回复使用以下结构（中文）：
@@ -679,7 +699,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 任务结束前：
 
 1. 按 L4.6 删除本轮临时脚本、试拍和未使用的中间产物；不要删并行任务的文件。
-2. 确认最终渲染、审计 JSON 和交互测试输出仍在；椅子改动确认 `final-chair-*` 已重拍，格架改动确认 `final-shelf-*` 与 `analysis/shelf-audit.json` 已更新，水壶/尺寸改动确认 `layout-audit.json` 对应字段已更新；UI 改动确认 `final-ui-*`、`final-keyboard-rgb.png` 与 `ui-manifest.json` 已更新，并保留 `interaction-test.json` 的 `errors: []`；自动展示改动确认 `showcase-test.json` 的 63 项断言全部通过、`errors: []`，且 `final-showcase-idle/opening/controls/device/rgb/night/finale.png` 已重拍并实际查看；环境/相机改动确认 `analysis/environment-audit.json` 全门禁为 true，且 `final-front/left/right/overhead/under` 已重拍。
+2. 确认最终渲染、审计 JSON 和交互测试输出仍在；椅子改动确认 `final-chair-*` 已重拍，格架改动确认 `final-shelf-*` 与 `analysis/shelf-audit.json` 已更新，水壶/尺寸改动确认 `layout-audit.json` 对应字段已更新；UI 改动确认 `final-ui-*`、`final-keyboard-rgb.png` 与 `ui-manifest.json` 已更新，并保留 `interaction-test.json` 的 `errors: []` 与 `treeDrag` 三段位置（拖动改动的必查项）；自动展示改动确认 `showcase-test.json` 的 63 项断言全部通过、`errors: []`，且 `final-showcase-idle/opening/controls/device/rgb/night/finale.png` 已重拍并实际查看；环境/相机改动确认 `analysis/environment-audit.json` 全门禁为 true，且 `final-front/left/right/overhead/under` 已重拍。
 3. 若尺寸/交互/工作流发生变化，更新本文件（必要时同步 README 的运行/部署说明）；**本文件只保留仍然有效的规则与事实，不堆积过程日志**。
 4. 不要在未获同意时写全局记忆，也不要主动执行 Git 提交/推送。
 5. 若修改了本文件，更新顶部版本/日期，并在附录 A 追加一条简短变更记录；附录只用于追溯，当前事实以 L0–L5 为准。
@@ -688,6 +708,27 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 > 附录只记录里程碑，不作为当前事实来源；尺寸、交互与验证以 L0–L5 和当前代码/实测为准。
 
+- **2026-10-28（第三十一版）**：移动端画质档（方案 A）——
+  - **触发条件**：`window.matchMedia('(pointer: coarse)')` 为真（触屏主指针）才启用，桌面/鼠标设备完全走原路径。
+  - **降级项**：像素比上限 2 → **1.5**；阴影 PCFSoft 2048 → **PCF 1024**；跳过 **SSAOPass 与 UnrealBloomPass** 两道全屏重通道（其余 film/vignette 保留）；设计树关闭 `backdrop-filter`、改用 `--tree-bg-fallback`（0.97 不透明玻璃底）。
+  - **实测**：桌面仿真（DPR 3，fine pointer）像素比 2、PCFSoft(2)、阴影 2048、模糊 `blur(12px) saturate(1.35)`、树底 0.68 —— 与改动前完全一致；手机仿真（390×844，DPR 3，coarse）像素比 1.5、PCF(1)、阴影 1024、模糊 `none`、树底 0.97；两档 `errors: []`。`test_interactions` 与 `final_ui_capture` 通过，`designTree (16,14,304×333)` 不变。
+- **2026-10-28（第三十版）**：递进文档校准与拖动入口补齐——
+  - **自动加载**：保留 L0–L6 + 附录结构；加载示例统一为“更新本文件”，阅读路由、文件边界与症状表补齐“顶栏拖动 / `bindTreeDrag` / `transform` 夹取”入口。
+  - **事实校准**：L2.3 设计树高度 289 → **333**；L3.14 证据补 `treeDrag`；L5 UI-2 节点清单补“自动展示”；`.gitignore` 行补 `*.qoder.site`。
+  - **过期引用**：删除“README 含尺寸/API/设计细节”的旧表述（L2.2、L3.2、L3.3、L3.4、L3.15），统一为“本文件 + 审计 JSON 为权威，README 只保留简介/运行/使用/部署”。
+  - **范围**：本轮只改文档（代码与拖动实现沿用第二十七版），未重跑测试；引用数据仍以最新 `interaction-test.json` / `ui-manifest.json` 为准。
+- **2026-10-28（第二十九版）**：部署维护知识纳入递进结构——
+  - **L3.17**：新增「部署与仓库维护」配方（常规发布、GitHub Pages 工作流与首次启用、Qoder Sites、子路径验证、回滚、仓库卫生）。
+  - **路由与门禁**：阅读路由新增「部署/仓库维护/Pages/Qoder Sites」行；L4.0 验证矩阵新增部署行。
+  - **L5**：新增「部署与网络」四条坑（Pages 首次启用、github.com 间歇不可达与一次性代理、子路径 404、双站点独立发布）。
+- **2026-10-28（第二十八版）**：新增 Qoder Sites 公开托管——
+  - **部署**：`npm run build` 后经 Qoder Sites 上传（`webDirectory: dist`、`spa: false`），发布为公开站点 https://digital-workstation-vcyscgr9sb8.qoder.zone/ ，GitHub Pages 部署保留不变。
+  - **访问与验证**：访问模式由 private 改为 public（改前 401）；线上 1200×900 无头实测 597 个 mesh、86/86 唯一贴图加载完成、`designTree (16,14,304×333)`、6 个节点、失败请求 0、页面错误 0；控制台 385 条 Canvas 贴图警告与本地 dev 完全一致，为既有现象。
+  - **仓库**：插件生成的 `.数字工位 · 可交互 3D 工作区.qoder.site`（含云端 ID 与快照）加入 `.gitignore` 不提交；README 增加 Qoder Sites 线上地址。
+- **2026-10-28（第二十七版）**：设计树顶栏可拖动——
+  - **交互**：`.tree-head` 按住左键或触摸拖动即可平移整棵树；折叠按钮、GitHub 图标与链接不触发拖动。平移用 `transform`（不改行内 `left/top`），限制在舞台四周 8px 内；展开/折叠、整树折叠、主题或窗口尺寸变化后由 `ResizeObserver`/`resize` 自动收回舞台；`pointercancel/lostpointercapture` 会结束拖动。拖动时抓手光标、禁用文本选择、隐藏 Tooltip 并加深投影。
+  - **边界**：初始位置仍为 `(16,14,304×333)`，位置不写入 `workstation-ui-v1`（刷新回到左上角）；≤680px 仍保持 `right:10px; width:auto` 的整宽布局，实测窗口从 1200 缩到 390 后树宽仍为 370、只保留纵向平移。
+  - **实测**：`typecheck`/`build` 通过（单包 1,574.5 kB）；`test_interactions` 新增 `treeDrag` 断言（16,14 → 166,154 → 16,14），`errors: []`；`final_ui_capture` 记录 `designTree (16,14,304×333)`、移动端 `bodyScrollWidth=390`、`mobileErrors=[]`；临时自检图确认桌面拖到 (276,234)、窄屏纵向拖动后玻璃与布局正常（试拍已删除）。
 - **2026-10-28（第二十六版）**：设计树常驻 GitHub 文字横条——
   - **入口**：装配体信息与节点区之间新增整宽横条 `.tree-repo-bar`（GitHub 图标 +「GitHub 开源仓库 · 欢迎 Star」+ ↗，278 × 32，整行新窗口打开）；标题栏图标与帮助链接保留。
   - **样式**：`--tree-card` 玻璃底 + 发丝线 + 内高光，悬停切换 `--tree-hover`/`--tree-accent`；整树折叠时随 doc/body/foot 隐藏；设计树默认高度 **289 → 333**（宽 304 不变，整树折叠仍为 48）。

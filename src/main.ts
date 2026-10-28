@@ -37,17 +37,20 @@ const ENVIRONMENT = {
 
 const stage = document.getElementById('stage') as HTMLDivElement;
 
+// 移动端画质档：仅在触屏主指针设备降级（低像素比、跳过 SSAO/辉光、阴影降级），桌面保持原画质
+const lowPowerTier = window.matchMedia('(pointer: coarse)').matches;
+
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
   alpha: false,
   preserveDrawingBuffer: true,
   powerPreference: 'high-performance',
 });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, lowPowerTier ? 1.5 : 2));
 renderer.toneMappingExposure = 0.74;
 renderer.setSize(stage.clientWidth, stage.clientHeight);
 renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.shadowMap.type = lowPowerTier ? THREE.PCFShadowMap : THREE.PCFSoftShadowMap;
 configureOfficeCubicleWorkstationDioramaRenderer(renderer);
 stage.prepend(renderer.domElement);
 
@@ -320,7 +323,7 @@ scene.add(ambientLight);
 const key = new THREE.DirectionalLight(0xf2f3f2, 1.95);
 key.position.set(1.9, 3.2, 3.1);
 key.castShadow = true;
-key.shadow.mapSize.set(2048, 2048);
+key.shadow.mapSize.set(lowPowerTier ? 1024 : 2048, lowPowerTier ? 1024 : 2048);
 key.shadow.camera.near = 0.2;
 key.shadow.camera.far = 12;
 key.shadow.camera.left = -2.2;
@@ -363,9 +366,9 @@ const ssaoPass = new SSAOPass(scene, camera, stage.clientWidth, stage.clientHeig
 ssaoPass.kernelRadius = 0.16;
 ssaoPass.minDistance = 0.0004;
 ssaoPass.maxDistance = 0.32;
-composer.addPass(ssaoPass);
+if (!lowPowerTier) composer.addPass(ssaoPass);
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(stage.clientWidth, stage.clientHeight), 0.16, 0.32, 0.95);
-composer.addPass(bloomPass);
+if (!lowPowerTier) composer.addPass(bloomPass);
 composer.addPass(new OutputPass());
 const filmPass = new ShaderPass({
   uniforms: { tDiffuse: { value: null }, uTime: { value: 0 } },

@@ -49,6 +49,44 @@ await page.locator('.tree-collapse').click();
 const treeExpanded = await page.locator('.tree-body').isVisible();
 if (!treeCollapsed || !treeExpanded) throw new Error('设计树整体折叠/展开失败');
 
+// --- 设计树：按住顶栏拖动，再拖回原位 ----------------------------------------
+const treeStart = await page.evaluate(() => {
+  const rect = document.querySelector('.design-tree').getBoundingClientRect();
+  return { x: rect.x, y: rect.y };
+});
+const headGrabPoint = async () => {
+  const box = await page.locator('.tree-head').boundingBox();
+  return { x: box.x + 30, y: box.y + box.height / 2 };
+};
+const dragStart = await headGrabPoint();
+await page.mouse.move(dragStart.x, dragStart.y);
+await page.mouse.down();
+await page.mouse.move(dragStart.x + 150, dragStart.y + 140, { steps: 10 });
+await page.mouse.up();
+const treeMoved = await page.evaluate(() => {
+  const rect = document.querySelector('.design-tree').getBoundingClientRect();
+  return { x: rect.x, y: rect.y };
+});
+if (treeMoved.x < treeStart.x + 100 || treeMoved.y < treeStart.y + 90) {
+  throw new Error('按住顶栏拖动设计树失败');
+}
+const dragBack = await headGrabPoint();
+await page.mouse.move(dragBack.x, dragBack.y);
+await page.mouse.down();
+await page.mouse.move(
+  dragBack.x - (treeMoved.x - treeStart.x),
+  dragBack.y - (treeMoved.y - treeStart.y),
+  { steps: 10 },
+);
+await page.mouse.up();
+const treeRestored = await page.evaluate(() => {
+  const rect = document.querySelector('.design-tree').getBoundingClientRect();
+  return { x: rect.x, y: rect.y };
+});
+if (Math.abs(treeRestored.x - treeStart.x) > 1 || Math.abs(treeRestored.y - treeStart.y) > 1) {
+  throw new Error('设计树未能拖回初始位置');
+}
+
 // --- 笔记本开合（通过设计树里的物体检查器） ----------------------------------
 await openSection('物品');
 await page.locator('[data-object="laptop"]').click();
@@ -207,6 +245,7 @@ const result = {
   initial,
   treeCollapsed,
   treeExpanded,
+  treeDrag: { before: treeStart, moved: treeMoved, restored: treeRestored },
   closed,
   opened,
   rgbOff,
