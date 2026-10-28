@@ -204,6 +204,7 @@ export class ControlPanel {
     repoLink.setAttribute('aria-label', `${REPO_LABEL}（新窗口）`);
     repoLink.innerHTML = icon('github', 15);
     head.append(brand, repoLink, this.treeToggle);
+    this.bindTreeDrag(head);
 
     const doc = make('div', 'tree-doc');
     const docName = make('span', 'tree-doc-name');
@@ -211,6 +212,13 @@ export class ControlPanel {
     const docBadges = make('span', 'tree-doc-badges');
     docBadges.append(make('span', 'tree-badge', '84 组件'), make('span', 'tree-badge', '33 材质'));
     doc.append(docName, docBadges);
+
+    const repoBar = make('a', 'tree-repo-bar');
+    repoBar.href = REPO_URL;
+    repoBar.target = '_blank';
+    repoBar.rel = 'noopener noreferrer';
+    repoBar.setAttribute('aria-label', `${REPO_LABEL}（新窗口）`);
+    repoBar.innerHTML = `${icon('github', 14)}<span>${REPO_LABEL}</span><span class="tree-repo-arrow">↗</span>`;
 
     const treeBody = make('div', 'tree-body');
     const rootRow = make('div', 'tree-root');
@@ -241,7 +249,7 @@ export class ControlPanel {
     this.statusText.setAttribute('aria-live', 'polite');
     footStatus.append(this.statusText);
     foot.append(footStatus, make('span', 'tree-hint', '拖动 · 滚轮 · 点击'));
-    this.tree.append(head, doc, treeBody, foot);
+    this.tree.append(head, doc, repoBar, treeBody, foot);
 
     // ---- 瞬时图层 -------------------------------------------------------------
     this.sceneTooltip = make('div', 'scene-tooltip');
@@ -701,7 +709,7 @@ export class ControlPanel {
     }
     body.append(
       list,
-      make('p', 'panel-note', '点击场景中的物体在设计树里展开操作节点，点击空白处或按 Esc 取消选择。'),
+      make('p', 'panel-note', '点击场景中的物体在设计树里展开操作节点，点击空白处或按 Esc 取消选择。按住顶栏可拖动整棵树。'),
     );
     const repoRow = make('a', 'help-repo-link');
     repoRow.href = REPO_URL;
@@ -1010,6 +1018,107 @@ export class ControlPanel {
     const value = Number(input.value);
     const percent = max > min ? ((value - min) / (max - min)) * 100 : 0;
     input.style.setProperty('--fill', `${percent}%`);
+  }
+
+  private bindTreeDrag(head: HTMLElement): void {
+    const margin = 8;
+    let offset = { x: 0, y: 0 };
+    let drag: {
+      pointerId: number;
+      startX: number;
+      startY: number;
+      offsetX: number;
+      offsetY: number;
+      baseX: number;
+      baseY: number;
+      width: number;
+      height: number;
+    } | null = null;
+
+    // 用 transform 平移而不是改 left/top，窄屏下 right:10px 的响应式宽度不会被破坏。
+    const applyOffset = (
+      x: number,
+      y: number,
+      baseX: number,
+      baseY: number,
+      width: number,
+      height: number,
+    ): void => {
+      const stageRect = this.stage.getBoundingClientRect();
+      const minX = margin - baseX;
+      const maxX = Math.max(minX, stageRect.width - width - margin - baseX);
+      const minY = margin - baseY;
+      const maxY = Math.max(minY, stageRect.height - height - margin - baseY);
+      offset = {
+        x: Math.round(Math.min(Math.max(x, minX), maxX)),
+        y: Math.round(Math.min(Math.max(y, minY), maxY)),
+      };
+      this.tree.style.transform = `translate(${offset.x}px, ${offset.y}px)`;
+    };
+
+    const clampIntoStage = (): void => {
+      if (drag || (!offset.x && !offset.y)) return;
+      const stageRect = this.stage.getBoundingClientRect();
+      const treeRect = this.tree.getBoundingClientRect();
+      if (!stageRect.width || !treeRect.width) return;
+      applyOffset(
+        offset.x,
+        offset.y,
+        treeRect.left - stageRect.left - offset.x,
+        treeRect.top - stageRect.top - offset.y,
+        treeRect.width,
+        treeRect.height,
+      );
+    };
+
+    head.addEventListener('pointerdown', (event) => {
+      if (event.button !== 0 || drag) return;
+      if ((event.target as Element | null)?.closest('a, button, input, select, textarea')) return;
+      const stageRect = this.stage.getBoundingClientRect();
+      const treeRect = this.tree.getBoundingClientRect();
+      if (!stageRect.width || !treeRect.width) return;
+      drag = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        offsetX: offset.x,
+        offsetY: offset.y,
+        baseX: treeRect.left - stageRect.left - offset.x,
+        baseY: treeRect.top - stageRect.top - offset.y,
+        width: treeRect.width,
+        height: treeRect.height,
+      };
+      head.setPointerCapture(event.pointerId);
+      this.tree.classList.add('is-dragging');
+      this.hideUiTooltip();
+      event.preventDefault();
+    });
+
+    head.addEventListener('pointermove', (event) => {
+      if (!drag || drag.pointerId !== event.pointerId) return;
+      applyOffset(
+        drag.offsetX + event.clientX - drag.startX,
+        drag.offsetY + event.clientY - drag.startY,
+        drag.baseX,
+        drag.baseY,
+        drag.width,
+        drag.height,
+      );
+    });
+
+    const finish = (event: PointerEvent): void => {
+      if (!drag || drag.pointerId !== event.pointerId) return;
+      drag = null;
+      this.tree.classList.remove('is-dragging');
+      if (head.hasPointerCapture(event.pointerId)) head.releasePointerCapture(event.pointerId);
+    };
+    head.addEventListener('pointerup', finish);
+    head.addEventListener('pointercancel', finish);
+    head.addEventListener('lostpointercapture', finish);
+
+    // 展开节点、旋转屏幕或切换主题都会改变树高，需要重新收回舞台内。
+    new ResizeObserver(clampIntoStage).observe(this.tree);
+    window.addEventListener('resize', clampIntoStage);
   }
 
   private bindTooltipEvents(): void {

@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> 项目级代理入口 · 第二十五版 · 最后更新 2026-10-28
+> 项目级代理入口 · 第二十六版 · 最后更新 2026-10-28
 >
 > **自动加载协议（给后续代理，务必遵守）**
 > 1. **任何任务先读 L0 + L1**（30 秒速览 + 硬规则，约 80 行），不要一次性读完整个文档。
@@ -56,7 +56,7 @@
 | 桌面面高 | **0.7575 m**，米制、Y 轴向上 |
 | 严格规格 | **84 个组件、33 个材质、7 个重复系统**，严格校验 PASS（`analysis/validation-strict-9.json`） |
 | 代码入口 | 工厂 `src/createOfficeCubicleWorkstationDioramaModel.ts`（生成物）；细节层 `src/workstationDetails.ts`（默认修改入口）；体验层 `src/workbenchController.ts` + `src/ui/controlPanel.ts` |
-| 界面 | 左上 **SolidWorks FeatureManager 风格 + 玻璃拟态**设计树（品牌/装配体信息/视角/物品/灯光/场景/自动展示/帮助/状态栏）、树内物体检查器、Tooltip、Toast；1200×900 全折叠时树位于 `(16, 14)`、宽 **304**、高 **289**（`rgba(245,247,250,0.68)` + `backdrop-filter: blur(12px) saturate(135%)`，夜间深色玻璃）；字号 **13 / 12.5 / 12 / 9.5 / 9 px**，节点行高 **27 / 26 px**；展开多节点时树体内部滚动、页面不撑高；11 机位（主视角/正面/左/右/俯视/桌下/坐姿/键盘/显示器/笔记本/全景）；4 场景（白天/深夜/专注/RGB）；自动展示（约 45 秒 / 7 幕，真实进度、暂停/继续、下一章节、重播、退出、底部实时功能字幕、可选的展示时隐藏设计树与完成后自动恢复初始状态）；本机 `workstation-ui-v1` 持久化，展示隐藏偏好单独存 `workstation-showcase-v1`。底部 dock 与右侧检查器已移除，不要恢复 |
+| 界面 | 左上 **SolidWorks FeatureManager 风格 + 玻璃拟态**设计树（品牌/装配体信息/GitHub 仓库横条/视角/物品/灯光/场景/自动展示/帮助/状态栏）、树内物体检查器、Tooltip、Toast；1200×900 全折叠时树位于 `(16, 14)`、宽 **304**、高 **333**（`rgba(245,247,250,0.68)` + `backdrop-filter: blur(12px) saturate(135%)`，夜间深色玻璃）；字号 **13 / 12.5 / 12 / 9.5 / 9 px**，节点行高 **27 / 26 px**；展开多节点时树体内部滚动、页面不撑高；11 机位（主视角/正面/左/右/俯视/桌下/坐姿/键盘/显示器/笔记本/全景）；4 场景（白天/深夜/专注/RGB）；自动展示（约 45 秒 / 7 幕，真实进度、暂停/继续、下一章节、重播、退出、底部实时功能字幕、可选的展示时隐藏设计树与完成后自动恢复初始状态）；本机 `workstation-ui-v1` 持久化，展示隐藏偏好单独存 `workstation-showcase-v1`。底部 dock 与右侧检查器已移除，不要恢复 |
 | 键盘 RGB | 键帽为参考的**由后向前逐行渐变**（F 排近白 `#D9DDDF` → 底排近炭黑 `#4C5458`，字色后三排深、前三排浅）；键缝底光（0.358 × 0.104，`pivot` y=-0.003）+ `keyboard-rgb-light` 点光（0.04–0.10 / 0.55 m / decay 1.9，局部 `(0, 0.095, 0)`）+ 0.55 × 0.15 m 桌面溢光面（`z=-0.055`）；彩虹模式底光不再乘单色；关闭时三层同时熄灭 |
 | 紧凑房间 | 浮动 4:3 舞台；地板 **2.4 × 2.25 m**（`y=0`，600 mm 瓷砖）、单面背墙 **2.6 × 2.35 m**（`z=-0.64`）+ 两侧 **0.42 m** 返墙、踢脚 **85 × 18 mm**；工位逐顶点包络 `x -0.855..0.533 / y 0..1.7915 / z -0.34..0.9326`，距背墙 **0.300 m**、距左墙 0.425 m、距右墙 0.587 m；相机正面弧 ±75°、极角 16–88°、距离 0.45–3.15 m、目标半径 0.75 m |
 | 默认构图 | `default` 为 3/4 全景（target `[-0.03, 0.78, 0.04]`、az **-26°**、el **20°**、**2.80 m**、fov **52°**）；1200×900 逐顶点投影实测工位高 **80.6%**、上/下留白 **10.3% / 9.1%**；11 个预设参数见 L3.15 |
@@ -383,15 +383,16 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 ### L3.14 左上设计树与体验层专项（当前已实现，勿回退）
 
 - **分层**：`main.ts` 保留场景/灯光/相机/后处理/基础自动化；`workbenchController.ts` 负责相机缓动、Raycaster 拾取、场景预设、灯光状态、整理显隐、持久化与快捷键；`src/ui/*` 只负责 DOM/CSS。不要在 `main.ts` 恢复旧 HUD，也不要把 Three.js 物件逻辑塞进 `ui/`；**不要恢复底部 dock 或右侧浮窗**。
-- **设计树结构**：`ControlPanel` 创建 `.design-tree`，固定在舞台左上（`top:14px; left:16px; width:304px`，1200×900 全折叠高 **289**），包含：
+- **设计树结构**：`ControlPanel` 创建 `.design-tree`，固定在舞台左上（`top:14px; left:16px; width:304px`，1200×900 全折叠高 **333**），包含：
   - `.tree-head`：品牌图标、`数字工位`、`FeatureManager · 设计树`、GitHub 图标链接 `.tree-github`、整体折叠按钮 `.tree-collapse`；
   - `.tree-doc`：`工作位装配体` + `84 组件`/`33 材质` 徽标；
+  - `.tree-repo-bar`：常驻 GitHub 文字横条（图标 +「GitHub 开源仓库 · 欢迎 Star」+ ↗，整行新窗口打开），在装配体信息与节点区之间；整树折叠时与 doc/body/foot 一起隐藏；
   - `.tree-body`：根行 `数字工位装配体` + `.tree-children` 中的视角/物品/灯光/场景/自动展示/帮助六个 `.tree-node`；
   - `.tree-foot`：状态点、`tree-status-text`（场景 · 视角 · 已选 · 环绕中）、操作提示。
-  `.tree-row` 保留 `.dock-group` 类和精确 `aria-label`（视角/物品/灯光/场景/自动展示/帮助），测试与快捷定位依赖它；节点正文 id 为 `ws-section-<name>`，与 `aria-controls` 对应。自动展示节点的正文在 L3.16。帮助节点正文末尾固定一行 `.help-repo-link`（`GitHub 开源仓库 · 欢迎 Star`，新窗口打开）；`.tree-github` 与 `.help-repo-link` 均由 `controlPanel.ts` 的 `REPO_URL` 常量指向公开仓库，不要改成硬编码分支或相对路径。
+  `.tree-row` 保留 `.dock-group` 类和精确 `aria-label`（视角/物品/灯光/场景/自动展示/帮助），测试与快捷定位依赖它；节点正文 id 为 `ws-section-<name>`，与 `aria-controls` 对应。自动展示节点的正文在 L3.16。帮助节点正文末尾固定一行 `.help-repo-link`（`GitHub 开源仓库 · 欢迎 Star`，新窗口打开）；`.tree-github`、`.tree-repo-bar` 与 `.help-repo-link` 均由 `controlPanel.ts` 的 `REPO_URL` 常量指向公开仓库，不要改成硬编码分支或相对路径。
 - **玻璃拟态与字号**：`--tree-bg`（日 `rgba(245,247,250,0.68)` / 夜 `rgba(23,26,31,0.66)`）、`--tree-blur: 12px`、`--tree-saturate: 135%`、`--tree-radius: 14px`；字体变量 `--tree-font-title/node/leaf/meta/micro` = **13/12.5/12/9.5/9px**，行高 `--tree-row-height/--tree-leaf-height` = **27/26px**。头部、装配体信息、底栏只用透明底 + 发丝线，**不要把实色渐变/白底加回去**，否则 `backdrop-filter` 看不到场景。`@supports not ((backdrop-filter) or (-webkit-backdrop-filter))` 时回退 `--tree-bg-fallback`。`design-tree` 不做入场动画：无头 SwiftShader 会把 transform 冻结在偏移位置，污染截图与 `designTree` 实测。
 - **按钮字号优先级**：全局按钮重置用 `:where(.stage-ui) button { font: inherit }`（`:where` 降低优先级）。若改回 `.stage-ui button { font: inherit }`，它会压过 `.tree-row`/`.tree-leaf` 的 `font-size`，所有节点又变回 16px——这是旧版“字体偏大”的根因。
-- **展开语义**：点击节点行切换 `aria-expanded` 与 `.tree-node-body.hidden`；可同时展开多个节点，树体内滚动。标题栏 `.tree-collapse` 切换 `is-collapsed`，只折叠整棵树外壳。初始状态所有节点折叠；`setSectionOpen(name, true)` 会同时展开整棵树。`closePanels()` 只折叠所有节点，不隐藏设计树；`hasOpenPanel()` 以是否有展开节点为准。实测（1200×900）：全折叠高 **289**；六节点全展开高 648（72vh 上限）、`.tree-body` 内容 **2146** / 可视 **555**，`pageScrollHeight` 仍为 900。
+- **展开语义**：点击节点行切换 `aria-expanded` 与 `.tree-node-body.hidden`；可同时展开多个节点，树体内滚动。标题栏 `.tree-collapse` 切换 `is-collapsed`，只折叠整棵树外壳。初始状态所有节点折叠；`setSectionOpen(name, true)` 会同时展开整棵树。`closePanels()` 只折叠所有节点，不隐藏设计树；`hasOpenPanel()` 以是否有展开节点为准。实测（1200×900）：全折叠高 **333**；六节点全展开高 648（72vh 上限）、`.tree-body` 内容 **2146** / 可视 **555**，`pageScrollHeight` 仍为 900。
 - **物体检查器**：`.object-inspector.tree-selection` 是物品节点下的子节点，不是右侧浮窗。`setInspector(meta)` 生成头部/状态/动作/选项后，把检查器移动到选中对象按钮之后（`objectButton.after(...)`），自动展开 `物品` 节点并 `scrollIntoView({block:'nearest'})`；取消选中时 `hidden=true`。`selectObject()` **不得调用 `ui.closePanels()`**；点击面板外也不得关闭设计树。
 - **Esc/空白语义**：Esc 先取消选中，再在无选中时折叠所有节点（`closePanels`）；点击空白取消选中但不折叠设计树。桌面上节点展开状态属于会话临时状态，不写入持久化。
 - **机位**：`views` 使用 `target + azimuthDeg/elevationDeg/distance/fov`；当前 11 个 id：`default/front/left/right/overhead/under/firstPerson/keyboard/monitor/laptop/panorama`。初始/复位为 `default`，`currentView` 会在手动拖动或滚轮后变 `null`。预设切换由 main 的缓动完成；聚焦物体和自动环绕由 controller 自己的 tween 完成，启动前会调用 `cancelViewAnimation()`。各预设参数、默认构图留白与初始相机同步要求见 **L3.15**；改 `views` 后必须运行 `tools/audit_environment.mjs`。
@@ -486,7 +487,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 - `node tools/final_ui_capture.mjs`：生成桌面/移动设计树终图、`final-keyboard-rgb.png` 与 `ui-manifest.json`；必须实际查看节点折叠、树内检查器、暗色主题对比度、移动端高度与横向溢出，以及键盘光池是否过曝。
 - `node tools/test_showcase.mjs`：需要 dev server；当前 **63 项断言**覆盖自动展示入口、45 秒真实进度与章节、底部实时字幕、暂停时间冻结与设备冻结、继续接续、下一章节、整树折叠不中断、隐藏控件栏后继续播放与恢复不重置、展示时隐藏设计树开关、RGB 单色/彩虹/呼吸、夜间/专注场景、完成状态、三次重播、自然完成自动恢复非默认基线（夜间/静态暖光/代码屏/合盖/左视角）、手动视角恢复与二次启停；必须 `errors: []`。无头环境用 `showcase.seek()` 定位，不要根据墙钟等待推断时间线。
 - UI 改动的人工检查：设计树标题箭头可整体折叠/展开；视角/物品/灯光/场景/自动展示/帮助节点可独立展开与关闭；自动展示节点内的“展示时隐藏设计树”开关可开启/关闭，播放中切换能立即隐藏或恢复树；点击场景物体时检查器出现在对应对象下方；点击空白/Esc 取消选中不关闭树；快捷键 1–9/R/空格/Esc；刷新后恢复场景、RGB、屏幕内容与视角（节点展开状态不恢复）。
-- 设计树布局证据：`ui-manifest.json` 的 `designTree` 应为 `x=16,y=14,width=304,height=289`（1200×900 全折叠，六类节点）；`mobileOverflow` 要求 `bodyScrollWidth === viewportWidth === 390`、`inspectorInsideTree=true`（移动端检查器宽 315）。运行时探针还应确认：右上（`right > 62% viewport` 且 `top < 300`）与底部（`top > 62% viewport`）没有交互浮窗；选中物体后 `.object-inspector` 的 `position=static`、`insideTree=true` 且矩形完全落在树边界内（显示器实测 `[67,224,248,155]`）；六节点全展开高度 648、`.tree-body` 内容 2146 / 可视 555、页面仍为 900。
+- 设计树布局证据：`ui-manifest.json` 的 `designTree` 应为 `x=16,y=14,width=304,height=333`（1200×900 全折叠，六类节点）；`mobileOverflow` 要求 `bodyScrollWidth === viewportWidth === 390`、`inspectorInsideTree=true`（移动端检查器宽 315）。运行时探针还应确认：右上（`right > 62% viewport` 且 `top < 300`）与底部（`top > 62% viewport`）没有交互浮窗；选中物体后 `.object-inspector` 的 `position=static`、`insideTree=true` 且矩形完全落在树边界内（显示器实测 `[67,224,248,155]`）；六节点全展开高度 648、`.tree-body` 内容 2146 / 可视 555、页面仍为 900。
 - 玻璃/字号人工检查：面板为半透明玻璃（背后的场景可见且被 12 px 模糊），日间浅色、夜间深色玻璃都保持文字对比；标题 13 px、分类行 12.5 px、叶子 12 px、辅助 9–9.5 px；悬停有轻微底色、选中为浅蓝底 + 2 px 内嵌指示；展开箭头平滑旋转约 160 ms。不得恢复纯白实底、厚重黑色投影、显眼灰色计数胶囊或 16 px 默认按钮字号。
 - 键盘 RGB 改动：五种模式（彩虹/单色/呼吸/柔光/关闭）各截一张近景并用图像阅读查看；关闭时键缝/点光/光池全部消失；交付图更新 `final-keyboard-rgb.png`，试拍按 L4.6 删除。
 - 视角预设回归：逐个点击 11 个视角按钮，检查 `currentView()`、唯一的 `aria-pressed` 按钮、相机距离与预设一致；手动拖动后 `currentView=null`、无激活按钮；滚轮缩放上限为 3.15 m。无头 SwiftShader 下 rAF 很慢，每步至少等待 2.5 s，不能用 0.9 s 的旧等待判断失败。
@@ -687,6 +688,10 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 > 附录只记录里程碑，不作为当前事实来源；尺寸、交互与验证以 L0–L5 和当前代码/实测为准。
 
+- **2026-10-28（第二十六版）**：设计树常驻 GitHub 文字横条——
+  - **入口**：装配体信息与节点区之间新增整宽横条 `.tree-repo-bar`（GitHub 图标 +「GitHub 开源仓库 · 欢迎 Star」+ ↗，278 × 32，整行新窗口打开）；标题栏图标与帮助链接保留。
+  - **样式**：`--tree-card` 玻璃底 + 发丝线 + 内高光，悬停切换 `--tree-hover`/`--tree-accent`；整树折叠时随 doc/body/foot 隐藏；设计树默认高度 **289 → 333**（宽 304 不变，整树折叠仍为 48）。
+  - **实测**：`typecheck`/`build` 通过；`test_interactions` `errors: []`；`final_ui_capture` 记录 `designTree (16,14,304×333)`、移动端 `bodyScrollWidth=390`、`mobileErrors=[]`；探针确认横条在树内、`href/target/rel` 正确、折叠后 `display:none`、无页面错误。
 - **2026-10-28（第二十五版）**：README 精简——
   - **README**：由 210 行的设计文档精简为约 30 行的项目说明（简介、在线演示、运行、使用、部署、开发说明），移除尺寸表、材质、代码结构、验证与限制等设计细节；设计事实继续以本文件与审计 JSON 为准。
   - **规则同步**：L0.3、L1.6、L2.1、L5-39、L6.3 中“README 是尺寸表/需同步 README”的表述改为“本文件 + 审计 JSON 为权威记录，README 保持简洁不写设计细节”。
