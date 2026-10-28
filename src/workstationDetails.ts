@@ -673,28 +673,28 @@ function drawDashboardLaptop(canvas: HTMLCanvasElement, ctx: CanvasRenderingCont
     ctx.globalAlpha = 1;
   }
 
-  drawWindow(ctx, 245, 98, 520, 350, 'C:\\Users\\26922 — Windows PowerShell', 1.05);
+  drawWindow(ctx, 245, 98, 520, 350, 'C:\\Users\\user — Windows PowerShell', 1.05);
   ctx.save();
   ctx.beginPath();
   ctx.rect(245, 126, 520, 322);
   ctx.clip();
   ctx.font = '500 11px Consolas, "Cascadia Mono", monospace';
   const lines = [
-    'PS C:\\Users\\26922> npm install -g @qoder/cli',
+    'PS C:\\Users\\user> npm install -g @qoder/cli',
     'added 128 packages in 14s',
-    'PS C:\\Users\\26922> img2 add img2threejs/plugin-character --ref v1.5',
+    'PS C:\\Users\\user> img2 add img2threejs/plugin-character --ref v1.5',
     '✓ plugin-character installed',
-    'PS C:\\Users\\26922> python forge/next.py --state .img2threejs/state.json',
+    'PS C:\\Users\\user> python forge/next.py --state .img2threejs/state.json',
     'STATE status=active step=form-refinement pass=form-refinement',
     'PASS structural  complete',
     'PASS form       in review',
     'PASS material   locked',
     '',
-    'PS C:\\Users\\26922> node runtime/scripts/export_mesh_geometry.mjs',
+    'PS C:\\Users\\user> node runtime/scripts/export_mesh_geometry.mjs',
     'exported 82 components · 121420 triangles',
     'gates: turntable 4/4 · attachment 12/12 · self-intersection clean',
     '',
-    'PS C:\\Users\\26922> █',
+    'PS C:\\Users\\user> █',
   ];
   lines.forEach((line, i) => {
     ctx.fillStyle = line.startsWith('✓') ? '#7ddca4' : line.startsWith('PASS') ? '#87b9ff' : 'rgba(220,230,240,0.78)';

@@ -6,6 +6,15 @@ dist/
 figure/
 analysis/renders/
 
+# 参考照片衍生裁剪与参考类门禁图（保留本地，不进公开仓库）
+analysis/crops/
+analysis/material-crops/
+analysis/gates/mask-ref.png
+analysis/gates/ref224.png
+
+# 本机流水线状态（含本地路径，仅本地保留）
+.img2threejs/
+
 # Qoder Sites 本地站点绑定（含云端 ID 与快照，不进公开仓库）
 *.qoder.site
 

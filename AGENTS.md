@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> 项目级代理入口 · 第三十一版 · 最后更新 2026-10-28
+> 项目级代理入口 · 第三十二版 · 最后更新 2026-10-28
 >
 > **自动加载协议（给后续代理，务必遵守）**
 > 1. **任何任务先读 L0 + L1**（30 秒速览 + 硬规则，约 80 行），不要一次性读完整个文档。
@@ -154,9 +154,9 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 | `analysis/` | 参考裁剪、材质证据、审计 JSON、门禁、渲染 | 可追加证据，不删除被 README 或工具引用的文件 |
 | `analysis/renders/final/` | 标准五视图、参考构图、白模、转台、椅子/头枕/格架专项终图、界面终图与 manifest | 交付物，禁止用旧迭代截图覆盖 |
 | `analysis/renders/` | 交互测试输出、单张检查图 | 试拍在收尾时清理 |
-| `.img2threejs/` | img2threejs 管线状态 | 只在真正走规格重建流程时读取/更新；不是运行时依赖 |
+| `.img2threejs/` | img2threejs 管线状态（含本机路径） | 只在真正走规格重建流程时读取/更新；**本地保留、不进入 Git**（已从跟踪移除并列入 `.gitignore`） |
 | `dist/` | Vite 构建产物 | 自动生成，不要手改；必要时用 `npm run build` 重建 |
-| `.gitignore` | 忽略 `node_modules/`、`dist/`、`figure/`、`analysis/renders/`、`*.qoder.site` | `figure/`（231 MB 参考照片）、`analysis/renders/`（渲染证据）与含云端 ID 的站点描述文件刻意不进 Git |
+| `.gitignore` | 忽略 `node_modules/`、`dist/`、`figure/`、`analysis/renders/`、`analysis/crops/`、`analysis/material-crops/`、参考类门禁图（`gates/mask-ref.png`、`gates/ref224.png`）、`.img2threejs/`、`*.qoder.site` | 参考照片及其衍生裁剪、渲染证据、本机流水线状态与含云端 ID 的站点描述文件刻意不进 Git；公开内容不得写入本机路径或用户名 |
 | `.github/workflows/deploy.yml` | GitHub Pages 自动部署：检出 → `npm ci` → typecheck → build → configure-pages（`enablement: true`）→ upload-pages-artifact → deploy-pages | push `main` 即部署；首次启用 Pages 需在仓库 Settings → Pages 手动把 Source 选为 GitHub Actions（API 令牌无权自动创建站点） |
 | `README.md` | 项目简介、在线演示、运行/使用与部署说明 | 保持简洁，不写设计/尺寸/验证细节；开发约定见本文件 |
 | `AGENTS.md` | 本文件，项目级代理入口 | 保持 L0–L6 递进结构；版本/日期与附录随任务更新；**不要堆积过程日志** |
@@ -708,6 +708,11 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 > 附录只记录里程碑，不作为当前事实来源；尺寸、交互与验证以 L0–L5 和当前代码/实测为准。
 
+- **2026-10-28（第三十二版）**：公开仓库隐私清理——
+  - **屏幕文案**：笔记本终端画面中 6 处本机用户目录显示改为通用 `C:\Users\user`（此前上线会暴露本机用户名）。
+  - **移出跟踪**：`analysis/crops/`（30 张）、`analysis/material-crops/`（23 张）、`analysis/gates/mask-ref.png`、`analysis/gates/ref224.png`、`.img2threejs/state.json` 已 `git rm --cached`，加入 `.gitignore`，本地文件保留；`object-sculpt-spec.json` 与 `analysis/pre-spec-assessment.json` 的 `sourceImage` 由本机绝对路径改为 `figure/桌面-4.jpg`。
+  - **提交身份**：后续提交邮箱改为 GitHub noreply（`168887922+Osinglehh@users.noreply.github.com`），历史提交仍含旧学号邮箱。
+  - **范围说明**：本轮未重写 Git 历史（裁剪图仍可从旧提交中取得）；如需彻底清除需单独确认后执行历史重写与强推。
 - **2026-10-28（第三十一版）**：移动端画质档（方案 A）——
   - **触发条件**：`window.matchMedia('(pointer: coarse)')` 为真（触屏主指针）才启用，桌面/鼠标设备完全走原路径。
   - **降级项**：像素比上限 2 → **1.5**；阴影 PCFSoft 2048 → **PCF 1024**；跳过 **SSAOPass 与 UnrealBloomPass** 两道全屏重通道（其余 film/vignette 保留）；设计树关闭 `backdrop-filter`、改用 `--tree-bg-fallback`（0.97 不透明玻璃底）。

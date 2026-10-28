@@ -1,6 +1,6 @@
 {
   "targetName": "Office Cubicle Workstation Diorama",
-  "sourceImage": "D:/play/4.jpg",
+  "sourceImage": "figure/桌面-4.jpg",
   "preSpecAssessment": {
     "objectClass": {
       "primaryType": "办公位组合体（桌、隔断、书架、笔记本、显示器、键鼠与桌面陈设组成的有界场景资产）",
@@ -718,7 +718,7 @@
       "confidence": 0.0,
       "note": "Only meaningful when objectClass.primaryDomain is character or hybrid. Set applies=true and fill from forge/stage1_intake/extract_landmarks.py. See grimoire/character/reconstruction.md and grimoire/character/likeness_maximization.md."
     },
-    "sourceImage": "D:/play/4.jpg"
+    "sourceImage": "figure/桌面-4.jpg"
   },
   "qualityContract": {
     "qualityBar": "ultra-complex",

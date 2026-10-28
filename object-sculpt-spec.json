@@ -38,7 +38,7 @@
     ],
     "descriptionRule": "Use measurable 3D graphics terms. Avoid vague words unless they are paired with concrete geometry/material/shader parameters."
   },
-  "sourceImage": "D:/play/4.jpg",
+  "sourceImage": "figure/桌面-4.jpg",
   "referenceCamera": {
     "solved": false,
     "fovDegrees": 43.0,
@@ -779,7 +779,7 @@
       "confidence": 0.0,
       "note": "Only meaningful when objectClass.primaryDomain is character or hybrid. Set applies=true and fill from forge/stage1_intake/extract_landmarks.py. See grimoire/character/reconstruction.md and grimoire/character/likeness_maximization.md."
     },
-    "sourceImage": "D:/play/4.jpg"
+    "sourceImage": "figure/桌面-4.jpg"
   },
   "qualityContract": {
     "qualityBar": "ultra-complex",
