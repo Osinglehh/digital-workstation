@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> 项目级代理入口 · 第二十四版 · 最后更新 2026-10-28
+> 项目级代理入口 · 第二十五版 · 最后更新 2026-10-28
 >
 > **自动加载协议（给后续代理，务必遵守）**
 > 1. **任何任务先读 L0 + L1**（30 秒速览 + 硬规则，约 80 行），不要一次性读完整个文档。
@@ -77,7 +77,7 @@
 
 1. 确认开发服务器已运行：`npm run dev`（`http://127.0.0.1:5173/`）；若共享文件刚被并行任务改写，先重读当前内容。
 2. 先读相关函数、节点 id、父级变换和审计数据，再改 `src/workstationDetails.ts`。
-3. 尺寸/布局/交互变化同步更新 `README.md` 与对应 `analysis/*-audit.json`。
+3. 尺寸/布局/交互变化同步更新本文件对应事实与 `analysis/*-audit.json`（README 只保留简介与运行/部署说明，不写设计细节）。
 4. `npm run typecheck`、`npm run build`。
 5. `node tools/test_interactions.mjs`（依赖 dev server），检查 `errors: []`；无头环境阻尼断言可能超时，见 L4.1。
 6. 重新截图，并**用图片阅读工具实际查看**；不要只凭命令输出判断视觉正确。改 UI 时运行 `node tools/final_ui_capture.mjs` 更新 `final-ui-*.png` 与 `ui-manifest.json`；改自动展示时运行 `node tools/test_showcase.mjs` 并把关键帧图写入 `analysis/renders/final/final-showcase-*.png`。
@@ -111,7 +111,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 3. **优先细节层**：视觉、尺寸、动画、材质修正优先改 `src/workstationDetails.ts`；工厂是生成物，手改会在下次生成时被覆盖。
 4. **保留用户资产**：`figure/` 参考图、审计 JSON、最终渲染、交互测试输出和用户数据不得删除或覆盖，除非用户明确要求。
 5. **不要伪造结果**：只报告实际运行的检查；没跑浏览器/没看截图时必须明确说明；放宽阈值的临时测试不能写成“标准测试通过”。
-6. **尺寸与证据同步**：任何改变用户可见尺寸、位置、交互或默认状态的任务，都要更新 `README.md` 和对应 `analysis/*-audit.json`，并重新截图。
+6. **尺寸与证据同步**：任何改变用户可见尺寸、位置、交互或默认状态的任务，都要更新本文件对应事实与 `analysis/*-audit.json`，并重新截图；README 保持简洁，不写设计细节。
 7. **中文交付**：沟通、代码注释、模块说明和项目文档用简体中文；第三方 API、字段名、代码标识符保持原样。
 8. **全局记忆需确认**：写入用户级全局记忆前，必须先获得用户明确同意。
 9. **Git 与远端**：本项目已托管到公开仓库 `github.com/Osinglehh/digital-workstation`（`main` 分支）；禁止 `git reset --hard`、`git clean`、force push 等破坏性操作；`figure/` 与 `analysis/renders/` 已列入 `.gitignore`，提交时不要强推它们；推送前检查 `git status` 与身份。
@@ -157,7 +157,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 | `dist/` | Vite 构建产物 | 自动生成，不要手改；必要时用 `npm run build` 重建 |
 | `.gitignore` | 忽略 `node_modules/`、`dist/`、`figure/`、`analysis/renders/` | `figure/`（231 MB 参考照片）与 `analysis/renders/`（渲染证据）刻意不进 Git |
 | `.github/workflows/deploy.yml` | GitHub Pages 自动部署：检出 → `npm ci` → typecheck → build → configure-pages（`enablement: true`）→ upload-pages-artifact → deploy-pages | push `main` 即部署；首次启用 Pages 需在仓库 Settings → Pages 手动把 Source 选为 GitHub Actions（API 令牌无权自动创建站点） |
-| `README.md` | 用户可读的尺寸、交互、验证和已知限制 | 行为、尺寸或交互变化时同步更新 |
+| `README.md` | 项目简介、在线演示、运行与部署说明 | 保持简洁，不写设计/尺寸/验证细节；开发约定见本文件 |
 | `AGENTS.md` | 本文件，项目级代理入口 | 保持 L0–L6 递进结构；版本/日期与附录随任务更新；**不要堆积过程日志** |
 
 ### 2.2 症状/主题 → 入口
@@ -658,7 +658,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 36. **悬空误判**：先实测物体正下方所有 mesh 的顶面——可能落在笔袋、支架等更高家具上，而不是主桌面 0.7575。
 37. **线缆穿越陈设**：新增/移动桌面陈设后检查现有线缆是否横穿；`createCables` 的 `makeCable` 只按世界坐标布线，不会自动避让。
 38. **参考照片差异**：`figure/桌面-1.jpg` 的键鼠款式与 `桌面-2..4.jpg` 不同；当前场景以 `桌面-4.jpg` 的渐变灰 98 键键盘为准。用户实测/品牌更正优先于照片比例。
-39. **尺寸来源**：README 是用户可读的权威尺寸表；审计 JSON 是测量证据；用户最新更正优先级最高。
+39. **尺寸来源**：本文件 L0.2/L3.x 与 `analysis/*-audit.json` 是尺寸的权威记录（README 不含设计细节）；用户最新更正优先级最高。
 40. **截图机位**：低角度侧视容易被鼠标、杯子、显示器或桌面挡住；换角度或近景，不要用穿模机位假装已检查。
 41. **阻尼动画在无头环境收敛慢**：`swivelChair`/`reclineChair`/`monitorPan` 用 `damp` 推进，无头 SwiftShader 低帧率下 10 s 只推进约 0.02 s 仿真时间；交互测试按“明显位移”断言。
 42. **终图脚本的参数传递**：`tools/final_capture.mjs` 的 `shoot(fileName, shot, arg)` 必须把机位名/方位角作为第三个参数传给 `page.evaluate(fn, arg)`；漏传时 `capture(undefined)` 退回默认 `'front'`，六视图与四向转台会全部拍成同一张正面图（已修复；回归时先比较各视图像素差，正常应远大于 10）。
@@ -679,7 +679,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 1. 按 L4.6 删除本轮临时脚本、试拍和未使用的中间产物；不要删并行任务的文件。
 2. 确认最终渲染、审计 JSON 和交互测试输出仍在；椅子改动确认 `final-chair-*` 已重拍，格架改动确认 `final-shelf-*` 与 `analysis/shelf-audit.json` 已更新，水壶/尺寸改动确认 `layout-audit.json` 对应字段已更新；UI 改动确认 `final-ui-*`、`final-keyboard-rgb.png` 与 `ui-manifest.json` 已更新，并保留 `interaction-test.json` 的 `errors: []`；自动展示改动确认 `showcase-test.json` 的 63 项断言全部通过、`errors: []`，且 `final-showcase-idle/opening/controls/device/rgb/night/finale.png` 已重拍并实际查看；环境/相机改动确认 `analysis/environment-audit.json` 全门禁为 true，且 `final-front/left/right/overhead/under` 已重拍。
-3. 若尺寸/交互/工作流发生变化，更新 `README.md` 和本文件；**本文件只保留仍然有效的规则与事实，不堆积过程日志**。
+3. 若尺寸/交互/工作流发生变化，更新本文件（必要时同步 README 的运行/部署说明）；**本文件只保留仍然有效的规则与事实，不堆积过程日志**。
 4. 不要在未获同意时写全局记忆，也不要主动执行 Git 提交/推送。
 5. 若修改了本文件，更新顶部版本/日期，并在附录 A 追加一条简短变更记录；附录只用于追溯，当前事实以 L0–L5 为准。
 
@@ -687,6 +687,9 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 > 附录只记录里程碑，不作为当前事实来源；尺寸、交互与验证以 L0–L5 和当前代码/实测为准。
 
+- **2026-10-28（第二十五版）**：README 精简——
+  - **README**：由 210 行的设计文档精简为约 30 行的项目说明（简介、在线演示、运行、使用、部署、开发说明），移除尺寸表、材质、代码结构、验证与限制等设计细节；设计事实继续以本文件与审计 JSON 为准。
+  - **规则同步**：L0.3、L1.6、L2.1、L5-39、L6.3 中“README 是尺寸表/需同步 README”的表述改为“本文件 + 审计 JSON 为权威记录，README 保持简洁不写设计细节”。
 - **2026-10-28（第二十四版）**：设计树新增 GitHub 仓库入口——
   - **入口**：标题栏 `.tree-head` 增加 GitHub 图标链接 `.tree-github`（24×24，悬停显示「GitHub 开源仓库 · 欢迎 Star」），帮助节点正文末尾增加 `.help-repo-link` 文字链接；两者都新窗口打开（`target=_blank` + `noopener noreferrer`），指向 `github.com/Osinglehh/digital-workstation`。
   - **样式**：`.tree-github` 与折叠按钮同一套悬停样式；`.help-repo-link` 使用 `--tree-card`/`--tree-hover` 玻璃底色，日夜主题自适应；树宽 **304**、全折叠高 **289** 不变。
