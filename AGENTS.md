@@ -72,7 +72,7 @@
 | 已移除 | 蓝色中性笔、鼠标编织线、显示器信号线、旧桌腿与前/后横梁、旧搁板铝托架（`shelfBracketL/R`）、旧书列（`shelfProps`/`bookRowB`/`bookEnd`）、旧茶罐（`jarPurple`/`jarOrange`/`teaCanister`）、3 条地面盘绕线缆、架内订书机（实为剪刀，已替换） |
 | 最终证据 | `analysis/renders/final/`（`final-under.png`、`final-underdesk*.png`、`final-chair-*.png`、`final-shelf-*.png`、`final-ui-*.png`、`final-showcase-*.png`、`final-keyboard-rgb.png`、`manifest.json`、`shelf-manifest.json`、`ui-manifest.json`）、`analysis/renders/interaction-test.json`、`analysis/renders/showcase-test.json`、`lid-closed.png`、`night-mode.png`、`monitor-pan.png`、`analysis/environment-audit.json`、全部 `analysis/*-audit.json` |
 | 构建体积 | 单包约 1,576 kB（2026-10-29 实测）；Vite 体积提示是已知情况，不是失败 |
-| 部署 | GitHub 公开仓库 `Osinglehh/digital-workstation`；push 到 `main` 触发 GitHub Actions 自动构建并部署到 GitHub Pages（`.github/workflows/deploy.yml`，`base: './'` + 相对贴图路径）；线上 https://osinglehh.github.io/digital-workstation/ ；Qoder Sites 公开站点 https://digital-workstation-vcyscgr9sb8.qoder.zone/ （`npm run build` 后 `prepare_site` → `publish_site`，需重新发布时用新 `actionId` + 复用 `projectId`；站点描述文件 `.数字工位 · 可交互 3D 工作区.qoder.site` 由插件生成、含云端 ID，已列入 `.gitignore` 不得提交）；`figure/` 与 `analysis/renders/` 在 `.gitignore` 中、不进 Git |
+| 部署 | GitHub 公开仓库 `Osinglehh/digital-workstation`；push 到 `main` 触发 GitHub Actions 自动构建并部署到 GitHub Pages（`.github/workflows/deploy.yml`，`base: './'` + 相对贴图路径）；线上 https://osinglehh.github.io/digital-workstation/ ；Qoder Sites 公开站点 https://digital-workstation-vcyscgr9sb8.qoder.zone/ （`npm run build` 后 `prepare_site` → `publish_site`，需重新发布时用新 `actionId` + 复用 `projectId`；站点描述文件 `.数字工位 · 可交互 3D 工作区.qoder.site` 由插件生成、含云端 ID，已列入 `.gitignore` 不得提交）；2026-10-29 视频入口版已同步发布两站并验证；`figure/` 与 `analysis/renders/` 在 `.gitignore` 中、不进 Git |
 
 ### 0.3 黄金路径
 
@@ -469,8 +469,10 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 ### L3.17 部署与仓库维护（GitHub Pages + Qoder Sites）
 
 - **常规发布**：改代码 → `npm run typecheck`、`npm run build` → 按 L4.0 跑对应测试 → 中文提交说明 → push 到 `main` → GitHub Actions 自动构建并部署到 Pages（约 2–3 分钟）；最后打开 https://osinglehh.github.io/digital-workstation/ 确认。
-- **GitHub Pages 工作流**：`.github/workflows/deploy.yml`（checkout → setup-node 24 → `npm ci` → typecheck → build → `configure-pages@v5`（`enablement: true`）→ `upload-pages-artifact`（`dist`）→ `deploy-pages`）。**首次启用必须在仓库 Settings → Pages 把 Source 手动选为 GitHub Actions**：工作流令牌无权创建 Pages 站点，只靠 `enablement` 会报 `Resource not accessible by integration`。
+- **GitHub Pages 工作流**：`.github/workflows/deploy.yml`（checkout → setup-node 24 → `npm ci` → typecheck → build → `configure-pages@v5`（`enablement: true`）→ `upload-pages-artifact`（`dist`）→ `deploy-pages`）。**首次启用必须在仓库 Settings → Pages 把 Source 手动选为 GitHub Actions**：工作流令牌无权创建 Pages 站点，只靠 `enablement` 会报 `Resource not accessible by integration`。推送后可用 GitHub API `/actions/runs?branch=main` 轮询本次 SHA 到 `completed/success`，再抓线上资源验收。
 - **Qoder Sites 线上版**：https://digital-workstation-vcyscgr9sb8.qoder.zone/ （`npm run build` 后经 Sites 插件发布，`webDirectory: dist`、`spa: false`）。重新发布沿用原 `projectId`、使用新 `actionId`；描述文件 `*.qoder.site` 含云端 ID 与快照，已在 `.gitignore`，不得提交。两个站点独立发布，推送 GitHub 不会自动更新 Qoder Sites。
+- **Qoder 发布实测（2026-10-29）**：`prepare_site`（`webDirectory: dist`、`spa: false`、新 `actionId` + 原 `projectId`）可能返回 `descriptorStatus: pending`；这不是失败——用返回的 `verificationOperationId` 读 `get_operation`，成功后用**同一 actionId 与完全相同入参**重试 `prepare_site` 写回描述文件，再 `get_publish_status` 到 `canPublish: true`，调用 `publish_site`，轮询到 `published: true`。
+- **线上验收**：读取站点 `index.html` 的 JS/CSS 资源 URL，确认 HTTP 200 且脚本/样式包含本次唯一字符串（如 `v.douyin.com/KQAS2eHl17M`、`tree-video-row`）。2026-10-29 两站资源均为 `index-Bn7yYpdu.js` / `index-CVlUDJiT.css`，全部命中。
 - **子路径部署前提**：`vite.config.ts` 的 `base: './'` 与运行时贴图相对路径 `textures/...` 缺一不可（Pages 项目站在 `/<仓库名>/` 子路径下）。验证方法：把 `dist/` 挂到 `/digital-workstation/` 的临时静态服务，用无头浏览器确认 25 张贴图全 200、失败请求与页面错误均为 0；临时探针用完按 L4.6 删除。
 - **回滚**：`git revert <提交>` 后 push，Actions 自动把线上退回上一版；禁止 `reset --hard`、`force push`。
 - **仓库卫生**：`figure/`、`analysis/renders/`、`*.qoder.site`、`dist/`、`node_modules/` 不进 Git；README 保持简洁（简介/运行/部署），设计事实写本文件与审计 JSON；升级依赖后重跑构建与交互测试。
@@ -687,6 +689,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 46. **github.com 可能间歇不可达**：直连 `github.com:443` 会被重置或超时，而 `api.github.com` 通常正常；推送先重试，仍失败用一次性代理 `git -c http.proxy=http://127.0.0.1:7897 push`（Clash 混合端口可能变动，先 `netstat` 确认；不要写进全局配置）。
 47. **子路径 404 回归**：只改 `base` 或只改贴图路径都会让 Pages 白屏/材质变黑；验收标准是子路径静态服务下 25/25 贴图 200，本地 `npm run dev` 正常不代表部署正常。
 48. **两个线上站点独立**：GitHub Pages 与 Qoder Sites 各自发布、各自更新；不要假设 push 后两边同步。`*.qoder.site` 含云端 ID，禁止提交。
+49. **Qoder `prepare_site` 的 `pending` 不是失败**：`descriptorStatus: pending` 表示产物仍在校验；按 `verificationOperationId` 读 `get_operation`，成功后用同一 actionId 和完全相同的 `projectRoot/webDirectory/projectId/spa` 重试 `prepare_site`，不要新建 actionId，也不要重复上传。`published: true` 才是发布完成。
 
 ## L6. 交付规范
 
@@ -714,6 +717,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
   - **入口**：GitHub 横条下方新增 `.tree-video-row`，两枚半宽外链「抖音视频」（`https://v.douyin.com/KQAS2eHl17M/`）与「小红书视频」（`/discovery/item/6ae209e4…` 分享链，含 `xsec_token`），沿用玻璃卡片 + 发丝线 + ↗，`target=_blank` + `rel="noopener noreferrer"`，`data-video` 供回归定位；`icons.ts` 新增 `douyin`（音符）与 `xiaohongshu`（小书）内联图标，平台识别色青 `#1CAFC4` / 红 `#E8334A`。
   - **尺寸**：1200×900 全折叠树高 **333 → 367**（宽 304 不变，整树折叠仍 48）；视频行 278 × 30、两链接各 136；≤680px 树宽 370、视频行 344、两链接各 169、`bodyScrollWidth=390`。
   - **验证**：`typecheck`、`build`（单包 1,575.71 kB）通过；`test_interactions` 新增视频入口地址/`target`/`rel`/折叠隐藏断言，`errors: []`，`treeDrag` 仍为 16,14 → 166,154 → 16,14；`final_ui_capture` 记录 `designTree (16,14,304×367)`、`mobileErrors=[]`；已重拍并查看 `final-ui-overview/night/mobile.png`。未改自动展示时间线，未重跑 `test_showcase`。
+  - **发布**：功能提交 `02132ca` 已推送 `main`，GitHub Actions run `40835187125` 成功；GitHub Pages 与 Qoder Sites 均 HTTP 200，线上 JS/CSS 含抖音短链、小红书 item、`tree-video-row` 与两条平台文案；Qoder 复用原 `projectId`、新 action 发布成功。
 - **2026-10-28（第三十四版）**：删除历史重写备份——
   - 经用户确认，删除 `backup-before-rewrite` 分支与 `D:/digital-workstation-history-backup-20261028.bundle`，并执行 `reflog expire` + `gc --prune=now`；旧提交在本地不可达，远端历史保持干净。删除备份后无法再恢复旧历史。
 - **2026-10-28（第三十三版）**：Git 历史重写（隐私清除，用户明确确认）——
