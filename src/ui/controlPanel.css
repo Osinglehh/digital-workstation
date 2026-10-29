@@ -278,6 +278,7 @@
 
 .design-tree.is-collapsed .tree-doc,
 .design-tree.is-collapsed .tree-repo-bar,
+.design-tree.is-collapsed .tree-video-row,
 .design-tree.is-collapsed .tree-body,
 .design-tree.is-collapsed .tree-foot {
   display: none !important;
@@ -312,6 +313,62 @@
 }
 
 .tree-repo-arrow {
+  margin-left: auto;
+  color: var(--ui-muted);
+  font-size: var(--tree-font-meta);
+}
+
+.tree-video-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  flex: none;
+  margin: 0 var(--tree-pad-x) 4px;
+}
+
+.tree-video-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 6px 9px;
+  border: 1px solid var(--tree-hairline);
+  border-radius: 8px;
+  background: var(--tree-card);
+  box-shadow: inset 0 1px 0 var(--tree-highlight);
+  color: var(--ui-ink);
+  font-size: var(--tree-font-leaf);
+  text-decoration: none;
+}
+
+.tree-video-icon {
+  display: inline-flex;
+  flex: none;
+}
+
+.tree-video-link.is-douyin .ui-icon {
+  color: #1CAFC4;
+}
+
+.tree-video-link.is-xiaohongshu .ui-icon {
+  color: #E8334A;
+}
+
+.tree-video-label {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tree-video-link:hover,
+.tree-video-link:focus-visible {
+  background: var(--tree-hover);
+  border-color: var(--tree-line);
+  color: var(--tree-accent-strong);
+}
+
+.tree-video-arrow {
   margin-left: auto;
   color: var(--ui-muted);
   font-size: var(--tree-font-meta);

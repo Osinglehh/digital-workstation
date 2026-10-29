@@ -30,6 +30,24 @@ const HELP_SECTION = 'help';
 const REPO_URL = 'https://github.com/Osinglehh/digital-workstation';
 const REPO_LABEL = 'GitHub 开源仓库 · 欢迎 Star';
 
+// 宣传视频入口：抖音与小红书，点击在新窗口打开
+const VIDEO_LINKS = [
+  {
+    id: 'douyin',
+    label: '抖音视频',
+    title: '抖音 · 数字工位宣传视频',
+    url: 'https://v.douyin.com/KQAS2eHl17M/',
+    icon: 'douyin',
+  },
+  {
+    id: 'xiaohongshu',
+    label: '小红书视频',
+    title: '小红书 · 数字工位宣传视频',
+    url: 'https://www.xiaohongshu.com/discovery/item/6ae209e40000000028023016?source=webshare&xhsshare=pc_web&xsec_token=ABlabMqoEDA83lM6G96VkI3pcSGqbugpuaqY8xzHSALvc=&xsec_source=pc_share',
+    icon: 'xiaohongshu',
+  },
+] as const;
+
 type SectionName =
   | typeof VIEW_SECTION
   | typeof OBJECT_SECTION
@@ -220,6 +238,26 @@ export class ControlPanel {
     repoBar.setAttribute('aria-label', `${REPO_LABEL}（新窗口）`);
     repoBar.innerHTML = `${icon('github', 14)}<span>${REPO_LABEL}</span><span class="tree-repo-arrow">↗</span>`;
 
+    const videoRow = make('div', 'tree-video-row');
+    for (const video of VIDEO_LINKS) {
+      const link = make('a', `tree-video-link is-${video.id}`);
+      link.href = video.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.dataset.video = video.id;
+      const linkLabel = `${video.title}（新窗口）`;
+      link.title = linkLabel;
+      link.setAttribute('aria-label', linkLabel);
+      const linkIcon = make('span', 'tree-video-icon');
+      linkIcon.innerHTML = icon(video.icon, 14);
+      link.append(
+        linkIcon,
+        make('span', 'tree-video-label', video.label),
+        make('span', 'tree-video-arrow', '↗'),
+      );
+      videoRow.append(link);
+    }
+
     const treeBody = make('div', 'tree-body');
     const rootRow = make('div', 'tree-root');
     rootRow.innerHTML = `${icon('box', 13)}<span>数字工位装配体</span><span class="tree-count">84</span>`;
@@ -249,7 +287,7 @@ export class ControlPanel {
     this.statusText.setAttribute('aria-live', 'polite');
     footStatus.append(this.statusText);
     foot.append(footStatus, make('span', 'tree-hint', '拖动 · 滚轮 · 点击'));
-    this.tree.append(head, doc, repoBar, treeBody, foot);
+    this.tree.append(head, doc, repoBar, videoRow, treeBody, foot);
 
     // ---- 瞬时图层 -------------------------------------------------------------
     this.sceneTooltip = make('div', 'scene-tooltip');

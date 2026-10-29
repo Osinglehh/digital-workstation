@@ -45,9 +45,50 @@ const initial = await page.evaluate(() => ({
 // --- 设计树：整体折叠 / 展开 ------------------------------------------------
 await page.locator('.tree-collapse').click();
 const treeCollapsed = await page.locator('.tree-body').isHidden();
+const videoRowCollapsed = await page.locator('.tree-video-row').isHidden();
 await page.locator('.tree-collapse').click();
 const treeExpanded = await page.locator('.tree-body').isVisible();
-if (!treeCollapsed || !treeExpanded) throw new Error('设计树整体折叠/展开失败');
+const videoRowExpanded = await page.locator('.tree-video-row').isVisible();
+if (!treeCollapsed || !treeExpanded || !videoRowCollapsed || !videoRowExpanded) {
+  throw new Error('设计树整体折叠/展开失败');
+}
+
+// --- 设计树：抖音 / 小红书宣传视频入口 --------------------------------------
+const videoLinks = await page.evaluate(() => {
+  const read = (selector) => {
+    const el = document.querySelector(selector);
+    return el
+      ? {
+          href: el.getAttribute('href'),
+          target: el.getAttribute('target'),
+          rel: el.getAttribute('rel'),
+          label: el.getAttribute('aria-label'),
+          text: el.textContent?.trim() ?? '',
+        }
+      : null;
+  };
+  return {
+    douyin: read('[data-video="douyin"]'),
+    xiaohongshu: read('[data-video="xiaohongshu"]'),
+    insideTree: Boolean(document.querySelector('.tree-video-row')?.closest('.design-tree')),
+    rowLinks: document.querySelectorAll('.tree-video-row a').length,
+  };
+});
+if (!videoLinks.douyin || !videoLinks.xiaohongshu || !videoLinks.insideTree || videoLinks.rowLinks !== 2) {
+  throw new Error('设计树缺少抖音/小红书视频入口');
+}
+const videoTargets = [
+  ['抖音', videoLinks.douyin, 'https://v.douyin.com/KQAS2eHl17M/'],
+  ['小红书', videoLinks.xiaohongshu, 'https://www.xiaohongshu.com/discovery/item/6ae209e40000000028023016'],
+];
+for (const [name, link, expected] of videoTargets) {
+  if (!link.href?.startsWith(expected)) throw new Error(`${name}视频入口地址错误`);
+  if (link.target !== '_blank') throw new Error(`${name}视频入口未在新窗口打开`);
+  if (!link.rel?.includes('noopener') || !link.rel?.includes('noreferrer')) {
+    throw new Error(`${name}视频入口缺少安全 rel`);
+  }
+  if (!link.label?.includes(name)) throw new Error(`${name}视频入口缺少无障碍标签`);
+}
 
 // --- 设计树：按住顶栏拖动，再拖回原位 ----------------------------------------
 const treeStart = await page.evaluate(() => {
@@ -246,6 +287,7 @@ const result = {
   treeCollapsed,
   treeExpanded,
   treeDrag: { before: treeStart, moved: treeMoved, restored: treeRestored },
+  videoLinks,
   closed,
   opened,
   rgbOff,

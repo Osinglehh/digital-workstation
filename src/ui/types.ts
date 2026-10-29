@@ -106,7 +106,9 @@ export type IconName =
   | 'skip'
   | 'replay'
   | 'hide'
-  | 'github';
+  | 'github'
+  | 'douyin'
+  | 'xiaohongshu';
 
 export type ViewOption = {
   id: ViewId;
