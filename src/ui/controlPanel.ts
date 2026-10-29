@@ -18,11 +18,13 @@ import type {
   UiState,
   ViewId,
 } from './types';
+import type { BackgroundMusicState, MusicPlayback } from '../audio/backgroundMusic';
 
 const VIEW_SECTION = 'view';
 const OBJECT_SECTION = 'objects';
 const LIGHT_SECTION = 'lighting';
 const SCENE_SECTION = 'scenes';
+const MUSIC_SECTION = 'music';
 const SHOWCASE_SECTION = 'showcase';
 const HELP_SECTION = 'help';
 
@@ -53,8 +55,18 @@ type SectionName =
   | typeof OBJECT_SECTION
   | typeof LIGHT_SECTION
   | typeof SCENE_SECTION
+  | typeof MUSIC_SECTION
   | typeof SHOWCASE_SECTION
   | typeof HELP_SECTION;
+
+const MUSIC_PLAYBACK_LABELS: Record<MusicPlayback, string> = {
+  off: '背景音乐已关闭',
+  loading: '正在加载背景音乐…',
+  playing: '正在循环播放',
+  blocked: '浏览器限制了自动播放，点击页面即可开始',
+  paused: '播放已暂停',
+  error: '音频加载失败，请检查音频文件',
+};
 
 const SHOWCASE_STATUS_LABELS: Record<ShowcaseStatus, string> = {
   idle: '待机',
@@ -129,6 +141,13 @@ export class ControlPanel {
   private levelRange: HTMLInputElement;
   private ambientOutput: HTMLOutputElement;
   private levelOutput: HTMLOutputElement;
+
+  private musicSwitch!: HTMLButtonElement;
+  private musicRange!: HTMLInputElement;
+  private musicOutput!: HTMLOutputElement;
+  private musicStatusRow!: HTMLElement;
+  private musicStatusText!: HTMLSpanElement;
+  private lastMusicEnabled: boolean | null = null;
 
   private showcasePrimary!: HTMLButtonElement;
   private showcaseNext!: HTMLButtonElement;
@@ -275,6 +294,7 @@ export class ControlPanel {
       this.buildObjectSection(),
       this.buildLightingSection(),
       this.buildSceneSection(),
+      this.buildMusicSection(),
       this.buildShowcaseSection(),
       this.buildHelpSection(),
     );
@@ -631,6 +651,59 @@ export class ControlPanel {
     );
   }
 
+  private buildMusicSection(): HTMLElement {
+    const body = make('div', 'music-panel');
+
+    const switchRow = make('div', 'switch-row');
+    const switchCopy = make('div', 'switch-copy');
+    switchCopy.append(
+      make('strong', undefined, '背景音乐'),
+      make('span', undefined, '进入页面后自动循环播放；音量与开关会记住。'),
+    );
+    this.musicSwitch = makeButton('ui-switch', '', '切换背景音乐');
+    this.musicSwitch.setAttribute('role', 'switch');
+    this.musicSwitch.setAttribute('aria-checked', 'true');
+    this.musicSwitch.setAttribute('aria-label', '背景音乐');
+    this.musicSwitch.addEventListener('click', () => this.callbacks.onMusicToggle());
+    switchRow.append(switchCopy, this.musicSwitch);
+
+    const volumeRow = make('div', 'slider-row');
+    const volumeLabel = make('label', undefined, '音量');
+    this.musicRange = make('input', 'ui-range');
+    this.musicRange.type = 'range';
+    this.musicRange.min = '0';
+    this.musicRange.max = '100';
+    this.musicRange.step = '1';
+    this.musicRange.value = '35';
+    this.musicRange.setAttribute('aria-label', '背景音乐音量');
+    this.musicOutput = make('output', undefined, '35%');
+    this.musicRange.addEventListener('input', () => {
+      const value = Number(this.musicRange.value);
+      this.setRangeFill(this.musicRange);
+      this.musicOutput.textContent = `${Math.round(value)}%`;
+      this.callbacks.onMusicVolume(value);
+    });
+    volumeRow.append(volumeLabel, this.musicRange, this.musicOutput);
+
+    this.musicStatusRow = make('div', 'music-status');
+    this.musicStatusRow.dataset.state = 'loading';
+    const statusDot = make('span', 'music-dot');
+    statusDot.setAttribute('aria-hidden', 'true');
+    this.musicStatusText = make('span', 'music-status-text', '正在加载背景音乐…');
+    this.musicStatusText.setAttribute('aria-live', 'polite');
+    this.musicStatusRow.append(statusDot, this.musicStatusText);
+
+    body.append(switchRow, volumeRow, this.musicStatusRow);
+    this.setRangeFill(this.musicRange);
+    return this.buildSection(
+      MUSIC_SECTION,
+      '声音',
+      'volume',
+      '背景音乐独立于场景预设，自动展示时仍可调节。',
+      body,
+    );
+  }
+
   private buildShowcaseSection(): HTMLElement {
     const body = make('div', 'showcase-panel');
 
@@ -840,6 +913,21 @@ export class ControlPanel {
       button.innerHTML = `${icon(visible ? 'eye' : 'eyeOff', 12)}<span>${label}</span>`;
       button.dataset.tip = visible ? `隐藏${label}` : `显示${label}`;
     }
+  }
+
+  setMusic(state: BackgroundMusicState): void {
+    this.musicSwitch.setAttribute('aria-checked', String(state.enabled));
+    if (this.lastMusicEnabled !== state.enabled) {
+      this.lastMusicEnabled = state.enabled;
+      const nodeIcon = this.sections.get(MUSIC_SECTION)?.row.querySelector<HTMLElement>('.tree-node-icon');
+      if (nodeIcon) nodeIcon.innerHTML = icon(state.enabled ? 'volume' : 'volumeOff', 14);
+    }
+    const volume = Math.round(state.volume);
+    if (document.activeElement !== this.musicRange) this.musicRange.value = String(volume);
+    this.musicRange.style.setProperty('--fill', `${Math.min(100, Math.max(0, volume))}%`);
+    this.musicOutput.textContent = `${volume}%`;
+    this.musicStatusRow.dataset.state = state.playback;
+    this.musicStatusText.textContent = MUSIC_PLAYBACK_LABELS[state.playback];
   }
 
   setShowcase(state: ShowcaseUiState): void {

@@ -42,7 +42,7 @@ await page.reload({ waitUntil: 'networkidle' });
 await waitApp(page);
 await page.waitForTimeout(1400);
 
-await shot(page, 'final-ui-overview.png', '白天模式主视角：左上设计树（装配体信息、六类节点，含自动展示、状态栏）。');
+await shot(page, 'final-ui-overview.png', '白天模式主视角：左上设计树（装配体信息、七类节点，含声音与自动展示、状态栏）。');
 manifest.designTree = await page.evaluate(() => {
   const rect = document.querySelector('.design-tree')?.getBoundingClientRect();
   return rect
@@ -63,6 +63,11 @@ await closeSection(page, '物品');
 await openSection(page, '灯光');
 await shot(page, 'final-ui-lighting.png', '灯光节点：主灯、环境光/亮度、RGB 模式与配色。');
 await closeSection(page, '灯光');
+
+await openSection(page, '声音');
+await shot(page, 'final-ui-audio.png', '声音节点：背景音乐开关、音量滑杆与实时播放状态。');
+manifest.music = await page.evaluate(() => window.__workstation.getMusicState());
+await closeSection(page, '声音');
 
 await openSection(page, '场景');
 await page.locator('[data-scene="night"]').click();

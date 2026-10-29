@@ -128,6 +128,68 @@ if (Math.abs(treeRestored.x - treeStart.x) > 1 || Math.abs(treeRestored.y - tree
   throw new Error('设计树未能拖回初始位置');
 }
 
+// --- 设计树：背景音乐开关、音量与状态 ----------------------------------------
+await openSection('声音');
+const musicInitial = await page.evaluate(() => {
+  const state = window.__workstation.getMusicState();
+  const row = document.querySelector('[data-node="music"] .tree-row');
+  const range = document.querySelector('input[aria-label="背景音乐音量"]');
+  return {
+    state,
+    rowLabel: row?.getAttribute('aria-label') ?? '',
+    switchChecked: document.querySelector('[role="switch"][aria-label="背景音乐"]')?.getAttribute('aria-checked'),
+    rangeValue: range ? Number(range.value) : null,
+    status: document.querySelector('.music-status-text')?.textContent ?? '',
+    hasVolumeIcon: Boolean(row?.querySelector('.tree-node-icon svg')),
+  };
+});
+if (!musicInitial.rowLabel.includes('声音')) throw new Error('设计树缺少声音节点');
+if (typeof musicInitial.state?.enabled !== 'boolean' || typeof musicInitial.state?.volume !== 'number') {
+  throw new Error('背景音乐状态不可读');
+}
+if (!musicInitial.hasVolumeIcon) throw new Error('声音节点缺少音量图标');
+if (!musicInitial.status) throw new Error('背景音乐缺少播放状态');
+
+const musicSwitch = page.getByRole('switch', { name: '背景音乐', exact: true });
+await musicSwitch.click();
+await page.waitForTimeout(300);
+const musicOff = await page.evaluate(() => ({
+  state: window.__workstation.getMusicState(),
+  checked: document.querySelector('[role="switch"][aria-label="背景音乐"]')?.getAttribute('aria-checked'),
+  status: document.querySelector('.music-status-text')?.textContent ?? '',
+}));
+if (musicOff.state.enabled || musicOff.state.playback !== 'off' || musicOff.checked !== 'false') {
+  throw new Error('背景音乐关闭状态不正确');
+}
+if (!musicOff.status.includes('关闭')) throw new Error('背景音乐关闭文案不正确');
+
+await musicSwitch.click();
+await page.waitForTimeout(500);
+const musicOn = await page.evaluate(() => ({
+  state: window.__workstation.getMusicState(),
+  checked: document.querySelector('[role="switch"][aria-label="背景音乐"]')?.getAttribute('aria-checked'),
+}));
+if (!musicOn.state.enabled || musicOn.checked !== 'true') throw new Error('背景音乐开启状态不正确');
+
+await page.locator('input[aria-label="背景音乐音量"]').evaluate((el) => {
+  el.value = '62';
+  el.dispatchEvent(new Event('input', { bubbles: true }));
+});
+await page.waitForTimeout(300);
+const musicVolume = await page.evaluate(() => {
+  const range = document.querySelector('input[aria-label="背景音乐音量"]');
+  return {
+    state: window.__workstation.getMusicState(),
+    output: range?.parentElement?.querySelector('output')?.textContent ?? '',
+    rangeValue: range ? Number(range.value) : null,
+  };
+});
+if (musicVolume.state.volume !== 62 || musicVolume.rangeValue !== 62) {
+  throw new Error(`背景音乐音量未更新：${musicVolume.state.volume}`);
+}
+if (musicVolume.output !== '62%') throw new Error(`背景音乐音量文案错误：${musicVolume.output}`);
+await closeSection('声音');
+
 // --- 笔记本开合（通过设计树里的物体检查器） ----------------------------------
 await openSection('物品');
 await page.locator('[data-object="laptop"]').click();
@@ -280,7 +342,11 @@ const persisted = await page.evaluate(() => ({
   ui: window.__workstation.getUiState(),
   view: window.__workstation.currentView(),
   theme: document.documentElement.dataset.theme,
+  music: window.__workstation.getMusicState(),
 }));
+if (!persisted.music.enabled || persisted.music.volume !== 62) {
+  throw new Error('背景音乐开关/音量未持久化');
+}
 
 const result = {
   initial,
@@ -288,6 +354,10 @@ const result = {
   treeExpanded,
   treeDrag: { before: treeStart, moved: treeMoved, restored: treeRestored },
   videoLinks,
+  musicInitial,
+  musicOff,
+  musicOn,
+  musicVolume,
   closed,
   opened,
   rgbOff,

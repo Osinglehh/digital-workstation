@@ -18,6 +18,9 @@ analysis/gates/ref224.png
 # Qoder Sites 本地站点绑定（含云端 ID 与快照，不进公开仓库）
 *.qoder.site
 
+# 本机上传的原始音频（部署副本在 public/audio/）
+/background_music.mp3
+
 # 日志与系统文件
 *.log
 .DS_Store

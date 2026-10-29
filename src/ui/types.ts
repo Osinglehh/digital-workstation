@@ -108,7 +108,9 @@ export type IconName =
   | 'hide'
   | 'github'
   | 'douyin'
-  | 'xiaohongshu';
+  | 'xiaohongshu'
+  | 'volume'
+  | 'volumeOff';
 
 export type ViewOption = {
   id: ViewId;
@@ -187,6 +189,8 @@ export type ControlCallbacks = {
   onShowcaseExit: () => void;
   onShowcaseToggleUi: () => void;
   onShowcaseHideOnStart: (enabled: boolean) => void;
+  onMusicToggle: () => void;
+  onMusicVolume: (volume: number) => void;
 };
 
 export type ControlPanelOptions = {

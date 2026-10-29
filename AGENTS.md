@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> 项目级代理入口 · 第三十五版 · 最后更新 2026-10-29
+> 项目级代理入口 · 第三十六版 · 最后更新 2026-10-29
 >
 > **自动加载协议（给后续代理，务必遵守）**
 > 1. **任何任务先读 L0 + L1**（30 秒速览 + 硬规则，约 80 行），不要一次性读完整个文档。
@@ -35,6 +35,7 @@
 | 动画/交互/API | + L3.4 | `enhanceWorkstation`、`window.__workstation` |
 | 设计树视觉/玻璃/字号/顶栏拖动/Tooltip/检查器/持久化 | + L3.14、L4.1、L5「界面与体验层」 | `src/ui/controlPanel.css`（`--tree-*`）、`controlPanel.ts`（`bindTreeDrag`）、`workbenchController.ts` |
 | 自动展示/时间线/暂停跳段/隐藏控件栏/退出恢复 | + L3.16、L4.1、L5「自动展示」 | `src/showcase/showcaseTimeline.ts`、`showcaseController.ts`、`workbenchController.ts`、`controlPanel.ts`、`tools/test_showcase.mjs` |
+| 背景音乐/音量/自动播放拦截 | + L3.14、L4.1、L5「界面与体验层」 | `src/audio/backgroundMusic.ts`、`controlPanel.ts` 的 `buildMusicSection`、`workbenchController.ts` 的 `music` 接线与持久化 |
 | 部署/仓库维护/Pages/Qoder Sites | + L3.17、L5「部署与网络」 | `.github/workflows/deploy.yml`、`.gitignore`、`vite.config.ts` |
 | 玻璃杯/鼠标垫/桌面小件 | + L3.5/L3.7 | `buildGlassMug`、`createMousepadSurface` |
 | 地板/墙体/相机预设/构图/初始机位 | + L3.15 | `analysis/environment-audit.json`、`tools/audit_environment.mjs`、`main.ts` 的 `ENVIRONMENT`/`views` |
@@ -47,7 +48,7 @@
 
 ### 0.1 项目一句话
 
-这是一个 **Three.js + TypeScript + Vite** 的程序化办公位数字孪生场景：桌面、隔断、桌顶格架、桌下承重与配电结构、瓷砖地面、双屏、键鼠、水壶、线缆、书包、垃圾桶和人体工学椅均由代码生成，并带有键盘 RGB、屏幕开关、笔记本开合、显示器旋转、椅子旋转/后仰、水壶摆动等运行时交互。外部体验层是左上角、可按住顶栏拖动的 **SolidWorks FeatureManager 风格设计树**：装配体信息、视角/物品/灯光/场景/自动展示/帮助节点、树内物体检查器、11 个机位、4 个场景预设和 localStorage 偏好持久化；自动展示节点内含 7 幕、约 45 秒的一键演出与真实进度/暂停/跳段/重播/隐藏控件栏、底部实时功能字幕，播放完成后自动恢复初始状态。
+这是一个 **Three.js + TypeScript + Vite** 的程序化办公位数字孪生场景：桌面、隔断、桌顶格架、桌下承重与配电结构、瓷砖地面、双屏、键鼠、水壶、线缆、书包、垃圾桶和人体工学椅均由代码生成，并带有键盘 RGB、屏幕开关、笔记本开合、显示器旋转、椅子旋转/后仰、水壶摆动等运行时交互。外部体验层是左上角、可按住顶栏拖动的 **SolidWorks FeatureManager 风格设计树**：装配体信息、视角/物品/灯光/场景/声音/自动展示/帮助节点、树内物体检查器、11 个机位、4 个场景预设和 localStorage 偏好持久化；声音节点控制进入页面自动循环播放的背景音乐（音量、开关与播放状态）；自动展示节点内含 7 幕、约 45 秒的一键演出与真实进度/暂停/跳段/重播/隐藏控件栏、底部实时功能字幕，播放完成后自动恢复初始状态。
 
 ### 0.2 不可漂移的事实
 
@@ -57,7 +58,7 @@
 | 桌面面高 | **0.7575 m**，米制、Y 轴向上 |
 | 严格规格 | **84 个组件、33 个材质、7 个重复系统**，严格校验 PASS（`analysis/validation-strict-9.json`） |
 | 代码入口 | 工厂 `src/createOfficeCubicleWorkstationDioramaModel.ts`（生成物）；细节层 `src/workstationDetails.ts`（默认修改入口）；体验层 `src/workbenchController.ts` + `src/ui/controlPanel.ts` |
-| 界面 | 左上 **SolidWorks FeatureManager 风格 + 玻璃拟态**设计树（品牌/装配体信息/GitHub 仓库横条 + 抖音/小红书视频入口/视角/物品/灯光/场景/自动展示/帮助/状态栏）、树内物体检查器、Tooltip、Toast；1200×900 全折叠时树位于 `(16, 14)`、宽 **304**、高 **367**（`rgba(245,247,250,0.68)` + `backdrop-filter: blur(12px) saturate(135%)`，夜间深色玻璃）；字号 **13 / 12.5 / 12 / 9.5 / 9 px**，节点行高 **27 / 26 px**；展开多节点时树体内部滚动、页面不撑高；11 机位（主视角/正面/左/右/俯视/桌下/坐姿/键盘/显示器/笔记本/全景）；4 场景（白天/深夜/专注/RGB）；自动展示（约 45 秒 / 7 幕，真实进度、暂停/继续、下一章节、重播、退出、底部实时功能字幕、可选的展示时隐藏设计树与完成后自动恢复初始状态）；本机 `workstation-ui-v1` 持久化，展示隐藏偏好单独存 `workstation-showcase-v1`；**按住顶栏可拖动整棵树**（`transform` 平移、限制在舞台内、初始仍为 `(16,14)`、位置不持久化）。底部 dock 与右侧检查器已移除，不要恢复 |
+| 界面 | 左上 **SolidWorks FeatureManager 风格 + 玻璃拟态**设计树（品牌/装配体信息/GitHub 仓库横条 + 抖音/小红书视频入口/视角/物品/灯光/场景/声音/自动展示/帮助/状态栏）、树内物体检查器、Tooltip、Toast；1200×900 全折叠时树位于 `(16, 14)`、宽 **304**、高 **394**（`rgba(245,247,250,0.68)` + `backdrop-filter: blur(12px) saturate(135%)`，夜间深色玻璃）；字号 **13 / 12.5 / 12 / 9.5 / 9 px**，节点行高 **27 / 26 px**；展开多节点时树体内部滚动、页面不撑高；11 机位（主视角/正面/左/右/俯视/桌下/坐姿/键盘/显示器/笔记本/全景）；4 场景（白天/深夜/专注/RGB）；声音（背景音乐自动循环、音量 0–100、开关、播放状态，默认 35%）；自动展示（约 45 秒 / 7 幕，真实进度、暂停/继续、下一章节、重播、退出、底部实时功能字幕、可选的展示时隐藏设计树与完成后自动恢复初始状态）；本机 `workstation-ui-v1` 持久化（含音乐开关/音量），展示隐藏偏好单独存 `workstation-showcase-v1`；**按住顶栏可拖动整棵树**（`transform` 平移、限制在舞台内、初始仍为 `(16,14)`、位置不持久化）。底部 dock 与右侧检查器已移除，不要恢复 |
 | 键盘 RGB | 键帽为参考的**由后向前逐行渐变**（F 排近白 `#D9DDDF` → 底排近炭黑 `#4C5458`，字色后三排深、前三排浅）；键缝底光（0.358 × 0.104，`pivot` y=-0.003）+ `keyboard-rgb-light` 点光（0.04–0.10 / 0.55 m / decay 1.9，局部 `(0, 0.095, 0)`）+ 0.55 × 0.15 m 桌面溢光面（`z=-0.055`）；彩虹模式底光不再乘单色；关闭时三层同时熄灭 |
 | 紧凑房间 | 浮动 4:3 舞台；地板 **2.4 × 2.25 m**（`y=0`，600 mm 瓷砖）、单面背墙 **2.6 × 2.35 m**（`z=-0.64`）+ 两侧 **0.42 m** 返墙、踢脚 **85 × 18 mm**；工位逐顶点包络 `x -0.855..0.533 / y 0..1.7915 / z -0.34..0.9326`，距背墙 **0.300 m**、距左墙 0.425 m、距右墙 0.587 m；相机正面弧 ±75°、极角 16–88°、距离 0.45–3.15 m、目标半径 0.75 m |
 | 默认构图 | `default` 为 3/4 全景（target `[-0.03, 0.78, 0.04]`、az **-26°**、el **20°**、**2.80 m**、fov **52°**）；1200×900 逐顶点投影实测工位高 **80.6%**、上/下留白 **10.3% / 9.1%**；11 个预设参数见 L3.15 |
@@ -66,12 +67,13 @@
 | 水壶 | UZSPACE 750 ml，实物约 251 × 78 mm；模型瓶身 **206.6 mm**、含盖总高 **251.1 mm**、瓶底距桌面 **161 mm**；薄壁中空 + 不透明深色内胆（液面约 55%）；瓶盖/挂带/挂钩位置保持不动；刻度 650 ml 在上、150 ml 在下 |
 | 桌面小件 | 玻璃杯：透明玻璃（opacity 0.05）+ 深色茶汤（约 72% 液面）+ 胡桃木盖；鼠标垫：竖放、偏冷中灰基色 + 深灰折线印花 + 浅灰缝线；桌面无笔 |
 | 自动展示 | 设计树一级节点 `自动展示`；**45 s / 7 幕**时间线（整体亮相→空间环绕→桌面细节→设备互动→RGB 灯效→氛围切换→终章全景）；真实进度/章节/时间/百分比与底部白色实时功能字幕；开始/暂停/继续/下一章节/重播/退出；`Space` 暂停、`H` 隐藏控件栏、可选“展示时隐藏设计树”；演示切换相机/灯光/RGB/屏幕/开盖，手动控件互斥；自然完成后停留 2 s 自动恢复快照；证据 `showcase-test.json`（63 项）+ `final-showcase-*.png` |
+| 背景音乐 | 设计树一级节点 `声音`（扬声器图标，关闭时切 `volumeOff`）；`public/audio/background_music.mp3`（6.1 MB，约 4:26，相对路径 `audio/...`）；进入页面尝试自动循环播放，浏览器拦截时挂一次性 `pointerdown/keydown` 监听，首次点击/按键后开始，状态行显示“点击页面即可开始”；音量滑杆 0–100、默认 **35%**、开关与音量存 `workstation-ui-v1`（`musicEnabled`/`musicVolume`）；音乐独立于场景 `UiState`，不进入自动展示快照，展示期间仍可调节；`window.__workstation.getMusicState()` 可读 `{ enabled, volume, playback }` |
 | 椅子 | 细节层额外物件，不计入 84；中心 `(0, 0, 0.45)`，坐者面向桌子（-z），逐顶点 AABB y 0–**1.241 m**、z 0.102–**0.9326 m**（Box3 旧值 1.249/0.936 因旋转包围盒膨胀约 8 mm）；90 mm 微凹坐垫 + X 背架 + 浅灰翼形腰靠 |
 | 头枕 | 网布面 390 × 180 mm（含框外廓约 424 × 226 mm）的叶形网布枕；**正面只有网布与圆框，支撑臂/夹块必须在背面** |
 | 桌顶格架 | 搁板面 1.3725 m；净高 330 mm、净宽 1014 mm、净深 290 mm、顶板顶面 1.7275 m、侧板 18 mm、背板 30 mm；格内红书盒 + 16 本书 + 透明 A4 文件盒 + 中秋礼盒（250×150×55）+ 黑果枸杞玻璃罐（Ø90×126）+ 武夷星茶罐（Ø130×212）+ 纸品/黑色剪刀；书高 200–298 mm（三段天际线），最高书顶距顶板 14.7 mm |
 | 已移除 | 蓝色中性笔、鼠标编织线、显示器信号线、旧桌腿与前/后横梁、旧搁板铝托架（`shelfBracketL/R`）、旧书列（`shelfProps`/`bookRowB`/`bookEnd`）、旧茶罐（`jarPurple`/`jarOrange`/`teaCanister`）、3 条地面盘绕线缆、架内订书机（实为剪刀，已替换） |
 | 最终证据 | `analysis/renders/final/`（`final-under.png`、`final-underdesk*.png`、`final-chair-*.png`、`final-shelf-*.png`、`final-ui-*.png`、`final-showcase-*.png`、`final-keyboard-rgb.png`、`manifest.json`、`shelf-manifest.json`、`ui-manifest.json`）、`analysis/renders/interaction-test.json`、`analysis/renders/showcase-test.json`、`lid-closed.png`、`night-mode.png`、`monitor-pan.png`、`analysis/environment-audit.json`、全部 `analysis/*-audit.json` |
-| 构建体积 | 单包约 1,576 kB（2026-10-29 实测）；Vite 体积提示是已知情况，不是失败 |
+| 构建体积 | 单包约 1,581 kB（2026-10-29 音乐版实测）；Vite 体积提示是已知情况，不是失败；背景音乐另占 `dist/audio/background_music.mp3` 约 6.1 MB |
 | 部署 | GitHub 公开仓库 `Osinglehh/digital-workstation`；push 到 `main` 触发 GitHub Actions 自动构建并部署到 GitHub Pages（`.github/workflows/deploy.yml`，`base: './'` + 相对贴图路径）；线上 https://osinglehh.github.io/digital-workstation/ ；Qoder Sites 公开站点 https://digital-workstation-vcyscgr9sb8.qoder.zone/ （`npm run build` 后 `prepare_site` → `publish_site`，需重新发布时用新 `actionId` + 复用 `projectId`；站点描述文件 `.数字工位 · 可交互 3D 工作区.qoder.site` 由插件生成、含云端 ID，已列入 `.gitignore` 不得提交）；2026-10-29 视频入口版已同步发布两站并验证；`figure/` 与 `analysis/renders/` 在 `.gitignore` 中、不进 Git |
 
 ### 0.3 黄金路径
@@ -130,11 +132,13 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 | 路径 | 作用 | 修改规则 |
 |---|---|---|
 | `src/main.ts` | 渲染器、后处理、紧凑房间/墙体、灯光与地面、11 个机位（`views`）、初始相机（必须与 `views.default` 一致）、`window.__workstation` 基础 API、体验层接线；**移动端画质档**（`pointer: coarse` 才启用） | 改光照/机位/地面材质/`ENVIRONMENT` 时进入；UI 逻辑不要写回这里；旧 HUD 已移除，不要恢复；移动端档位参数（像素比上限 1.5、PCF 1024 阴影、跳过 SSAO/辉光）不得影响桌面路径 |
-| `src/workbenchController.ts` | 体验层：相机缓动与自动环绕、Raycaster 拾取/包络、灯光与四场景预设、整理/装饰显隐、偏好持久化、快捷键；自动展示桥接（快照恢复、灯光混合、手动互斥、UI 发布） | 改物体检查器行为、场景预设、持久化、设计树节点状态、自动展示状态时进入；保持 `views` 名称与 main 一致；**选中物体不得关闭设计树** |
-| `src/ui/controlPanel.ts`、`controlPanel.css` | 左上 SolidWorks 风格玻璃设计树（`--tree-*` 变量、backdrop-filter、字号层级、顶栏拖动/舞台 8px 夹取、视角/物品/灯光/场景/自动展示/帮助）、GitHub/抖音/小红书外链、树内物体检查器、Tooltip、Toast、响应式与暗色主题；自动展示节点（7 幕进度、播放控制、隐藏/恢复控件栏）；**触屏设备（`pointer: coarse`）关闭玻璃模糊、改用 `--tree-bg-fallback`** | 视觉/布局/可访问性/拖动改动入口；拖动只改 `transform`，不要改行内 `left/top`（L5 UI-17）；注意 `:where(.stage-ui) button` 字号重置（L5 UI-13）；不要在这里写 Three.js 场景逻辑；不要恢复底部 dock/右侧浮窗或实色白底；桌面端玻璃效果不得改动 |
+| `src/workbenchController.ts` | 体验层：相机缓动与自动环绕、Raycaster 拾取/包络、灯光与四场景预设、整理/装饰显隐、偏好持久化、快捷键；自动展示桥接（快照恢复、灯光混合、手动互斥、UI 发布）；背景音乐接线（启动自动播放、开关/音量回调、持久化、`getMusicState`） | 改物体检查器行为、场景预设、持久化、设计树节点状态、自动展示状态时进入；保持 `views` 名称与 main 一致；**选中物体不得关闭设计树**；音乐状态不进 `UiState`/展示快照 |
+| `src/ui/controlPanel.ts`、`controlPanel.css` | 左上 SolidWorks 风格玻璃设计树（`--tree-*` 变量、backdrop-filter、字号层级、顶栏拖动/舞台 8px 夹取、视角/物品/灯光/场景/声音/自动展示/帮助）、GitHub/抖音/小红书外链、树内物体检查器、Tooltip、Toast、响应式与暗色主题；自动展示节点（7 幕进度、播放控制、隐藏/恢复控件栏）；声音节点（音量开关、0–100 滑杆、播放状态、扬声器图标切换）；**触屏设备（`pointer: coarse`）关闭玻璃模糊、改用 `--tree-bg-fallback`** | 视觉/布局/可访问性/拖动改动入口；拖动只改 `transform`，不要改行内 `left/top`（L5 UI-17）；注意 `:where(.stage-ui) button` 字号重置（L5 UI-13）；不要在这里写 Three.js 场景逻辑；不要恢复底部 dock/右侧浮窗或实色白底；桌面端玻璃效果不得改动 |
 | `src/showcase/showcaseTimeline.ts` | 自动展示时间线：45 秒 / 7 幕区间、相机关键帧、场景/RGB/屏幕/开盖事件、RGB 亮度曲线、开场/结尾标题、底部白色实时功能字幕与纯函数求值 | 改镜头、章节时长、事件时间或字幕时从这里改；改后必须跑 `test_showcase` 并同步 L3.16 |
 | `src/showcase/showcaseController.ts` | 自动展示状态机：idle/playing/paused/finished/stopped、事件调度、seek/下一章节/重播/退出、真实进度发布、隐藏偏好、自然完成 2 s 后自动恢复、UI 隐藏 | 只通过 `ShowcaseHost` 调用场景；不要在这里直接操作 Three.js 节点或 DOM 控件；不要新增第二个 rAF 循环；自动恢复定时器必须可清理 |
-| `src/ui/types.ts`、`src/ui/icons.ts` | UI 状态/预设类型与内联 SVG 图标 | 新增视角/场景/灯效时同步类型、图标与 `workbenchController` |
+| `src/ui/types.ts`、`src/ui/icons.ts` | UI 状态/预设类型与内联 SVG 图标（含 `volume`/`volumeOff`） | 新增视角/场景/灯效时同步类型、图标与 `workbenchController` |
+| `src/audio/backgroundMusic.ts` | 背景音乐服务：`Audio` 元素循环播放、0–100 音量、开关、自动播放拦截与一次性手势回退、`BackgroundMusicState` 发布 | 改音频行为、默认音量或音源时进入；**不要把播放状态写进场景 `UiState` 或自动展示快照** |
+| `public/audio/background_music.mp3` | 背景音乐资源（6.1 MB，约 4:26），按相对路径 `audio/background_music.mp3` 加载 | 部署必需；替换音乐时保持文件名或同步 `BACKGROUND_MUSIC_SRC`；Pages 子路径已实测 200；根目录同名的上传源文件仅保留本机、已在 `.gitignore` 忽略，**只提交 `public/audio/` 副本** |
 | `src/createOfficeCubicleWorkstationDioramaModel.ts` | 由 `object-sculpt-spec.json` 生成的工厂，含 84 个组件、材质和节点 id | **生成物**。优先通过规格/生成器修改；直接手改必须同步规格并在交付中注明；贴图 `url` 字段保持相对路径 `textures/...`（Pages 子路径部署需要），不要改回 `/textures/...` |
 | `src/workstationDetails.ts` | 运行时细节层：双屏 Canvas、98 键渐变键帽键盘、玻璃杯、书籍、线缆、贴花、材质修正、动画枢轴、英菲克鼠标、薄壁水壶/液体、显示器减薄、竖放鼠标垫、人体工学椅（X 背架/腰靠）/头枕、桌下结构、书包、垃圾桶、桌顶格架 | 默认改动入口；修改前先确定节点 id、父级和已有覆盖函数 |
 | `object-sculpt-spec.json` | 场景规格：组件树、尺寸、材质、动画锚点、门禁与评审历史 | 大文件，用 grep 定位 id；结构变化后必须重新严格校验 |
@@ -156,7 +160,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 | `analysis/renders/` | 交互测试输出、单张检查图 | 试拍在收尾时清理 |
 | `.img2threejs/` | img2threejs 管线状态（含本机路径） | 只在真正走规格重建流程时读取/更新；**本地保留、不进入 Git**（已从跟踪移除并列入 `.gitignore`） |
 | `dist/` | Vite 构建产物 | 自动生成，不要手改；必要时用 `npm run build` 重建 |
-| `.gitignore` | 忽略 `node_modules/`、`dist/`、`figure/`、`analysis/renders/`、`analysis/crops/`、`analysis/material-crops/`、参考类门禁图（`gates/mask-ref.png`、`gates/ref224.png`）、`.img2threejs/`、`*.qoder.site` | 参考照片及其衍生裁剪、渲染证据、本机流水线状态与含云端 ID 的站点描述文件刻意不进 Git；公开内容不得写入本机路径或用户名 |
+| `.gitignore` | 忽略 `node_modules/`、`dist/`、`figure/`、`analysis/renders/`、`analysis/crops/`、`analysis/material-crops/`、参考类门禁图（`gates/mask-ref.png`、`gates/ref224.png`）、`.img2threejs/`、`*.qoder.site`、根目录 `/background_music.mp3`（上传源，部署副本在 `public/audio/`） | 参考照片及其衍生裁剪、渲染证据、本机流水线状态与含云端 ID 的站点描述文件刻意不进 Git；公开内容不得写入本机路径或用户名；根目录音频源不重复提交 |
 | `.github/workflows/deploy.yml` | GitHub Pages 自动部署：检出 → `npm ci` → typecheck → build → configure-pages（`enablement: true`）→ upload-pages-artifact → deploy-pages | push `main` 即部署；首次启用 Pages 需在仓库 Settings → Pages 手动把 Source 选为 GitHub Actions（API 令牌无权自动创建站点） |
 | `README.md` | 项目简介、在线演示、运行/使用与部署说明 | 保持简洁，不写设计/尺寸/验证细节；开发约定见本文件 |
 | `AGENTS.md` | 本文件，项目级代理入口 | 保持 L0–L6 递进结构；版本/日期与附录随任务更新；**不要堆积过程日志** |
@@ -173,6 +177,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 | 场景预设/主灯/亮度/RGB 与界面不同步 | `workbenchController.ts` 的 `SCENE_BASES`、`applyLighting`、`applyScene`；`workstationDetails.ts` 的 RGB 状态 |
 | 刷新后偏好丢失或恢复错误 | `workbenchController.ts` 的 `STORAGE_KEY='workstation-ui-v1'`、`readPersisted`、`persistNow`；L3.14 |
 | 自动展示入口/进度/暂停/跳段/实时字幕/隐藏设计树/完成后自动恢复 | `src/showcase/showcaseTimeline.ts`、`showcaseController.ts`、`workbenchController.ts` 的展示桥接、`controlPanel.ts` 的自动展示节点；见 L3.16、L4.1、L5「自动展示」 |
+| 背景音乐不播放/被浏览器拦截/音量或开关无效 | `src/audio/backgroundMusic.ts`、`controlPanel.ts` 的 `buildMusicSection`/`setMusic`、`workbenchController.ts` 的 `music` 接线；见 L3.14、L4.1、L5 UI-19/UI-20 |
 | 桌顶格架结构/顶板/侧板/背板/安装孔 | `buildShelfHutch`、`shelfPanelWood`；审计 `analysis/shelf-audit.json`；见 L3.13 |
 | 格内书籍/书脊印刷/文件盒/书列高度 | `SHELF_BOOKS`、`addShelfBook`、`drawBookSpine`、`addShelfFileBox`；见 L3.13 与 L5-32/42 |
 | 中秋礼盒/玻璃罐/茶叶罐/纸品/黑色剪刀 | `addShelfGiftBox`、`drawGiftBoxFront`、`addShelfGlassJar`、`drawJarLabel`、`addShelfTeaTin`、`drawTeaTinWrap`、`addShelfPaperSheet`、`addShelfScissors`；见 L3.13 |
@@ -197,7 +202,8 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 ### 2.3 当前已实现专项（勿回退）
 
-- 左上 SolidWorks FeatureManager 风格 + 半透明玻璃拟态设计树（304 px / 367 px、13/12.5/12 px 字号、透明头部/装配体/底栏 + 发丝线；夜间深色玻璃）、GitHub 横条与抖音/小红书宣传视频入口、树内物体检查器、Tooltip/Toast、**顶栏拖动（`transform` 平移、舞台 8px 夹取、位置不持久化）**、暗色主题与移动端；11 机位、4 场景预设、时间制自动环绕、整理/装饰显隐和 localStorage 持久化。底部 dock 与右侧检查器已移除。
+- 左上 SolidWorks FeatureManager 风格 + 半透明玻璃拟态设计树（304 px / 394 px、13/12.5/12 px 字号、透明头部/装配体/底栏 + 发丝线；夜间深色玻璃）、GitHub 横条与抖音/小红书宣传视频入口、树内物体检查器、Tooltip/Toast、**顶栏拖动（`transform` 平移、舞台 8px 夹取、位置不持久化）**、暗色主题与移动端；11 机位、4 场景预设、时间制自动环绕、整理/装饰显隐和 localStorage 持久化。底部 dock 与右侧检查器已移除。
+- 背景音乐（`声音` 一级节点）：进入页面尝试自动循环播放 `public/audio/background_music.mp3`；浏览器拦截时首次点击/按键后开始；音量 0–100（默认 35%）、开关、播放状态行；扬声器图标在开启/关闭间切换；开关与音量存 `workstation-ui-v1`，不进入场景状态或自动展示快照。
 - 自动展示（`自动展示` 一级节点）：约 45 秒 / 7 幕（整体亮相、空间环绕、桌面细节、设备互动、RGB 灯效、氛围切换、终章全景）；真实进度条与章节/时间/百分比、底部白色实时功能字幕；开始/暂停/继续/下一章节/重新播放/退出；空格暂停、H 隐藏/恢复控件栏；可选“展示时隐藏设计树”；演示期间手动场景控件互斥，自然完成后停留约 2 秒自动恢复演示前的相机、场景、RGB、屏幕、开盖、装饰与选择状态。
 - 键盘：键帽由后向前逐排渐变 + 三层 RGB 氛围光（键缝底光、键帽染色点光与桌面溢光面），关闭模式完全熄灭；彩虹模式保留渐变贴图并让点光/光池色相随时间变化。
 - 紧凑舞台：2.4×2.25 m 瓷砖地板（y=0）、2.6×2.35 m 单面背墙 + 0.42 m 返墙、85 mm 踢脚线；工位逐顶点包络与离墙净距已审计；初始/复位 `default` 只显示工位与环境边界，不回到旧的大房间机位。
@@ -384,18 +390,19 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 ### L3.14 左上设计树与体验层专项（当前已实现，勿回退）
 
 - **分层**：`main.ts` 保留场景/灯光/相机/后处理/基础自动化；`workbenchController.ts` 负责相机缓动、Raycaster 拾取、场景预设、灯光状态、整理显隐、持久化与快捷键；`src/ui/*` 只负责 DOM/CSS。不要在 `main.ts` 恢复旧 HUD，也不要把 Three.js 物件逻辑塞进 `ui/`；**不要恢复底部 dock 或右侧浮窗**。
-- **设计树结构**：`ControlPanel` 创建 `.design-tree`，默认位于舞台左上、可按住顶栏拖动（`top:14px; left:16px; width:304px`，1200×900 全折叠高 **367**），包含：
+- **设计树结构**：`ControlPanel` 创建 `.design-tree`，默认位于舞台左上、可按住顶栏拖动（`top:14px; left:16px; width:304px`，1200×900 全折叠高 **394**），包含：
   - `.tree-head`：品牌图标、`数字工位`、`FeatureManager · 设计树`、GitHub 图标链接 `.tree-github`、整体折叠按钮 `.tree-collapse`；
   - `.tree-doc`：`工作位装配体` + `84 组件`/`33 材质` 徽标；
   - `.tree-repo-bar`：常驻 GitHub 文字横条（图标 +「GitHub 开源仓库 · 欢迎 Star」+ ↗，整行新窗口打开），在装配体信息与节点区之间；整树折叠时与 doc/body/foot 一起隐藏；
   - `.tree-video-row`：GitHub 横条下方的两枚半宽宣传视频外链「抖音视频」「小红书视频」（278 × 30，单列 136；`data-video`、`target=_blank` + `rel="noopener noreferrer"`；抖音音符青 `#1CAFC4`、小红书小书红 `#E8334A`）；整树折叠时隐藏；
-  - `.tree-body`：根行 `数字工位装配体` + `.tree-children` 中的视角/物品/灯光/场景/自动展示/帮助六个 `.tree-node`；
+  - `.tree-body`：根行 `数字工位装配体` + `.tree-children` 中的视角/物品/灯光/场景/声音/自动展示/帮助七个 `.tree-node`；
   - `.tree-foot`：状态点、`tree-status-text`（场景 · 视角 · 已选 · 环绕中）、操作提示。
-  `.tree-row` 保留 `.dock-group` 类和精确 `aria-label`（视角/物品/灯光/场景/自动展示/帮助），测试与快捷定位依赖它；节点正文 id 为 `ws-section-<name>`，与 `aria-controls` 对应。自动展示节点的正文在 L3.16。帮助节点正文末尾固定一行 `.help-repo-link`（`GitHub 开源仓库 · 欢迎 Star`，新窗口打开）；`.tree-github`、`.tree-repo-bar` 与 `.help-repo-link` 均由 `controlPanel.ts` 的 `REPO_URL` 常量指向公开仓库，不要改成硬编码分支或相对路径；`.tree-video-row` 的地址集中在 `VIDEO_LINKS` 常量（抖音短链 + 小红书分享链，含 `xsec_token`），换视频时只改该常量，不要散落到 DOM 中。
+  `.tree-row` 保留 `.dock-group` 类和精确 `aria-label`（视角/物品/灯光/场景/声音/自动展示/帮助），测试与快捷定位依赖它；节点正文 id 为 `ws-section-<name>`，与 `aria-controls` 对应。自动展示节点的正文在 L3.16。帮助节点正文末尾固定一行 `.help-repo-link`（`GitHub 开源仓库 · 欢迎 Star`，新窗口打开）；`.tree-github`、`.tree-repo-bar` 与 `.help-repo-link` 均由 `controlPanel.ts` 的 `REPO_URL` 常量指向公开仓库，不要改成硬编码分支或相对路径；`.tree-video-row` 的地址集中在 `VIDEO_LINKS` 常量（抖音短链 + 小红书分享链，含 `xsec_token`），换视频时只改该常量，不要散落到 DOM 中。
+- **声音节点**：一级节点 `声音` 位于 `场景` 与 `自动展示` 之间，行图标为扬声器 `volume`（关闭时切 `volumeOff`）；正文由 `buildMusicSection()` 生成：`背景音乐` 开关（`role=switch`、`aria-label=背景音乐`）、0–100 音量滑杆（`aria-label=背景音乐音量`，`output` 显示百分比）、`.music-status` 状态行（`data-state` = `off/loading/playing/blocked/paused/error`，对应灰/蓝/绿/琥珀/灰/红状态点）。`ControlPanel.setMusic(BackgroundMusicState)` 只在 `enabled` 变化时替换行图标，滑杆聚焦时不覆盖用户拖动值。`onMusicToggle`/`onMusicVolume` 交给 controller 的 `BackgroundMusic`；展示期间不锁定音频控件，音频状态也不进入 `UiState`/展示快照。
 - **玻璃拟态与字号**：`--tree-bg`（日 `rgba(245,247,250,0.68)` / 夜 `rgba(23,26,31,0.66)`）、`--tree-blur: 12px`、`--tree-saturate: 135%`、`--tree-radius: 14px`；字体变量 `--tree-font-title/node/leaf/meta/micro` = **13/12.5/12/9.5/9px**，行高 `--tree-row-height/--tree-leaf-height` = **27/26px**。头部、装配体信息、底栏只用透明底 + 发丝线，**不要把实色渐变/白底加回去**，否则 `backdrop-filter` 看不到场景。`@supports not ((backdrop-filter) or (-webkit-backdrop-filter))` 时回退 `--tree-bg-fallback`。`design-tree` 不做入场动画：无头 SwiftShader 会把 transform 冻结在偏移位置，污染截图与 `designTree` 实测；`transform` 只用于顶栏拖动，初始必须为 `none`。
 - **顶栏拖动**：`.tree-head` 上 `pointerdown`（左键/触摸，排除 `a/button/input/select/textarea`）后 `setPointerCapture`，按指针位移给 `.design-tree` 设 `transform: translate(x, y)`；**不要改行内 `left/top`**，否则 ≤680px 时 `right:10px; width:auto` 的整宽布局会被破坏。平移限制在舞台内（四周 8px 边距），`ResizeObserver` 在展开/折叠、整树折叠、主题或窗口尺寸变化后重新收回舞台；`pointerup/pointercancel/lostpointercapture` 结束拖动并清除 `.is-dragging`。拖动时顶栏 `cursor: grab/grabbing`、`touch-action: none`、禁用文本选择并隐藏 Tooltip。位置只属于当前会话，不写入 `workstation-ui-v1`（刷新回到左上角）。
 - **按钮字号优先级**：全局按钮重置用 `:where(.stage-ui) button { font: inherit }`（`:where` 降低优先级）。若改回 `.stage-ui button { font: inherit }`，它会压过 `.tree-row`/`.tree-leaf` 的 `font-size`，所有节点又变回 16px——这是旧版“字体偏大”的根因。
-- **展开语义**：点击节点行切换 `aria-expanded` 与 `.tree-node-body.hidden`；可同时展开多个节点，树体内滚动。标题栏 `.tree-collapse` 切换 `is-collapsed`，只折叠整棵树外壳。初始状态所有节点折叠；`setSectionOpen(name, true)` 会同时展开整棵树。`closePanels()` 只折叠所有节点，不隐藏设计树；`hasOpenPanel()` 以是否有展开节点为准。实测（1200×900）：全折叠高 **367**；六节点全展开高 648（72vh 上限）、`.tree-body` 内容 **2146** / 可视 **555**，`pageScrollHeight` 仍为 900。
+- **展开语义**：点击节点行切换 `aria-expanded` 与 `.tree-node-body.hidden`；可同时展开多个节点，树体内滚动。标题栏 `.tree-collapse` 切换 `is-collapsed`，只折叠整棵树外壳。初始状态所有节点折叠；`setSectionOpen(name, true)` 会同时展开整棵树。`closePanels()` 只折叠所有节点，不隐藏设计树；`hasOpenPanel()` 以是否有展开节点为准。实测（1200×900）：全折叠高 **394**；七节点全展开高 648（72vh 上限）、`.tree-body` 内容 **2341** / 可视 **477**，`pageScrollHeight` 仍为 900。
 - **物体检查器**：`.object-inspector.tree-selection` 是物品节点下的子节点，不是右侧浮窗。`setInspector(meta)` 生成头部/状态/动作/选项后，把检查器移动到选中对象按钮之后（`objectButton.after(...)`），自动展开 `物品` 节点并 `scrollIntoView({block:'nearest'})`；取消选中时 `hidden=true`。`selectObject()` **不得调用 `ui.closePanels()`**；点击面板外也不得关闭设计树。
 - **Esc/空白语义**：Esc 先取消选中，再在无选中时折叠所有节点（`closePanels`）；点击空白取消选中但不折叠设计树。桌面上节点展开状态属于会话临时状态，不写入持久化。
 - **机位**：`views` 使用 `target + azimuthDeg/elevationDeg/distance/fov`；当前 11 个 id：`default/front/left/right/overhead/under/firstPerson/keyboard/monitor/laptop/panorama`。初始/复位为 `default`，`currentView` 会在手动拖动或滚轮后变 `null`。预设切换由 main 的缓动完成；聚焦物体和自动环绕由 controller 自己的 tween 完成，启动前会调用 `cancelViewAnimation()`。各预设参数、默认构图留白与初始相机同步要求见 **L3.15**；改 `views` 后必须运行 `tools/audit_environment.mjs`。
@@ -406,12 +413,12 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 - **双屏内容**：`dashboard/code/terminal/desktop/focus` 由 `workstationDetails.ts` 的 Canvas 绘制；屏幕内容改变会同步两台屏幕，屏幕关闭时切换内容会重新点亮。笔记本开合、屏幕开关、内容切换均通过检查器或 API，保持旧 `setKeyboardRgb('sweep')` 兼容为 `rainbow`。
 - **拾取与检查器**：`addPickTarget` 建立 mesh→对象 id 映射；`isVisible` 检查整条父链；点击空白/按 Esc 取消；悬停用 `Box3Helper` + 场景 Tooltip；选中框用独立 helper。`Box3` 会包含不可见子件，若某对象定位异常，先检查是否只隐藏而非移除旧件。
 - **整理/显隐**：`TIDY_DECOR = mug/bottle/desk-still-life`；整理开启时相关装饰卡不允许单独切换，并提示先关闭整理。`hiddenDecor` 只保存显式隐藏的 id；持久化不保存自动环绕与选中物体。
-- **持久化**：`localStorage` key `workstation-ui-v1`，包含 view/scene/lightingCustom/lighting/rgbMode/rgbColor/screenPower/screenContent/lidClosed/tidy/hiddenDecor。读取时必须用 `VALID_VIEWS/SCENES/RGB/CONTENT/DECOR` 白名单校验；非法视角回退 `default`。节点展开状态、自动环绕和选中物体不写入。
+- **持久化**：`localStorage` key `workstation-ui-v1`，包含 view/scene/lightingCustom/lighting/rgbMode/rgbColor/screenPower/screenContent/lidClosed/tidy/hiddenDecor/musicEnabled/musicVolume。读取时必须用 `VALID_VIEWS/SCENES/RGB/CONTENT/DECOR` 白名单校验；非法视角回退 `default`；`musicVolume` 夹到 0–100 的整数（缺省 35），`musicEnabled` 缺省 true。节点展开状态、自动环绕和选中物体不写入；音乐状态不进入 `UiState`/自动展示快照。
 - **快捷键**：`1–9` 前九个机位、`R` 默认视角、`Space` 自动环绕（仅在焦点不在输入框/按钮时）、`Esc` 先取消选中、再折叠所有节点；画布 `tabIndex=0`，点击画布后 Space 可用。
 - **主题变量**：树使用独立的 `--tree-bg/bg-fallback/sheen/highlight/head/doc/border/hairline/line/hover/active/selection/selection-strong/accent/accent-strong/card/badge/shadow` 以及模糊、圆角、字号、行高变量；暗色主题在 `:root[data-theme='dark']` 同步重定义。节点颜色**不要放进 CSS transition**：无头 SwiftShader 会把颜色过渡冻结在旧主题值，夜间出现深底深字。选中/展开态用 `--tree-selection/active` + 2px 内嵌蓝线，不改变字号字重，避免行内跳动。
 - **响应式**：`≤860px` 时树宽 292；`≤680px` 时树左右各 10px、宽 370、`max-height: min(62vh, calc(100% - 20px))`，底部仍留场景，树内滚动；`≤480px` 场景卡单列、隐藏第二个文档徽标；`≤420px` 滑杆与检查器动作单列。Toast 固定在舞台底部居中；Tooltip 仍按舞台边界夹取。
 - **动画兼容**：设计树本身不做入场动画（避免无头下 transform 冻结）；Tooltip/Toast 只做位移，不做 `opacity:0` 起始。展开箭头 `transform` 160ms、悬停/选中背景 140ms；主题颜色切换必须即时生效，不要用覆盖在旧主题上的长过渡。
-- **证据**：`node tools/final_ui_capture.mjs` → `final-ui-overview/view/lighting/night/inspector/mobile*.png`、`final-keyboard-rgb.png` + `ui-manifest.json`（含 `designTree` 与 `mobileOverflow`）；`node tools/test_interactions.mjs` → `interaction-test.json`（含 `treeCollapsed/treeExpanded`、`treeDrag` 与 `designTree`）；自动展示证据见 L3.16。
+- **证据**：`node tools/final_ui_capture.mjs` → `final-ui-overview/view/lighting/audio/night/inspector/mobile*.png`、`final-keyboard-rgb.png` + `ui-manifest.json`（含 `designTree`、`music` 与 `mobileOverflow`）；`node tools/test_interactions.mjs` → `interaction-test.json`（含 `treeCollapsed/treeExpanded`、`treeDrag`、`musicInitial/musicOff/musicOn/musicVolume` 与 `designTree`）；自动展示证据见 L3.16。
 
 ### L3.15 小空间、墙体与相机预设（当前已实现，勿回退）
 
@@ -483,9 +490,10 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 | 改动类型 | 必跑 | 必看 / 必更新 |
 |---|---|---|
-| 任意代码 | `npm run typecheck`、`npm run build` | 构建单包约 1,576 kB，Vite 体积提示可接受 |
-| 部署/工作流/站点配置 | `npm run typecheck`、`npm run build`、`git status` 核对忽略项 | `.github/workflows/deploy.yml`；线上 URL 与贴图 200（见 L3.17） |
-| UI/设计树 | `test_interactions`、`final_ui_capture` | `final-ui-*.png`、`ui-manifest.json`、`interaction-test.json`（`errors: []`、`treeDrag` 三段位置与 `videoLinks`） |
+| 任意代码 | `npm run typecheck`、`npm run build` | 构建单包约 1,581 kB，Vite 体积提示可接受；`dist/audio/background_music.mp3` 约 6.1 MB |
+| 部署/工作流/站点配置 | `npm run typecheck`、`npm run build`、`git status` 核对忽略项 | `.github/workflows/deploy.yml`；线上 URL、贴图与 `audio/background_music.mp3` 均 200（见 L3.17） |
+| UI/设计树 | `test_interactions`、`final_ui_capture` | `final-ui-*.png`、`ui-manifest.json`、`interaction-test.json`（`errors: []`、`treeDrag` 三段位置、`videoLinks` 与 `music*`） |
+| 背景音乐/声音节点 | `test_interactions`、`final_ui_capture` | `final-ui-audio.png`、`ui-manifest.json` 的 `music`、`interaction-test.json` 的 `musicInitial/musicOff/musicOn/musicVolume` 与 `errors: []` |
 | 自动展示/时间线/隐藏控件栏 | `test_showcase`、`test_interactions`、`final_ui_capture` | `showcase-test.json`（63 项断言、`errors: []`）、`final-showcase-*.png`、`ui-manifest.json` |
 | 键盘/鼠标/水壶/杯子/椅子 | `test_interactions` + 最新近景或专项终图 | `final-keyboard-rgb.png`、`final-chair-*`；水壶/小件更新 `layout-audit.json` |
 | 桌下/地面/书包/垃圾桶 | `audit_underdesk`、`final_capture`（under） | `underdesk-audit.json`、`final-under*.png` |
@@ -497,12 +505,13 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 - `npm run typecheck`：零错误。
 - `npm run build`：通过；单包体积提示是已知情况，不是失败。
-- `node tools/test_interactions.mjs`：需要 dev server；当前版本先断言设计树整体折叠/展开、顶栏拖动与拖回原位（`treeDrag`）、抖音/小红书视频外链（地址、`target`、`rel`、折叠隐藏）与检查器挂入树内，再通过树节点执行笔记本开合、RGB（关闭/单色/彩虹）、双屏亮灭、夜间场景与暗色主题、自动环绕、坐姿视角、偏好持久化，并保留显示器旋转/椅子数值断言；检查页面 `errors: []`。
+- `node tools/test_interactions.mjs`：需要 dev server；当前版本先断言设计树整体折叠/展开、顶栏拖动与拖回原位（`treeDrag`）、抖音/小红书视频外链（地址、`target`、`rel`、折叠隐藏）、声音节点（扬声器图标、背景音乐开关、0–100 音量、关闭/开启状态与持久化）与检查器挂入树内，再通过树节点执行笔记本开合、RGB（关闭/单色/彩虹）、双屏亮灭、夜间场景与暗色主题、自动环绕、坐姿视角、偏好持久化，并保留显示器旋转/椅子数值断言；检查页面 `errors: []`。
   - **已知问题**：无头 SwiftShader 约 1–2 fps。显示器阻尼断言（`monitorPanDeg > 7`、`monitorTiltDeg < -2.5`）现在等待 45 s；椅子断言等待 20 s；这不是放宽阈值，而是给低帧率足够时间。若仍超时，如实记录实测值，不要伪造通过。
-- `node tools/final_ui_capture.mjs`：生成桌面/移动设计树终图、`final-keyboard-rgb.png` 与 `ui-manifest.json`；必须实际查看节点折叠、GitHub 横条与抖音/小红书视频行、树内检查器、暗色主题对比度、移动端高度与横向溢出，以及键盘光池是否过曝。
+- `node tools/final_ui_capture.mjs`：生成桌面/移动设计树终图、`final-ui-audio.png`、`final-keyboard-rgb.png` 与 `ui-manifest.json`（含 `music` 状态）；必须实际查看节点折叠、GitHub 横条与抖音/小红书视频行、声音节点的开关/音量/状态、树内检查器、暗色主题对比度、移动端高度与横向溢出，以及键盘光池是否过曝。
 - `node tools/test_showcase.mjs`：需要 dev server；当前 **63 项断言**覆盖自动展示入口、45 秒真实进度与章节、底部实时字幕、暂停时间冻结与设备冻结、继续接续、下一章节、整树折叠不中断、隐藏控件栏后继续播放与恢复不重置、展示时隐藏设计树开关、RGB 单色/彩虹/呼吸、夜间/专注场景、完成状态、三次重播、自然完成自动恢复非默认基线（夜间/静态暖光/代码屏/合盖/左视角）、手动视角恢复与二次启停；必须 `errors: []`。无头环境用 `showcase.seek()` 定位，不要根据墙钟等待推断时间线。
-- UI 改动的人工检查：设计树标题箭头可整体折叠/展开；按住顶栏可拖动整树、拖出后仍完整落在舞台内，展开节点或改变窗口尺寸后自动收回舞台，刷新后回到左上角；视角/物品/灯光/场景/自动展示/帮助节点可独立展开与关闭；GitHub、抖音、小红书三个外链均新窗口打开且地址正确（抖音短链、小红书分享链含 `xsec_token`）；自动展示节点内的“展示时隐藏设计树”开关可开启/关闭，播放中切换能立即隐藏或恢复树；点击场景物体时检查器出现在对应对象下方；点击空白/Esc 取消选中不关闭树；快捷键 1–9/R/空格/Esc；刷新后恢复场景、RGB、屏幕内容与视角（节点展开状态不恢复）。
-- 设计树布局证据：`ui-manifest.json` 的 `designTree` 应为 `x=16,y=14,width=304,height=367`（1200×900 全折叠，六类节点；视频行 278×30、两链接各 136）；`mobileOverflow` 要求 `bodyScrollWidth === viewportWidth === 390`、`inspectorInsideTree=true`（移动端检查器宽 315，树宽 370、视频行 344、两链接各 169）。运行时探针还应确认：右上（`right > 62% viewport` 且 `top < 300`）与底部（`top > 62% viewport`）没有交互浮窗；选中物体后 `.object-inspector` 的 `position=static`、`insideTree=true` 且矩形完全落在树边界内（显示器实测 `[67,224,248,155]`）；六节点全展开高度 648、`.tree-body` 内容 2146 / 可视 555、页面仍为 900。
+- UI 改动的人工检查：设计树标题箭头可整体折叠/展开；按住顶栏可拖动整树、拖出后仍完整落在舞台内，展开节点或改变窗口尺寸后自动收回舞台，刷新后回到左上角；视角/物品/灯光/场景/声音/自动展示/帮助节点可独立展开与关闭；GitHub、抖音、小红书三个外链均新窗口打开且地址正确（抖音短链、小红书分享链含 `xsec_token`）；声音节点可关闭/开启背景音乐、音量滑杆与状态行同步，关闭后刷新仍保持；浏览器拦截自动播放时状态显示“点击页面即可开始”，点击页面后变为“正在循环播放”；自动展示节点内的“展示时隐藏设计树”开关可开启/关闭，播放中切换能立即隐藏或恢复树；点击场景物体时检查器出现在对应对象下方；点击空白/Esc 取消选中不关闭树；快捷键 1–9/R/空格/Esc；刷新后恢复场景、RGB、屏幕内容、音乐开关/音量与视角（节点展开状态不恢复）。
+- 背景音乐验证：无头环境首次加载通常为 `blocked`（自动播放策略），第一次点击/按键后应变为 `playing`；`getMusicState()` 的 `enabled/volume/playback` 必须与界面开关、滑杆、状态行一致；关闭时 `playback='off'`，音频暂停；音量修改后刷新应恢复。音频资源必须从 `audio/background_music.mp3` 返回 200（本地 dev 与 `dist/` 子路径均验证），不要在 `public/` 外硬编码绝对路径。
+- 设计树布局证据：`ui-manifest.json` 的 `designTree` 应为 `x=16,y=14,width=304,height=394`（1200×900 全折叠，七类节点；视频行 278×30、两链接各 136）；`mobileOverflow` 要求 `bodyScrollWidth === viewportWidth === 390`、`inspectorInsideTree=true`（移动端检查器宽 315，树宽 370、视频行 344、两链接各 169）。运行时探针还应确认：右上（`right > 62% viewport` 且 `top < 300`）与底部（`top > 62% viewport`）没有交互浮窗；选中物体后 `.object-inspector` 的 `position=static`、`insideTree=true` 且矩形完全落在树边界内（显示器实测 `[67,224,248,155]`）；七节点全展开高度 648、`.tree-body` 内容 2341 / 可视 477、页面仍为 900。
 - 玻璃/字号人工检查：面板为半透明玻璃（背后的场景可见且被 12 px 模糊），日间浅色、夜间深色玻璃都保持文字对比；标题 13 px、分类行 12.5 px、叶子 12 px、辅助 9–9.5 px；悬停有轻微底色、选中为浅蓝底 + 2 px 内嵌指示；展开箭头平滑旋转约 160 ms。不得恢复纯白实底、厚重黑色投影、显眼灰色计数胶囊或 16 px 默认按钮字号。
 - 键盘 RGB 改动：五种模式（彩虹/单色/呼吸/柔光/关闭）各截一张近景并用图像阅读查看；关闭时键缝/点光/光池全部消失；交付图更新 `final-keyboard-rgb.png`，试拍按 L4.6 删除。
 - 视角预设回归：逐个点击 11 个视角按钮，检查 `currentView()`、唯一的 `aria-pressed` 按钮、相机距离与预设一致；手动拖动后 `currentView=null`、无激活按钮；滚轮缩放上限为 3.15 m。无头 SwiftShader 下 rAF 很慢，每步至少等待 2.5 s，不能用 0.9 s 的旧等待判断失败。
@@ -645,6 +654,8 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 - **UI-16 状态切换不要改字号字重**：选中/展开/悬停只改背景、颜色和 2 px 内嵌蓝线；改字重会让计数与文字横向跳动，违反设计树的稳定对齐要求。
 - **UI-17 拖动只改 transform**：顶栏拖动用 `setPointerCapture` + `transform: translate()`，不要用行内 `left/top`（≤680px 的 `right:10px; width:auto` 会被破坏），也不要给 transform 加入场或过渡动画（无头 SwiftShader 会冻结在偏移位置）。初始 `transform` 必须是 `none`，否则 `designTree` 的 `(16,14)` 证据失真；拖动位置属于会话状态，刷新回左上角；`pointercancel/lostpointercapture` 必须结束拖动，避免停在抓取态。
 - **UI-18 视频外链行与折叠**：`.tree-video-row` 位于 `.tree-repo-bar` 之后、`.tree-body` 之前；整树折叠选择器必须包含它，否则折叠后两个外链仍悬在头部下方。地址集中在 `VIDEO_LINKS`，两链接必须 `target="_blank"` + `rel="noopener noreferrer"`；不要为它们新增树节点、写入持久化或放进 `.tree-body`。
+- **UI-19 背景音乐自动播放策略**：浏览器禁止无用户手势的带声音自动播放，`BackgroundMusic.start()` 必须先尝试 `play()`；失败（`NotAllowedError`）时置 `blocked` 并挂一次性 `pointerdown`/`keydown` 监听，第一次手势内同步重试。不要用 `muted` 自动播放冒充“有声播放”，也不要吞掉失败不提示；状态行必须显示“点击页面即可开始”，成功后显示“正在循环播放”。关闭音乐要 `pause()`，重新开启要在点击回调内 `play()`（用户手势）。
+- **UI-20 音频不进场景快照**：`musicEnabled/musicVolume` 存 `workstation-ui-v1`，但不进入 `UiState`、自动展示快照或 `showcase-test.json` 的场景断言；展示期间音量/开关仍可调，退出演示不得重置音乐。音频资源放 `public/audio/` 并用相对路径 `audio/background_music.mp3`（Pages 子路径与 Qoder Sites 根路径都可用），不要用 `/audio/...` 绝对路径；`dist/` 构建后必须存在该文件，子路径实测 200。
 
 ### 自动展示
 
@@ -704,7 +715,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 任务结束前：
 
 1. 按 L4.6 删除本轮临时脚本、试拍和未使用的中间产物；不要删并行任务的文件。
-2. 确认最终渲染、审计 JSON 和交互测试输出仍在；椅子改动确认 `final-chair-*` 已重拍，格架改动确认 `final-shelf-*` 与 `analysis/shelf-audit.json` 已更新，水壶/尺寸改动确认 `layout-audit.json` 对应字段已更新；UI 改动确认 `final-ui-*`、`final-keyboard-rgb.png` 与 `ui-manifest.json` 已更新，并保留 `interaction-test.json` 的 `errors: []` 与 `treeDrag` 三段位置（拖动改动的必查项）；自动展示改动确认 `showcase-test.json` 的 63 项断言全部通过、`errors: []`，且 `final-showcase-idle/opening/controls/device/rgb/night/finale.png` 已重拍并实际查看；环境/相机改动确认 `analysis/environment-audit.json` 全门禁为 true，且 `final-front/left/right/overhead/under` 已重拍。
+2. 确认最终渲染、审计 JSON 和交互测试输出仍在；椅子改动确认 `final-chair-*` 已重拍，格架改动确认 `final-shelf-*` 与 `analysis/shelf-audit.json` 已更新，水壶/尺寸改动确认 `layout-audit.json` 对应字段已更新；UI 改动确认 `final-ui-*`、`final-keyboard-rgb.png` 与 `ui-manifest.json` 已更新，并保留 `interaction-test.json` 的 `errors: []` 与 `treeDrag` 三段位置（拖动改动的必查项）；背景音乐改动确认 `final-ui-audio.png`、`ui-manifest.json` 的 `music` 与 `interaction-test.json` 的 `music*` 已更新，且真实浏览器点击页面后可听到声音；自动展示改动确认 `showcase-test.json` 的 63 项断言全部通过、`errors: []`，且 `final-showcase-idle/opening/controls/device/rgb/night/finale.png` 已重拍并实际查看；环境/相机改动确认 `analysis/environment-audit.json` 全门禁为 true，且 `final-front/left/right/overhead/under` 已重拍。
 3. 若尺寸/交互/工作流发生变化，更新本文件（必要时同步 README 的运行/部署说明）；**本文件只保留仍然有效的规则与事实，不堆积过程日志**。
 4. 不要在未获同意时写全局记忆，也不要主动执行 Git 提交/推送。
 5. 若修改了本文件，更新顶部版本/日期，并在附录 A 追加一条简短变更记录；附录只用于追溯，当前事实以 L0–L5 为准。
@@ -713,6 +724,12 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 > 附录只记录里程碑，不作为当前事实来源；尺寸、交互与验证以 L0–L5 和当前代码/实测为准。
 
+- **2026-10-29（第三十六版）**：设计树新增“声音”与背景音乐——
+  - **入口**：`场景` 与 `自动展示` 之间新增一级节点 `声音`（扬声器 `volume`，关闭时切 `volumeOff`）；正文含 `背景音乐` 开关（`aria-checked`）、0–100 音量滑杆（默认 **35%**）与 `.music-status` 状态行（off/loading/playing/blocked/paused/error，绿/蓝/琥珀/红状态点）。
+  - **播放**：新增 `src/audio/backgroundMusic.ts` 与 `public/audio/background_music.mp3`（6.1 MB，约 **4:26**，`loop=true`，相对路径 `audio/background_music.mp3`）；进入页面尝试自动播放，被浏览器策略拦截时置 `blocked`、状态行提示“点击页面即可开始”，并在第一次 `pointerdown/keydown` 内重试。`musicEnabled/musicVolume` 存 `workstation-ui-v1`；音乐独立于 `UiState` 与自动展示快照，展示期间可调，退出演示不重置。
+  - **尺寸**：1200×900 全折叠树高 **367 → 394**（宽 304 不变）；七节点全展开 648、`.tree-body` 内容 **2341** / 可视 **477**；移动端 `bodyScrollWidth=390`、树宽 370。折叠高增加来自新增的 27 px 节点行与外边距。
+  - **验证**：`typecheck`、`build`（单包 **1,581.10 kB**，另含 `dist/audio/background_music.mp3` 6.1 MB）通过；`test_interactions` 新增声音节点/开关/音量/持久化断言，`errors: []`，`musicInitial` 默认 `enabled=true/volume=35`、关闭后 `playback=off`、开启后 `playing`、音量 62 刷新后仍为 62，`treeDrag` 仍为 16,14 → 166,154 → 16,14；`final_ui_capture` 记录 `designTree (16,14,304×394)`、`music {enabled:true,volume:35,playback:playing}`、`mobileErrors=[]`，新增并查看 `final-ui-audio.png`；`dist` 在 `/digital-workstation/` 子路径下音频 200、25/25 贴图 200、`errors: []`。无头首次加载为 `blocked`，首次点击后 `playing` 属预期。
+  - **范围**：未改自动展示时间线；回归重跑 `test_showcase` **63 项通过、`errors: []`**，并重拍 `final-showcase-*.png`（新增的声音节点未影响演出）；提交与两站发布记录由本轮收尾回填。
 - **2026-10-29（第三十五版）**：设计树新增抖音/小红书宣传视频入口——
   - **入口**：GitHub 横条下方新增 `.tree-video-row`，两枚半宽外链「抖音视频」（`https://v.douyin.com/KQAS2eHl17M/`）与「小红书视频」（`/discovery/item/6ae209e4…` 分享链，含 `xsec_token`），沿用玻璃卡片 + 发丝线 + ↗，`target=_blank` + `rel="noopener noreferrer"`，`data-video` 供回归定位；`icons.ts` 新增 `douyin`（音符）与 `xiaohongshu`（小书）内联图标，平台识别色青 `#1CAFC4` / 红 `#E8334A`。
   - **尺寸**：1200×900 全折叠树高 **333 → 367**（宽 304 不变，整树折叠仍 48）；视频行 278 × 30、两链接各 136；≤680px 树宽 370、视频行 344、两链接各 169、`bodyScrollWidth=390`。

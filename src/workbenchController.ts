@@ -30,6 +30,8 @@ import { ShowcaseController } from './showcase/showcaseController';
 import type { ShowcaseHost } from './showcase/showcaseController';
 import type { CameraPose } from './showcase/showcaseTimeline';
 import { smootherstep } from './showcase/showcaseTimeline';
+import { BackgroundMusic, DEFAULT_MUSIC_VOLUME } from './audio/backgroundMusic';
+import type { BackgroundMusicState } from './audio/backgroundMusic';
 import type { WorkstationAnimationApi } from './workstationDetails';
 
 export type WorkbenchLightRig = {
@@ -81,6 +83,7 @@ export type WorkbenchAutomation = {
   setKeyboardRgbColor: (color: string) => void;
   setLighting: (patch: Partial<LightingState>) => void;
   getUiState: () => UiState;
+  getMusicState: () => BackgroundMusicState;
   selectObject: (id: string | null) => void;
   focusObject: (id: string) => void;
   toggleAutoOrbit: () => void;
@@ -360,6 +363,20 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
   let showcaseLightingTransition: ShowcaseLightingTransition | null = null;
   const showcaseColorA = new THREE.Color();
   const showcaseColorB = new THREE.Color();
+
+  // 背景音乐独立于场景状态：不进入自动展示快照，展示期间也可调音量。
+  let musicBlockedNotified = false;
+  const music = new BackgroundMusic({
+    onStateChange: (state) => {
+      ui?.setMusic(state);
+      if (!ready) return;
+      scheduleSave();
+      if (state.playback === 'blocked' && !musicBlockedNotified) {
+        musicBlockedNotified = true;
+        ui.toast('浏览器限制了自动播放，点击页面即可开启背景音乐');
+      }
+    },
+  });
 
   function showcaseLocked(): boolean {
     return showcaseMode || showcase?.isActive() === true;
@@ -1001,6 +1018,8 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
     lidClosed: boolean;
     tidy: boolean;
     hiddenDecor: string[];
+    musicEnabled: boolean;
+    musicVolume: number;
   };
 
   function readPersisted(): PersistedSettings | null {
@@ -1035,6 +1054,9 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
       const hidden = Array.isArray(parsed.hiddenDecor)
         ? parsed.hiddenDecor.filter((value): value is string => typeof value === 'string' && VALID_DECOR.has(value))
         : [];
+      const musicVolume = typeof parsed.musicVolume === 'number' && Number.isFinite(parsed.musicVolume)
+        ? clamp(Math.round(parsed.musicVolume), 0, 100)
+        : DEFAULT_MUSIC_VOLUME;
       return {
         view,
         scene,
@@ -1047,6 +1069,8 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
         lidClosed: parsed.lidClosed === true,
         tidy: parsed.tidy === true,
         hiddenDecor: hidden,
+        musicEnabled: parsed.musicEnabled !== false,
+        musicVolume,
       };
     } catch {
       return null;
@@ -1055,6 +1079,7 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
 
   function persistNow(): void {
     if (!ready || showcaseMode) return;
+    const musicState = music.getState();
     const settings: PersistedSettings = {
       view: viewState,
       scene: activeBaseScene,
@@ -1067,6 +1092,8 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
       lidClosed,
       tidy,
       hiddenDecor: [...hiddenDecor],
+      musicEnabled: musicState.enabled,
+      musicVolume: musicState.volume,
     };
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
@@ -1209,6 +1236,12 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
     onShowcaseExit: () => showcase.exit(),
     onShowcaseToggleUi: () => showcase.toggleUiHidden(),
     onShowcaseHideOnStart: (enabled) => showcase.setHideOnStart(enabled),
+    onMusicToggle: () => {
+      const state = music.getState();
+      music.setEnabled(!state.enabled);
+      ui.toast(state.enabled ? '背景音乐已关闭' : '背景音乐已开启');
+    },
+    onMusicVolume: (volume) => music.setVolume(volume),
   };
 
   ui = new ControlPanel(deps.stage, {
@@ -1837,11 +1870,15 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
       applyLighting();
       applyDecorVisibility();
       deps.applyView(persisted.view ?? 'default', false);
+      music.setVolume(persisted.musicVolume);
+      if (!persisted.musicEnabled) music.setEnabled(false);
     } else {
       applyScene('day', true);
       deps.applyView('default', false);
     }
     ready = true;
+    ui.setMusic(music.getState());
+    music.start();
     syncUi();
     refreshInspector();
     refreshHighlight();
@@ -1862,6 +1899,7 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
     setKeyboardRgbColor: (color) => setRgbColorValue(color),
     setLighting: (patch) => handleLighting(patch),
     getUiState: () => getUiState(),
+    getMusicState: () => music.getState(),
     selectObject: (id) => selectObject(id),
     focusObject: (id) => focusObject(id),
     toggleAutoOrbit: () => setAutoOrbit(!autoOrbit),

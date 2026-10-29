@@ -963,6 +963,51 @@
   color: var(--ui-faint);
 }
 
+.music-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  padding-top: 7px;
+  border-top: 1px solid var(--tree-hairline);
+  font-size: var(--tree-font-meta);
+  line-height: 1.45;
+  color: var(--ui-muted);
+}
+
+.music-dot {
+  width: 5px;
+  height: 5px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--tree-line);
+  box-shadow: 0 0 0 3px var(--tree-hover);
+}
+
+.music-status[data-state='playing'] .music-dot {
+  background: #3f9d6b;
+  box-shadow: 0 0 0 3px rgba(63, 157, 107, 0.16);
+}
+
+.music-status[data-state='loading'] .music-dot {
+  background: var(--tree-accent);
+  box-shadow: 0 0 0 3px var(--tree-active);
+}
+
+.music-status[data-state='blocked'] .music-dot {
+  background: #c58b2c;
+  box-shadow: 0 0 0 3px rgba(197, 139, 44, 0.16);
+}
+
+.music-status[data-state='error'] .music-dot {
+  background: #c25555;
+  box-shadow: 0 0 0 3px rgba(194, 85, 85, 0.16);
+}
+
+.music-status-text {
+  min-width: 0;
+}
+
 .scene-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
