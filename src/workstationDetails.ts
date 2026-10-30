@@ -6941,10 +6941,14 @@ export function enhanceWorkstation(root: THREE.Group): WorkstationAnimationApi {
     const active = rgbMode !== 'off';
     const rainbow = rgbMode === 'rainbow';
     if (keyboardRgbLight) {
-      keyboardRgbLight.visible = active;
+      // 必须常驻：切换 visible 会改变场景灯光数量，使所有受光材质重新编译着色器，
+      // 表现为自动展示开场约 0.5 秒处整页冻结数秒。关闭时只把强度归零。
+      keyboardRgbLight.visible = true;
       keyboardRgbLight.color.set(rainbow ? '#2BD8FF' : rgbColor);
-      keyboardRgbLight.intensity = (rainbow ? 0.1 : rgbMode === 'static' ? 0.09
-        : rgbMode === 'breathe' ? 0.07 : 0.04) * rgbScale;
+      keyboardRgbLight.intensity = active
+        ? (rainbow ? 0.1 : rgbMode === 'static' ? 0.09
+          : rgbMode === 'breathe' ? 0.07 : 0.04) * rgbScale
+        : 0;
     }
     if (keyboardDeskGlow) {
       const material = keyboardDeskGlow.material as THREE.MeshBasicMaterial;

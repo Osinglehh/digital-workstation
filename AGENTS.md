@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> 项目级代理入口 · 第三十七版 · 最后更新 2026-10-30
+> 项目级代理入口 · 第三十八版 · 最后更新 2026-10-30
 >
 > **自动加载协议（给后续代理，务必遵守）**
 > 1. **任何任务先读 L0 + L1**（30 秒速览 + 硬规则，约 80 行），不要一次性读完整个文档。
@@ -302,9 +302,9 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 - **键帽渐变（参考 桌面-4.jpg）**：`createKeyLayout` 的 `rowColors` 按排给定 `#D9DDDF / #C5CACC / #AAB1B4 / #8B9296 / #6B7377 / #4C5458`，修饰键与同排字母键同色；空格 `#3F474B`。图例平面同一张贴图内**按排切字色**（row ≤2 深字、≥3 浅字），改了排色必须同步改字色，否则深色排的字会消失。
 - **RGB 三层结构（当前为“渐变键帽 + 氛围溢光”）**：
   - 键缝底光：`createKeyLayout` 的 `underlay` 平面 0.358 × 0.104、`pivot` 局部 y=-0.003，加色混合；彩虹贴图为彩色渐变，单色/呼吸/柔光用灰度渐变由材质 `color` 染色。**彩虹模式必须把材质 `color` 保持白色**，否则整条渐变会被单色相 Multiplication（早期发灰的根因）。深度必须收在 `0.104`：加到 0.116 以上时前排键帽底部 0.7 mm 缝会把它透成一条连续前沿光带。
-  - 键帽染色点光：`keyboard-rgb-light`（PointLight，`castShadow=false`）挂在 `nodes.keyboard`，局部 `(0, 0.095, 0)`，distance 0.55、decay 1.9；静态/彩虹 0.09–0.10、呼吸 0.04–0.14、柔光 0.04。位置必须抬到键床上方中央：放在 `(0, 0.07, 0.015)` 时会在机身前沿斜面烧出一条粉色高光带。
+  - 键帽染色点光：`keyboard-rgb-light`（PointLight，`castShadow=false`）挂在 `nodes.keyboard`，局部 `(0, 0.095, 0)`，distance 0.55、decay 1.9；静态/彩虹 0.09–0.10、呼吸 0.04–0.14、柔光 0.04。位置必须抬到键床上方中央：放在 `(0, 0.07, 0.015)` 时会在机身前沿斜面烧出一条粉色高光带。**这盏灯必须常驻 `visible=true`，关闭 RGB 时只把强度归零**（见 L5-14B），不要用 `visible` 切换。
   - 桌面溢光面：`keyboard-rgb-desk-glow` 0.55 × 0.15，局部 `(0, 0.00012, -0.055)`，`drawRgbGlowTexture()` 径向柔光 + AdditiveBlending；前缘必须留在机身投影内（`z=-0.055` 时前缘 +0.02），否则会从壳体 2 mm 离地缝里露成前沿硬光带。透明度静态/彩虹 0.44–0.46、呼吸 0.14–0.50、柔光 0.20。
-  - 亮度参考：单色/彩虹键缝 opacity 0.95–1.0；呼吸 0.42–0.98；柔光 0.5。关闭时底光、点光、溢光同时隐藏，不能只关键缝。
+  - 亮度参考：单色/彩虹键缝 opacity 0.95–1.0；呼吸 0.42–0.98；柔光 0.5。关闭时底光与溢光隐藏、点光强度归零（可见性不变），不能只关键缝。
   - 不要恢复键盘前沿的整条硬 RGB 灯带；键帽本身按参考做渐变，但仍以深灰为主，不要整体改黑。
   - 自检：`node _tmp` 类五模式探针拍 `rainbow/static/breathe/soft/off` 并用图像阅读逐张查看；交付图是 `analysis/renders/final/final-keyboard-rgb.png`，临时五模式图收尾删除。
 
@@ -530,7 +530,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 - 设计树布局证据：`ui-manifest.json` 的 `designTree` 应为 `x=16,y=14,width=304,height=394`（1200×900 全折叠，七类节点；视频行 278×30、两链接各 136）；`mobileOverflow` 要求 `bodyScrollWidth === viewportWidth === 390`、`inspectorInsideTree=true`（移动端检查器宽 315，树宽 370、视频行 344、两链接各 169）。运行时探针还应确认：右上（`right > 62% viewport` 且 `top < 300`）与底部（`top > 62% viewport`）没有交互浮窗；选中物体后 `.object-inspector` 的 `position=static`、`insideTree=true` 且矩形完全落在树边界内（显示器实测 `[67,224,248,155]`）；七节点全展开高度 648、`.tree-body` 内容 2380 / 可视 477、页面仍为 900。
 - 首访与加载证据：`ui-manifest.json` 的 `intro.rect` 应为 `(384,289,432×322)`（`test_interactions` 同页实测 426×317，属字体/布局取整差异）、`seenBefore=null`、`introSeenAfterDismiss='seen'`；`mobileIntro.rect=(12,245,366×354)` 且 `bodyScrollWidth=390`；`help.replayText='重新查看欢迎卡片'`。启动占位探针要求：贴图加载时 `#boot` 可见、状态显示 `n/25`，就绪后 `#boot.hidden=true`、`stage.aria-busy=null`；`--disable-webgl` 时 `#boot-error` 可见、`#boot-loading` 隐藏、3 个链接存在、页面无未捕获异常之外的白屏；音频在首次手势前 `performance` 无 `.mp3` 资源、点击后 `playback` 变 `playing`。
 - 玻璃/字号人工检查：面板为半透明玻璃（背后的场景可见且被 12 px 模糊），日间浅色、夜间深色玻璃都保持文字对比；标题 13 px、分类行 12.5 px、叶子 12 px、辅助 9–9.5 px；悬停有轻微底色、选中为浅蓝底 + 2 px 内嵌指示；展开箭头平滑旋转约 160 ms。不得恢复纯白实底、厚重黑色投影、显眼灰色计数胶囊或 16 px 默认按钮字号。
-- 键盘 RGB 改动：五种模式（彩虹/单色/呼吸/柔光/关闭）各截一张近景并用图像阅读查看；关闭时键缝/点光/光池全部消失；交付图更新 `final-keyboard-rgb.png`，试拍按 L4.6 删除。
+- 键盘 RGB 改动：五种模式（彩虹/单色/呼吸/柔光/关闭）各截一张近景并用图像阅读查看；关闭时键缝/点光/光池全部消失；交付图更新 `final-keyboard-rgb.png`，试拍按 L4.6 删除。改到 RGB 点光或任何灯光的可见性时，还要在冷启动点击开始展示、跳段到 29.2 s RGB 章节、手动关/开 RGB 三个场景各测一次：`linkProgram` 必须为 0、无长任务（见 L5-14B-1）。
 - 视角预设回归：逐个点击 11 个视角按钮，检查 `currentView()`、唯一的 `aria-pressed` 按钮、相机距离与预设一致；手动拖动后 `currentView=null`、无激活按钮；滚轮缩放上限为 3.15 m。无头 SwiftShader 下 rAF 很慢，每步至少等待 2.5 s，不能用 0.9 s 的旧等待判断失败。
 - 环境/相机改动：`node tools/audit_environment.mjs` 必须全门禁通过、`pageErrors=[]`；默认构图高 65–82%、上下留白 ≥8%，`left/right/overhead/panorama` 完整可见。改墙体/地板后重拍 `final-under`、`final-front/left/right/overhead`。
 - 桌顶格架改动：`node tools/audit_shelf.mjs` 复测（`allInside=true`、`roomItemCollisionCount=0`、`legacyRemoved=true`、`shadowOcclusion=true`、`pageErrors=0`），重拍 `final-shelf-*.png`。
@@ -607,6 +607,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 14. **屏幕 z-fighting**：笔记本屏幕 mesh 必须贴在 bezel 前表面之外 ≥0.9 mm（当前 z=0.0041）并加 `polygonOffset: -2`。
 14A. **键帽只按排着色会“丢掉渐变”**：本项目参考键帽是**由后向前逐排变深**的渐变键帽而不是纯白键帽；只改单色或窄幅行差（旧 `#D2D6D8…#B9C0C3`）在渲染里读不出渐变。改排色时同步改图例字色，否则前三排的字会看不见。
 14B. **RGB 前沿硬光带三来源**：① 桌面溢光面前缘探出机身（`z=-0.055` 起才安全）；② 点光压在 `(0, 0.07, 0.015)` 时在机身前沿斜面烧出的高光；③ 底光面深度加到 0.116 以上时从前排键帽 0.7 mm 底缝透出的连续亮线。三层任一处越界都会在正面视角形成一条彩色硬带。
+14B-1. **RGB 点光不能用 `visible` 开关**：`keyboard-rgb-light` 的可见性变化会改变场景灯光数量，three.js 会让全部受光材质重编译；自动展示在 0.5 s 的 `rgb: off` 事件正好触发，冷启动实测主线程冻结 9–11 s（热点 `getProgramInfoLog`），预热过两种光态变体后才不卡。必须常驻 `visible=true`，`off` 时强度归零（`syncRgbUnderlay`）；回归标准是冷启动开始展示与 RGB 章节重新点亮均为 0 次 `linkProgram`。
 
 ### 桌面小件（杯子/鼠标垫）
 
@@ -745,6 +746,7 @@ node tools/capture_orbit.mjs label az el dist tx ty tz
 
 > 附录只记录里程碑，不作为当前事实来源；尺寸、交互与验证以 L0–L5 和当前代码/实测为准。
 
+- **2026-10-30（第三十八版）**：修复自动展示开场整页卡顿——根因是时间线 0.5 s 的 `rgb: off` 把 `keyboard-rgb-light` 设为 `visible=false`，灯光数量变化让全部受光材质重新编译（冷启动实测主线程冻结 9–11 s）；改为点光源常驻、关闭时强度归零。验证：冷启动开始、RGB 章节重新点亮、手动关/开 RGB 均为 0 次 `linkProgram`、0 个长任务；`test_showcase` 63 项、`test_interactions` 均通过且 `errors: []`；`final_ui_capture` 重建 `final-keyboard-rgb.png`、`final-ui-night.png`、`ui-manifest.json`（`designTree` 仍 `(16,14,304×394)`）。
 - **2026-10-30（第三十七版）**：首访导览、启动占位与 WebP 瘦身——
   - **首访**：新增 `src/ui/introCard.ts` + `introCard.css`，首次访问在 3D 就绪后显示欢迎卡片（一句话介绍、三个标签、`播放 45 秒导览`、`自由探索`、抖音/小红书/GitHub 链接）；`workstation-intro-v1` 记忆、Esc/背景点击关闭、焦点归还；帮助节点新增 `重新查看欢迎卡片`（`.help-intro-button` 250×29）；`navigator.webdriver` 默认跳过，`?intro=1/0` 强制/禁用；`window.__workstation.intro.show/dismiss/isOpen` 供回归。实测卡片 1200×900 **432×322 @ (384,289)**、390×844 **366×354 @ (12,245)**，`bodyScrollWidth=390`。
   - **加载与元数据**：`index.html` 新增 `#boot` 启动占位（`poster.jpg` 1600×1200/153 KB、`n/25` 贴图进度、失败链接、WebGL 回退）与 description/OG/Twitter/favicon/apple-touch-icon；`main.ts` 挂 `DefaultLoadingManager`，贴图与首帧都就绪后 460 ms 真正 `hidden` 并派发 `workstation:ready`，15 s 兜底；`--disable-webgl` 探针显示 `#boot-error` 文案与 3 个链接；分享封面 `public/og-cover.jpg` 1200×630/86 KB，OG 图片使用 GitHub Pages 绝对 URL。
