@@ -38,7 +38,7 @@ const ENVIRONMENT = {
 const stage = document.getElementById('stage') as HTMLDivElement;
 
 // --- 启动占位与贴图加载进度 -------------------------------------------------
-// 首屏先显示 poster 与进度条；贴图与首帧都就绪后再淡出，避免评委看到白屏或半成品。
+// 首屏先显示 poster 与进度条；贴图与首帧都就绪后再淡出，避免看到白屏或半成品。
 const bootEl = document.getElementById('boot');
 const bootLoadingEl = document.getElementById('boot-loading');
 const bootErrorEl = document.getElementById('boot-error');
