@@ -12,6 +12,9 @@ analysis/material-crops/
 analysis/gates/mask-ref.png
 analysis/gates/ref224.png
 
+# WebP 贴图对应的原始 PNG（保留本机，便于回滚重压，不进公开仓库）
+analysis/textures-source/
+
 # 本机流水线状态（含本地路径，仅本地保留）
 .img2threejs/
 
@@ -25,3 +28,7 @@ analysis/gates/ref224.png
 *.log
 .DS_Store
 Thumbs.db
+
+# Python 缓存
+__pycache__/
+*.pyc

@@ -191,6 +191,7 @@ export type ControlCallbacks = {
   onShowcaseHideOnStart: (enabled: boolean) => void;
   onMusicToggle: () => void;
   onMusicVolume: (volume: number) => void;
+  onIntroReplay: () => void;
 };
 
 export type ControlPanelOptions = {

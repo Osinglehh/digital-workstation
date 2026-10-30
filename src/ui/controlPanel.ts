@@ -19,6 +19,7 @@ import type {
   ViewId,
 } from './types';
 import type { BackgroundMusicState, MusicPlayback } from '../audio/backgroundMusic';
+import { REPO_LABEL, REPO_URL, VIDEO_LINKS } from './links';
 
 const VIEW_SECTION = 'view';
 const OBJECT_SECTION = 'objects';
@@ -27,28 +28,6 @@ const SCENE_SECTION = 'scenes';
 const MUSIC_SECTION = 'music';
 const SHOWCASE_SECTION = 'showcase';
 const HELP_SECTION = 'help';
-
-// 开源仓库入口：标题栏图标与帮助节点共用
-const REPO_URL = 'https://github.com/Osinglehh/digital-workstation';
-const REPO_LABEL = 'GitHub 开源仓库 · 欢迎 Star';
-
-// 宣传视频入口：抖音与小红书，点击在新窗口打开
-const VIDEO_LINKS = [
-  {
-    id: 'douyin',
-    label: '抖音视频',
-    title: '抖音 · 数字工位宣传视频',
-    url: 'https://v.douyin.com/KQAS2eHl17M/',
-    icon: 'douyin',
-  },
-  {
-    id: 'xiaohongshu',
-    label: '小红书视频',
-    title: '小红书 · 数字工位宣传视频',
-    url: 'https://www.xiaohongshu.com/discovery/item/6ae209e40000000028023016?source=webshare&xhsshare=pc_web&xsec_token=ABlabMqoEDA83lM6G96VkI3pcSGqbugpuaqY8xzHSALvc=&xsec_source=pc_share',
-    icon: 'xiaohongshu',
-  },
-] as const;
 
 type SectionName =
   | typeof VIEW_SECTION
@@ -822,12 +801,18 @@ export class ControlPanel {
       list,
       make('p', 'panel-note', '点击场景中的物体在设计树里展开操作节点，点击空白处或按 Esc 取消选择。按住顶栏可拖动整棵树。'),
     );
+    const introRow = makeButton(
+      'help-intro-button',
+      `${icon('sparkles', 13)}<span>重新查看欢迎卡片</span>`,
+      '重新打开首访导览',
+    );
+    introRow.addEventListener('click', () => this.callbacks.onIntroReplay());
     const repoRow = make('a', 'help-repo-link');
     repoRow.href = REPO_URL;
     repoRow.target = '_blank';
     repoRow.rel = 'noopener noreferrer';
     repoRow.innerHTML = `${icon('github', 13)}<span>${REPO_LABEL}</span><span class="help-repo-arrow">↗</span>`;
-    body.append(repoRow);
+    body.append(introRow, repoRow);
     this.helpButton = makeButton('tree-row dock-group', `<span class="tree-chevron">${icon('chevron', 12)}</span><span class="tree-node-icon">${icon('help', 14)}</span><span class="tree-label">帮助</span>`, '快捷键与帮助');
     this.helpButton.setAttribute('aria-label', '帮助');
     this.helpButton.setAttribute('aria-expanded', 'false');

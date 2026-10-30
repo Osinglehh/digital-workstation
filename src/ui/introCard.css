@@ -1,0 +1,260 @@
+/* 首访欢迎卡片：与设计树共用玻璃拟态变量，不引入实色白底。 */
+.intro-layer {
+  z-index: 40;
+}
+
+.intro-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  background:
+    radial-gradient(120% 90% at 50% 55%, rgba(16, 20, 25, 0.12) 0%, rgba(16, 20, 25, 0.42) 100%);
+}
+
+.intro-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(432px, calc(100% - 40px));
+  max-height: calc(100% - 40px);
+  overflow: auto;
+  transform: translate(-50%, -50%);
+  padding: 22px 22px 16px;
+  border: 1px solid var(--tree-border);
+  border-radius: 18px;
+  background:
+    linear-gradient(155deg, var(--tree-sheen) 0%, rgba(255, 255, 255, 0) 46%),
+    var(--tree-bg);
+  box-shadow: var(--tree-shadow);
+  -webkit-backdrop-filter: blur(var(--tree-blur)) saturate(var(--tree-saturate));
+  backdrop-filter: blur(var(--tree-blur)) saturate(var(--tree-saturate));
+  pointer-events: auto;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .intro-card {
+    background: var(--tree-bg-fallback);
+  }
+}
+
+@media (pointer: coarse) {
+  .intro-card {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background:
+      linear-gradient(155deg, var(--tree-sheen) 0%, rgba(255, 255, 255, 0) 46%),
+      var(--tree-bg-fallback);
+  }
+}
+
+.intro-card.is-open {
+  animation: intro-rise 220ms cubic-bezier(0.22, 0.72, 0.28, 1);
+}
+
+@keyframes intro-rise {
+  from {
+    transform: translate(-50%, calc(-50% + 12px)) scale(0.985);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.intro-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ui-muted);
+  cursor: pointer;
+}
+
+.intro-close:hover {
+  background: var(--tree-hover);
+  border-color: var(--tree-line);
+  color: var(--ui-ink);
+}
+
+.intro-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 12px;
+}
+
+.intro-mark {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  border: 1px solid var(--tree-line);
+  background: var(--tree-card);
+  color: var(--tree-accent);
+  box-shadow: inset 0 1px 0 var(--tree-highlight);
+}
+
+.intro-kicker {
+  margin: 0;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--ui-faint);
+}
+
+.intro-title {
+  margin: 0 0 6px;
+  font-size: 25px;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: var(--ui-ink);
+}
+
+.intro-lead {
+  margin: 0 0 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ui-muted);
+}
+
+.intro-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.intro-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  border: 1px solid var(--tree-line);
+  border-radius: 999px;
+  background: var(--tree-card);
+  color: var(--ui-muted);
+  font-size: 10.5px;
+  white-space: nowrap;
+}
+
+.intro-chip .ui-icon {
+  color: var(--tree-accent);
+}
+
+.intro-meta {
+  margin: 0 0 15px;
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  color: var(--ui-faint);
+}
+
+.intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.intro-primary,
+.intro-secondary {
+  min-height: 34px;
+  padding: 0 15px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.intro-primary {
+  flex: 1 1 210px;
+  background: var(--ui-accent);
+  color: var(--ui-accent-ink);
+  box-shadow: 0 6px 16px rgba(30, 74, 125, 0.28);
+}
+
+.intro-primary:hover {
+  transform: translateY(-1px);
+}
+
+.intro-secondary {
+  flex: 0 1 auto;
+  border-color: var(--tree-line);
+  background: var(--tree-card);
+  color: var(--ui-ink);
+}
+
+.intro-secondary:hover {
+  background: var(--tree-hover);
+}
+
+.intro-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--tree-hairline);
+}
+
+.intro-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 7px;
+  border: 1px solid transparent;
+  color: var(--ui-muted);
+  font-size: 10.5px;
+  text-decoration: none;
+}
+
+.intro-link:hover {
+  border-color: var(--tree-line);
+  background: var(--tree-hover);
+  color: var(--tree-accent);
+}
+
+.intro-footnote {
+  margin: 10px 0 0;
+  font-size: 9.5px;
+  color: var(--ui-faint);
+}
+
+@media (max-width: 680px) {
+  .intro-card {
+    width: calc(100% - 24px);
+    max-height: calc(100% - 24px);
+    padding: 18px 16px 14px;
+    border-radius: 15px;
+  }
+
+  .intro-title {
+    font-size: 22px;
+  }
+
+  .intro-primary {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .intro-actions {
+    flex-direction: column;
+  }
+
+  .intro-secondary {
+    width: 100%;
+  }
+}

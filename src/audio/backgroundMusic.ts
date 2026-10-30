@@ -40,7 +40,8 @@ export class BackgroundMusic {
 
     this.audio = new Audio(options.src ?? BACKGROUND_MUSIC_SRC);
     this.audio.loop = true;
-    this.audio.preload = 'auto';
+    // 首屏不预取 6 MB 音频：自动播放被拦截时不会白白下载，首次手势播放再加载。
+    this.audio.preload = 'none';
     this.audio.volume = this.volume / 100;
 
     this.audio.addEventListener('playing', () => {

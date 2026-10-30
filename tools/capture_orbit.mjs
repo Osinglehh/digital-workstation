@@ -16,6 +16,7 @@ const browser = await chromium.launch({
 const page = await browser.newPage({ viewport: { width: 1200, height: 900 }, deviceScaleFactor: 1 });
 await page.goto('http://127.0.0.1:5173/', { waitUntil: 'domcontentloaded', timeout: 90000 });
 await page.waitForFunction(() => Boolean(window.__workstation), null, { timeout: 90000 });
+await page.waitForFunction(() => document.getElementById('boot')?.hidden === true, null, { timeout: 120000 });
 await page.waitForTimeout(1800);
 const dataUrl = await page.evaluate((pose) =>
   window.__workstation.setOrbit(pose.az, pose.el, pose.dist, pose.target), {

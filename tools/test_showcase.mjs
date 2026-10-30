@@ -56,6 +56,11 @@ try {
     null,
     { timeout: 90000 },
   );
+  await page.waitForFunction(
+    () => document.getElementById('boot')?.hidden === true,
+    null,
+    { timeout: 120000 },
+  );
   await page.waitForTimeout(1400);
 
   await openSection('自动展示');

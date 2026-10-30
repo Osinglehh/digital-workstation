@@ -10,6 +10,7 @@ page.on('pageerror', (e) => errors.push(e.message));
 page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
 await page.goto('http://127.0.0.1:5173/', { waitUntil: 'networkidle' });
 await page.waitForFunction(() => window.__workstation, null, { timeout: 90000 });
+await page.waitForFunction(() => document.getElementById('boot')?.hidden === true, null, { timeout: 120000 });
 await page.waitForTimeout(1500);
 const result = await page.evaluate(async () => {
   // HMR 整页重载会让 window.__workstation 短暂消失，这里自行等待就绪（最多 60 s）。

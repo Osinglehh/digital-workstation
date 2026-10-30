@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import type { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import type { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { ControlPanel } from './ui/controlPanel';
+import { IntroCard } from './ui/introCard';
 import {
   RGB_MODE_LABELS,
   SCENE_LABELS,
@@ -104,6 +105,11 @@ export type WorkbenchAutomation = {
       nextChapterStart: number | null;
     };
     isActive: () => boolean;
+  };
+  intro: {
+    show: () => void;
+    dismiss: () => void;
+    isOpen: () => boolean;
   };
 };
 
@@ -358,6 +364,7 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
   let pendingHover: { x: number; y: number } | null = null;
   let ui: ControlPanel;
   let showcase: ShowcaseController;
+  let intro: IntroCard;
   let showcaseMode = false;
   let showcaseSnapshot: ShowcaseSnapshot | null = null;
   let showcaseLightingTransition: ShowcaseLightingTransition | null = null;
@@ -1242,6 +1249,7 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
       ui.toast(state.enabled ? '背景音乐已关闭' : '背景音乐已开启');
     },
     onMusicVolume: (volume) => music.setVolume(volume),
+    onIntroReplay: () => intro.show(),
   };
 
   ui = new ControlPanel(deps.stage, {
@@ -1655,6 +1663,12 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
   showcase = new ShowcaseController(showcaseHost);
   ui.setShowcase(showcase.getState());
 
+  // 首访欢迎卡片：等 3D 场景完成首帧与贴图加载后再出现，避免遮住启动占位。
+  intro = new IntroCard(deps.stage, {
+    onStartShowcase: () => showcase.start(),
+  });
+  window.addEventListener('workstation:ready', () => intro.maybeShow(), { once: true });
+
   // --- pointer interactions --------------------------------------------------
   function scheduleHover(clientX: number, clientY: number): void {
     pendingHover = { x: clientX, y: clientY };
@@ -1916,6 +1930,11 @@ export function setupWorkbench(deps: WorkbenchDeps): { automation: WorkbenchAuto
       toggleUiHidden: () => showcase.toggleUiHidden(),
       getState: () => showcase.getState(),
       isActive: () => showcase.isActive(),
+    },
+    intro: {
+      show: () => intro.show(),
+      dismiss: () => intro.dismiss(),
+      isOpen: () => intro.isOpen(),
     },
   };
 

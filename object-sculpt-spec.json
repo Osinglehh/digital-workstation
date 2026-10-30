@@ -13067,32 +13067,32 @@
         "targetThreshold": 0.7,
         "maps": {
           "albedo": {
-            "path": "public/textures/woodOak/woodoak_albedo.png",
-            "url": "textures/woodOak/woodoak_albedo.png",
+            "path": "public/textures/woodOak/woodoak_albedo.webp",
+            "url": "textures/woodOak/woodoak_albedo.webp",
             "channel": "albedo",
             "source": "reference-pixel-extraction"
           },
           "roughness": {
-            "path": "public/textures/woodOak/woodoak_roughness.png",
-            "url": "textures/woodOak/woodoak_roughness.png",
+            "path": "public/textures/woodOak/woodoak_roughness.webp",
+            "url": "textures/woodOak/woodoak_roughness.webp",
             "channel": "roughness",
             "source": "reference-pixel-extraction"
           },
           "height": {
-            "path": "public/textures/woodOak/woodoak_height.png",
-            "url": "textures/woodOak/woodoak_height.png",
+            "path": "public/textures/woodOak/woodoak_height.webp",
+            "url": "textures/woodOak/woodoak_height.webp",
             "channel": "height",
             "source": "reference-pixel-extraction"
           },
           "normal": {
-            "path": "public/textures/woodOak/woodoak_normal.png",
-            "url": "textures/woodOak/woodoak_normal.png",
+            "path": "public/textures/woodOak/woodoak_normal.webp",
+            "url": "textures/woodOak/woodoak_normal.webp",
             "channel": "normal",
             "source": "reference-pixel-extraction"
           },
           "ao": {
-            "path": "public/textures/woodOak/woodoak_ao.png",
-            "url": "textures/woodOak/woodoak_ao.png",
+            "path": "public/textures/woodOak/woodoak_ao.webp",
+            "url": "textures/woodOak/woodoak_ao.webp",
             "channel": "ao",
             "source": "reference-pixel-extraction"
           }
@@ -13299,32 +13299,32 @@
         "targetThreshold": 0.7,
         "maps": {
           "albedo": {
-            "path": "public/textures/frostedGlass/frostedglass_albedo.png",
-            "url": "textures/frostedGlass/frostedglass_albedo.png",
+            "path": "public/textures/frostedGlass/frostedglass_albedo.webp",
+            "url": "textures/frostedGlass/frostedglass_albedo.webp",
             "channel": "albedo",
             "source": "reference-pixel-extraction"
           },
           "roughness": {
-            "path": "public/textures/frostedGlass/frostedglass_roughness.png",
-            "url": "textures/frostedGlass/frostedglass_roughness.png",
+            "path": "public/textures/frostedGlass/frostedglass_roughness.webp",
+            "url": "textures/frostedGlass/frostedglass_roughness.webp",
             "channel": "roughness",
             "source": "reference-pixel-extraction"
           },
           "height": {
-            "path": "public/textures/frostedGlass/frostedglass_height.png",
-            "url": "textures/frostedGlass/frostedglass_height.png",
+            "path": "public/textures/frostedGlass/frostedglass_height.webp",
+            "url": "textures/frostedGlass/frostedglass_height.webp",
             "channel": "height",
             "source": "reference-pixel-extraction"
           },
           "normal": {
-            "path": "public/textures/frostedGlass/frostedglass_normal.png",
-            "url": "textures/frostedGlass/frostedglass_normal.png",
+            "path": "public/textures/frostedGlass/frostedglass_normal.webp",
+            "url": "textures/frostedGlass/frostedglass_normal.webp",
             "channel": "normal",
             "source": "reference-pixel-extraction"
           },
           "ao": {
-            "path": "public/textures/frostedGlass/frostedglass_ao.png",
-            "url": "textures/frostedGlass/frostedglass_ao.png",
+            "path": "public/textures/frostedGlass/frostedglass_ao.webp",
+            "url": "textures/frostedGlass/frostedglass_ao.webp",
             "channel": "ao",
             "source": "reference-pixel-extraction"
           }
@@ -13473,32 +13473,32 @@
         "targetThreshold": 0.7,
         "maps": {
           "albedo": {
-            "path": "public/textures/laptopWhite/laptopwhite_albedo.png",
-            "url": "textures/laptopWhite/laptopwhite_albedo.png",
+            "path": "public/textures/laptopWhite/laptopwhite_albedo.webp",
+            "url": "textures/laptopWhite/laptopwhite_albedo.webp",
             "channel": "albedo",
             "source": "reference-pixel-extraction"
           },
           "roughness": {
-            "path": "public/textures/laptopWhite/laptopwhite_roughness.png",
-            "url": "textures/laptopWhite/laptopwhite_roughness.png",
+            "path": "public/textures/laptopWhite/laptopwhite_roughness.webp",
+            "url": "textures/laptopWhite/laptopwhite_roughness.webp",
             "channel": "roughness",
             "source": "reference-pixel-extraction"
           },
           "height": {
-            "path": "public/textures/laptopWhite/laptopwhite_height.png",
-            "url": "textures/laptopWhite/laptopwhite_height.png",
+            "path": "public/textures/laptopWhite/laptopwhite_height.webp",
+            "url": "textures/laptopWhite/laptopwhite_height.webp",
             "channel": "height",
             "source": "reference-pixel-extraction"
           },
           "normal": {
-            "path": "public/textures/laptopWhite/laptopwhite_normal.png",
-            "url": "textures/laptopWhite/laptopwhite_normal.png",
+            "path": "public/textures/laptopWhite/laptopwhite_normal.webp",
+            "url": "textures/laptopWhite/laptopwhite_normal.webp",
             "channel": "normal",
             "source": "reference-pixel-extraction"
           },
           "ao": {
-            "path": "public/textures/laptopWhite/laptopwhite_ao.png",
-            "url": "textures/laptopWhite/laptopwhite_ao.png",
+            "path": "public/textures/laptopWhite/laptopwhite_ao.webp",
+            "url": "textures/laptopWhite/laptopwhite_ao.webp",
             "channel": "ao",
             "source": "reference-pixel-extraction"
           }
@@ -13653,32 +13653,32 @@
         "targetThreshold": 0.7,
         "maps": {
           "albedo": {
-            "path": "public/textures/keycap/keycappbt_albedo.png",
-            "url": "textures/keycap/keycappbt_albedo.png",
+            "path": "public/textures/keycap/keycappbt_albedo.webp",
+            "url": "textures/keycap/keycappbt_albedo.webp",
             "channel": "albedo",
             "source": "reference-pixel-extraction"
           },
           "roughness": {
-            "path": "public/textures/keycap/keycappbt_roughness.png",
-            "url": "textures/keycap/keycappbt_roughness.png",
+            "path": "public/textures/keycap/keycappbt_roughness.webp",
+            "url": "textures/keycap/keycappbt_roughness.webp",
             "channel": "roughness",
             "source": "reference-pixel-extraction"
           },
           "height": {
-            "path": "public/textures/keycap/keycappbt_height.png",
-            "url": "textures/keycap/keycappbt_height.png",
+            "path": "public/textures/keycap/keycappbt_height.webp",
+            "url": "textures/keycap/keycappbt_height.webp",
             "channel": "height",
             "source": "reference-pixel-extraction"
           },
           "normal": {
-            "path": "public/textures/keycap/keycappbt_normal.png",
-            "url": "textures/keycap/keycappbt_normal.png",
+            "path": "public/textures/keycap/keycappbt_normal.webp",
+            "url": "textures/keycap/keycappbt_normal.webp",
             "channel": "normal",
             "source": "reference-pixel-extraction"
           },
           "ao": {
-            "path": "public/textures/keycap/keycappbt_ao.png",
-            "url": "textures/keycap/keycappbt_ao.png",
+            "path": "public/textures/keycap/keycappbt_ao.webp",
+            "url": "textures/keycap/keycappbt_ao.webp",
             "channel": "ao",
             "source": "reference-pixel-extraction"
           }
@@ -13827,32 +13827,32 @@
         "targetThreshold": 0.7,
         "maps": {
           "albedo": {
-            "path": "public/textures/mousepadFabric/mousepadfabric_albedo.png",
-            "url": "textures/mousepadFabric/mousepadfabric_albedo.png",
+            "path": "public/textures/mousepadFabric/mousepadfabric_albedo.webp",
+            "url": "textures/mousepadFabric/mousepadfabric_albedo.webp",
             "channel": "albedo",
             "source": "reference-pixel-extraction"
           },
           "roughness": {
-            "path": "public/textures/mousepadFabric/mousepadfabric_roughness.png",
-            "url": "textures/mousepadFabric/mousepadfabric_roughness.png",
+            "path": "public/textures/mousepadFabric/mousepadfabric_roughness.webp",
+            "url": "textures/mousepadFabric/mousepadfabric_roughness.webp",
             "channel": "roughness",
             "source": "reference-pixel-extraction"
           },
           "height": {
-            "path": "public/textures/mousepadFabric/mousepadfabric_height.png",
-            "url": "textures/mousepadFabric/mousepadfabric_height.png",
+            "path": "public/textures/mousepadFabric/mousepadfabric_height.webp",
+            "url": "textures/mousepadFabric/mousepadfabric_height.webp",
             "channel": "height",
             "source": "reference-pixel-extraction"
           },
           "normal": {
-            "path": "public/textures/mousepadFabric/mousepadfabric_normal.png",
-            "url": "textures/mousepadFabric/mousepadfabric_normal.png",
+            "path": "public/textures/mousepadFabric/mousepadfabric_normal.webp",
+            "url": "textures/mousepadFabric/mousepadfabric_normal.webp",
             "channel": "normal",
             "source": "reference-pixel-extraction"
           },
           "ao": {
-            "path": "public/textures/mousepadFabric/mousepadfabric_ao.png",
-            "url": "textures/mousepadFabric/mousepadfabric_ao.png",
+            "path": "public/textures/mousepadFabric/mousepadfabric_ao.webp",
+            "url": "textures/mousepadFabric/mousepadfabric_ao.webp",
             "channel": "ao",
             "source": "reference-pixel-extraction"
           }

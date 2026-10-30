@@ -13,6 +13,7 @@ const browser = await chromium.launch({
 const page = await browser.newPage({ viewport: { width: 1200, height: 900 }, deviceScaleFactor: 1 });
 await page.goto('http://127.0.0.1:5173/', { waitUntil: 'domcontentloaded', timeout: 90000 });
 await page.waitForFunction(() => window.__workstation, null, { timeout: 90000 });
+await page.waitForFunction(() => document.getElementById('boot')?.hidden === true, null, { timeout: 120000 });
 await page.waitForTimeout(2500);
 
 const outDir = path.resolve('analysis/renders/final');

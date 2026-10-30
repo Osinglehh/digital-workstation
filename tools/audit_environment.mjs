@@ -15,6 +15,7 @@ page.on('pageerror', (e) => errors.push(e.message));
 page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
 await page.goto('http://127.0.0.1:5173/', { waitUntil: 'networkidle', timeout: 90000 });
 await page.waitForFunction(() => window.__workstation, null, { timeout: 90000 });
+await page.waitForFunction(() => document.getElementById('boot')?.hidden === true, null, { timeout: 120000 });
 await page.waitForTimeout(1800);
 
 const result = await page.evaluate(() => {

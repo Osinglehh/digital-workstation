@@ -19,11 +19,11 @@ const waitApp = () => page.waitForFunction(
   null,
   { timeout: 90000 },
 );
-
-await page.goto('http://127.0.0.1:5173/', { waitUntil: 'networkidle' });
-await waitApp();
-await page.waitForTimeout(1200);
-
+const waitBoot = () => page.waitForFunction(
+  () => document.getElementById('boot')?.hidden === true,
+  null,
+  { timeout: 120000 },
+);
 const openSection = async (name) => {
   const button = page.getByRole('button', { name, exact: true });
   if (await button.getAttribute('aria-expanded') !== 'true') await button.click();
@@ -32,6 +32,74 @@ const closeSection = async (name) => {
   const button = page.getByRole('button', { name, exact: true });
   if (await button.getAttribute('aria-expanded') === 'true') await button.click();
 };
+
+await page.goto('http://127.0.0.1:5173/?intro=1', { waitUntil: 'networkidle' });
+await waitApp();
+await waitBoot();
+await page.waitForFunction(
+  () => document.querySelector('.intro-layer') && !document.querySelector('.intro-layer').hidden,
+  null,
+  { timeout: 30000 },
+);
+await page.waitForTimeout(600);
+
+// --- 首访欢迎卡片：内容、关闭、帮助里重开 ------------------------------------
+const intro = await page.evaluate(() => {
+  const card = document.querySelector('.intro-card');
+  const layer = document.querySelector('.intro-layer');
+  const rect = card.getBoundingClientRect();
+  return {
+    open: !layer.hidden,
+    title: card.querySelector('.intro-title')?.textContent ?? '',
+    lead: card.querySelector('.intro-lead')?.textContent ?? '',
+    chips: [...card.querySelectorAll('.intro-chip')].map((n) => n.textContent?.trim() ?? ''),
+    links: [...card.querySelectorAll('.intro-link')].map((a) => ({
+      text: a.textContent?.trim() ?? '',
+      href: a.getAttribute('href'),
+      target: a.getAttribute('target'),
+      rel: a.getAttribute('rel'),
+    })),
+    rect: {
+      x: Math.round(rect.x),
+      y: Math.round(rect.y),
+      width: Math.round(rect.width),
+      height: Math.round(rect.height),
+    },
+  };
+});
+if (!intro.open || intro.title !== '数字工位' || intro.chips.length !== 3) {
+  throw new Error('首访欢迎卡片内容不完整');
+}
+if (!intro.lead.includes('一张手机照片') || !intro.links.some((l) => l.href?.includes('douyin'))) {
+  throw new Error('首访欢迎卡片缺少介绍文案或介绍片入口');
+}
+await page.locator('[data-intro-action="explore"]').click();
+await page.waitForTimeout(250);
+const introDismissed = await page.evaluate(() => ({
+  open: window.__workstation.intro.isOpen(),
+  hidden: document.querySelector('.intro-layer').hidden,
+  seen: localStorage.getItem('workstation-intro-v1'),
+}));
+if (introDismissed.open || !introDismissed.hidden || introDismissed.seen !== 'seen') {
+  throw new Error('欢迎卡片关闭或首次访问记忆失败');
+}
+
+// 帮助节点里重开，Esc 关闭
+await openSection('帮助');
+await page.getByRole('button', { name: '重新查看欢迎卡片' }).click();
+await page.waitForTimeout(300);
+const introReplayOpen = await page.evaluate(() => window.__workstation.intro.isOpen());
+await page.keyboard.press('Escape');
+await page.waitForTimeout(250);
+const introReplayClosed = await page.evaluate(() => window.__workstation.intro.isOpen());
+if (!introReplayOpen || introReplayClosed) throw new Error('帮助节点重开或 Esc 关闭欢迎卡片失败');
+await closeSection('帮助');
+
+// 回到常规首屏（去掉 ?intro=1），继续后面的交互回归
+await page.goto('http://127.0.0.1:5173/', { waitUntil: 'networkidle' });
+await waitApp();
+await waitBoot();
+await page.waitForTimeout(1000);
 
 const initial = await page.evaluate(() => ({
   state: window.__workstation.root.userData.animation.getState(),
@@ -350,6 +418,10 @@ if (!persisted.music.enabled || persisted.music.volume !== 62) {
 
 const result = {
   initial,
+  intro,
+  introDismissed,
+  introReplayOpen,
+  introReplayClosed,
   treeCollapsed,
   treeExpanded,
   treeDrag: { before: treeStart, moved: treeMoved, restored: treeRestored },

@@ -1092,6 +1092,7 @@
   color: var(--ui-muted);
 }
 
+.help-intro-button,
 .help-repo-link {
   display: flex;
   align-items: center;
@@ -1106,13 +1107,22 @@
   text-decoration: none;
 }
 
+.help-intro-button {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
 .help-repo-link:hover,
-.help-repo-link:focus-visible {
+.help-repo-link:focus-visible,
+.help-intro-button:hover,
+.help-intro-button:focus-visible {
   background: var(--tree-hover);
   color: var(--tree-accent);
 }
 
-.help-repo-link .ui-icon {
+.help-repo-link .ui-icon,
+.help-intro-button .ui-icon {
   flex: none;
 }
 

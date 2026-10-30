@@ -18,6 +18,16 @@ const waitApp = (page) => page.waitForFunction(
   null,
   { timeout: 90000 },
 );
+const waitBoot = (page) => page.waitForFunction(
+  () => document.getElementById('boot')?.hidden === true,
+  null,
+  { timeout: 120000 },
+);
+const waitIntro = (page) => page.waitForFunction(
+  () => document.querySelector('.intro-layer') && !document.querySelector('.intro-layer').hidden,
+  null,
+  { timeout: 30000 },
+);
 const openSection = async (page, name) => {
   const button = page.getByRole('button', { name, exact: true });
   if (await button.getAttribute('aria-expanded') !== 'true') await button.click();
@@ -27,6 +37,11 @@ const closeSection = async (page, name) => {
   if (await button.getAttribute('aria-expanded') === 'true') await button.click();
 };
 const shot = async (page, name, description) => {
+  // 截图前清除焦点并移开鼠标，避免按钮 Tooltip 进入画面。
+  await page.evaluate(() => {
+    if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+  });
+  await page.mouse.move(1180, 880);
   await page.waitForTimeout(450);
   const file = path.join(outDir, name);
   await page.screenshot({ path: file });
@@ -35,12 +50,28 @@ const shot = async (page, name, description) => {
 
 const context = await browser.newContext({ viewport: { width: 1200, height: 900 }, deviceScaleFactor: 1 });
 const page = await context.newPage();
-await page.goto(url, { waitUntil: 'networkidle' });
+await page.goto(`${url}?intro=1`, { waitUntil: 'networkidle' });
 await waitApp(page);
-await page.evaluate(() => localStorage.clear());
-await page.reload({ waitUntil: 'networkidle' });
-await waitApp(page);
-await page.waitForTimeout(1400);
+await waitBoot(page);
+await waitIntro(page);
+await page.waitForTimeout(600);
+
+await shot(page, 'final-ui-intro.png', '首访欢迎卡片：一句话介绍、三个操作标签、播放 45 秒导览与介绍片/仓库入口。');
+manifest.intro = await page.evaluate(() => {
+  const card = document.querySelector('.intro-card');
+  const rect = card.getBoundingClientRect();
+  return {
+    rect: { x: Math.round(rect.x), y: Math.round(rect.y), width: Math.round(rect.width), height: Math.round(rect.height) },
+    title: card.querySelector('.intro-title')?.textContent ?? '',
+    lead: card.querySelector('.intro-lead')?.textContent ?? '',
+    chips: [...card.querySelectorAll('.intro-chip')].map((n) => n.textContent?.trim() ?? ''),
+    links: [...card.querySelectorAll('.intro-link')].map((a) => a.getAttribute('href')),
+    seenBefore: localStorage.getItem('workstation-intro-v1'),
+  };
+});
+await page.locator('[data-intro-action="explore"]').click();
+await page.waitForTimeout(800);
+manifest.introSeenAfterDismiss = await page.evaluate(() => localStorage.getItem('workstation-intro-v1'));
 
 await shot(page, 'final-ui-overview.png', '白天模式主视角：左上设计树（装配体信息、七类节点，含声音与自动展示、状态栏）。');
 manifest.designTree = await page.evaluate(() => {
@@ -72,6 +103,28 @@ await closeSection(page, '声音');
 await openSection(page, '场景');
 await page.locator('[data-scene="night"]').click();
 await shot(page, 'final-ui-night.png', '深夜模式：暗色设计树、终端屏幕、呼吸键盘灯与场景节点。');
+
+await openSection(page, '帮助');
+await page.getByRole('button', { name: '重新查看欢迎卡片' }).click();
+await page.waitForTimeout(500);
+await shot(page, 'final-ui-intro-night.png', '深夜模式下的首访欢迎卡片：深色玻璃与浅色文字，帮助节点可随时重开。');
+manifest.introNight = await page.evaluate(() => {
+  const rect = document.querySelector('.intro-card').getBoundingClientRect();
+  return {
+    theme: document.documentElement.dataset.theme,
+    rect: { x: Math.round(rect.x), y: Math.round(rect.y), width: Math.round(rect.width), height: Math.round(rect.height) },
+  };
+});
+await page.keyboard.press('Escape');
+await page.waitForTimeout(400);
+await shot(page, 'final-ui-help.png', '帮助节点：快捷键列表、重新查看欢迎卡片与 GitHub 开源仓库入口。');
+manifest.help = await page.evaluate(() => ({
+  replayVisible: Boolean(document.querySelector('.help-intro-button')),
+  replayText: document.querySelector('.help-intro-button')?.textContent?.trim() ?? '',
+  repoHref: document.querySelector('.help-repo-link')?.getAttribute('href') ?? '',
+}));
+await closeSection(page, '帮助');
+
 await page.locator('[data-scene="day"]').click();
 await closeSection(page, '场景');
 
@@ -94,9 +147,26 @@ mobile.on('console', (message) => {
   if (message.type() === 'error') mobileErrors.push(message.text());
 });
 mobile.setDefaultTimeout(120000);
-await mobile.goto(url, { waitUntil: 'domcontentloaded' });
+await mobile.goto(`${url}?intro=1`, { waitUntil: 'domcontentloaded' });
 await waitApp(mobile);
-await mobile.waitForTimeout(1400);
+await waitBoot(mobile);
+await waitIntro(mobile);
+await mobile.waitForTimeout(700);
+await mobile.screenshot({ path: path.join(outDir, 'final-ui-mobile-intro.png') });
+manifest.screens.push({
+  file: path.join('analysis/renders/final', 'final-ui-mobile-intro.png'),
+  description: '390×844 窄屏首访欢迎卡片：单列主按钮、完整标签与外链，无横向溢出。',
+});
+manifest.mobileIntro = await mobile.evaluate(() => {
+  const rect = document.querySelector('.intro-card').getBoundingClientRect();
+  return {
+    rect: { x: Math.round(rect.x), y: Math.round(rect.y), width: Math.round(rect.width), height: Math.round(rect.height) },
+    viewportWidth: window.innerWidth,
+    bodyScrollWidth: document.body.scrollWidth,
+  };
+});
+await mobile.locator('[data-intro-action="explore"]').click();
+await mobile.waitForTimeout(900);
 await mobile.screenshot({ path: path.join(outDir, 'final-ui-mobile.png') });
 manifest.screens.push({
   file: path.join('analysis/renders/final', 'final-ui-mobile.png'),

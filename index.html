@@ -4,7 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>数字工位 · 可交互 3D 工作区</title>
-    <link rel="icon" href="data:," />
+    <meta
+      name="description"
+      content="数字工位：一张手机照片变成一个可以逛的 3D 工位。84 组件、33 材质全部由 Three.js 代码生成，支持拖动旋转、点物品操作、灯光场景与 45 秒自动导览。"
+    />
+    <meta name="theme-color" content="#eee9e0" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="preload" as="image" href="./poster.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="数字工位" />
+    <meta property="og:title" content="数字工位 · 可交互 3D 工作区" />
+    <meta
+      property="og:description"
+      content="一张手机照片，变成一个可以逛的 3D 工位。84 组件 / 33 材质全部由代码生成，支持物体操作、灯光场景与 45 秒自动导览。"
+    />
+    <meta property="og:image" content="https://osinglehh.github.io/digital-workstation/og-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="数字工位 3D 工作区渲染图与项目标题" />
+    <meta property="og:url" content="https://osinglehh.github.io/digital-workstation/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="数字工位 · 可交互 3D 工作区" />
+    <meta
+      name="twitter:description"
+      content="一张手机照片，变成一个可以逛的 3D 工位。84 组件 / 33 材质全部由代码生成。"
+    />
+    <meta name="twitter:image" content="https://osinglehh.github.io/digital-workstation/og-cover.jpg" />
     <style>
       :root {
         color-scheme: light;
@@ -43,6 +69,114 @@
         touch-action: none;
         outline: none;
       }
+      [hidden] { display: none !important; }
+
+      /* ---------- 启动占位：JS 与贴图加载期间先显示海报与进度 ---------- */
+      .boot {
+        position: absolute;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: #e9e4db;
+        transition: opacity 420ms ease;
+      }
+      .boot.is-done {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .boot-poster,
+      .boot-shade {
+        position: absolute;
+        inset: 0;
+      }
+      .boot-poster {
+        background: #e9e4db url("/poster.jpg") center / cover no-repeat;
+        transform: scale(1.02);
+      }
+      .boot-shade {
+        background:
+          linear-gradient(180deg, rgba(238, 233, 224, 0.55) 0%, rgba(238, 233, 224, 0.2) 42%, rgba(238, 233, 224, 0.7) 100%);
+      }
+      .boot-inner {
+        position: relative;
+        z-index: 1;
+        width: min(448px, calc(100% - 36px));
+        padding: 22px 24px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 18px;
+        background: rgba(246, 248, 251, 0.88);
+        box-shadow:
+          0 18px 46px rgba(38, 32, 24, 0.24),
+          inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        -webkit-backdrop-filter: blur(14px) saturate(130%);
+        backdrop-filter: blur(14px) saturate(130%);
+        text-align: center;
+      }
+      .boot-kicker {
+        margin: 0 0 8px;
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        color: #6b7480;
+      }
+      .boot-title {
+        margin: 0 0 6px;
+        font-size: 27px;
+        line-height: 1.15;
+        letter-spacing: 0.03em;
+        color: #202a33;
+      }
+      .boot-lead {
+        margin: 0 auto 14px;
+        max-width: 34em;
+        font-size: 12.5px;
+        line-height: 1.6;
+        color: #4d5966;
+      }
+      .boot-track {
+        height: 4px;
+        margin: 0 0 8px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(38, 52, 66, 0.18);
+      }
+      .boot-track span {
+        display: block;
+        width: 6%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #2a6db5, #5b9bdd);
+        transition: width 240ms ease;
+      }
+      .boot-status {
+        margin: 0 0 10px;
+        font-size: 11px;
+        letter-spacing: 0.03em;
+        color: #5f6873;
+      }
+      .boot-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 14px;
+        margin: 0;
+        padding-top: 10px;
+        border-top: 1px solid rgba(32, 45, 58, 0.08);
+      }
+      .boot-links a {
+        color: #2a6db5;
+        font-size: 11px;
+        text-decoration: none;
+      }
+      .boot-links a:hover { text-decoration: underline; }
+      .boot-error .boot-title { color: #7a2f2f; }
+      .boot-error .boot-lead { color: #5f6873; }
+
+      @media (max-width: 680px) {
+        .boot-inner { width: calc(100% - 24px); padding: 18px 16px 14px; }
+        .boot-title { font-size: 22px; }
+      }
       @media (max-width: 860px), (max-height: 560px) {
         #stage {
           width: 100vw;
@@ -52,12 +186,51 @@
           box-shadow: none;
         }
       }
+      @media (prefers-reduced-motion: reduce) {
+        .boot, .boot-track span { transition-duration: 0.01ms; }
+      }
     </style>
   </head>
   <body>
     <div id="app">
-      <div id="stage" aria-label="可交互 3D 数字工位"></div>
+      <div id="stage" aria-label="可交互 3D 数字工位" aria-busy="true">
+        <div id="boot" class="boot">
+          <div class="boot-poster" aria-hidden="true"></div>
+          <div class="boot-shade" aria-hidden="true"></div>
+          <div class="boot-inner" id="boot-loading" role="status" aria-live="polite">
+            <p class="boot-kicker">QODER · IMG2THREEJS</p>
+            <h1 class="boot-title">数字工位</h1>
+            <p class="boot-lead">一张手机照片，变成一个可以逛的 3D 工位。</p>
+            <div class="boot-track" role="progressbar" aria-label="3D 场景加载进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="boot-fill"></span>
+            </div>
+            <p class="boot-status" id="boot-status">正在装配工位…</p>
+            <p class="boot-links">
+              <a href="https://v.douyin.com/KQAS2eHl17M/" target="_blank" rel="noopener noreferrer">看介绍片 ↗</a>
+              <a href="https://github.com/Osinglehh/digital-workstation" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a>
+            </p>
+          </div>
+          <div class="boot-inner boot-error" id="boot-error" hidden>
+            <p class="boot-kicker">WEBGL UNAVAILABLE</p>
+            <h1 class="boot-title">无法启动 3D 视图</h1>
+            <p class="boot-lead" data-boot-reason>当前浏览器未启用 WebGL。</p>
+            <p class="boot-lead">可以先观看介绍片，或在支持 WebGL 的浏览器中打开本站。</p>
+            <p class="boot-links">
+              <a href="https://v.douyin.com/KQAS2eHl17M/" target="_blank" rel="noopener noreferrer">抖音介绍片 ↗</a>
+              <a href="https://www.xiaohongshu.com/discovery/item/6ae209e40000000028023016" target="_blank" rel="noopener noreferrer">小红书介绍片 ↗</a>
+              <a href="https://github.com/Osinglehh/digital-workstation" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+    <noscript>
+      <p style="padding: 24px; font: 14px/1.7 system-ui, sans-serif">
+        数字工位需要 JavaScript 与 WebGL 才能运行。可以先观看介绍片：
+        <a href="https://v.douyin.com/KQAS2eHl17M/">抖音</a> ·
+        <a href="https://www.xiaohongshu.com/discovery/item/6ae209e40000000028023016">小红书</a>。
+      </p>
+    </noscript>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

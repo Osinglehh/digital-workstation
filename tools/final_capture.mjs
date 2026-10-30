@@ -12,9 +12,11 @@ const manifest = { views: {}, underDeskDetail: null, bagDetail: null, referenceF
 const settle = async () => {
   try {
     await page.waitForFunction(() => window.__workstation, null, { timeout: 8000 });
+    await page.waitForFunction(() => document.getElementById('boot')?.hidden === true, null, { timeout: 120000 });
   } catch {
     await page.goto(url, { waitUntil: 'networkidle' });
     await page.waitForFunction(() => window.__workstation, null, { timeout: 90000 });
+    await page.waitForFunction(() => document.getElementById('boot')?.hidden === true, null, { timeout: 120000 });
   }
   await page.waitForTimeout(1500);
 };

@@ -125,8 +125,8 @@ def hero_material(mid, name, base, secondary, material_class, roughness, metalne
     maps = {}
     for channel in ('albedo', 'roughness', 'height', 'normal', 'ao'):
         maps[channel] = {
-            'path': f'public/textures/{folder}/{prefix}_{channel}.png',
-            'url': f'/textures/{folder}/{prefix}_{channel}.png',
+            'path': f'public/textures/{folder}/{prefix}_{channel}.webp',
+            'url': f'/textures/{folder}/{prefix}_{channel}.webp',
             'channel': channel,
             'source': 'reference-pixel-extraction',
         }

@@ -37,21 +37,118 @@ const ENVIRONMENT = {
 
 const stage = document.getElementById('stage') as HTMLDivElement;
 
+// --- 启动占位与贴图加载进度 -------------------------------------------------
+// 首屏先显示 poster 与进度条；贴图与首帧都就绪后再淡出，避免评委看到白屏或半成品。
+const bootEl = document.getElementById('boot');
+const bootLoadingEl = document.getElementById('boot-loading');
+const bootErrorEl = document.getElementById('boot-error');
+const bootFillEl = document.getElementById('boot-fill');
+const bootStatusEl = document.getElementById('boot-status');
+const bootTrackEl = bootFillEl?.parentElement ?? null;
+let bootFinished = false;
+let texturesReady = false;
+let textureErrors = 0;
+let firstFrameRendered = false;
+
+function setBootStatus(text: string): void {
+  if (bootStatusEl) bootStatusEl.textContent = text;
+}
+
+function setBootProgress(loaded: number, total: number): void {
+  if (!bootFillEl) return;
+  const ratio = total > 0 ? Math.min(1, loaded / total) : 0;
+  bootFillEl.style.width = `${Math.max(6, Math.round(ratio * 100))}%`;
+  bootTrackEl?.setAttribute('aria-valuenow', String(Math.round(ratio * 100)));
+}
+
+function finishBoot(): void {
+  if (bootFinished) return;
+  bootFinished = true;
+  stage.removeAttribute('aria-busy');
+  if (bootFillEl) bootFillEl.style.width = '100%';
+  bootTrackEl?.setAttribute('aria-valuenow', '100');
+  setBootStatus(textureErrors > 0 ? '部分贴图加载失败，已使用简化材质' : '工位就绪');
+  if (!bootEl) {
+    window.dispatchEvent(new Event('workstation:ready'));
+    return;
+  }
+  bootEl.classList.add('is-done');
+  // 即使无头环境下 opacity 过渡被冻结，也强制从布局中移除启动占位。
+  window.setTimeout(() => {
+    bootEl.hidden = true;
+    window.dispatchEvent(new Event('workstation:ready'));
+  }, 460);
+}
+
+function maybeFinishBoot(): void {
+  if (texturesReady && firstFrameRendered) finishBoot();
+}
+
+function showBootError(message: string): void {
+  stage.removeAttribute('aria-busy');
+  if (bootEl) {
+    bootEl.hidden = false;
+    bootEl.classList.remove('is-done');
+  }
+  if (bootLoadingEl) bootLoadingEl.hidden = true;
+  if (bootErrorEl) {
+    bootErrorEl.hidden = false;
+    const reason = bootErrorEl.querySelector<HTMLElement>('[data-boot-reason]');
+    if (reason) reason.textContent = message;
+  }
+}
+
+const loadingManager = THREE.DefaultLoadingManager;
+loadingManager.onStart = (_url, loaded, total) => {
+  if (bootFinished) return;
+  setBootProgress(loaded, total);
+  setBootStatus(`正在装配工位… ${loaded} / ${total}`);
+};
+loadingManager.onProgress = (_url, loaded, total) => {
+  if (bootFinished) return;
+  setBootProgress(loaded, total);
+  setBootStatus(`正在装配工位… ${loaded} / ${total}`);
+};
+loadingManager.onError = (url) => {
+  textureErrors += 1;
+  console.warn('[workstation] 贴图加载失败：', url);
+};
+loadingManager.onLoad = () => {
+  texturesReady = true;
+  maybeFinishBoot();
+};
+// 贴图请求全部挂起或管理器未触发 onLoad 时，最迟 15 秒进入场景。
+window.setTimeout(() => {
+  texturesReady = true;
+  maybeFinishBoot();
+}, 15000);
+
 // 移动端画质档：仅在触屏主指针设备降级（低像素比、跳过 SSAO/辉光、阴影降级），桌面保持原画质
 const lowPowerTier = window.matchMedia('(pointer: coarse)').matches;
 
-const renderer = new THREE.WebGLRenderer({
-  antialias: true,
-  alpha: false,
-  preserveDrawingBuffer: true,
-  powerPreference: 'high-performance',
-});
+let renderer: THREE.WebGLRenderer;
+try {
+  renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: false,
+    preserveDrawingBuffer: true,
+    powerPreference: 'high-performance',
+  });
+} catch (error) {
+  showBootError('当前浏览器未能创建 WebGL 上下文。请开启硬件加速后刷新，或更换浏览器。');
+  throw error;
+}
+
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, lowPowerTier ? 1.5 : 2));
 renderer.toneMappingExposure = 0.74;
 renderer.setSize(stage.clientWidth, stage.clientHeight);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = lowPowerTier ? THREE.PCFShadowMap : THREE.PCFSoftShadowMap;
 configureOfficeCubicleWorkstationDioramaRenderer(renderer);
+renderer.domElement.addEventListener('webglcontextlost', (event) => {
+  event.preventDefault();
+  showBootError('WebGL 上下文已丢失，请刷新页面重试。');
+});
 stage.prepend(renderer.domElement);
 
 const scene = new THREE.Scene();
@@ -537,6 +634,10 @@ function render(): void {
   filmPass.uniforms.uTime.value = performance.now() * 0.001;
   composer.render();
   needsRender = false;
+  if (!firstFrameRendered) {
+    firstFrameRendered = true;
+    maybeFinishBoot();
+  }
 }
 
 function resize(): void {

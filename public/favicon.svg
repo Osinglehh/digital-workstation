@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="数字工位">
+  <rect width="64" height="64" rx="14" fill="#2b3138"/>
+  <rect x="11.5" y="15.5" width="41" height="25" rx="4.5" fill="none" stroke="#f2e7dc" stroke-width="3"/>
+  <path d="M25 50h14M32 40.5V50" stroke="#f2e7dc" stroke-width="3" stroke-linecap="round"/>
+  <rect x="17" y="21" width="17" height="3" rx="1.5" fill="#7fb4ee"/>
+  <rect x="17" y="27" width="27" height="3" rx="1.5" fill="#7fb4ee" opacity="0.62"/>
+  <rect x="17" y="33" width="21" height="3" rx="1.5" fill="#7fb4ee" opacity="0.38"/>
+</svg>
