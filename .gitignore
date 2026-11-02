@@ -21,6 +21,9 @@ analysis/textures-source/
 # Qoder Sites 本地站点绑定（含云端 ID 与快照，不进公开仓库）
 *.qoder.site
 
+# Qoder 项目级 Skills（仅本机使用，不进公开仓库）
+.qoder/
+
 # 本机上传的原始音频（部署副本在 public/audio/）
 /background_music.mp3
 
